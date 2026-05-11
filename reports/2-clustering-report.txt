@@ -1,0 +1,48 @@
+MEMORANDUM
+
+To: Tim Risk & Product Management
+From: [Nama Kamu], Data Analyst
+Date: 11 Mei 2026
+Subject: Phase 2 Report - Segmentasi Perilaku dan Profil Finansial Pemohon KPR (HMDA 2022)
+
+1. Executive Summary
+Analisis segmentasi telah dilakukan terhadap data snapshot nasional HMDA 2022 untuk memetakan profil pemohon kredit secara objektif. Menggunakan variabel finansial kontinu murni (mengabaikan bendera biner/kategorikal), algoritma menemukan 3 segmentasi alami dari nasabah. Selain itu, model deteksi anomali berhasil memisahkan sekitar [...]% pengajuan yang memiliki indikasi profil risiko tidak wajar yang memerlukan peninjauan manual (underwriting).
+
+2. Metodologi Pendekatan
+- Feature Selection: Filter otomatis diterapkan untuk membuang fitur dengan unique values <= 5, memastikan hanya variabel kontinu (seperti loan_amount, income, interest_rate) yang diproses guna menjaga validitas perhitungan jarak (Euclidean).
+- Scaling: Data distandardisasi dengan Z-score agar variabel berskala besar (property_value) tidak mendistorsi variabel berskala kecil (interest_rate).
+- Algoritma: K-Means untuk segmentasi utama, DBSCAN untuk deteksi outlier/noise, dan Hierarchical Clustering sebagai validasi struktur data.
+
+3. Penentuan Jumlah Segmen (Optimal K)
+Berdasarkan uji pada sampel 10.000 data, grafik Elbow Method menunjukkan titik belok (inertia drop) yang mulai stabil setelah K=3. Metrik Silhouette Score juga mengkonfirmasi pemisahan klaster yang cukup baik pada K=3. Secara konteks finansial, pemisahan menjadi 3 grup ini sangat ideal untuk merepresentasikan struktur pasar KPR.
+
+4. Profiling Klaster (Interpretasi Bisnis)
+Pusat klaster (centroid) ditarik kembali ke nilai aslinya (inverse transform) untuk menghasilkan profil bisnis berikut:
+
+Cluster 0: The Mass Market / Standard Borrowers
+- Populasi: [...] nasabah (Mayoritas)
+- Karakteristik: Pendapatan rata-rata di kisaran $[...], dengan nilai pinjaman dan properti yang moderat. Suku bunga yang diterima berada di standar pasar ([...]%).
+- Interpretasi Bisnis: Segmen ini adalah tulang punggung portofolio kredit. Mereka umumnya adalah pembeli rumah pertama atau pekerja kelas menengah dengan profil risiko standar. Fokus produk: KPR konvensional dan subsidi.
+
+Cluster 1: The High-Net-Worth / Jumbo Loan Seekers
+- Populasi: [...] nasabah
+- Karakteristik: Memiliki lonjakan drastis pada income (rata-rata $[...]) dan property_value (>$[...]). Suku bunga seringkali lebih kompetitif atau setara dengan klaster standar karena rasio LTV (Loan-to-Value) mereka yang kuat.
+- Interpretasi Bisnis: Nasabah premium atau investor properti mewah. Meski jumlah pinjamannya masif, risiko gagal bayarnya relatif lebih kecil karena ditopang aset dan pendapatan yang sangat tinggi. Fokus produk: Wealth management cross-selling.
+
+Cluster 2: Subprime / High-Risk Segment
+- Populasi: [...] nasabah
+- Karakteristik: Anomali pada beban kredit. Pendapatan mereka standar atau di bawah rata-rata ($[...]), namun dikenakan interest_rate yang jauh lebih tinggi secara signifikan ([...]%).
+- Interpretasi Bisnis: Ini adalah segmen dengan biaya pinjaman tertinggi, kemungkinan karena skor kredit yang buruk atau rasio utang (Debt-to-Income) yang membengkak saat pengajuan. Risiko NPL (Non-Performing Loan) berpusat di klaster ini.
+
+5. Identifikasi Anomali (Outlier Detection via DBSCAN)
+Pengujian menggunakan algoritma berbasis kepadatan (DBSCAN) pada sampel 5.000 baris mendeteksi [...] titik data (sekitar [...]%) sebagai Noise (label -1). 
+Nasabah yang masuk kategori anomali ini memiliki atribut finansial ekstrem yang tidak cocok dengan ketiga persona di atas (contoh: income mendekati nol tapi nilai pengajuan pinjaman jutaan dolar). 
+Tindakan: Data anomali ini harus di-flagging dalam sistem untuk memitigasi potensi fraud atau kesalahan data entry dari pihak lender.
+
+6. Validasi Struktural (Hierarchical Clustering)
+Untuk memastikan bentuk alami data, pemodelan dendrogram dijalankan menggunakan tiga metode linkage (Ward, Complete, Average). 
+Metode Ward memberikan visualisasi pemisahan varians yang paling tegas, yang secara struktural kembali mengkonfirmasi keberadaan 3 cabang utama sebelum data terpecah menjadi grup-grup mikro. Hal ini memvalidasi keputusan penggunaan K=3 pada model K-Means di atas.
+
+7. Rekomendasi Lanjutan
+- Label hasil K-Means (Cluster 0, 1, 2) akan disimpan dan dijadikan sebagai feature prediktor baru untuk Phase 3 (Classification/Predictive Modeling).
+- Tim marketing dapat mulai menyusun campaign spesifik berdasarkan 3 persona ini, alih-alih menggunakan pendekatan one-size-fits-all.   
