@@ -1,43 +1,227 @@
-Subject: Phase 2 Report - Segmentasi Perilaku dan Profil Finansial Pemohon KPR (HMDA 2022)
+Phase 2 Report
+Segmentasi Perilaku dan Profil Finansial Pemohon KPR (HMDA 2022)
 
 1. Executive Summary
-    - Analisis segmentasi telah kami lakukan pada data snapshot nasional HMDA 2022 untuk memetakan profil pemohon kredit secara objektif.
-    - Menggunakan variabel finansial kontinu murni (mengabaikan bendera biner/kategorikal), algoritma menemukan 3 segmentasi alami dari nasabah.
-    - Selain itu, model deteksi anomali berhasil memisahkan sekitar 0.82% pengajuan yang memiliki indikasi profil risiko tidak wajar yang memerlukan peninjauan manual (underwriting).
+Analisis segmentasi dilakukan terhadap data nasional HMDA 2022 untuk mengidentifikasi pola alami perilaku pemohon Kredit Pemilikan Rumah (KPR) berdasarkan karakteristik finansial mereka. 
+Fokus utama penelitian ini adalah menemukan kelompok nasabah yang memiliki pola pendapatan, pinjaman, dan karakteristik properti yang serupa tanpa menggunakan label klasifikasi sebelumnya (unsupervised learning).
+Menggunakan pendekatan clustering berbasis jarak, model berhasil mengidentifikasi tiga segmen utama pemohon KPR yang merepresentasikan struktur pasar pembiayaan perumahan secara nyata. Setiap segmen menunjukkan profil ekonomi, strategi pembiayaan, dan tingkat leverage yang berbeda.
+Selain segmentasi utama, algoritma berbasis densitas juga berhasil mendeteksi sekitar 7.26% data yang tergolong outlier atau profil finansial tidak wajar. Kelompok ini berpotensi merepresentasikan:
+- kesalahan input data,
+- kasus finansial ekstrem,
+- atau indikasi fraud dan pengajuan berisiko tinggi.
+
+Hasil analisis ini dapat digunakan bank untuk:
+- segmentasi produk KPR,
+- penyesuaian strategi underwriting,
+- mitigasi risiko kredit,
+- serta pengembangan layanan prioritas dan cross-selling.
 
 2. Metodologi Pendekatan
-    - Feature Selection: Filter otomatis diterapkan untuk membuang fitur dengan unique values <= 5, memastikan hanya variabel kontinu (seperti loan_amount, income, interest_rate) yang diproses guna menjaga validitas perhitungan jarak (Euclidean).
-    - Scaling: Data distandardisasi dengan Z-score agar variabel berskala besar (property_value) tidak mendistorsi variabel berskala kecil (interest_rate).
-    - Algoritma: K-Means untuk segmentasi utama, DBSCAN untuk deteksi outlier/noise, dan Hierarchical Clustering sebagai validasi struktur data.
+2.1 Feature Selection
+Seleksi fitur dilakukan secara otomatis untuk memastikan hanya variabel numerik kontinu yang digunakan dalam proses clustering. Variabel dengan jumlah unique values ≤ 5 dieliminasi karena dianggap bersifat biner atau kategorikal dan kurang sesuai untuk pendekatan berbasis jarak Euclidean.
+Fitur utama yang digunakan meliputi:
+- loan_amount
+- income
+- property_value
+- interest_rate
+- loan_to_value_ratio
+- tract_to_msa_income_percentage
+- housing_age
+- minority_population_percentage
+Pendekatan ini bertujuan menjaga validitas pengukuran jarak antar data sehingga hasil segmentasi benar-benar mencerminkan kedekatan finansial antar pemohon.
+
+2.2 Data Standardization
+Seluruh fitur dinormalisasi menggunakan Z-score Standardization.
+Tujuan scaling adalah untuk mencegah variabel dengan skala besar seperti:
+- property_value,
+- income,
+- loan_amount
+mendominasi variabel dengan skala lebih kecil seperti:
+- interest_rate,
+- debt ratio,
+- housing age.
+Dengan standardisasi ini, seluruh fitur memiliki kontribusi yang lebih seimbang dalam pembentukan cluster.
+
+2.3 Clustering Algorithms
+Tiga pendekatan clustering digunakan untuk memastikan validitas struktur data dari berbagai perspektif:
+    1. K-Means Clustering
+        Digunakan sebagai metode segmentasi utama karena efektif dalam memisahkan kelompok berdasarkan centroid dan cocok untuk dataset finansial berskala besar.
+    2. DBSCAN (Density-Based Spatial Clustering)
+        Digunakan untuk mendeteksi noise dan outlier finansial yang tidak mengikuti pola umum populasi.
+
+        Parameter yang digunakan:
+        eps = 2.0
+        min_samples = 10
+        Nilai eps dipilih setelah beberapa eksperimen untuk menjaga keseimbangan antara:
+        - sensitivitas deteksi noise,
+        - dan stabilitas pembentukan cluster.
+        Sementara itu, min_samples = 10 dipilih untuk memastikan bahwa suatu kelompok hanya dianggap valid apabila memiliki kepadatan data yang cukup kuat.
+
+    3. Hierarchical Clustering
+        Digunakan sebagai validasi struktural untuk mengevaluasi apakah pembagian cluster alami benar-benar terbentuk pada data.
+        Tiga metode linkage dibandingkan:
+        - Ward Linkage
+        - Complete Linkage
+        - Average Linkage
 
 3. Penentuan Jumlah Segmen (Optimal K)
-    - Berdasarkan uji pada sampel 10.000 data, grafik Elbow Method menunjukkan titik belok (inertia drop) yang mulai stabil setelah K=3.
-    - Metrik Silhouette Score juga mengkonfirmasi pemisahan klaster yang cukup baik pada K=3.
-    - Secara konteks finansial, pemisahan menjadi 3 grup ini sangat ideal untuk merepresentasikan struktur pasar KPR.
+Penentuan jumlah cluster optimal dilakukan menggunakan dua metode validasi internal:
+3.1 Elbow Method
+Pengujian dilakukan pada sampel sebanyak 99.994 baris data.
+Grafik Elbow menunjukkan penurunan inertia yang sangat tajam dari:
+- K=1 ke K=2 dan mulai melandai setelah K=3.
+Fenomena ini mengindikasikan bahwa penambahan cluster setelah K=3 tidak lagi memberikan peningkatan segmentasi yang signifikan.
 
-4. Profiling Klaster (Interpretasi Bisnis)
-Pusat klaster (centroid) ditarik kembali ke nilai aslinya (inverse transform) untuk menghasilkan profil bisnis berikut:
-    1. Cluster 0: The Mass Market / Urban Borrowers
-        - Populasi: 42.579 nasabah (~42,58% / Kelompok Terbesar)
-        - Karakteristik: Memiliki pendapatan terendah di antara ketiga grup (rata-rata $105.580) dan mengambil pinjaman paling moderat ($256.780). Mereka berada di area dengan persentase minoritas tertinggi (42,38%) dan usia perumahan yang lebih tua (rata-rata 39,7 tahun).
-        - Interpretasi Bisnis: Segmen ini adalah target pasar utama menengah ke bawah. Mereka umumnya adalah pembeli rumah pertama (first-time homebuyers) yang membeli properti di area urban atau perkotaan lama. Ini adalah portofolio standar perbankan dengan tingkat risiko yang terdistribusi normal.
+3.2 Silhouette Score
+Silhouette Score digunakan untuk mengevaluasi:
+- kohesi intra-cluster, dan separasi antar cluster.
+Hasil menunjukkan bahwa K=3 menghasilkan nilai silhouette yang relatif tinggi dan stabil dibandingkan jumlah cluster lainnya, menandakan bahwa:
+- anggota cluster cukup homogen,
+- namun tetap memiliki pemisahan yang jelas antar kelompok.
 
-    2. Cluster 1: The Premium Upgraders / High-Leverage Borrowers
-        - Populasi: 25.336 nasabah (~25,34%)
-        - Karakteristik: Kelas menengah atas dengan pendapatan $143.800, namun mengambil nilai pinjaman paling tinggi dan agresif, yaitu mencapai $376.044. Mereka membeli rumah di kawasan paling elite dan makmur (Tract to MSA income tertinggi: 134,64%) dengan usia bangunan paling baru (27 tahun).
-        - Interpretasi Bisnis: Ini adalah kelompok profesional sukses yang sedang melakukan upgrade tempat tinggal pindah ke kawasan hunian baru (suburban elit). Karena mereka meminjam paling banyak, kelompok ini sangat profitable bagi bank dari segi pendapatan bunga. Namun, perlu mitigasi lebih lanjut karena mereka menggunakan daya ungkit (leverage / utang) yang maksimal.
+3.3 Justifikasi Bisnis Pemilihan K=3
+Selain valid secara statistik, penggunaan K=3 juga menghasilkan interpretasi bisnis yang paling realistis dan mudah dijelaskan dalam konteks pasar KPR nasional.
+Pembagian menjadi tiga kelompok menghasilkan struktur pasar yang secara alami terbagi menjadi:
+- peminjam mass-market,
+- peminjam leverage tinggi,
+- peminjam kaya konservatif.
 
-    3. Cluster 2: The High-Net-Worth / Conservative Borrowers
-        - Populasi: 32.079 nasabah (~32,08%)
-        - Karakteristik: Kelompok paling kaya dengan income tertinggi ($204.680), tetapi menariknya nilai pinjaman mereka hanya di kisaran menengah ($317.035), jauh lebih rendah dari Cluster 1.
-        - Interpretasi Bisnis: Segmen finansial paling kuat dan berisiko gagal bayar (NPL) paling rendah. Mengingat pendapatan mereka sangat tinggi tapi pinjamannya tidak maksimal, mereka kemungkinan besar menyetor uang muka (DP) yang sangat besar atau merupakan pembeli rumah kedua/investor. Bank bisa menargetkan kelompok ini bukan untuk bunga kredit besar, melainkan untuk cross-selling produk layanan prioritas (Wealth Management atau Reksa Dana).
+Ketika jumlah cluster diperbesar (>3), beberapa cluster mulai mengalami overlap dan kehilangan interpretasi bisnis yang jelas.
+Oleh karena itu, K=3 dipilih sebagai jumlah segmentasi optimal baik dari sisi matematis maupun interpretasi finansial.
+
+4. Profiling Klaster (Business Interpretation)
+Nilai centroid hasil K-Means dikembalikan ke skala asli menggunakan inverse transformation agar dapat diterjemahkan ke dalam konteks bisnis nyata.
+4.1 Cluster 0 — “The Mass Market / Urban Borrowers”
+Populasi
+42.579 nasabah (~42,58%) — kelompok terbesar
+Karakteristik Utama
+Pendapatan rata-rata terendah (~$105.580)
+Nilai pinjaman moderat (~$256.780)
+Tinggal di area dengan persentase minoritas tinggi
+Usia properti relatif tua (~39,7 tahun)
+Interpretasi Bisnis
+Kelompok ini merepresentasikan pasar KPR utama kelas menengah ke bawah dan first-time homebuyers.
+Mereka cenderung:
+membeli rumah di area urban lama,
+memiliki keterbatasan daya beli,
+dan mencari pembiayaan dengan risiko moderat.
+
+Segmen ini penting karena:
+volume nasabah sangat besar,
+menghasilkan stabilitas portofolio,
+dan menjadi target utama produk KPR standar bank.
+
+4.2 Cluster 1 — “The Premium Upgraders / High-Leverage Borrowers”
+Populasi
+25.336 nasabah (~25,34%)
+Karakteristik Utama
+Pendapatan tinggi (~$143.800)
+Nilai pinjaman tertinggi (~$376.044)
+Tinggal di kawasan paling makmur
+Membeli properti dengan usia bangunan paling baru
+Interpretasi Bisnis
+Kelompok ini menggambarkan profesional mapan yang sedang melakukan upgrade tempat tinggal menuju kawasan suburban premium.
+Walaupun memiliki pendapatan tinggi, mereka menggunakan leverage pinjaman secara agresif untuk memperoleh properti bernilai besar.
+Implikasi bisnis:
+sangat profitable dari sisi bunga kredit,
+berpotensi menjadi target produk premium,
+namun memiliki eksposur risiko leverage lebih tinggi dibanding cluster lain.
+
+Bank perlu:
+melakukan monitoring debt burden,
+dan mempertimbangkan strategi mitigasi risiko kredit jangka panjang.
+
+4.3 Cluster 2 — “The High-Net-Worth / Conservative Borrowers”
+Populasi
+32.079 nasabah (~32,08%)
+Karakteristik Utama
+Pendapatan tertinggi (~$204.680)
+Nilai pinjaman hanya pada level menengah (~$317.035)
+Rasio leverage relatif rendah
+Interpretasi Bisnis
+Segmen ini merupakan kelompok finansial paling kuat dan paling stabil.
+Meskipun memiliki kemampuan finansial sangat tinggi, mereka tidak memaksimalkan pinjaman. Hal ini mengindikasikan kemungkinan:
+uang muka besar,
+pembelian properti kedua,
+atau strategi investasi konservatif.
+
+Kelompok ini memiliki probabilitas gagal bayar paling rendah dan sangat potensial untuk:
+wealth management,
+investasi,
+priority banking,
+dan cross-selling produk finansial bernilai tinggi.
 
 5. Identifikasi Anomali (Outlier Detection via DBSCAN)
-    - Pengujian menggunakan algoritma berbasis kepadatan (DBSCAN) pada sampel 5.000 baris mendeteksi 41 titik data (sekitar 0.82%) sebagai Noise (label -1).
-    - Nasabah yang masuk kategori anomali ini memiliki atribut finansial ekstrem yang tidak cocok dengan ketiga persona di atas (contoh: income mendekati nol tapi nilai pengajuan pinjaman jutaan dolar).
-    - Tindakan: Data anomali ini harus di-flagging dalam sistem untuk memitigasi potensi fraud atau kesalahan data entry dari pihak lender.
+DBSCAN diterapkan pada sampel sebanyak 5.000 data untuk mendeteksi observasi yang tidak mengikuti pola umum populasi.
 
-6. Validasi Struktural (Hierarchical Clustering)
-    - Untuk memastikan bentuk alami data, pemodelan dendrogram dijalankan menggunakan tiga metode linkage (Ward, Complete, Average).
-    - Metode Ward memberikan visualisasi pemisahan varians yang paling tegas, yang secara struktural kembali mengkonfirmasi keberadaan 3 cabang utama sebelum data terpecah menjadi grup-grup mikro.
-    - Hal ini memvalidasi keputusan penggunaan K=3 pada model K-Means.
+Menggunakan parameter:
+
+eps = 2.0
+min_samples = 10
+
+algoritma berhasil mengidentifikasi:
+
+4.637 data sebagai titik normal (ter-cluster)
+363 data sebagai noise atau outlier
+setara dengan sekitar 7.26% dari total sampel
+
+Outlier ini memiliki karakteristik finansial yang sangat berbeda dibanding mayoritas pemohon KPR, seperti:
+
+income sangat rendah namun loan_amount sangat tinggi,
+kombinasi property_value dan interest_rate yang tidak realistis,
+atau pola finansial ekstrem yang tidak sesuai dengan ketiga cluster utama.
+Interpretasi Bisnis
+
+Kelompok anomali ini tidak selalu berarti fraud, namun dapat mengindikasikan:
+
+kesalahan input data,
+profil finansial ekstrem namun valid,
+atau pengajuan kredit berisiko tinggi yang memerlukan investigasi tambahan.
+
+Karena jumlahnya cukup signifikan (7.26%), bank disarankan:
+
+melakukan enhanced verification,
+manual underwriting review,
+dan risk flagging
+terhadap aplikasi dalam kelompok ini sebelum keputusan persetujuan kredit dilakukan.
+
+6. Validasi Struktural Menggunakan Hierarchical Clustering
+Hierarchical Clustering digunakan untuk mengevaluasi apakah struktur segmentasi alami benar-benar terbentuk dalam data.
+Tiga metode linkage dibandingkan:
+Ward,
+Complete,
+dan Average.
+Hasil Analisis: 
+- Ward Linkage
+Menghasilkan pemisahan cluster paling jelas dan stabil. Dendrogram menunjukkan tiga cabang utama yang terpisah sebelum data mulai membentuk sub-cluster mikro.
+- Complete Linkage
+Mampu membentuk pemisahan yang cukup tegas, namun menghasilkan beberapa cluster yang terlalu sensitif terhadap outlier.
+- Average Linkage
+Menghasilkan struktur cluster yang lebih longgar dan overlap antar kelompok lebih tinggi.
+
+Kesimpulan Validasi
+Ward Linkage memberikan representasi struktur data paling interpretatif dan konsisten dengan hasil K-Means.
+Hal ini memperkuat validitas keputusan penggunaan:
+K=3,
+serta keberadaan tiga segmen utama dalam pasar KPR HMDA 2022.
+7. 
+
+Kesimpulan Akhir
+Analisis clustering berhasil mengidentifikasi tiga profil utama pemohon KPR yang memiliki karakteristik finansial dan perilaku pembiayaan berbeda secara signifikan.
+Temuan utama:
+pasar KPR tidak homogen,
+setiap kelompok memiliki kebutuhan dan tingkat risiko berbeda,
+dan terdapat sebagian kecil profil ekstrem yang memerlukan perhatian khusus.
+Dari perspektif bisnis, hasil ini dapat digunakan untuk:
+strategi segmentasi nasabah,
+personalisasi produk kredit,
+mitigasi risiko,
+peningkatan underwriting,
+dan optimalisasi cross-selling layanan finansial.
+Secara keseluruhan, kombinasi:
+K-Means,
+DBSCAN,
+dan Hierarchical Clustering
+berhasil menghasilkan segmentasi yang:
+valid secara statistik,
+kuat secara struktural, dan relevan secara bisnis.
