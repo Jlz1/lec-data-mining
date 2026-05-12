@@ -16,21 +16,21 @@ Subject: Phase 2 Report - Segmentasi Perilaku dan Profil Finansial Pemohon KPR (
     - Secara konteks finansial, pemisahan menjadi 3 grup ini sangat ideal untuk merepresentasikan struktur pasar KPR.
 
 4. Profiling Klaster (Interpretasi Bisnis)
-    - Pusat klaster (centroid) ditarik kembali ke nilai aslinya (inverse transform) untuk menghasilkan profil bisnis berikut:
-        1. Cluster 0: The Mass Market / Standard Borrowers
-        - Populasi: 80.922 nasabah (Mayoritas)
-        - Karakteristik: Pendapatan rata-rata di kisaran $84.760, dengan nilai pinjaman dan properti yang moderat. Suku bunga yang diterima berada di standar pasar (4.67%).
-        - Interpretasi Bisnis: Segmen ini adalah tulang punggung portofolio kredit.Mereka umumnya adalah pembeli rumah pertama atau pekerja kelas menengah dengan profil risiko standar. Fokus produk: KPR konvensional dan subsidi.
+Pusat klaster (centroid) ditarik kembali ke nilai aslinya (inverse transform) untuk menghasilkan profil bisnis berikut:
+    1. Cluster 0: The Mass Market / Urban Borrowers
+        - Populasi: 42.579 nasabah (~42,58% / Kelompok Terbesar)
+        - Karakteristik: Memiliki pendapatan terendah di antara ketiga grup (rata-rata $105.580) dan mengambil pinjaman paling moderat ($256.780). Mereka berada di area dengan persentase minoritas tertinggi (42,38%) dan usia perumahan yang lebih tua (rata-rata 39,7 tahun).
+        - Interpretasi Bisnis: Segmen ini adalah target pasar utama menengah ke bawah. Mereka umumnya adalah pembeli rumah pertama (first-time homebuyers) yang membeli properti di area urban atau perkotaan lama. Ini adalah portofolio standar perbankan dengan tingkat risiko yang terdistribusi normal.
 
-        2. Cluster 1: The High-Net-Worth / Jumbo Loan Seekers
-        - Populasi: 5.124 nasabah
-        - Karakteristik: Memiliki lonjakan drastis pada income (rata-rata $281.420) dan property_value (>$1.217.583). Suku bunga seringkali lebih kompetitif atau setara dengan klaster standar karena rasio LTV (Loan-to-Value) mereka yang kuat.
-        - Interpretasi Bisnis: Nasabah premium atau investor properti mewah. Meski jumlah pinjamannya masif, risiko gagal bayarnya relatif lebih kecil karena ditopang aset dan pendapatan yang sangat tinggi. Fokus produk: Wealth management cross-selling.
+    2. Cluster 1: The Premium Upgraders / High-Leverage Borrowers
+        - Populasi: 25.336 nasabah (~25,34%)
+        - Karakteristik: Kelas menengah atas dengan pendapatan $143.800, namun mengambil nilai pinjaman paling tinggi dan agresif, yaitu mencapai $376.044. Mereka membeli rumah di kawasan paling elite dan makmur (Tract to MSA income tertinggi: 134,64%) dengan usia bangunan paling baru (27 tahun).
+        - Interpretasi Bisnis: Ini adalah kelompok profesional sukses yang sedang melakukan upgrade tempat tinggal pindah ke kawasan hunian baru (suburban elit). Karena mereka meminjam paling banyak, kelompok ini sangat profitable bagi bank dari segi pendapatan bunga. Namun, perlu mitigasi lebih lanjut karena mereka menggunakan daya ungkit (leverage / utang) yang maksimal.
 
-        3. Cluster 2: Subprime / High-Risk Segment
-        - Populasi: 13.948 nasabah
-        - Karakteristik: Anomali pada beban kredit. Pendapatan mereka standar atau di bawah rata-rata ($89.150), namun dikenakan interest_rate yang jauh lebih tinggi secara signifikan (6.82%).
-        - Interpretasi Bisnis: Ini adalah segmen dengan biaya pinjaman tertinggi, kemungkinan karena skor kredit yang buruk atau rasio utang (Debt-to-Income) yang membengkak saat pengajuan. Risiko NPL (Non-Performing Loan) berpusat di klaster ini.
+    3. Cluster 2: The High-Net-Worth / Conservative Borrowers
+        - Populasi: 32.079 nasabah (~32,08%)
+        - Karakteristik: Kelompok paling kaya dengan income tertinggi ($204.680), tetapi menariknya nilai pinjaman mereka hanya di kisaran menengah ($317.035), jauh lebih rendah dari Cluster 1.
+        - Interpretasi Bisnis: Segmen finansial paling kuat dan berisiko gagal bayar (NPL) paling rendah. Mengingat pendapatan mereka sangat tinggi tapi pinjamannya tidak maksimal, mereka kemungkinan besar menyetor uang muka (DP) yang sangat besar atau merupakan pembeli rumah kedua/investor. Bank bisa menargetkan kelompok ini bukan untuk bunga kredit besar, melainkan untuk cross-selling produk layanan prioritas (Wealth Management atau Reksa Dana).
 
 5. Identifikasi Anomali (Outlier Detection via DBSCAN)
     - Pengujian menggunakan algoritma berbasis kepadatan (DBSCAN) pada sampel 5.000 baris mendeteksi 41 titik data (sekitar 0.82%) sebagai Noise (label -1).
