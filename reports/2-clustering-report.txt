@@ -154,9 +154,19 @@ algoritma berhasil mengidentifikasi:
 363 data sebagai noise atau outlier
 setara dengan sekitar 7.26% dari total sampel
 
-Outlier ini memiliki karakteristik finansial yang sangat berbeda dibanding mayoritas pemohon KPR, seperti:
-income sangat rendah namun loan_amount sangat tinggi, kombinasi property_value dan interest_rate yang tidak realistis,
-atau pola finansial ekstrem yang tidak sesuai dengan ketiga cluster utama.
+Karakteristik Umum Outlier
+Analisis terhadap data yang terdeteksi sebagai noise menunjukkan beberapa pola finansial ekstrem yang berbeda signifikan dari mayoritas populasi, antara lain:
+- income sangat rendah namun mengajukan loan_amount sangat tinggi,
+- rasio loan-to-income yang tidak proporsional,
+- property_value jauh di atas rata-rata populasi,
+- kombinasi interest_rate dan income yang tidak lazim,
+- serta beberapa observasi dengan nilai finansial ekstrem pada lebih dari satu atribut sekaligus.
+
+Secara statistik, titik-titik ini berada jauh dari centroid ketiga cluster utama sehingga tidak memenuhi kepadatan minimum untuk tergabung ke dalam kelompok normal.
+Sebagian outlier juga menunjukkan indikasi:
+- leverage finansial yang sangat tinggi,
+- ketidaksesuaian kemampuan bayar,
+- atau pola aplikasi kredit yang jarang ditemukan pada populasi umum.
 
 Interpretasi Bisnis:
 Kelompok anomali ini tidak selalu berarti fraud, namun dapat mengindikasikan:
