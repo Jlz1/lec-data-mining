@@ -1,0 +1,567 @@
+antecedents,consequents,support,confidence,lift
+"conforming_loan_limit_c, construction_method_2",derived_dwelling_category_single family (1-4 units):manufactured,0.04377262635758145,1.0,22.829680365296802
+"construction_method_2, total_units_1",derived_dwelling_category_single family (1-4 units):manufactured,0.043552613156789405,1.0,22.829680365296802
+"construction_method_2, occupancy_type_1",derived_dwelling_category_single family (1-4 units):manufactured,0.04198251895113707,1.0,22.829680365296802
+"construction_method_2, derived_race_white",derived_dwelling_category_single family (1-4 units):manufactured,0.028541712502750165,1.0,22.829680365296802
+"construction_method_2, derived_ethnicity_not hispanic or latino",derived_dwelling_category_single family (1-4 units):manufactured,0.027791667500050004,1.0,22.829680365296802
+"construction_method_2, income_bracket_Low",derived_dwelling_category_single family (1-4 units):manufactured,0.02250135008100486,1.0,22.829680365296802
+"construction_method_2, loan_size_Small",derived_dwelling_category_single family (1-4 units):manufactured,0.031401884113046785,0.9996816300541228,22.82241208119451
+"construction_method_2, loan_purpose_1",derived_dwelling_category_single family (1-4 units):manufactured,0.03573214392863572,0.9977659871544261,22.778678566100385
+"construction_method_2, reverse_mortgage_2",derived_dwelling_category_single family (1-4 units):manufactured,0.042532551953117184,0.9974202626641651,22.77078578649327
+"construction_method_2, loan_term_bin_(0.999, 360.0]",derived_dwelling_category_single family (1-4 units):manufactured,0.041412484749084946,0.9973506743737959,22.769197108066972
+derived_dwelling_category_single family (1-4 units):manufactured,construction_method_2,0.04380262815768946,1.0,22.76730418943534
+"conforming_loan_limit_c, derived_dwelling_category_single family (1-4 units):manufactured",construction_method_2,0.04377262635758145,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, total_units_1",construction_method_2,0.043552613156789405,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, preapproval_2",construction_method_2,0.043212592755565334,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, lien_status_1",construction_method_2,0.04273256395383723,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, reverse_mortgage_2",construction_method_2,0.042532551953117184,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, occupancy_type_1",construction_method_2,0.04198251895113707,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_term_bin_(0.999, 360.0]",construction_method_2,0.041412484749084946,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_type_1",construction_method_2,0.03708222493349601,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, purchaser_type_0",construction_method_2,0.03693221593295598,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_loan_product_type_conventional:first lien",construction_method_2,0.03602216132967978,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_purpose_1",construction_method_2,0.03573214392863572,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_size_Small",construction_method_2,0.031401884113046785,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_race_white",construction_method_2,0.028541712502750165,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_ethnicity_not hispanic or latino",construction_method_2,0.027791667500050004,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, state_code_other",construction_method_2,0.023621417285037104,1.0,22.76730418943534
+"derived_dwelling_category_single family (1-4 units):manufactured, income_bracket_Low",construction_method_2,0.02250135008100486,1.0,22.76730418943534
+construction_method_2,derived_dwelling_category_single family (1-4 units):manufactured,0.04380262815768946,0.9972677595628416,22.76730418943534
+"construction_method_2, preapproval_2",derived_dwelling_category_single family (1-4 units):manufactured,0.043212592755565334,0.9972305561966306,22.76645484847623
+"construction_method_2, lien_status_1",derived_dwelling_category_single family (1-4 units):manufactured,0.04273256395383723,0.9971995332555427,22.765746604647198
+"construction_method_2, state_code_other",derived_dwelling_category_single family (1-4 units):manufactured,0.023621417285037104,0.9970451667370198,22.76222246637022
+"construction_method_2, loan_type_1",derived_dwelling_category_single family (1-4 units):manufactured,0.03708222493349601,0.9967741935483869,22.756036235086164
+"construction_method_2, purchaser_type_0",derived_dwelling_category_single family (1-4 units):manufactured,0.03693221593295598,0.9967611336032389,22.75573808071285
+"construction_method_2, derived_loan_product_type_conventional:first lien",derived_dwelling_category_single family (1-4 units):manufactured,0.03602216132967978,0.9966795794133925,22.753876224626204
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.02060123607416445,0.8886971527178602,5.255137970956222
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], loan_purpose_2",lien_status_2,0.02060123607416445,0.8886971527178602,5.247380164680822
+"applicant_age_35-44, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.020851251075064504,0.8745805369127516,5.171662105739426
+"applicant_age_35-44, loan_purpose_2",lien_status_2,0.02088125287517251,0.8758389261744965,5.171457784699888
+"income_bracket_Very High, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.023621417285037104,0.8744909292854499,5.17113222844289
+"income_bracket_Very High, loan_purpose_2",lien_status_2,0.023631417885073103,0.8748611625323954,5.16568450465098
+"loan_size_Medium, purchaser_type_2",derived_loan_product_type_fha:first lien,0.021071264275856552,0.6079053664166185,4.892698745127443
+"loan_size_Medium, purchaser_type_2",loan_type_2,0.021071264275856552,0.6079053664166185,4.886798714483748
+"loan_purpose_2, loan_size_Small",lien_status_2,0.06013360801648099,0.8017333333333333,4.733895655939376
+"loan_purpose_2, loan_size_Small",derived_loan_product_type_conventional:subordinate lien,0.060033602016120964,0.8003999999999999,4.733009911295091
+"loan_purpose_4, loan_size_Small",derived_loan_product_type_conventional:subordinate lien,0.04996299777986679,0.7920101458465441,4.683398138603153
+"loan_purpose_4, loan_size_Small",lien_status_2,0.04996299777986679,0.7920101458465441,4.676484353338018
+"loan_purpose_2, occupancy_type_1",derived_loan_product_type_conventional:subordinate lien,0.0685541132467948,0.7830705962988348,4.630535848983187
+"loan_purpose_2, occupancy_type_1",lien_status_2,0.06865411924715482,0.7842129312314371,4.630445104550122
+"loan_purpose_2, purchaser_type_0",derived_loan_product_type_conventional:subordinate lien,0.06902414144848691,0.7768148564997187,4.593543746944581
+"loan_purpose_2, purchaser_type_0",lien_status_2,0.06912414744884693,0.777940348902645,4.593408163458582
+"derived_sex_male, loan_purpose_2",lien_status_2,0.02412144728683721,0.7770618556701031,4.588221033119356
+"derived_sex_male, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.0240714442866572,0.7754510309278351,4.585479029367116
+"loan_purpose_2, loan_type_1",lien_status_2,0.0708542512550753,0.7717024289293105,4.556575888890315
+"loan_purpose_2, reverse_mortgage_2",derived_loan_product_type_conventional:subordinate lien,0.06969418165089905,0.7704809286898839,4.556089295293687
+"loan_purpose_2, reverse_mortgage_2",lien_status_2,0.06979418765125908,0.7715865118850195,4.555891447855367
+"loan_purpose_2, loan_term_bin_(0.999, 360.0]",lien_status_2,0.06438386303178191,0.7710179640718563,4.552534413900277
+"loan_purpose_2, loan_term_bin_(0.999, 360.0]",derived_loan_product_type_conventional:subordinate lien,0.06428385703142188,0.7698203592814371,4.552183146421527
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.07044422665359922,0.7685761047463175,4.544825488941648
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_2",lien_status_2,0.07054423265395923,0.7696672122204037,4.5445587965023355
+"derived_ethnicity_not hispanic or latino, loan_purpose_2",lien_status_2,0.051643098585915155,0.7693682955899881,4.542793820444362
+"derived_ethnicity_not hispanic or latino, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.05154309258555513,0.7678784266984505,4.540699905339141
+"construction_method_1, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.07049422965377923,0.7677812874414552,4.5401254912135345
+"construction_method_1, loan_purpose_2",lien_status_2,0.07059423565413925,0.7688704934103039,4.539854509481543
+"loan_purpose_2, total_units_1",derived_loan_product_type_conventional:subordinate lien,0.06935416124967499,0.7668915183014487,4.534864014253996
+"loan_purpose_2, total_units_1",lien_status_2,0.069454167250035,0.7679973460134911,4.53469894403738
+"loan_purpose_2, state_code_other",derived_loan_product_type_conventional:subordinate lien,0.03536212172730364,0.7652023371564596,4.524875369699765
+"loan_purpose_2, state_code_other",lien_status_2,0.035382122927375644,0.7656351439082449,4.520751141420788
+loan_purpose_2,derived_loan_product_type_conventional:subordinate lien,0.0708542512550753,0.76437587657784,4.519988255619428
+loan_purpose_2,lien_status_2,0.07095425725543533,0.7654547416118244,4.519685942293048
+"derived_race_white, loan_purpose_2",lien_status_2,0.04803288197291838,0.7645654250238777,4.514434904625783
+"conforming_loan_limit_c, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.06911414684881093,0.763309034680804,4.513679693310013
+"conforming_loan_limit_c, loan_purpose_2",lien_status_2,0.06921415284917096,0.76441351888668,4.513537963245035
+"derived_race_white, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.04793287597255835,0.7629735752944922,4.5116960193966555
+"income_bracket_Very High, loan_size_Small",derived_loan_product_type_conventional:subordinate lien,0.03441206472388343,0.7459353999566443,4.410944079436113
+"income_bracket_Very High, loan_size_Small",lien_status_2,0.034422065323919435,0.7461521786256232,4.405712485945708
+"loan_purpose_4, occupancy_type_1",derived_loan_product_type_conventional:subordinate lien,0.057073424405464326,0.7403035413153457,4.37764117742677
+"loan_purpose_4, occupancy_type_1",lien_status_2,0.057073424405464326,0.7403035413153457,4.371178760571992
+"loan_purpose_4, purchaser_type_0",derived_loan_product_type_conventional:subordinate lien,0.055803348200892056,0.7384859714134463,4.366893330899831
+"derived_sex_male, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.020481228873732424,0.7374864962189414,4.360983128498925
+"loan_purpose_4, purchaser_type_0",lien_status_2,0.055803348200892056,0.7384859714134463,4.3604467803670595
+"derived_sex_male, loan_purpose_4",lien_status_2,0.020481228873732424,0.7374864962189414,4.354545302799931
+"loan_purpose_4, state_code_other",derived_loan_product_type_conventional:subordinate lien,0.02967178030681841,0.7342242019302152,4.341692184968062
+"loan_purpose_4, state_code_other",lien_status_2,0.02967178030681841,0.7342242019302152,4.3352828371898395
+"loan_purpose_4, loan_type_1",lien_status_2,0.05839350361021661,0.7310629773381746,4.3166171453175926
+"conforming_loan_limit_c, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.0569434166049963,0.7262755102040817,4.294689140588228
+"conforming_loan_limit_c, loan_purpose_4",lien_status_2,0.0569434166049963,0.7262755102040817,4.288349180238969
+"derived_ethnicity_not hispanic or latino, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.04209252555153309,0.7231958762886597,4.276478323690611
+"loan_purpose_4, reverse_mortgage_2",derived_loan_product_type_conventional:subordinate lien,0.057383443006580395,0.7225790202745247,4.272830665483786
+"derived_ethnicity_not hispanic or latino, loan_purpose_4",lien_status_2,0.04209252555153309,0.7231958762886597,4.270165246743917
+"loan_purpose_4, reverse_mortgage_2",lien_status_2,0.057383443006580395,0.7225790202745247,4.2665229733292485
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.05816348980938856,0.7211407315561066,4.26432562455478
+"construction_method_1, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.05816348980938856,0.7206939281288725,4.2616835392855394
+"loan_purpose_4, total_units_1",derived_loan_product_type_conventional:subordinate lien,0.05754345260715643,0.7201501877346683,4.258468236093461
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_4",lien_status_2,0.05816348980938856,0.7211407315561066,4.258030487819387
+"derived_race_white, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.03885233113986839,0.7197110040755835,4.255871208842927
+"construction_method_1, loan_purpose_4",lien_status_2,0.05816348980938856,0.7206939281288725,4.255392302882697
+"loan_purpose_4, total_units_1",lien_status_2,0.05754345260715643,0.7201501877346683,4.252181746226184
+"derived_race_white, loan_purpose_4",lien_status_2,0.03885233113986839,0.7197110040755835,4.249588552792082
+loan_purpose_4,derived_loan_product_type_conventional:subordinate lien,0.05839350361021661,0.7176745329400196,4.243828932395288
+loan_purpose_4,lien_status_2,0.05839350361021661,0.7176745329400196,4.237564053546166
+"loan_purpose_4, loan_term_bin_(0.999, 360.0]",derived_loan_product_type_conventional:subordinate lien,0.051133067984079045,0.7153049804141018,4.229817043851431
+"loan_purpose_4, loan_term_bin_(0.999, 360.0]",lien_status_2,0.051133067984079045,0.7153049804141018,4.223572849809726
+"conforming_loan_limit_nc, derived_ethnicity_not hispanic or latino",income_bracket_Very High,0.024941496489789387,0.8692924363889857,3.9399885723996113
+"conforming_loan_limit_nc, derived_race_white",income_bracket_Very High,0.02005120307218433,0.8679653679653679,3.9339737559753876
+"income_bracket_High, loan_size_Small",lien_status_2,0.040622437346240776,0.6376766091051806,3.7652102067235567
+"income_bracket_High, loan_size_Small",derived_loan_product_type_conventional:subordinate lien,0.040562433746024765,0.6367346938775511,3.7652069177759815
+"conforming_loan_limit_nc, loan_purpose_1",income_bracket_Very High,0.023021381282876972,0.8289521065898452,3.7571497120091095
+"conforming_loan_limit_nc, derived_loan_product_type_conventional:first lien",income_bracket_Very High,0.028861731703902233,0.8212862834376778,3.722405068718482
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], loan_size_Small",derived_loan_product_type_conventional:subordinate lien,0.035212112726763604,0.6266239544402918,3.7054190242638994
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], loan_size_Small",lien_status_2,0.035212112726763604,0.6266239544402918,3.699948963702542
+"conforming_loan_limit_nc, occupancy_type_1",income_bracket_Very High,0.030341820509230556,0.8162496637072909,3.699577049802685
+"conforming_loan_limit_nc, loan_type_1",income_bracket_Very High,0.0328819729183751,0.8142644873699851,3.690579419366979
+"conforming_loan_limit_nc, purchaser_type_0",income_bracket_Very High,0.029231753905234314,0.8050123932800881,3.6486451479307918
+"conforming_loan_limit_nc, reverse_mortgage_2",income_bracket_Very High,0.03395203712222734,0.8001414093801555,3.6265678582884266
+"conforming_loan_limit_nc, total_units_1",income_bracket_Very High,0.03422205332319939,0.7987861811391224,3.620425410063702
+"conforming_loan_limit_nc, lien_status_1",income_bracket_Very High,0.030531831909914594,0.7985874967303164,3.6195248911273343
+"conforming_loan_limit_nc, loan_term_bin_(0.999, 360.0]",income_bracket_Very High,0.032441946516791005,0.7978357107722577,3.616117489935687
+"conforming_loan_limit_nc, derived_dwelling_category_single family (1-4 units):site-built",income_bracket_Very High,0.03455207312438746,0.7953499079189686,3.604850815540266
+"conforming_loan_limit_nc, construction_method_1",income_bracket_Very High,0.03455207312438746,0.7953499079189686,3.604850815540266
+conforming_loan_limit_nc,income_bracket_Very High,0.03455207312438746,0.7948010121923166,3.6023629957917915
+"conforming_loan_limit_nc, preapproval_2",income_bracket_Very High,0.033041982518951137,0.789109147360879,3.5765651383013206
+"debt_to_income_ratio_20%-<30%, loan_size_Large",income_bracket_Very High,0.022211332679960796,0.7383643617021276,3.3465690320026535
+"co_applicant_age_35-44, loan_size_Large",income_bracket_Very High,0.025301518091085464,0.6059880239520958,2.7465853715468165
+"income_bracket_Low, lien_status_2",loan_size_Small,0.026741604496269777,0.9522792022792023,2.7027960192077023
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_Low",loan_size_Small,0.026631597895873754,0.9520915266356811,2.7022633508673697
+"conforming_loan_limit_c, debt_to_income_ratio_>60%",income_bracket_Low,0.02436146168770126,0.6096096096096095,2.701529130619717
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_Medium",loan_size_Small,0.03403204192251535,0.9387586206896551,2.6644213765502363
+"income_bracket_Medium, lien_status_2",loan_size_Small,0.03408204492269536,0.9385844120077115,2.663926930666149
+"applicant_age_25-34, lien_status_2",loan_size_Small,0.020021201272076326,0.9079365079365079,2.5769408525049866
+"derived_sex_female, lien_status_2",loan_size_Small,0.030841850511030663,0.9062591830737585,2.572180203578593
+"derived_loan_product_type_conventional:subordinate lien, derived_sex_female",loan_size_Small,0.030811848710922657,0.9061764705882354,2.5719454457721893
+"income_bracket_High, lien_status_2",loan_size_Small,0.040622437346240776,0.8741123305358296,2.4809397513439797
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_High",loan_size_Small,0.040562433746024765,0.8739495798319329,2.480477825940629
+"loan_purpose_1, state_code_ca",loan_size_Large,0.031171870312218734,0.8132011479259067,2.444688701392072
+"derived_loan_product_type_conventional:subordinate lien, interest_rate_bin_(5.656, 15.25]",loan_size_Small,0.03060183611016661,0.8593091828138163,2.4389248794040688
+"interest_rate_bin_(5.656, 15.25], lien_status_2",loan_size_Small,0.03065183911034662,0.8592654892066162,2.4388008665018415
+"derived_loan_product_type_conventional:subordinate lien, loan_purpose_4",loan_size_Small,0.04996299777986679,0.8556259633498887,2.428471022088751
+"lien_status_2, loan_purpose_4",loan_size_Small,0.04996299777986679,0.8556259633498887,2.428471022088751
+"lien_status_2, state_code_other",loan_size_Small,0.07374442466547992,0.8522884882108183,2.418998469817847
+"derived_loan_product_type_conventional:subordinate lien, state_code_other",loan_size_Small,0.07367442046522792,0.8522674687644609,2.4189388116043684
+"income_bracket_High, loan_purpose_2",loan_size_Small,0.020311218673120388,0.8505025125628142,2.4139294439898396
+"lien_status_2, loan_purpose_2",loan_size_Small,0.06013360801648099,0.8474982381959125,2.405402595162274
+"derived_loan_product_type_conventional:subordinate lien, loan_purpose_2",loan_size_Small,0.060033602016120964,0.8472829922371207,2.4047916756764964
+"derived_race_white, lien_status_2",loan_size_Small,0.09529571774306458,0.8457442087512204,2.400424240296033
+"derived_loan_product_type_conventional:subordinate lien, derived_race_white",loan_size_Small,0.09512570754245255,0.845511111111111,2.3997626534712166
+"income_bracket_Very High, loan_purpose_1",loan_size_Large,0.08871532291937516,0.7910647405029427,2.3781410517061885
+"debt_to_income_ratio_20%-<30%, lien_status_2",loan_size_Small,0.020531231873912436,0.8355718355718357,2.3715526134986273
+"debt_to_income_ratio_20%-<30%, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.020501230073804427,0.8353708231458842,2.3709820921815883
+"derived_ethnicity_not hispanic or latino, lien_status_2",loan_size_Small,0.10123607416444987,0.8339237169453827,2.3668748588526185
+"derived_ethnicity_not hispanic or latino, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.10105606336380182,0.8337458745874586,2.3663700997274657
+"lien_status_2, occupancy_type_1",loan_size_Small,0.1369482168930136,0.833475349969568,2.3656022861927557
+"derived_loan_product_type_conventional:subordinate lien, occupancy_type_1",loan_size_Small,0.13671820309218552,0.8332926977934901,2.3650838756538914
+"lien_status_2, total_units_1",loan_size_Small,0.13815828949736983,0.831427539720751,2.3597901111758617
+"derived_loan_product_type_conventional:subordinate lien, total_units_1",loan_size_Small,0.1379382762965778,0.8312541433134454,2.359297970721372
+"loan_purpose_2, state_code_other",loan_size_Small,0.03836230173810429,0.8301233499242588,2.356088508765756
+lien_status_2,loan_size_Small,0.14042842570554234,0.8291703572483023,2.3533836877376952
+"lien_status_2, preapproval_2",loan_size_Small,0.1402484149048943,0.8290375975407897,2.3530068839514553
+derived_loan_product_type_conventional:subordinate lien,loan_size_Small,0.14019841190471427,0.8290360733293908,2.3530025578751412
+"lien_status_2, loan_type_1",loan_size_Small,0.14019841190471427,0.8290360733293908,2.3530025578751412
+"derived_loan_product_type_conventional:subordinate lien, preapproval_2",loan_size_Small,0.14002840170410225,0.8289130949561923,2.352653515853921
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.02957177430645839,0.8287556053811659,2.3522065227919815
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], lien_status_2",loan_size_Small,0.02957177430645839,0.8287556053811659,2.3522065227919815
+"derived_dwelling_category_single family (1-4 units):site-built, lien_status_2",loan_size_Small,0.13932835970158208,0.8287430848848968,2.3521709866305347
+"derived_dwelling_category_single family (1-4 units):site-built, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.13910834650079004,0.8285680247796045,2.3516741242034507
+"construction_method_1, lien_status_2",loan_size_Small,0.1393683621017261,0.828143570240076,2.3504694207540564
+"construction_method_1, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.13914834890093405,0.8280171387764818,2.350110578036829
+"lien_status_2, loan_term_bin_(0.999, 360.0]",loan_size_Small,0.12613756825409525,0.8279506367336221,2.3499218293418243
+"lien_status_2, reverse_mortgage_2",loan_size_Small,0.13766826009560573,0.8278308978290937,2.3495819817070873
+"derived_loan_product_type_conventional:subordinate lien, loan_term_bin_(0.999, 360.0]",loan_size_Small,0.1259275556533392,0.8278219709420815,2.349556645067767
+"derived_loan_product_type_conventional:subordinate lien, reverse_mortgage_2",loan_size_Small,0.1374382462947777,0.8276921223801494,2.3491881038085967
+"derived_race_white, loan_purpose_2",loan_size_Small,0.05193311598695922,0.8266475644699139,2.3462233987569068
+"lien_status_2, purchaser_type_0",loan_size_Small,0.1319579174750485,0.8245844269466317,2.340367721271082
+"derived_loan_product_type_conventional:subordinate lien, purchaser_type_0",loan_size_Small,0.13181790907454446,0.824482391943454,2.3400781215405106
+"derived_sex_male, lien_status_2",loan_size_Small,0.04740284417065024,0.8237747653806047,2.3380697081964232
+"derived_loan_product_type_conventional:subordinate lien, derived_sex_male",loan_size_Small,0.04728283697021821,0.8234064785788924,2.337024422213896
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], loan_purpose_2",loan_size_Small,0.022541352481148868,0.8202328966521106,2.328017038058277
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.035212112726763604,0.8192182410423453,2.325137202883491
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], lien_status_2",loan_size_Small,0.035212112726763604,0.8192182410423453,2.325137202883491
+"loan_purpose_2, occupancy_type_1",loan_size_Small,0.07156429385763145,0.8174548777701622,2.3201323563835716
+"derived_ethnicity_not hispanic or latino, loan_purpose_2",loan_size_Small,0.05486329179750785,0.817342073897497,2.3198121920270873
+"derived_sex_male, loan_purpose_2",loan_size_Small,0.025341520491229473,0.8163659793814433,2.317041802454317
+"loan_purpose_2, purchaser_type_0",loan_size_Small,0.07244434666079964,0.8153066966797974,2.3140353049246305
+"loan_purpose_2, total_units_1",loan_size_Small,0.07343440606436386,0.8120092889527811,2.304676473547285
+"applicant_age_35-44, lien_status_2",loan_size_Small,0.039172350341020463,0.8119817578772803,2.3045983337736873
+"loan_purpose_2, loan_type_1",loan_size_Small,0.0745444726683601,0.811894129179828,2.304349622582604
+"applicant_age_35-44, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.03913234794087645,0.8118257261410788,2.3041554784068303
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.0365821949316959,0.8114463176574978,2.3030786264325123
+"applicant_age_45-54, lien_status_2",loan_size_Small,0.03616216973018381,0.8113080547453444,2.302686203235956
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], lien_status_2",loan_size_Small,0.0365821949316959,0.8112663561765358,2.3025678527295996
+"applicant_age_45-54, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.0361021661299678,0.8110536957986969,2.3019642717406517
+"applicant_age_55-64, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.025041502490149407,0.8103559870550161,2.299984007538227
+"applicant_age_55-64, lien_status_2",loan_size_Small,0.025071504290257417,0.8102779573367809,2.299762540544806
+loan_purpose_2,loan_size_Small,0.0750045002700162,0.8091487754881864,2.2965576525266305
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_2",loan_size_Small,0.07413444806688402,0.8088379705400982,2.295675513785773
+"loan_purpose_2, reverse_mortgage_2",loan_size_Small,0.07314438866331979,0.8086235489220563,2.2950669339761034
+"construction_method_1, loan_purpose_2",loan_size_Small,0.07419445166710002,0.8080819082888574,2.2935296283794386
+"loan_purpose_4, state_code_other",loan_size_Small,0.03265195911754705,0.8079683246721108,2.2932072509228534
+"loan_purpose_2, loan_term_bin_(0.999, 360.0]",loan_size_Small,0.06741404484269056,0.8073053892215569,2.291325681638908
+"derived_loan_product_type_conventional:subordinate lien, derived_race_race not available",loan_size_Small,0.02342140528431706,0.7993174061433447,2.2686538761289095
+"derived_race_race not available, lien_status_2",loan_size_Small,0.023431405884353062,0.7988407773610638,2.2673010897062875
+"income_bracket_Very High, lien_status_1",loan_size_Large,0.12610756645398724,0.7522968619496481,2.261594985683155
+"derived_race_white, loan_purpose_4",loan_size_Small,0.04298257895473728,0.7962208225268618,2.259865031584429
+"loan_purpose_4, occupancy_type_1",loan_size_Small,0.06101366081964918,0.7914126345829551,2.2462182447982744
+"derived_loan_product_type_conventional:first lien, income_bracket_Very High",loan_size_Large,0.11419685181110867,0.7439087947882735,2.2363783304088334
+"loan_purpose_4, purchaser_type_0",loan_size_Small,0.0592535552133128,0.7841450502911593,2.225591103256058
+"derived_ethnicity_not hispanic or latino, loan_purpose_4",loan_size_Small,0.04561273676420585,0.7836769759450172,2.2242625963681433
+"derived_sex_male, loan_purpose_4",loan_size_Small,0.02163129787787267,0.7788980914656104,2.210698979819257
+"loan_purpose_4, total_units_1",loan_size_Small,0.062193731623897436,0.7783479349186483,2.2091375040235963
+"loan_purpose_4, loan_type_1",loan_size_Small,0.06209372562353741,0.7773882559158632,2.2064137056016246
+"loan_purpose_4, reverse_mortgage_2",loan_size_Small,0.06167370042202532,0.7766024430172523,2.2041833807461364
+"lien_status_1, state_code_ca",loan_size_Large,0.05662339740384423,0.7325656617932461,2.202277998477357
+loan_purpose_4,loan_size_Small,0.06308378502710163,0.7753195673549657,2.2005422729440673
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_4",loan_size_Small,0.0624937496249775,0.7748295102293863,2.1991513736731076
+"construction_method_1, loan_purpose_4",loan_size_Small,0.0624937496249775,0.7743494423791822,2.197788826353608
+"loan_purpose_4, loan_term_bin_(0.999, 360.0]",loan_size_Small,0.05521331279876793,0.7723838836038053,2.1922101006806196
+"derived_loan_product_type_conventional:first lien, state_code_ca",loan_size_Large,0.04605276316578995,0.7286392405063291,2.1904741812034714
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_type_1",loan_size_Small,0.02847170830249815,0.7677993527508091,2.179198106183884
+"construction_method_2, loan_type_1",loan_size_Small,0.028481708902534153,0.7655913978494624,2.1729314023603967
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], income_bracket_Low",loan_size_Small,0.038892333540012404,0.7649488591660111,2.171107723977353
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_loan_product_type_conventional:first lien",loan_size_Small,0.027421645298717923,0.7612437534702943,2.1605917483042947
+"income_bracket_Very High, state_code_ca",loan_size_Large,0.026331579894793688,0.7172432579678562,2.156214970153262
+"construction_method_2, derived_loan_product_type_conventional:first lien",loan_size_Small,0.027431645898753926,0.7589928057553957,2.1542030205984797
+"applicant_age_25-34, income_bracket_Very High",loan_size_Large,0.02348140888453307,0.7119466343238325,2.140291977408974
+"derived_dwelling_category_single family (1-4 units):manufactured, purchaser_type_0",loan_size_Small,0.027811668700122007,0.7530463038180341,2.1373254265839887
+"construction_method_2, purchaser_type_0",loan_size_Small,0.02782166930015801,0.7508771929824561,2.13116897150486
+"derived_race_asian, loan_purpose_1",loan_size_Large,0.025101506090365423,0.7048581859028362,2.118982305368535
+"derived_dwelling_category_single family (1-4 units):manufactured, preapproval_2",loan_size_Small,0.03107186431185871,0.7190465170099514,2.0408259039451924
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_term_bin_(0.999, 360.0]",loan_size_Small,0.029751785107106427,0.718425501086694,2.0390633123006126
+"derived_dwelling_category_single family (1-4 units):manufactured, total_units_1",loan_size_Small,0.03125187511250675,0.7175660160734788,2.036623888372497
+"construction_method_2, total_units_1",loan_size_Small,0.03125187511250675,0.7175660160734788,2.036623888372497
+"construction_method_2, preapproval_2",loan_size_Small,0.031081864911894713,0.7172859450726979,2.035828979921074
+derived_dwelling_category_single family (1-4 units):manufactured,loan_size_Small,0.031401884113046785,0.7168949771689498,2.0347193195490325
+"construction_method_2, derived_dwelling_category_single family (1-4 units):manufactured",loan_size_Small,0.031401884113046785,0.7168949771689498,2.0347193195490325
+"construction_method_2, loan_term_bin_(0.999, 360.0]",loan_size_Small,0.029761785707142427,0.7167630057803468,2.0343447532003065
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_purpose_1",loan_size_Small,0.02556153369202152,0.7153652392947103,2.0303775577768235
+construction_method_2,loan_size_Small,0.03141188471308279,0.7151639344262296,2.029806206437978
+"derived_dwelling_category_single family (1-4 units):manufactured, occupancy_type_1",loan_size_Small,0.030021801308078484,0.7151024297284421,2.0296316414029074
+"construction_method_2, occupancy_type_1",loan_size_Small,0.030021801308078484,0.7151024297284421,2.0296316414029074
+"construction_method_2, loan_purpose_1",loan_size_Small,0.025571534292057524,0.7140463557665456,2.0266342510436823
+"derived_dwelling_category_single family (1-4 units):manufactured, reverse_mortgage_2",loan_size_Small,0.030301818109086547,0.7124382788619799,2.0220701443763964
+"derived_loan_product_type_conventional:first lien, derived_race_asian",loan_size_Large,0.02977178630717843,0.672312556458898,2.021141896775631
+"income_bracket_Very High, interest_rate_bin_(4.75, 5.656]",loan_size_Large,0.020721243274596474,0.6718547341115434,2.019765566795432
+"construction_method_2, reverse_mortgage_2",loan_size_Small,0.030311818709122546,0.7108348968105065,2.017519362824495
+"derived_dwelling_category_single family (1-4 units):manufactured, lien_status_1",loan_size_Small,0.030341820509230556,0.710039784694594,2.0152626445673194
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_race_white",loan_size_Small,0.020261215672940376,0.7098808689558515,2.014811603711828
+"construction_method_2, derived_race_white",loan_size_Small,0.020261215672940376,0.7098808689558515,2.014811603711828
+"derived_race_asian, lien_status_1",loan_size_Large,0.03222193331599896,0.6699937616968183,2.014171012179413
+"construction_method_2, lien_status_1",loan_size_Small,0.030351821109266555,0.7082847141190198,2.0102813347227517
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], interest_rate_bin_(4.75, 5.656]",loan_purpose_1,0.032951977118627115,0.9754292480757843,1.9909994535934594
+"income_bracket_Very High, interest_rate_bin_(-0.001, 3.64]",loan_size_Large,0.027051623097385843,0.6567127943675649,1.974245059226453
+"income_bracket_Very High, interest_rate_bin_(3.64, 4.75]",loan_size_Large,0.027941676500590037,0.6518898740083995,1.9597461385844475
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], interest_rate_bin_(3.64, 4.75]",loan_purpose_1,0.03092185531131868,0.9555006180469717,1.950322088652328
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], loan_type_2",loan_purpose_1,0.04059243554613277,0.9550588235294117,1.9494203188470882
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_loan_product_type_fha:first lien",loan_purpose_1,0.040562433746024765,0.9550270779373676,1.9493555212653686
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_loan_product_type_conventional:first lien",loan_purpose_1,0.06288377302638158,0.9494186924354522,1.9379079534465005
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], loan_size_Large",loan_purpose_1,0.05437326239574374,0.9457296921203687,1.9303781427235533
+"co_applicant_age_35-44, loan_purpose_1",loan_size_Large,0.029201752105126308,0.637276298559581,1.915814027964847
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], lien_status_1",loan_purpose_1,0.12491749504970298,0.936918691869187,1.9123935510985626
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], interest_rate_bin_(5.656, 15.25]",loan_purpose_1,0.028281696901814108,0.9336414658303069,1.905704234302307
+"applicant_age_25-34, combined_loan_to_value_ratio_bin_(90.0, 27777.78]",loan_purpose_1,0.049742984579074744,0.9285047601269367,1.8952194366925823
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_ethnicity_hispanic or latino",loan_purpose_1,0.021681300878052683,0.9257045260461144,1.88950373303099
+"income_bracket_Very High, loan_purpose_32",loan_size_Large,0.02027121627297638,0.6273599504797277,1.8860029730103387
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], income_bracket_Very High",loan_size_Large,0.03559213552813169,0.6270260747004933,1.884999257819768
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], purchaser_type_2",loan_purpose_1,0.026031561893713622,0.921742209631728,1.8814160425792528
+"derived_ethnicity_not hispanic or latino, state_code_ca",loan_size_Large,0.03023181390883453,0.6244577566618468,1.877278243029424
+"applicant_age_35-44, income_bracket_Very High",loan_size_Large,0.04332259935596136,0.6225926990514516,1.871671407280105
+"income_bracket_Low, purchaser_type_0",loan_size_Small,0.10014600876052564,0.6581662832730858,1.8680332471292027
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], loan_size_Medium",loan_purpose_1,0.05026301578094686,0.9136520632612252,1.8649028233632643
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], income_bracket_High",loan_size_Large,0.02333139988399304,0.6198193411264612,1.8633339906379458
+"derived_race_race not available, income_bracket_Very High",loan_size_Large,0.026771606296377783,0.6193891716797779,1.8620407922839188
+"co_applicant_age_35-44, income_bracket_Very High",loan_size_Large,0.025301518091085464,0.6187331865981902,1.8600687349136982
+"income_bracket_Low, loan_type_1",loan_size_Small,0.11123667420045202,0.6546792230723956,1.858136136694988
+"construction_method_1, state_code_ca",loan_size_Large,0.05892353541212473,0.6178691275167785,1.8574711543777507
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], income_bracket_Low",loan_purpose_1,0.03599215952957177,0.9095274197624462,1.8564837986430842
+"applicant_age_65-74, income_bracket_Low",loan_size_Small,0.02436146168770126,0.6539597315436242,1.8560940477412835
+"income_bracket_Very High, occupancy_type_1",loan_size_Large,0.11396683801028061,0.6168669481433365,1.8544583492467317
+"applicant_age_<25, lien_status_1",loan_purpose_1,0.022371342280536832,0.9071370640713706,1.8516047191155696
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], income_bracket_Medium",loan_purpose_1,0.041372482348940934,0.9064417177914109,1.8501854115992233
+"derived_dwelling_category_single family (1-4 units):site-built, state_code_ca",loan_size_Large,0.05830349820989259,0.615433336852106,1.8501485504536552
+"income_bracket_Very High, lien_status_2",loan_size_Small,0.034422065323919435,0.649433962264151,1.843248832637209
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_Very High",loan_size_Small,0.03441206472388343,0.6493678052462729,1.8430610632055808
+"loan_term_bin_(0.999, 360.0], state_code_ca",loan_size_Large,0.05712342740564434,0.6128097843579016,1.8422614868944742
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_sex_female",loan_purpose_1,0.03362201732103926,0.9008574490889604,1.8387870698361164
+"applicant_age_<25, occupancy_type_1",loan_purpose_1,0.023021381282876972,0.8957198443579767,1.8283004371742948
+"income_bracket_Very High, loan_term_bin_(0.999, 360.0]",loan_size_Large,0.12710762645758744,0.6077850038255547,1.827155723424103
+"applicant_age_55-64, income_bracket_Low",loan_size_Small,0.026061563693821628,0.6432979511231794,1.8258333662005395
+"reverse_mortgage_2, state_code_ca",loan_size_Large,0.05779346760805648,0.6069103129594623,1.8245261810495
+state_code_ca,loan_size_Large,0.05917355041302478,0.6067473338802296,1.8240362246413226
+"applicant_age_<25, loan_term_bin_(0.999, 360.0]",loan_purpose_1,0.02259135548132888,0.8928853754940712,1.8225148551134778
+"applicant_age_<25, total_units_1",loan_purpose_1,0.02287137228233694,0.8895371450797355,1.8156806075874803
+"occupancy_type_1, state_code_ca",loan_size_Large,0.052183130987859275,0.6036557149467839,1.8147420347660606
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], loan_term_bin_(0.999, 360.0]",loan_purpose_1,0.12902774166449987,0.8889348215516054,1.8144511736559479
+"applicant_age_<25, reverse_mortgage_2",loan_purpose_1,0.02287137228233694,0.8888457054022542,1.8142692740409685
+"applicant_age_<25, conforming_loan_limit_c",loan_purpose_1,0.023301398083885032,0.8882958444529164,1.8131469242120666
+applicant_age_<25,loan_purpose_1,0.023431405884353062,0.8881728582259287,1.812895890617149
+"derived_sex_female, income_bracket_Low",loan_size_Small,0.05340320419225154,0.6375358166189112,1.8094790510343564
+"preapproval_2, state_code_ca",loan_size_Large,0.05759345560733644,0.6013365354495144,1.807769993558377
+"derived_dwelling_category_single family (1-4 units):site-built, income_bracket_Very High",loan_size_Large,0.13166790007400445,0.6011048714787929,1.8070735529628528
+"construction_method_1, income_bracket_Very High",loan_size_Large,0.13171790307418446,0.6010587322593894,1.8069348467784674
+"state_code_ca, total_units_1",loan_size_Large,0.0564833890033402,0.6009789316875931,1.8066949460396
+"income_bracket_Very High, reverse_mortgage_2",loan_size_Large,0.12996779806788408,0.6004435409351322,1.8050854257791955
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], income_bracket_High",loan_purpose_1,0.03322199331959918,0.8825717321997875,1.8014631404924688
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_race_white",loan_purpose_1,0.08180490829449767,0.8808959724316174,1.7980426599303345
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], occupancy_type_1",loan_purpose_1,0.12889773386403183,0.8805164639978139,1.7972680254954665
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], derived_sex_female",loan_size_Small,0.025571534292057524,0.6327641672853254,1.795935969558878
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], conforming_loan_limit_c",loan_purpose_1,0.12760765645938757,0.8784853700516352,1.7931222538313338
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], total_units_1",loan_purpose_1,0.12762765765945958,0.8774149192162256,1.7909373008656488
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], reverse_mortgage_2",loan_purpose_1,0.12987779266756005,0.8770851624231782,1.7902642170965581
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78]",loan_purpose_1,0.12987779266756005,0.8769667094334527,1.7900224365283772
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], purchaser_type_0",loan_size_Small,0.06536392183531012,0.6303404378435722,1.7890568460086334
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.03153189191351481,0.8753470294280955,1.7867164232916162
+"construction_method_2, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.03161189671380283,0.8746541228555618,1.7853020955891945
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_ethnicity_not hispanic or latino",loan_purpose_1,0.08678520711242675,0.8745339111155901,1.7850567251442633
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_dwelling_category_single family (1-4 units):site-built",loan_purpose_1,0.12433746024761486,0.8739631660340222,1.7838917476251
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], construction_method_1",loan_purpose_1,0.12433746024761486,0.8738403148720832,1.7836409897184897
+"derived_race_white, income_bracket_Low",loan_size_Small,0.0930155809348561,0.6267520215633424,1.7788720627914298
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], state_code_other",loan_purpose_1,0.06791407484449066,0.8696375976437444,1.7750626046416251
+"co_applicant_age_25-34, loan_size_Large",loan_purpose_1,0.03136188171290277,0.8694205711117272,1.7746196204810478
+"applicant_age_25-34, interest_rate_bin_(4.75, 5.656]",loan_purpose_1,0.025301518091085464,0.8682223747426218,1.7721739194515855
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], derived_sex_male",loan_purpose_1,0.045872752365141906,0.8669438669438669,1.7695642905792124
+"derived_ethnicity_not hispanic or latino, income_bracket_Low",loan_size_Small,0.097195831749905,0.62122083732822,1.7631732396979374
+"applicant_age_35-44, combined_loan_to_value_ratio_bin_(90.0, 27777.78]",loan_purpose_1,0.03345200712042722,0.8632258064516128,1.7619751636147416
+"income_bracket_Low, state_code_other",loan_size_Small,0.07336440186411185,0.6202756404836391,1.7604905451029211
+"applicant_age_25-34, loan_size_Large",loan_purpose_1,0.05630337820269216,0.8605930907979211,1.7566013905416997
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_type_1",loan_purpose_1,0.03186191171470288,0.8592233009708738,1.753805441166008
+"construction_method_2, loan_type_1",loan_purpose_1,0.0319419165149909,0.8586021505376343,1.7525375786576622
+"income_bracket_Low, loan_purpose_31",loan_size_Small,0.021071264275856552,0.6125,1.738421418636996
+"interest_rate_bin_(4.75, 5.656], loan_size_Large",loan_purpose_1,0.04795287717263036,0.8512338008166165,1.7374976561851998
+"combined_loan_to_value_ratio_bin_(90.0, 27777.78], loan_type_1",loan_purpose_1,0.06772406344380663,0.8372898120672602,1.7090358543316584
+"income_bracket_Low, preapproval_2",loan_size_Small,0.1315278916735004,0.6013442458049472,1.7067587214390703
+"income_bracket_Low, occupancy_type_1",loan_size_Small,0.12957777466648,0.6013366129855665,1.7067370576730363
+"derived_dwelling_category_single family (1-4 units):manufactured, purchaser_type_0",loan_purpose_1,0.030721843310598636,0.8318440292445166,1.6979201833120945
+"construction_method_2, purchaser_type_0",loan_purpose_1,0.030801848110886654,0.8313090418353576,1.696828192640894
+"derived_dwelling_category_single family (1-4 units):manufactured, lien_status_1",loan_purpose_1,0.03539212352741165,0.8282237304001873,1.6905306027401321
+"construction_method_2, lien_status_1",loan_purpose_1,0.035472128327699665,0.8277712952158693,1.6896071137156432
+"derived_dwelling_category_single family (1-4 units):manufactured, reverse_mortgage_2",loan_purpose_1,0.03509210552633158,0.8250646602398308,1.684082460062905
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_term_bin_(0.999, 360.0]",loan_purpose_1,0.03416204972298338,0.8249215165418982,1.6837902820039308
+"construction_method_2, reverse_mortgage_2",loan_purpose_1,0.035162109726583596,0.8245778611632271,1.6830888291076718
+"construction_method_2, loan_term_bin_(0.999, 360.0]",loan_purpose_1,0.034232053923235396,0.8244219653179192,1.6827706219763625
+"applicant_age_25-34, derived_loan_product_type_fha:first lien",loan_purpose_1,0.020151209072544352,0.8184402924451665,1.670561117858335
+"applicant_age_25-34, loan_type_2",loan_purpose_1,0.020161209672580355,0.8181818181818182,1.6700335325741031
+"derived_dwelling_category_single family (1-4 units):manufactured, total_units_1",loan_purpose_1,0.03556213372802368,0.8165327210103329,1.6666674744270598
+"construction_method_2, total_units_1",loan_purpose_1,0.03556213372802368,0.8165327210103329,1.6666674744270598
+"conforming_loan_limit_c, derived_dwelling_category_single family (1-4 units):manufactured",loan_purpose_1,0.03571214272856371,0.815855608864519,1.6652853855518324
+"conforming_loan_limit_c, construction_method_2",loan_purpose_1,0.03571214272856371,0.815855608864519,1.6652853855518324
+derived_dwelling_category_single family (1-4 units):manufactured,loan_purpose_1,0.03573214392863572,0.8157534246575342,1.665076812043632
+"construction_method_2, derived_dwelling_category_single family (1-4 units):manufactured",loan_purpose_1,0.03573214392863572,0.8157534246575342,1.665076812043632
+"derived_dwelling_category_single family (1-4 units):manufactured, occupancy_type_1",loan_purpose_1,0.034232053923235396,0.8153882801333969,1.6643314965330767
+"construction_method_2, occupancy_type_1",loan_purpose_1,0.034232053923235396,0.8153882801333969,1.6643314965330767
+construction_method_2,loan_purpose_1,0.035812148728923736,0.8153460837887068,1.6642453673756956
+"construction_method_2, loan_size_Small",loan_purpose_1,0.025571534292057524,0.8140719516077681,1.6616446698047964
+"derived_dwelling_category_single family (1-4 units):manufactured, loan_size_Small",loan_purpose_1,0.02556153369202152,0.8140127388535031,1.6615238075673557
+"interest_rate_bin_(5.656, 15.25], loan_size_Large",loan_purpose_1,0.03653219193151589,0.8128615932354251,1.6591741442769417
+"co_applicant_age_25-34, lien_status_1",loan_purpose_1,0.05321319279156749,0.8102634384041418,1.6538709150989765
+"co_applicant_age_25-34, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.040392423545412726,0.8049023515344759,1.6429281214015061
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_ethnicity_not hispanic or latino",loan_purpose_1,0.022161329679780788,0.7974091399784095,1.6276333369328029
+"construction_method_2, derived_ethnicity_not hispanic or latino",loan_purpose_1,0.022161329679780788,0.7974091399784095,1.6276333369328029
+"derived_dwelling_category_single family (1-4 units):manufactured, derived_race_white",loan_purpose_1,0.022641358481508892,0.7932725998598459,1.6191900294022217
+"construction_method_2, derived_race_white",loan_purpose_1,0.022641358481508892,0.7932725998598459,1.6191900294022217
+"debt_to_income_ratio_>60%, loan_size_Small",purchaser_type_0,0.021231273876432585,0.9943793911007025,1.608150943453399
+"applicant_age_25-34, lien_status_1",loan_purpose_1,0.12112726763605816,0.7878235982828151,1.6080677884155998
+"loan_size_Large, state_code_tx",loan_purpose_1,0.023231393883633017,0.7871907827854965,1.6067761157372662
+"debt_to_income_ratio_>60%, loan_type_1",purchaser_type_0,0.035722143328599715,0.9922222222222222,1.604662281884019
+"income_bracket_Very High, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.022581354881292877,1.0,1.6013387995644095
+"income_bracket_High, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.02200132007920475,1.0,1.6013387995644095
+"income_bracket_Medium, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.020891253475208513,1.0,1.6013387995644095
+"loan_size_Medium, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.03429205752345141,0.9997084548104956,1.60087193694063
+"interest_rate_bin_(-0.001, 3.64], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.027651659099545974,0.9996384671005062,1.6007598629051312
+"interest_rate_bin_(3.64, 4.75], purchaser_type_3",derived_loan_product_type_conventional:first lien,0.024841490489429366,0.9995975855130784,1.6006943976329953
+"loan_purpose_32, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.022891373482408946,0.9995633187772927,1.6006395249794472
+"interest_rate_bin_(3.64, 4.75], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.029191751505090305,0.999315302978432,1.6002423676578266
+"conforming_loan_limit_c, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.08647518851131068,0.9993065988674449,1.6002284294271871
+"derived_dwelling_category_single family (1-4 units):site-built, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.0856251375082505,0.9992997198879553,1.600217413850429
+"purchaser_type_3, total_units_1",derived_loan_product_type_conventional:first lien,0.08442506550393024,0.9992897727272728,1.6002014850760828
+"occupancy_type_1, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.07739464367862071,0.9992253066494512,1.6000982530444112
+"derived_race_white, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.051163069784187054,0.99921875,1.60008775362725
+"derived_sex_male, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.024251455087305238,0.9991759373712401,1.6000191961037054
+"loan_size_Large, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.035022101326079566,0.9991440798858774,1.5999681814763376
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.022841370482228934,0.9991251093613299,1.5999378032393314
+"derived_ethnicity_not hispanic or latino, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.0551033061983719,0.99909338168631,1.5998869964823021
+"interest_rate_bin_(4.75, 5.656], purchaser_type_3",derived_loan_product_type_conventional:first lien,0.021951317079024743,0.9990896677287211,1.5998810491779152
+purchaser_type_3,derived_loan_product_type_conventional:first lien,0.0865751945116707,0.9990767455279862,1.5998603563565026
+"purchaser_type_3, reverse_mortgage_2",derived_loan_product_type_conventional:first lien,0.08634518071084266,0.9990742883591762,1.5998564215967501
+"loan_term_bin_(0.999, 360.0], purchaser_type_3",derived_loan_product_type_conventional:first lien,0.08631517891073465,0.9990739668943165,1.5998559068225975
+"construction_method_1, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.08570514230853851,0.99906738167405,1.599845361653881
+"preapproval_2, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.08393503610216613,0.9990477324128079,1.5998138965294713
+"loan_purpose_1, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.051273076384583074,0.9990257209664849,1.5997786487464398
+"purchaser_type_1, state_code_other",derived_loan_product_type_conventional:first lien,0.04869292157529452,0.9987692307692307,1.5993679210418688
+"loan_size_Medium, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.03943236594195652,0.9987335359675785,1.5993107615710402
+"interest_rate_bin_(-0.001, 3.64], purchaser_type_3",derived_loan_product_type_conventional:first lien,0.023311398683921035,0.9987146529562982,1.5992805234724246
+"derived_race_race not available, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.023291397483849032,0.9987135506003431,1.5992787582270627
+"applicant_age_35-44, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.022861371682300936,0.9986893840104848,1.5992400593290694
+"loan_purpose_1, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.06014360861651699,0.9986715376951179,1.599211481331843
+"loan_size_Large, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.04281256875412525,0.9986004198740378,1.599097597605607
+"derived_sex_female, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.02115126907614457,0.9985835694050992,1.5990706142959048
+"purchaser_type_3, state_code_other",derived_loan_product_type_conventional:first lien,0.04099245954757286,0.9985383678440926,1.598998231282464
+"derived_dwelling_category_single family (1-4 units):site-built, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.10097605856351381,0.9984178779788391,1.5988052861862794
+"derived_ethnicity_not hispanic or latino, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.06354381262875773,0.9982717989002358,1.5985713640899073
+"debt_to_income_ratio_>60%, derived_loan_product_type_conventional:first lien",purchaser_type_0,0.020521231273876433,0.9884393063583816,1.5985443959243089
+"purchaser_type_1, total_units_1",derived_loan_product_type_conventional:first lien,0.10032601956117367,0.9982089552238805,1.5984707300726524
+"derived_race_white, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.05928355701342081,0.9981478363360836,1.5983728580262369
+"conforming_loan_limit_c, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.10195611736704202,0.9981398081065204,1.5983600021107456
+"loan_purpose_32, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.026651599095945756,0.99812734082397,1.5983400377674726
+"debt_to_income_ratio_>60%, income_bracket_Low",purchaser_type_0,0.024421465287917277,0.9882638607851072,1.598260658181239
+"construction_method_1, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.10111606696401784,0.9980258612180436,1.598177534537138
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.02435146108766526,0.9979508196721311,1.598057367598089
+"purchaser_type_1, reverse_mortgage_2",derived_loan_product_type_conventional:first lien,0.10201612096725804,0.9979456075132069,1.5980490211657743
+"loan_term_bin_(0.999, 360.0], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.10188611316679001,0.9979429914781076,1.5980448320072687
+"income_bracket_Medium, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.024141448486909214,0.9979330301777594,1.598028880590527
+"occupancy_type_1, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.09104546272776366,0.9979173517483284,1.598003774113163
+purchaser_type_1,derived_loan_product_type_conventional:first lien,0.10211612696761806,0.9977525894078563,1.5977399337846578
+"preapproval_2, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.09867592055523332,0.9976744186046512,1.5976147558444924
+"interest_rate_bin_(4.75, 5.656], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.025341520491229473,0.9976377952755905,1.5975561094866984
+"derived_sex_male, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.028441706502390144,0.9975447211504735,1.597407066278913
+"income_bracket_High, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.026821609296557792,0.9973968017850501,1.5971701972598535
+"lien_status_1, purchaser_type_6",loan_purpose_1,0.020571234274056445,0.7821292775665399,1.5964448137538754
+"derived_race_race not available, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.02857171430285817,0.9968597348220516,1.5963101710940397
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], purchaser_type_1",derived_loan_product_type_conventional:first lien,0.023301398083885032,0.9965782720273738,1.5958594538002884
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], derived_loan_product_type_conventional:first lien",loan_purpose_1,0.08930535832149929,0.7807991606190434,1.5937298427594078
+"applicant_age_25-34, interest_rate_bin_(5.656, 15.25]",loan_purpose_1,0.021871312278736725,0.7805139186295504,1.5931476204748671
+"applicant_age_25-34, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.08827529651779106,0.7794948781349347,1.591067603834017
+"loan_purpose_1, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.03973238394303658,0.9895392278953923,1.5845875593199001
+"loan_term_bin_(0.999, 360.0], purchaser_type_6",loan_purpose_1,0.020581234874092445,0.7736842105263158,1.5792071474691955
+"purchaser_type_6, reverse_mortgage_2",loan_purpose_1,0.020591235474128448,0.7734785875281743,1.5787874396556834
+"purchaser_type_6, total_units_1",loan_purpose_1,0.020351221073264397,0.773470163435956,1.5787702448022003
+"loan_size_Large, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.02369142148528912,0.985031185031185,1.5773686553713457
+"lien_status_2, loan_purpose_2",purchaser_type_0,0.06912414744884693,0.9742071881606764,1.5755276333970352
+"interest_rate_bin_(4.75, 5.656], lien_status_1",loan_purpose_1,0.09700582034922095,0.7718628153099387,1.5754894028067936
+"derived_loan_product_type_conventional:subordinate lien, loan_purpose_2",purchaser_type_0,0.06902414144848691,0.9741707833450953,1.5754687580431743
+"derived_dwelling_category_single family (1-4 units):site-built, purchaser_type_6",loan_purpose_1,0.020721243274596474,0.7714072970960536,1.5745596208500436
+"construction_method_1, purchaser_type_6",loan_purpose_1,0.020731243874632477,0.7712053571428571,1.574147430691438
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], loan_size_Large",loan_purpose_1,0.05539332359941596,0.770482681875087,1.5726723405543581
+"applicant_age_25-34, interest_rate_bin_(3.64, 4.75]",loan_purpose_1,0.024841490489429366,0.7704714640198511,1.572649443205638
+purchaser_type_6,loan_purpose_1,0.020831249874992498,0.7703402366863905,1.5723815882589751
+"debt_to_income_ratio_>60%, occupancy_type_1",purchaser_type_0,0.037902274136448186,0.9715457574980774,1.5712234590856018
+"conforming_loan_limit_c, debt_to_income_ratio_>60%",purchaser_type_0,0.03879232753965238,0.9707207207207207,1.569889175929933
+"derived_race_race not available, purchaser_type_2",loan_purpose_1,0.027431645898753926,0.7681321758611034,1.5678746002787396
+"debt_to_income_ratio_>60%, derived_race_white",purchaser_type_0,0.023091385483128987,0.9693534844668346,1.5676780256473664
+"debt_to_income_ratio_>60%, reverse_mortgage_2",purchaser_type_0,0.04071244274656479,0.9692857142857142,1.5675684249439708
+"debt_to_income_ratio_>60%, preapproval_2",purchaser_type_0,0.03963237794267656,0.9691856199559794,1.5674065483079123
+"debt_to_income_ratio_>60%, total_units_1",purchaser_type_0,0.03929235754145249,0.969166255550074,1.5673752314001959
+debt_to_income_ratio_>60%,purchaser_type_0,0.040762445746744806,0.9688614214404564,1.5668822412343038
+"lien_status_2, loan_size_Medium",purchaser_type_0,0.020541232473948436,0.9684111268269683,1.5661540064036208
+"derived_loan_product_type_conventional:subordinate lien, loan_size_Medium",purchaser_type_0,0.020531231873912436,0.9683962264150944,1.5661299088492795
+"debt_to_income_ratio_>60%, derived_ethnicity_not hispanic or latino",purchaser_type_0,0.026321579294757685,0.9683590875643855,1.5660698463838456
+"applicant_age_55-64, lien_status_2",purchaser_type_0,0.029961797707862472,0.9683257918552036,1.5660159992037723
+"applicant_age_55-64, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.029921795307718463,0.968284789644013,1.5659496887540585
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.03453207192431546,0.9677690582959642,1.5651156269650113
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], lien_status_2",purchaser_type_0,0.03453207192431546,0.9677690582959642,1.5651156269650113
+"debt_to_income_ratio_>60%, loan_term_bin_(0.999, 360.0]",purchaser_type_0,0.038272296337780266,0.9676359039190898,1.5649002842711544
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.04357261435686141,0.9665039929015085,1.5630697115670944
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], lien_status_2",purchaser_type_0,0.04357261435686141,0.9662896429363496,1.5627230560533292
+"applicant_age_35-44, loan_purpose_2",purchaser_type_0,0.023031381882912975,0.9660234899328859,1.5622926225513343
+"loan_purpose_2, loan_size_Small",purchaser_type_0,0.07244434666079964,0.9658666666666665,1.5620390015634265
+"construction_method_1, debt_to_income_ratio_>60%",purchaser_type_0,0.035842150529031745,0.9649973074851912,1.5606330384065052
+"debt_to_income_ratio_>60%, derived_dwelling_category_single family (1-4 units):site-built",purchaser_type_0,0.03583214992899574,0.9649878804201455,1.5606177925720854
+"derived_ethnicity_not hispanic or latino, loan_purpose_2",purchaser_type_0,0.06471388283296999,0.9640941597139453,1.5591724309629025
+"derived_race_white, loan_purpose_2",purchaser_type_0,0.060493629617777066,0.9629099013053166,1.557257199921136
+"income_bracket_Very High, loan_purpose_2",purchaser_type_0,0.026001560093605616,0.9626064420584969,1.5567664332394848
+"loan_purpose_2, occupancy_type_1",purchaser_type_0,0.0842450547032822,0.9623029472241261,1.5562756090041934
+"interest_rate_bin_(3.64, 4.75], lien_status_2",purchaser_type_0,0.02184131047862872,0.9616908850726552,1.5552857571074736
+"derived_loan_product_type_conventional:subordinate lien, interest_rate_bin_(3.64, 4.75]",purchaser_type_0,0.021831309878592716,0.9616740088105727,1.5552584641275178
+"loan_size_Medium, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.023271396283777026,0.9712020033388982,1.555223450161261
+"loan_size_Large, purchaser_type_2",loan_purpose_1,0.024061443686621196,0.7618746041798606,1.5551019447296532
+"loan_purpose_2, loan_type_1",purchaser_type_0,0.08824529471768307,0.9611153469121011,1.5543549732998325
+"income_bracket_Very High, lien_status_2",purchaser_type_0,0.050853051183070985,0.959433962264151,1.5516357694103433
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_Very High",purchaser_type_0,0.05084305058303498,0.9594263068503491,1.5516233887626365
+"loan_purpose_2, reverse_mortgage_2",purchaser_type_0,0.08677520651239075,0.9593145384190161,1.5514426322929178
+"co_applicant_age_35-44, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.020111206672400343,0.9589890319504052,1.5509162099441829
+"income_bracket_High, loan_purpose_2",purchaser_type_0,0.022901374082444945,0.958961474036851,1.5508716421614246
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_2",purchaser_type_0,0.08787527251635098,0.9587561374795417,1.5505395634987758
+"construction_method_1, loan_purpose_2",purchaser_type_0,0.08802528151689101,0.9587190937806339,1.5504796549167186
+loan_purpose_2,purchaser_type_0,0.08885533131987919,0.9585715826950048,1.5502410939673996
+"co_applicant_age_35-44, lien_status_2",purchaser_type_0,0.020121207272436346,0.9585516912815627,1.5502089247615816
+"loan_purpose_2, total_units_1",purchaser_type_0,0.08667520051203072,0.9584208780272033,1.5499973682266242
+"conforming_loan_limit_c, loan_purpose_2",purchaser_type_0,0.08674520471228274,0.9580296001767175,1.5493645777142275
+"applicant_age_45-54, loan_purpose_2",purchaser_type_0,0.02273136388183291,0.9578592498946481,1.5490890802840926
+"loan_purpose_2, state_code_other",purchaser_type_0,0.04425265515930956,0.9575849383250379,1.5486454524158797
+"lien_status_1, purchaser_type_71",loan_purpose_1,0.036062163729823786,0.758359621451104,1.5479273303676682
+"loan_purpose_2, loan_term_bin_(0.999, 360.0]",purchaser_type_0,0.07984479068744124,0.9561676646706586,1.5463533796066287
+"derived_loan_product_type_conventional:subordinate lien, loan_purpose_4",purchaser_type_0,0.055803348200892056,0.9556430895701319,1.5455050153400578
+"lien_status_2, loan_purpose_4",purchaser_type_0,0.055803348200892056,0.9556430895701319,1.5455050153400578
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.04105246314778887,0.9550953932061425,1.5446192584223681
+"combined_loan_to_value_ratio_bin_(78.182, 90.0], lien_status_2",purchaser_type_0,0.04105246314778887,0.9550953932061425,1.5446192584223681
+"applicant_age_45-54, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.042512550753045185,0.9550662772410695,1.5445721708950917
+"derived_loan_product_type_conventional:first lien, interest_rate_bin_(4.75, 5.656]",loan_purpose_1,0.06858411504690282,0.7567030784508442,1.5445460741516202
+"derived_ethnicity_not hispanic or latino, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.115756945416725,0.95503300330033,1.544518358919832
+"applicant_age_25-34, income_bracket_Very High",loan_purpose_1,0.02495149708982539,0.7565191024863553,1.5441705512262063
+"derived_race_race not available, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.030681840910454627,0.9641734758013827,1.5439683963116304
+"applicant_age_45-54, lien_status_2",purchaser_type_0,0.04255255315318919,0.9546780345523895,1.5439442889702677
+"derived_ethnicity_not hispanic or latino, lien_status_2",purchaser_type_0,0.11587695261715703,0.9545267320207595,1.543699596339703
+"derived_loan_product_type_conventional:subordinate lien, derived_race_white",purchaser_type_0,0.1073864431865912,0.9544888888888888,1.5436383948820243
+"applicant_age_35-44, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.04600276016560994,0.9543568464730291,1.5434248504969121
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_High",purchaser_type_0,0.044292657559453566,0.9543201896143072,1.543365567528595
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], loan_purpose_2",purchaser_type_0,0.02212132727963678,0.9542709232096634,1.5432858918878716
+"derived_sex_male, loan_purpose_2",purchaser_type_0,0.029621777306638397,0.9542525773195876,1.5432562221655322
+"applicant_age_35-44, lien_status_2",purchaser_type_0,0.04603276196571794,0.9541873963515753,1.5431508088432708
+"derived_race_white, lien_status_2",purchaser_type_0,0.10750645038702322,0.9541137836158694,1.543031759322097
+"income_bracket_High, lien_status_2",purchaser_type_0,0.04433265995959758,0.9539487841618249,1.5427649154694731
+"debt_to_income_ratio_>60%, lien_status_1",purchaser_type_0,0.02556153369202152,0.952664927320164,1.5406886097760388
+"debt_to_income_ratio_20%-<30%, lien_status_2",purchaser_type_0,0.023401404084245056,0.9523809523809524,1.5402293539120324
+"debt_to_income_ratio_20%-<30%, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.023371402284137047,0.952322738386308,1.5401352078635047
+"derived_race_asian, loan_size_Large",loan_purpose_1,0.025101506090365423,0.7544334235046588,1.5399133632024506
+"combined_loan_to_value_ratio_bin_(0.129, 60.656], loan_purpose_2",purchaser_type_0,0.026121567294037643,0.9505094614264921,1.5372027023432098
+"derived_loan_product_type_conventional:subordinate lien, derived_sex_female",purchaser_type_0,0.03227193631617897,0.9491176470588236,1.5349518033317162
+"interest_rate_bin_(5.656, 15.25], lien_status_1",loan_purpose_1,0.09253555213312799,0.7516653127538586,1.5342632281432431
+"derived_sex_female, lien_status_2",purchaser_type_0,0.032281936916214976,0.9485747869526889,1.534073867807653
+"loan_term_bin_(0.999, 360.0], occupancy_type_3",derived_loan_product_type_conventional:first lien,0.06538392303538212,0.9572474377745241,1.5328774628919635
+"derived_loan_product_type_conventional:subordinate lien, state_code_other",purchaser_type_0,0.08191491489489369,0.9475937066173068,1.5324872246399965
+"combined_loan_to_value_ratio_bin_(60.656, 78.182], occupancy_type_3",derived_loan_product_type_conventional:first lien,0.023121387283236993,0.9569536423841059,1.5324069969341534
+"lien_status_2, state_code_other",purchaser_type_0,0.0819449166950017,0.9470642625982433,1.531630986159611
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_Low",purchaser_type_0,0.02648158889533372,0.9467286378262424,1.5310882000775883
+occupancy_type_3,derived_loan_product_type_conventional:first lien,0.0707842470548233,0.9559697460831984,1.5308314456127623
+"conforming_loan_limit_c, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.06425385523131388,0.9559589346823391,1.5308141328970888
+"derived_dwelling_category_single family (1-4 units):site-built, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.15890953457207432,0.9465094114843936,1.5307336582883788
+"construction_method_1, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.15902954177250636,0.9463223042132826,1.5304310607715184
+"derived_dwelling_category_single family (1-4 units):site-built, lien_status_2",purchaser_type_0,0.15905954357261437,0.9461067158408186,1.5300824024549058
+"derived_loan_product_type_conventional:subordinate lien, reverse_mortgage_2",purchaser_type_0,0.15709942596555793,0.9460973259455553,1.5300672167329754
+"construction_method_1, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.06966417985079104,0.9554244959539158,1.5299583154252745
+"derived_dwelling_category_single family (1-4 units):site-built, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.0657139428365702,0.9553649316661822,1.5298629328202584
+"construction_method_1, lien_status_2",purchaser_type_0,0.15917955077304638,0.945864036130259,1.5296899309204128
+"occupancy_type_3, preapproval_2",derived_loan_product_type_conventional:first lien,0.06938416304978298,0.9552526504199366,1.5296831325041818
+"derived_loan_product_type_conventional:subordinate lien, preapproval_2",purchaser_type_0,0.1597495849750985,0.9456547478096139,1.5293514613047798
+"lien_status_2, reverse_mortgage_2",purchaser_type_0,0.15724943496609797,0.9455770040291057,1.529225730889316
+"income_bracket_Low, lien_status_2",purchaser_type_0,0.026551593095585736,0.9455128205128205,1.5291219306867052
+derived_loan_product_type_conventional:subordinate lien,purchaser_type_0,0.15987959277556654,0.9454169130691898,1.5289668252537696
+"lien_status_2, loan_type_1",purchaser_type_0,0.15987959277556654,0.9454169130691898,1.5289668252537696
+"occupancy_type_3, reverse_mortgage_2",derived_loan_product_type_conventional:first lien,0.06611396683801028,0.9547949162333912,1.5289501449913796
+"derived_loan_product_type_conventional:subordinate lien, occupancy_type_1",purchaser_type_0,0.1550793047582855,0.9452029745215165,1.5286208351011568
+"lien_status_2, preapproval_2",purchaser_type_0,0.15989959397563855,0.9451998108299835,1.5286157186500626
+"derived_loan_product_type_conventional:subordinate lien, total_units_1",purchaser_type_0,0.15681940916454987,0.9450370638220936,1.5283525175453088
+lien_status_2,purchaser_type_0,0.16002960177610656,0.9449069973427812,1.5281421687254417
+"lien_status_2, occupancy_type_1",purchaser_type_0,0.15522931375882554,0.9447352404138771,1.5278643964086243
+"lien_status_2, total_units_1",purchaser_type_0,0.1569694181650899,0.9446316803081368,1.527696914778131
+"conforming_loan_limit_c, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.1545792747564854,0.9442849288288838,1.5271361341309302
+"derived_loan_product_type_conventional:subordinate lien, derived_sex_male",purchaser_type_0,0.05422325339520371,0.9442702890978752,1.5271124581603257
+"occupancy_type_3, total_units_1",derived_loan_product_type_conventional:first lien,0.05539332359941596,0.9533562822719449,1.5266464046105448
+"conforming_loan_limit_c, lien_status_2",purchaser_type_0,0.1547292837570254,0.9438174830720428,1.5263801617710797
+"derived_sex_male, lien_status_2",purchaser_type_0,0.054293257595455724,0.943517553006604,1.5258951026256247
+"derived_loan_product_type_conventional:subordinate lien, income_bracket_Medium",purchaser_type_0,0.03418205092305538,0.9428965517241379,1.5248907940013496
+"income_bracket_Medium, lien_status_2",purchaser_type_0,0.03421205272316339,0.9421646929220601,1.5237072020709765
+"occupancy_type_3, state_code_other",derived_loan_product_type_conventional:first lien,0.03135188111286677,0.9514415781487101,1.5235803146083229
+"derived_loan_product_type_conventional:subordinate lien, loan_term_bin_(0.999, 360.0]",purchaser_type_0,0.14321859311558693,0.9414897113930709,1.5226155943884643
+"lien_status_2, loan_term_bin_(0.999, 360.0]",purchaser_type_0,0.14334860091605497,0.9409216226860969,1.5216968581412516
+"derived_loan_product_type_conventional:subordinate lien, loan_size_Small",purchaser_type_0,0.13181790907454446,0.9402239817390684,1.520568604722892
+"lien_status_2, loan_size_Small",purchaser_type_0,0.1319579174750485,0.9396809571286141,1.5196904031557277
+"derived_ethnicity_not hispanic or latino, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.03385203112186731,0.9489767311466218,1.5196332594688888
+"loan_purpose_4, loan_size_Small",purchaser_type_0,0.0592535552133128,0.939283449587825,1.5190475377338666
+"derived_sex_male, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.02181130867852071,0.9478487614080834,1.5178269977618328
+"derived_ethnicity_not hispanic or latino, loan_purpose_4",purchaser_type_0,0.054553273196391784,0.9372852233676976,1.51581592471987
+"derived_race_white, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.027801668100086004,0.9465440926115083,1.515737780997296
+"loan_purpose_4, state_code_other",purchaser_type_0,0.037792267536052165,0.935164563226924,1.5123863065714547
+"derived_race_white, loan_purpose_4",purchaser_type_0,0.0504430265815949,0.9344201556131901,1.5111824201906088
+"loan_purpose_4, occupancy_type_1",purchaser_type_0,0.07203432205932356,0.9343624335192632,1.5110890696640014
+"applicant_age_25-34, loan_size_Medium",loan_purpose_1,0.04470268216092966,0.7398212512413109,1.510087697169235
+"derived_loan_product_type_conventional:first lien, interest_rate_bin_(5.656, 15.25]",loan_purpose_1,0.07015420925255515,0.7391991570073762,1.5088179082201223
+"loan_purpose_4, reverse_mortgage_2",purchaser_type_0,0.07399443966637999,0.931746631406624,1.5068586877061938
+"loan_purpose_4, loan_type_1",purchaser_type_0,0.07440446426785607,0.93151370977839,1.5064819973407786
+"occupancy_type_3, purchaser_type_0",derived_loan_product_type_conventional:first lien,0.04467268036082165,0.9384453781512605,1.502768995305508
+"derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_4",purchaser_type_0,0.07492449546972818,0.928952262864228,1.5023395208288148
+"income_bracket_Very High, loan_purpose_4",purchaser_type_0,0.020491229473768427,0.92883046237534,1.5021425401060933
+"derived_race_race not available, interest_rate_bin_(4.75, 5.656]",loan_purpose_1,0.02912174730483829,0.7359110437199899,1.5021063688937655
+"loan_purpose_4, total_units_1",purchaser_type_0,0.07421445286717203,0.9287859824780976,1.5020706054005322
+"construction_method_1, loan_purpose_4",purchaser_type_0,0.07495449726983619,0.9287484510532839,1.50200990804823
+loan_purpose_4,purchaser_type_0,0.07556453387203232,0.9287118977384464,1.50195079253531
+"derived_sex_male, loan_purpose_4",purchaser_type_0,0.025771546292777565,0.927979834353619,1.5007668697453629

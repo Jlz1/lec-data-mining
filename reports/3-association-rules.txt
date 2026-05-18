@@ -1,0 +1,12 @@
+Ringkasan Aturan Asosiasi (Top 10)
+
+- Jika conforming_loan_limit_c, construction_method_2 maka derived_dwelling_category_single family (1-4 units):manufactured (support=0.044, confidence=1.000, lift=22.83)
+- Jika combined_loan_to_value_ratio_bin_(60.656, 78.182], loan_purpose_2 maka derived_loan_product_type_conventional:subordinate lien (support=0.021, confidence=0.889, lift=5.26)
+- Jika applicant_age_35-44, loan_purpose_2 maka derived_loan_product_type_conventional:subordinate lien (support=0.021, confidence=0.875, lift=5.17)
+- Jika conforming_loan_limit_nc, derived_ethnicity_not hispanic or latino maka income_bracket_Very High (support=0.025, confidence=0.869, lift=3.94)
+- Jika conforming_loan_limit_nc, derived_race_white maka income_bracket_Very High (support=0.020, confidence=0.868, lift=3.93)
+- Jika income_bracket_Low, lien_status_2 maka loan_size_Small (support=0.027, confidence=0.952, lift=2.70)
+- Jika derived_loan_product_type_conventional:subordinate lien, income_bracket_Medium maka loan_size_Small (support=0.034, confidence=0.939, lift=2.66)
+- Jika income_bracket_Very High, loan_purpose_2 maka derived_loan_product_type_conventional:subordinate lien (support=0.024, confidence=0.874, lift=5.17)
+- Jika conforming_loan_limit_nc, loan_purpose_1 maka income_bracket_Very High (support=0.023, confidence=0.829, lift=3.76)
+- Jika applicant_age_25-34, lien_status_2 maka loan_size_Small (support=0.020, confidence=0.908, lift=2.58)
