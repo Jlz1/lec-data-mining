@@ -1,12 +1,56 @@
 Ringkasan Aturan Asosiasi (Top 10)
 
-- Jika conforming_loan_limit_c, construction_method_2 maka derived_dwelling_category_single family (1-4 units):manufactured (support=0.044, confidence=1.000, lift=22.83)
-- Jika combined_loan_to_value_ratio_bin_(60.656, 78.182], loan_purpose_2 maka derived_loan_product_type_conventional:subordinate lien (support=0.021, confidence=0.889, lift=5.26)
-- Jika applicant_age_35-44, loan_purpose_2 maka derived_loan_product_type_conventional:subordinate lien (support=0.021, confidence=0.875, lift=5.17)
-- Jika conforming_loan_limit_nc, derived_ethnicity_not hispanic or latino maka income_bracket_Very High (support=0.025, confidence=0.869, lift=3.94)
-- Jika conforming_loan_limit_nc, derived_race_white maka income_bracket_Very High (support=0.020, confidence=0.868, lift=3.93)
-- Jika income_bracket_Low, lien_status_2 maka loan_size_Small (support=0.027, confidence=0.952, lift=2.70)
-- Jika derived_loan_product_type_conventional:subordinate lien, income_bracket_Medium maka loan_size_Small (support=0.034, confidence=0.939, lift=2.66)
-- Jika income_bracket_Very High, loan_purpose_2 maka derived_loan_product_type_conventional:subordinate lien (support=0.024, confidence=0.874, lift=5.17)
-- Jika conforming_loan_limit_nc, loan_purpose_1 maka income_bracket_Very High (support=0.023, confidence=0.829, lift=3.76)
-- Jika applicant_age_25-34, lien_status_2 maka loan_size_Small (support=0.020, confidence=0.908, lift=2.58)
+- Jika derived_dwelling_category_multifamily:site-built, purchaser_type_0 maka total_units_5-24 (support=0.003, confidence=0.718, lift=251.97)
+- Jika conforming_loan_limit_missing, construction_method_1 maka derived_dwelling_category_multifamily:site-built (support=0.004, confidence=1.000, lift=242.12)
+- Jika derived_dwelling_category_multifamily:site-built maka conforming_loan_limit_missing (support=0.004, confidence=1.000, lift=235.28)
+- Jika construction_method_1, derived_dwelling_category_multifamily:site-built maka conforming_loan_limit_missing (support=0.004, confidence=1.000, lift=235.28)
+- Jika loan_term_bin_missing, purchaser_type_2 maka reverse_mortgage_1 (support=0.002, confidence=0.943, lift=137.84)
+- Jika loan_purpose_4, reverse_mortgage_1111 maka debt_to_income_ratio_exempt (support=0.001, confidence=1.000, lift=55.31)
+- Jika co_applicant_age_45-54, debt_to_income_ratio_exempt maka reverse_mortgage_1111 (support=0.002, confidence=1.000, lift=55.18)
+- Jika reverse_mortgage_1 maka loan_term_bin_missing (support=0.007, confidence=1.000, lift=28.55)
+- Jika conforming_loan_limit_missing maka occupancy_type_3 (support=0.004, confidence=1.000, lift=13.51)
+- Jika conforming_loan_limit_nc, purchaser_type_2 maka loan_type_3 (support=0.001, confidence=0.940, lift=12.53)
+
+=================================================================
+ANALISIS TEKNIK BINNING UNTUK DATA OUTLIER
+=================================================================
+
+Karakteristik Data Numerik (kolom paling terpengaruh outlier):
+  - income      : skew=275.6, outlier_share=7.1%
+  - loan_amount : skew=52.6, outlier_share=4.8%
+
+3 Teknik Binning Terbaik untuk Data Outlier:
+
+1. Quantile Binning (qcut)
+   Prinsip : Setiap bin berisi jumlah observasi yang SAMA.
+   Outlier : Otomatis masuk ke bin paling kiri/kanan -- tidak dibuang.
+   CV rata2: 0.1970  <-- TERKECIL = paling seimbang
+   Cocok   : Ideal untuk Apriori karena min_support tiap bin terpenuhi.
+
+2. Winsorization + Equal-width Cut (winsor_cut)
+   Prinsip : Potong nilai ekstrem di percentile 1-99%, lalu bagi lebar sama.
+   Outlier : Ditekan ke batas percentile (tidak dibuang, hanya dikompres).
+   CV rata2: 0.9994  <-- sedang
+   Cocok   : Saat batas bin harus intuitif untuk interpretasi bisnis.
+
+3. Log Transform + Equal-width Cut (log_cut)
+   Prinsip : Transformasi log memperkecil skewness, lalu bagi lebar sama.
+   Outlier : Dikompres ke skala log sehingga jarak visual mengecil.
+   CV rata2: 1.2627  <-- tertinggi
+   Cocok   : Data yang benar-benar berdistribusi log-normal.
+
+KESIMPULAN:
+  Teknik terbaik untuk data outlier = QUANTILE BINNING (qcut)
+  CV rata-rata qcut = 0.1970 vs
+  winsor_cut = 0.9994, log_cut = 1.2627
+  qcut menghasilkan distribusi bin paling merata karena bekerja
+  pada rank/posisi data, bukan pada nilai absolut -- sehingga
+  outlier ekstrem tidak menyebabkan bin kosong atau sangat kecil.
+  Winsorization = alternatif baik jika batas bin harus mudah dibaca.
+  Log Transform tidak direkomendasikan: CV tetap tinggi karena
+  distribusi tidak seluruhnya log-normal.
+  --> qcut digunakan sebagai teknik utama pada pipeline Apriori ini.
+
+Gambar analisis:
+  - 3-binning_per_column.png   : distribusi bin per kolom (income, loan_amount)
+  - 3-binning_cv_comparison.png: heatmap CV + ranking rata-rata per teknik
