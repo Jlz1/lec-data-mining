@@ -1,16 +1,15 @@
 Ringkasan Aturan Asosiasi (Top 10)
 
-- Jika derived_dwelling_category_multifamily:site-built, purchaser_type_0 maka total_units_5-24 (support=0.003, confidence=0.718, lift=251.97)
-- Jika conforming_loan_limit_missing, construction_method_1 maka derived_dwelling_category_multifamily:site-built (support=0.004, confidence=1.000, lift=242.12)
-- Jika derived_dwelling_category_multifamily:site-built maka conforming_loan_limit_missing (support=0.004, confidence=1.000, lift=235.28)
-- Jika construction_method_1, derived_dwelling_category_multifamily:site-built maka conforming_loan_limit_missing (support=0.004, confidence=1.000, lift=235.28)
-- Jika loan_term_bin_missing, purchaser_type_2 maka reverse_mortgage_1 (support=0.002, confidence=0.943, lift=137.84)
-- Jika loan_purpose_4, reverse_mortgage_1111 maka debt_to_income_ratio_exempt (support=0.001, confidence=1.000, lift=55.31)
-- Jika co_applicant_age_45-54, debt_to_income_ratio_exempt maka reverse_mortgage_1111 (support=0.002, confidence=1.000, lift=55.18)
-- Jika reverse_mortgage_1 maka loan_term_bin_missing (support=0.007, confidence=1.000, lift=28.55)
-- Jika conforming_loan_limit_missing maka occupancy_type_3 (support=0.004, confidence=1.000, lift=13.51)
+- Jika lien_status_2, purchaser_type_9 maka combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah) (support=0.002, confidence=0.608, lift=38.02)
+- Jika co_applicant_age_<25, loan_term_bin_15-25thn (menengah) maka derived_dwelling_category_single family (1-4 units):manufactured (support=0.001, confidence=0.864, lift=19.73)
+- Jika derived_dwelling_category_multifamily:site-built maka occupancy_type_3 (support=0.004, confidence=1.000, lift=13.51)
 - Jika conforming_loan_limit_nc, purchaser_type_2 maka loan_type_3 (support=0.001, confidence=0.940, lift=12.53)
-
+- Jika combined_loan_to_value_ratio_bin_95-100% (DP minimal), loan_purpose_32 maka loan_type_3 (support=0.002, confidence=0.804, lift=10.72)
+- Jika preapproval_1, purchaser_type_2 maka combined_loan_to_value_ratio_bin_95-100% (DP minimal) (support=0.001, confidence=0.750, lift=9.77)
+- Jika interest_rate_bin_max 3% (rendah), loan_type_3 maka purchaser_type_2 (support=0.005, confidence=0.726, lift=9.09)
+- Jika debt_to_income_ratio_>60%, derived_dwelling_category_single family (1-4 units):manufactured maka loan_term_bin_15-25thn (menengah) (support=0.004, confidence=0.807, lift=8.09)
+- Jika purchaser_type_2, reverse_mortgage_1 maka loan_purpose_31 (support=0.002, confidence=0.848, lift=6.52)
+- Jika combined_loan_to_value_ratio_bin_max 80% (DP aman), derived_dwelling_category_multifamily:site-built maka loan_term_bin_max 15thn (pendek) (support=0.002, confidence=0.704, lift=5.67)
 =================================================================
 ANALISIS TEKNIK BINNING UNTUK DATA OUTLIER
 =================================================================
@@ -19,38 +18,117 @@ Karakteristik Data Numerik (kolom paling terpengaruh outlier):
   - income      : skew=275.6, outlier_share=7.1%
   - loan_amount : skew=52.6, outlier_share=4.8%
 
-3 Teknik Binning Terbaik untuk Data Outlier:
+3 Teknik Binning yang Dievaluasi (metric: CV antar bin, makin rendah makin merata):
 
 1. Quantile Binning (qcut)
    Prinsip : Setiap bin berisi jumlah observasi yang SAMA.
    Outlier : Otomatis masuk ke bin paling kiri/kanan -- tidak dibuang.
-   CV rata2: 0.1970  <-- TERKECIL = paling seimbang
-   Cocok   : Ideal untuk Apriori karena min_support tiap bin terpenuhi.
+   CV rata2: 0.1970  <-- terkecil secara statistik
+   Masalah : Batas bin = kuantil data, BUKAN angka bermakna. Contoh nyata:
+             income terbelah di 71/127 (ribu USD), LTV di 82.976, dan
+             loan_term kolaps karena 74% data = 360 bulan:
+             CV loan_term = 0.92, bin terbesar berisi 72,359 baris (~72% data),
+             sementara bin (1, 300] mencampur tenor 1 bulan dgn 25 tahun.
 
 2. Winsorization + Equal-width Cut (winsor_cut)
    Prinsip : Potong nilai ekstrem di percentile 1-99%, lalu bagi lebar sama.
    Outlier : Ditekan ke batas percentile (tidak dibuang, hanya dikompres).
-   CV rata2: 0.9994  <-- sedang
-   Cocok   : Saat batas bin harus intuitif untuk interpretasi bisnis.
+   CV rata2: 0.9994
+   Masalah : Bin tetap timpang pada data sangat skewed; batas juga arbitrer.
 
 3. Log Transform + Equal-width Cut (log_cut)
    Prinsip : Transformasi log memperkecil skewness, lalu bagi lebar sama.
    Outlier : Dikompres ke skala log sehingga jarak visual mengecil.
-   CV rata2: 1.2627  <-- tertinggi
-   Cocok   : Data yang benar-benar berdistribusi log-normal.
+   CV rata2: 1.1741  <-- tertinggi
+   Masalah : Batas bin dalam skala log tidak bisa dibaca sebagai angka bisnis.
 
-KESIMPULAN:
-  Teknik terbaik untuk data outlier = QUANTILE BINNING (qcut)
-  CV rata-rata qcut = 0.1970 vs
-  winsor_cut = 0.9994, log_cut = 1.2627
-  qcut menghasilkan distribusi bin paling merata karena bekerja
-  pada rank/posisi data, bukan pada nilai absolut -- sehingga
-  outlier ekstrem tidak menyebabkan bin kosong atau sangat kecil.
-  Winsorization = alternatif baik jika batas bin harus mudah dibaca.
-  Log Transform tidak direkomendasikan: CV tetap tinggi karena
-  distribusi tidak seluruhnya log-normal.
-  --> qcut digunakan sebagai teknik utama pada pipeline Apriori ini.
+KESIMPULAN & KEPUTUSAN:
+  CV hanya mengukur KESEIMBANGAN ukuran bin, bukan KEBERMAKNAAN batasnya.
+  qcut menang secara CV tetapi menghasilkan batas yang tidak bisa
+  dipertanggungjawabkan secara bisnis dan rusak pada loan_term.
+  --> Pipeline Apriori final memakai DOMAIN BINNING: batas mengikuti
+      konvensi industri KPR sehingga setiap item bisa dibaca langsung.
+
+  Batas domain yang dipakai (+ distribusi aktual):
+  - loan_term      : <=15thn | 15-25thn | 30thn (standar) | >30thn
+                     (tenor adalah variabel produk; 95% data di nilai standar)
+  - interest_rate  : <=3% | 3-5% | 5-7% | >7%  (bunga <=0% = invalid)
+  - CLTV           : <=80% (bebas PMI) | 80-95% | 95-100% (DP minimal) |
+                     100-120% (di atas nilai rumah); >120% = error input
+  - income & loan_amount tidak di-bin ulang: bracket domain fase 1
+    (income_bracket_*, loan_size_*) sudah dipakai sebagai item.
+
+  loan_term_bin:
+    - max 15thn (pendek)                12.9%
+    - 15-25thn (menengah)               10.3%
+    - 30thn (KPR standar)               75.0%
+    - di atas 30thn                      1.8%
+  interest_rate_bin:
+    - max 3% (rendah)                   11.0%
+    - 3-5% (sedang)                     48.6%
+    - 5-7% (tinggi)                     33.9%
+    - di atas 7% (sangat tinggi)         6.5%
+  combined_loan_to_value_ratio_bin:
+    - max 80% (DP aman)                 65.2%
+    - 80-95% (DP kecil)                 20.6%
+    - 95-100% (DP minimal)              11.8%
+    - 100-120% (di atas nilai rumah)     2.5%
 
 Gambar analisis:
   - 3-binning_per_column.png   : distribusi bin per kolom (income, loan_amount)
   - 3-binning_cv_comparison.png: heatmap CV + ranking rata-rata per teknik
+
+=================================================================
+INTERPRETASI BISNIS PER ATURAN (TOP 10)
+=================================================================
+
+Aturan #1  (support=0.002, confidence=0.608, lift=38.02)
+  Pola   : JIKA subordinate lien (second mortgage) + pinjaman dijual ke pembeli lain (non-GSE)
+           MAKA rasio LTV 100-120% (di atas nilai rumah)
+  Bisnis : CLTV second mortgage dihitung GABUNGAN dengan KPR utama, sehingga pinjaman kedua (piggyback/HELOC) mudah mendorong total utang melewati nilai rumah (>100%). Karena tidak memenuhi syarat Fannie/Freddie, pinjaman berisiko tinggi ini dijual ke pembeli non-GSE.
+
+Aturan #2  (support=0.001, confidence=0.864, lift=19.73)
+  Pola   : JIKA co-applicant usia <25 + tenor 15-25thn (menengah)
+           MAKA rumah manufactured (1-4 unit)
+  Bisnis : Rumah manufactured (pabrikan) adalah jalur kepemilikan rumah termurah; sering dipilih pemohon muda atau berpendapatan rendah -- segmen entry-level.
+
+Aturan #3  (support=0.004, confidence=1.000, lift=13.51)
+  Pola   : JIKA hunian multifamily (site-built)
+           MAKA properti untuk investasi
+  Bisnis : Properti multifamily (5-24 unit) hampir selalu untuk investasi/disewakan, bukan ditempati pemilik -- menandai segmen landlord/investor.
+
+Aturan #4  (support=0.001, confidence=0.940, lift=12.53)
+  Pola   : JIKA pinjaman non-conforming (di atas batas GSE) + pinjaman dijual ke Ginnie Mae
+           MAKA pinjaman VA (jaminan Veterans Affairs)
+  Bisnis : Pinjaman VA menyasar veteran dan biasanya disekuritisasi via Ginnie Mae; muncul kuat pada plafon di atas batas konvensional (non-conforming).
+
+Aturan #5  (support=0.002, confidence=0.804, lift=10.72)
+  Pola   : JIKA rasio LTV 95-100% (DP minimal) + tujuan: cash-out refinancing
+           MAKA pinjaman VA (jaminan Veterans Affairs)
+  Bisnis : VA mengizinkan cash-out refinance hingga LTV sangat tinggi (mendekati 100%), kelonggaran yang jarang ada pada kredit konvensional -- daya tarik bagi veteran.
+
+Aturan #6  (support=0.001, confidence=0.750, lift=9.77)
+  Pola   : JIKA dengan preapproval + pinjaman dijual ke Ginnie Mae
+           MAKA rasio LTV 95-100% (DP minimal)
+  Bisnis : Ginnie Mae hanya mensekuritisasi program pemerintah (FHA/VA/USDA) yang memang dirancang untuk uang muka minimal -- wajar rasio LTV-nya menumpuk di kisaran 95-100%.
+
+Aturan #7  (support=0.005, confidence=0.726, lift=9.09)
+  Pola   : JIKA suku bunga max 3% (rendah) + pinjaman VA (jaminan Veterans Affairs)
+           MAKA pinjaman dijual ke Ginnie Mae
+  Bisnis : Pinjaman VA hampir selalu berakhir di Ginnie Mae -- penjamin utama sekuritas KPR program pemerintah (VA/FHA).
+
+Aturan #8  (support=0.004, confidence=0.807, lift=8.09)
+  Pola   : JIKA DTI >60% + rumah manufactured (1-4 unit)
+           MAKA tenor 15-25thn (menengah)
+  Bisnis : Kredit rumah manufactured umumnya bertenor lebih pendek dari 30 tahun standar -- plafonnya kecil dan sebagian berbentuk chattel loan (kredit barang bergerak), bukan KPR penuh; DTI tinggi memperkuat pola ini.
+
+Aturan #9  (support=0.002, confidence=0.848, lift=6.52)
+  Pola   : JIKA pinjaman dijual ke Ginnie Mae + produk reverse mortgage
+           MAKA tujuan: refinancing
+  Bisnis : Reverse mortgage kerap muncul dalam konteks refinancing -- mengonversi ekuitas rumah menjadi dana tunai bagi pemilik lansia.
+
+Aturan #10  (support=0.002, confidence=0.704, lift=5.67)
+  Pola   : JIKA rasio LTV max 80% (DP aman) + hunian multifamily (site-built)
+           MAKA tenor max 15thn (pendek)
+  Bisnis : Kredit multifamily/komersial umumnya bertenor lebih pendek dibanding KPR rumah tinggal yang lazim bertenor 30 tahun.
+
