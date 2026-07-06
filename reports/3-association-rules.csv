@@ -64,6 +64,7 @@ total_units_4,occupancy_type_3,0.0023301398083885034,0.716923076923077,9.6823347
 "derived_loan_product_type_va:first lien, interest_rate_bin_max 3% (rendah)",purchaser_type_2,0.005380322819369162,0.7260458839406208,9.092076658579641
 "loan_term_bin_30thn (KPR standar), total_units_4",occupancy_type_3,0.0014500870052203132,0.6590909090909092,8.901288001571634
 "derived_loan_product_type_fha:first lien, interest_rate_bin_max 3% (rendah)",purchaser_type_2,0.003560213612816769,0.7091633466135459,8.880661199909193
+"applicant_age_above_62_no, total_units_4",occupancy_type_3,0.001320079204752285,0.6567164179104478,8.86921954248208
 "interest_rate_bin_max 3% (rendah), loan_type_2",purchaser_type_2,0.003560213612816769,0.7077534791252486,8.863005809849732
 "derived_race_race not available, purchaser_type_5",occupancy_type_3,0.002230133808028482,0.6539589442815249,8.831978751281309
 "derived_loan_product_type_conventional:first lien, total_units_3",occupancy_type_3,0.0021101266075964557,0.6355421686746987,8.583252784232553
@@ -174,6 +175,8 @@ reverse_mortgage_1,loan_type_2,0.005730343820629238,0.837719298245614,6.73421525
 "debt_to_income_ratio_20%-<30%, derived_dwelling_category_single family (1-4 units):manufactured",loan_term_bin_15-25thn (menengah),0.002450147008820529,0.6282051282051282,6.294893635609138
 "construction_method_2, debt_to_income_ratio_20%-<30%",loan_term_bin_15-25thn (menengah),0.002450147008820529,0.6282051282051282,6.294893635609138
 "interest_rate_bin_3-5% (sedang), reverse_mortgage_1",loan_purpose_31,0.0015300918055083305,0.8181818181818182,6.284626880263691
+"applicant_age_above_62_no, derived_dwelling_category_single family (1-4 units):manufactured",loan_term_bin_15-25thn (menengah),0.02163129787787267,0.6251445086705202,6.2642248722316864
+"applicant_age_above_62_no, construction_method_2",loan_term_bin_15-25thn (menengah),0.02163129787787267,0.6251445086705202,6.2642248722316864
 "derived_dwelling_category_single family (1-4 units):manufactured, income_bracket_Low",loan_term_bin_15-25thn (menengah),0.013900834050043002,0.6177777777777778,6.190406965739164
 "construction_method_2, income_bracket_Low",loan_term_bin_15-25thn (menengah),0.013900834050043002,0.6177777777777778,6.190406965739164
 "derived_dwelling_category_single family (1-4 units):manufactured, state_code_ca",loan_term_bin_15-25thn (menengah),0.001320079204752285,0.6139534883720931,6.15208589200111
@@ -360,6 +363,8 @@ loan_purpose_5,derived_loan_product_type_fha:first lien,0.0025201512090725444,0.
 "derived_race_black or african american, purchaser_type_2",derived_loan_product_type_fha:first lien,0.004870292217533052,0.6042183622828785,4.863024059732305
 "derived_race_black or african american, purchaser_type_2",loan_type_2,0.004870292217533052,0.6042183622828785,4.857159813338223
 "loan_purpose_4, loan_term_bin_di atas 30thn",derived_loan_product_type_conventional:subordinate lien,0.00338020281216873,0.8184019370460048,4.839460868892857
+"applicant_age_above_62_no, loan_purpose_2",lien_status_2,0.059273556413384804,0.8190989496959646,4.836432263117702
+"applicant_age_above_62_no, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.05917355041302478,0.8177169707020453,4.835410453481982
 "debt_to_income_ratio_38, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.0017001020061203672,0.8173076923076923,4.832990265204931
 "loan_purpose_4, loan_term_bin_di atas 30thn",lien_status_2,0.00338020281216873,0.8184019370460048,4.832316698729153
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), debt_to_income_ratio_46",derived_loan_product_type_fha:first lien,0.001500090005400324,0.6,4.829072762395364
@@ -419,9 +424,11 @@ loan_purpose_5,derived_loan_product_type_fha:first lien,0.0025201512090725444,0.
 "debt_to_income_ratio_44, loan_purpose_2",lien_status_2,0.0015900954057243434,0.7910447761194029,4.67078425410591
 "debt_to_income_ratio_46, loan_purpose_2",derived_loan_product_type_conventional:subordinate lien,0.0012900774046442787,0.7865853658536587,4.651319755953327
 "debt_to_income_ratio_46, loan_purpose_2",lien_status_2,0.0012900774046442787,0.7865853658536587,4.644453325844154
+"applicant_age_above_62_no, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.04807288437306238,0.7835370823145884,4.633294323416023
 "loan_purpose_2, occupancy_type_1",derived_loan_product_type_conventional:subordinate lien,0.0685541132467948,0.7830705962988348,4.630535848983187
 "loan_purpose_2, occupancy_type_1",lien_status_2,0.06865411924715482,0.7842129312314371,4.630445104550122
 "debt_to_income_ratio_40, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.0014400864051843112,0.782608695652174,4.627804489239709
+"applicant_age_above_62_no, loan_purpose_4",lien_status_2,0.04807288437306238,0.7835370823145884,4.626454503038969
 "debt_to_income_ratio_40, loan_purpose_4",lien_status_2,0.0014400864051843112,0.782608695652174,4.620972773135133
 "income_bracket_Very High, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.01718103086185171,0.7787851314596554,4.605194585167166
 "debt_to_income_ratio_49, loan_purpose_4",derived_loan_product_type_conventional:subordinate lien,0.0013700822049322959,0.7784090909090908,4.60297094242245
@@ -600,6 +607,7 @@ loan_purpose_4,lien_status_2,0.05839350361021661,0.7176745329400196,4.2375640535
 "income_bracket_Very High, loan_term_bin_15-25thn (menengah)",lien_status_2,0.013690821449286957,0.6838161838161838,4.037644847033687
 "applicant_age_25-34, conforming_loan_limit_nc",income_bracket_Very High,0.004630277816669,0.8903846153846154,4.0355869472744645
 "combined_loan_to_value_ratio_bin_max 80% (DP aman), loan_purpose_4",lien_status_2,0.03273196391783507,0.6832985386221294,4.034588371478075
+"applicant_age_above_62_no, conforming_loan_limit_nc",income_bracket_Very High,0.02995179710782647,0.8879335902757188,4.024477899829128
 "conforming_loan_limit_nc, loan_term_bin_di atas 30thn",income_bracket_Very High,0.0014200852051123067,0.8875,4.0225126915057565
 "conforming_loan_limit_nc, purchaser_type_6",income_bracket_Very High,0.0022101326079564773,0.884,4.006649261173058
 "conforming_loan_limit_nc, debt_to_income_ratio_<20%",income_bracket_Very High,0.002560153609216553,0.8827586206896552,4.001022822828455
@@ -780,6 +788,7 @@ reverse_mortgage_1,income_bracket_Low,0.00528031681900914,0.7719298245614035,3.4
 "conforming_loan_limit_nc, state_code_fl",income_bracket_Very High,0.0030401824109446566,0.7307692307692307,3.3121447947393006
 "reverse_mortgage_1, state_code_ca",income_bracket_Low,0.0013500810048602916,0.7417582417582418,3.287155363693212
 "applicant_age_45-54, occupancy_type_2",income_bracket_Very High,0.004650279016741005,0.7175925925925927,3.2524228856723645
+"applicant_age_above_62_yes, conforming_loan_limit_nc",income_bracket_Very High,0.0037602256135368124,0.7175572519083969,3.252262707249036
 "interest_rate_bin_max 3% (rendah), occupancy_type_2",income_bracket_Very High,0.00162009720583235,0.7136563876651982,3.23458239634638
 "debt_to_income_ratio_>60%, derived_sex_female",income_bracket_Low,0.00921055263315799,0.7269139700078927,3.22137189846522
 "applicant_age_35-44, occupancy_type_2",income_bracket_Very High,0.0034102046122767367,0.7104166666666667,3.2198986568156407
@@ -800,6 +809,8 @@ reverse_mortgage_1,income_bracket_Low,0.00528031681900914,0.7719298245614035,3.4
 "derived_race_asian, occupancy_type_2",income_bracket_Very High,0.0010700642038522312,0.6815286624203822,3.0889664160123154
 "debt_to_income_ratio_>60%, loan_size_Small",income_bracket_Low,0.014770886253175191,0.6918032786885246,3.0657763272992526
 "applicant_age_>74, derived_sex_female",income_bracket_Low,0.006350381022861372,0.6894679695982627,3.0554272359514574
+"applicant_age_above_62_yes, debt_to_income_ratio_>60%",income_bracket_Low,0.007200432025921555,0.6870229007633588,3.0445917363468933
+"applicant_age_above_62_no, occupancy_type_2",income_bracket_Very High,0.012120727243634617,0.6703539823008849,3.038318198993504
 "debt_to_income_ratio_>60%, derived_loan_product_type_conventional:first lien",income_bracket_Low,0.014210852651159069,0.6844894026974951,3.033364356201619
 "loan_size_Large, reverse_mortgage_1",income_bracket_Low,0.0014800888053283197,0.6820276497695853,3.0224549198307
 "debt_to_income_ratio_30%-<36%, occupancy_type_2",income_bracket_Very High,0.0017401044062643758,0.6666666666666666,3.021605777656906
@@ -829,6 +840,8 @@ reverse_mortgage_1,income_bracket_Low,0.00528031681900914,0.7719298245614035,3.4
 "derived_ethnicity_not hispanic or latino, occupancy_type_2",income_bracket_Very High,0.010810648638918336,0.6373820754716981,2.8888760427303497
 "debt_to_income_ratio_>60%, lien_status_1",income_bracket_Low,0.017421045262715762,0.6492732016399553,2.877301210990325
 "debt_to_income_ratio_20%-<30%, state_code_ca",income_bracket_Very High,0.0047602856171370285,0.6338215712383489,2.87273838248606
+"applicant_age_above_62_yes, derived_loan_product_type_fha:first lien",income_bracket_Low,0.010170610236614197,0.6469465648854962,2.8669905517266576
+"applicant_age_above_62_yes, loan_type_2",income_bracket_Low,0.010170610236614197,0.6465352828989193,2.865167925819648
 "derived_race_white, occupancy_type_2",income_bracket_Very High,0.010090605436326179,0.6318096430807765,2.863619501868333
 "debt_to_income_ratio_<20%, derived_race_asian",income_bracket_Very High,0.0014700882052923175,0.630901287553648,2.859502463404926
 "applicant_age_65-74, loan_type_2",income_bracket_Low,0.005150309018541113,0.6445556946182729,2.856395236999627
@@ -836,6 +849,8 @@ reverse_mortgage_1,income_bracket_Low,0.00528031681900914,0.7719298245614035,3.4
 "applicant_age_55-64, occupancy_type_2",income_bracket_Very High,0.00426025561533692,0.6292466765140325,2.8520030899893105
 "applicant_age_>74, purchaser_type_2",income_bracket_Low,0.0016600996059763587,0.640926640926641,2.840312822762743
 "applicant_age_<25, loan_term_bin_15-25thn (menengah)",income_bracket_Low,0.001930115806948417,0.6390728476821192,2.832097603754912
+"applicant_age_above_62_yes, derived_dwelling_category_single family (1-4 units):manufactured",income_bracket_Low,0.004320259215552933,0.6390532544378699,2.832010774874152
+"applicant_age_above_62_yes, construction_method_2",income_bracket_Low,0.004320259215552933,0.6390532544378699,2.832010774874152
 "lien_status_2, purchaser_type_9",loan_size_Small,0.002620157209432566,0.9961977186311787,2.827447267372657
 "derived_loan_product_type_conventional:subordinate lien, purchaser_type_9",loan_size_Small,0.0025401524091445485,0.996078431372549,2.827108701616947
 "applicant_age_<25, derived_sex_female",income_bracket_Low,0.0039002340140408425,0.6362153344208809,2.819434326807373
@@ -1014,6 +1029,8 @@ derived_dwelling_category_multifamily:site-built,loan_size_Large,0.0034602076124
 "derived_loan_product_type_conventional:subordinate lien, state_code_fl",loan_size_Small,0.011270676240574434,0.841044776119403,2.387086127083636
 "combined_loan_to_value_ratio_bin_80-95% (DP kecil), derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.02578154689281357,0.8402868318122555,2.3849348999527313
 "combined_loan_to_value_ratio_bin_80-95% (DP kecil), lien_status_2",loan_size_Small,0.02578154689281357,0.8402868318122555,2.3849348999527313
+"applicant_age_above_62_yes, lien_status_2",loan_size_Small,0.022171330279816787,0.8388195232690124,2.3807703275456737
+"applicant_age_above_62_yes, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.022151329079744785,0.8386974630821659,2.3804238915568137
 "purchaser_type_2, state_code_ca",loan_size_Large,0.004740284417065024,0.7913188647746244,2.3789050136574406
 "income_bracket_Very High, loan_purpose_1",loan_size_Large,0.08871532291937516,0.7910647405029427,2.3781410517061885
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), loan_term_bin_max 15thn (pendek)",loan_size_Small,0.0019101146068764125,0.837719298245614,2.3776476259195576
@@ -1064,8 +1081,10 @@ derived_loan_product_type_conventional:subordinate lien,loan_size_Small,0.140198
 "derived_dwelling_category_single family (1-4 units):site-built, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.13910834650079004,0.8285680247796045,2.3516741242034507
 "construction_method_1, lien_status_2",loan_size_Small,0.1393683621017261,0.828143570240076,2.3504694207540564
 "construction_method_1, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.13914834890093405,0.8280171387764818,2.350110578036829
+"applicant_age_above_62_no, lien_status_2",loan_size_Small,0.11567694061643699,0.8278700257658174,2.349693036145075
 "lien_status_2, reverse_mortgage_2",loan_size_Small,0.13766826009560573,0.8278308978290937,2.3495819817070873
 "derived_loan_product_type_conventional:subordinate lien, reverse_mortgage_2",loan_size_Small,0.1374382462947777,0.8276921223801494,2.3491881038085967
+"applicant_age_above_62_no, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.11546692801568094,0.8276702508960573,2.3491260273083463
 "construction_method_1, total_units_5-24",loan_size_Large,0.002180130807848471,0.7813620071684588,2.348972176802443
 "reverse_mortgage_2, total_units_5-24",loan_size_Large,0.0018201092065523931,0.7811158798283261,2.348232255653708
 "derived_loan_product_type_conventional:subordinate lien, interest_rate_bin_5-7% (tinggi)",loan_size_Small,0.024001440086405184,0.8267309679641749,2.346460117811294
@@ -1122,6 +1141,7 @@ total_units_5-24,loan_size_Large,0.0022201332079924796,0.7789473684210526,2.3417
 "combined_loan_to_value_ratio_bin_max 80% (DP aman), derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.07905474328459708,0.8141930167885467,2.3108744151671523
 "combined_loan_to_value_ratio_bin_max 80% (DP aman), lien_status_2",loan_size_Small,0.07905474328459708,0.8141091658084448,2.3106364260409764
 "purchaser_type_0, total_units_5-24",loan_size_Large,0.0020801248074884494,0.7675276752767528,2.3073826697619992
+"applicant_age_above_62_no, loan_purpose_2",loan_size_Small,0.0588135288117287,0.8127418463239359,2.3067556464850743
 "co_applicant_age_65-74, derived_loan_product_type_conventional:subordinate lien",loan_size_Small,0.005200312018721123,0.8125,2.306069228804178
 "co_applicant_age_65-74, lien_status_2",loan_size_Small,0.005200312018721123,0.8125,2.306069228804178
 "applicant_age_<25, derived_dwelling_category_single family (1-4 units):manufactured",loan_size_Small,0.0029001740104406264,0.8123249299719887,2.3055723382140454
@@ -1156,6 +1176,7 @@ loan_purpose_2,loan_size_Small,0.0750045002700162,0.8091487754881864,2.296557652
 "co_applicant_age_25-34, derived_race_asian",loan_size_Large,0.004010240614436866,0.759469696969697,2.2831583452224122
 "debt_to_income_ratio_39, loan_purpose_4",loan_size_Small,0.0015200912054723283,0.8042328042328042,2.282604950936818
 "debt_to_income_ratio_44, loan_purpose_4",loan_size_Small,0.001930115806948417,0.8041666666666667,2.282417236713879
+"applicant_age_above_62_yes, loan_purpose_2",loan_size_Small,0.015100906054363261,0.8040468583599574,2.282077192099162
 "combined_loan_to_value_ratio_bin_max 80% (DP aman), loan_purpose_2",loan_size_Small,0.04744284657079425,0.8039315370276224,2.2817498825903346
 "loan_purpose_2, state_code_fl",loan_size_Small,0.006270376222573354,0.8038461538461538,2.2815075447104056
 "loan_purpose_2, state_code_tx",loan_size_Small,0.0029901794107646457,0.8037634408602151,2.2812727854837034
@@ -1188,6 +1209,7 @@ loan_purpose_2,loan_size_Small,0.0750045002700162,0.8091487754881864,2.296557652
 "loan_purpose_2, state_code_az",loan_size_Small,0.0021501290077404643,0.7933579335793357,2.2517394683753538
 "debt_to_income_ratio_38, loan_purpose_2",loan_size_Small,0.0016500990059403564,0.7932692307692307,2.251487708595795
 "loan_term_bin_max 15thn (pendek), state_code_oh",loan_size_Small,0.004050243014580875,0.7925636007827789,2.2494849620128066
+"applicant_age_above_62_no, loan_purpose_4",loan_size_Small,0.0486029161749705,0.7921760391198045,2.248384969366346
 "debt_to_income_ratio_37, loan_purpose_2",loan_size_Small,0.0017101026061563695,0.7916666666666667,2.24693924857843
 "co_applicant_age_25-34, income_bracket_Very High",loan_size_Large,0.017451047062823768,0.7473233404710921,2.246643319916613
 "loan_purpose_4, occupancy_type_1",loan_size_Small,0.06101366081964918,0.7914126345829551,2.2462182447982744
@@ -1350,6 +1372,8 @@ loan_purpose_4,loan_size_Small,0.06308378502710163,0.7753195673549657,2.20054227
 "derived_race_joint, lien_status_2",loan_size_Small,0.002810168610116607,0.741424802110818,2.1043408266092114
 "co_applicant_age_35-44, derived_race_asian",loan_size_Large,0.004430265815948957,0.6998420221169036,2.103902446021215
 "applicant_age_>74, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0017801068064083846,0.8944723618090452,2.1038710358415935
+"applicant_age_above_62_yes, derived_dwelling_category_single family (1-4 units):manufactured",loan_size_Small,0.005010300618037082,0.7411242603550297,2.1034878172615263
+"applicant_age_above_62_yes, construction_method_2",loan_size_Small,0.005010300618037082,0.7411242603550297,2.1034878172615263
 "debt_to_income_ratio_20%-<30%, loan_purpose_31",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.013950837050223014,0.8942307692307693,2.103302790639605
 "derived_ethnicity_joint, purchaser_type_1",interest_rate_bin_3-5% (sedang),0.0016600996059763587,0.6459143968871596,2.103144389525713
 "loan_purpose_32, purchaser_type_3",interest_rate_bin_3-5% (sedang),0.014790887453247194,0.6458515283842795,2.102939685094681
@@ -1362,9 +1386,11 @@ loan_purpose_4,loan_size_Small,0.06308378502710163,0.7753195673549657,2.20054227
 "derived_loan_product_type_conventional:subordinate lien, derived_race_joint",loan_size_Small,0.0027901674100446025,0.7400530503978779,2.100447467329494
 "co_applicant_age_>74, debt_to_income_ratio_20%-<30%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001240074404464268,0.8920863309352518,2.0982588990553377
 "combined_loan_to_value_ratio_bin_max 80% (DP aman), construction_method_2",loan_size_Small,0.004590275416524991,0.7391304347826086,2.097828863661326
+"applicant_age_above_62_yes, loan_purpose_4",loan_size_Small,0.0134308058483509,0.7383177570093458,2.0955222898695047
 "applicant_age_65-74, state_code_oh",loan_size_Small,0.002510150609036542,0.7382352941176471,2.095288240470041
 "applicant_age_55-64, loan_purpose_4",loan_size_Small,0.01208072484349061,0.7379352474037875,2.0944366361696893
 "debt_to_income_ratio_43, loan_purpose_32",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005200312018721123,0.8904109589041095,2.09431828910351
+"applicant_age_above_62_yes, state_code_oh",loan_size_Small,0.0045302718163089785,0.737785016286645,2.094010244346365
 "applicant_age_>74, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.002980178810728644,0.7376237623762377,2.093552567200747
 "combined_loan_to_value_ratio_bin_80-95% (DP kecil), state_code_ca",loan_size_Large,0.006690401424085445,0.696149843912591,2.092802822806675
 "debt_to_income_ratio_39, loan_purpose_32",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003940236414184851,0.8893905191873589,2.091918132703426
@@ -1399,6 +1425,7 @@ loan_purpose_4,loan_size_Small,0.06308378502710163,0.7753195673549657,2.20054227
 "co_applicant_age_45-54, loan_type_3",loan_size_Large,0.002920175210512631,0.6886792452830189,2.0703443104091814
 "co_applicant_age_45-54, derived_loan_product_type_va:first lien",loan_size_Large,0.002920175210512631,0.6886792452830189,2.0703443104091814
 "loan_purpose_5, occupancy_type_1",loan_size_Small,0.0028001680100806048,0.7291666666666666,2.0695493079011853
+"applicant_age_above_62_yes, debt_to_income_ratio_<20%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.007540452427145628,0.8798133022170361,2.069391747039501
 "state_code_ca, total_units_2",loan_size_Large,0.0013900834050043004,0.6881188118811882,2.0686595055994084
 "debt_to_income_ratio_36, loan_purpose_31",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0019701182070924255,0.8794642857142856,2.0685708321152183
 "co_applicant_age_65-74, loan_purpose_4",loan_size_Small,0.0029701782106926417,0.7279411764705882,2.0660710737702592
@@ -1428,13 +1455,16 @@ loan_purpose_4,loan_size_Small,0.06308378502710163,0.7753195673549657,2.20054227
 "debt_to_income_ratio_48, loan_purpose_31",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0015800948056883413,0.8729281767955801,2.0531973775197523
 "loan_term_bin_max 15thn (pendek), purchaser_type_9",loan_size_Small,0.0014600876052563154,0.7227722772277227,2.0514005020893222
 "debt_to_income_ratio_30%-<36%, loan_purpose_31",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.010750645038702322,0.8718572587185726,2.050678491950814
+"applicant_age_above_62_yes, purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01338080284817089,0.8716612377850163,2.0502174349275495
 "applicant_age_65-74, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005870352221133268,0.8709198813056379,2.048473704779149
+"applicant_age_above_62_yes, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.013300798047882872,0.7216494845360825,2.0482137480259155
 "derived_race_joint, loan_purpose_2",loan_size_Small,0.0014000840050403024,0.7216494845360825,2.0482137480259155
 "applicant_age_55-64, debt_to_income_ratio_<20%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.008420505230313818,0.8707342295760083,2.048037036958657
 "loan_term_bin_15-25thn (menengah), purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003500210012600756,0.8706467661691543,2.047831315981427
 "loan_term_bin_15-25thn (menengah), state_code_pa",loan_size_Small,0.0040302418145088705,0.7209302325581396,2.0461723389747273
 "loan_purpose_32, purchaser_type_6",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002940176410584635,0.8698224852071006,2.0458925407710304
 "occupancy_type_3, purchaser_type_9",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0014700882052923175,0.8698224852071006,2.0458925407710304
+"applicant_age_above_62_yes, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.010010600636038163,0.8696785403996525,2.0455539709905874
 "loan_purpose_5, total_units_1",loan_size_Small,0.002860171610296618,0.7204030226700251,2.044675991282294
 "applicant_age_65-74, purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0074704482268936135,0.8686046511627907,2.0430280970143744
 "combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah), purchaser_type_9",loan_purpose_1,0.00412024721483289,1.0,2.041152095368348
@@ -1469,6 +1499,9 @@ construction_method_2,loan_size_Small,0.03141188471308279,0.7151639344262296,2.0
 "derived_dwelling_category_single family (1-4 units):manufactured, derived_ethnicity_not hispanic or latino",loan_size_Small,0.019871192271536293,0.715005397625045,2.029356241097861
 "construction_method_2, derived_ethnicity_not hispanic or latino",loan_size_Small,0.019871192271536293,0.715005397625045,2.029356241097861
 "debt_to_income_ratio_<20%, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.004740284417065024,0.7149321266968326,2.029148280688118
+"applicant_age_above_62_no, derived_dwelling_category_single family (1-4 units):manufactured",loan_size_Small,0.024731483889033342,0.7147398843930636,2.028602651074338
+"applicant_age_above_62_no, construction_method_2",loan_size_Small,0.024731483889033342,0.7147398843930636,2.028602651074338
+"applicant_age_above_62_yes, debt_to_income_ratio_20%-<30%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01454087245234714,0.8623962040332146,2.0284253293368444
 "loan_purpose_32, purchaser_type_1",interest_rate_bin_3-5% (sedang),0.016630997859871592,0.6228464419475656,2.028033445656297
 "applicant_age_55-64, derived_dwelling_category_single family (1-4 units):manufactured",loan_size_Small,0.004630277816669,0.7145061728395062,2.0279393218164
 "applicant_age_55-64, construction_method_2",loan_size_Small,0.004630277816669,0.7145061728395062,2.0279393218164
@@ -1533,6 +1566,7 @@ loan_purpose_5,loan_size_Small,0.0028801728103686223,0.7093596059113301,2.013332
 "derived_race_white, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.04625277516650999,0.7055682684973302,2.0025714126798
 "applicant_age_<25, combined_loan_to_value_ratio_bin_95-100% (DP minimal)",loan_purpose_1,0.006630397823869432,0.9807692307692308,2.0018991704574183
 "derived_dwelling_category_single family (1-4 units):site-built, loan_purpose_5",loan_size_Small,0.002680160809648579,0.7052631578947369,2.001705435852696
+"applicant_age_above_62_yes, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.017151029061743706,0.7051809210526316,2.001472028036015
 "debt_to_income_ratio_45, loan_purpose_32",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0034102046122767367,0.8503740648379053,2.0001482896855434
 "lien_status_2, occupancy_type_3",loan_size_Small,0.0021001260075604535,0.7046979865771811,2.0001013445487965
 "loan_term_bin_15-25thn (menengah), state_code_ga",loan_size_Small,0.002120127207632458,0.7043189368770764,1.9990255108877515
@@ -1555,6 +1589,7 @@ loan_purpose_5,loan_size_Small,0.0028801728103686223,0.7093596059113301,2.013332
 "debt_to_income_ratio_36, state_code_ca",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0016701002060123607,0.8477157360406091,1.993895686252315
 "debt_to_income_ratio_<20%, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009180550833049982,0.8476454293628808,1.9937303192837932
 "income_bracket_High, purchaser_type_2",loan_size_Large,0.008360501630097807,0.6629659000793021,1.9930434794218548
+"applicant_age_above_62_yes, debt_to_income_ratio_44",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0039902394143648615,0.8471337579617834,1.9925268269383616
 "applicant_age_65-74, debt_to_income_ratio_43",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0021001260075604535,0.846774193548387,1.9916811024787102
 "applicant_age_35-44, purchaser_type_8",loan_size_Large,0.001060063603816229,0.6625,1.9916428657326677
 "debt_to_income_ratio_49, loan_purpose_31",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001930115806948417,0.8464912280701754,1.991015544883897
@@ -1567,8 +1602,11 @@ loan_purpose_5,loan_size_Small,0.0028801728103686223,0.7093596059113301,2.013332
 "derived_race_white, loan_type_4",loan_purpose_1,0.0038702322139328358,0.9748110831234256,1.989737684905669
 "income_bracket_Low, state_code_il",loan_size_Small,0.005320319219153149,0.7009222661396575,1.9893849473579777
 "derived_loan_product_type_fsa/rhs:first lien, derived_race_white",loan_purpose_1,0.003820229213752825,0.9744897959183674,1.9890818888538495
+"applicant_age_above_62_yes, debt_to_income_ratio_36",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0026301578094685683,0.8456591639871383,1.9890584631460941
+"applicant_age_above_62_no, loan_type_4",loan_purpose_1,0.004520271216272976,0.9741379310344828,1.988363679108822
 "derived_race_white, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.05256315378922735,0.7004264392324094,1.9879776720673712
 "debt_to_income_ratio_<20%, state_code_az",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0010900654039242355,0.8449612403100775,1.9874168904468252
+"applicant_age_above_62_no, derived_loan_product_type_fsa/rhs:first lien",loan_purpose_1,0.004430265815948957,0.9736263736263736,1.9873195126333587
 "co_applicant_age_65-74, purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0037002220133207993,0.8447488584474885,1.9869173512007658
 "debt_to_income_ratio_40, state_code_ca",loan_size_Large,0.0014800888053283197,0.6607142857142857,1.9862745561215285
 "derived_dwelling_category_single family (1-4 units):manufactured, derived_sex_male",loan_size_Small,0.009320559233554014,0.6996996996996998,1.9859150115458484
@@ -1646,6 +1684,7 @@ loan_purpose_5,loan_size_Small,0.0028801728103686223,0.7093596059113301,2.013332
 "debt_to_income_ratio_36, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001570094205652339,0.8351063829787233,1.9642374722925802
 "interest_rate_bin_3-5% (sedang), loan_purpose_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.012350741044462668,0.8350236646382692,1.9640429120936909
 "debt_to_income_ratio_20%-<30%, state_code_ca",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006270376222573354,0.8348868175765645,1.9637210367828897
+"applicant_age_above_62_no, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.05411324679480769,0.6918552614755146,1.963650620646096
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), interest_rate_bin_5-7% (tinggi)",loan_purpose_1,0.025901554093245596,0.961752692164872,1.9630835228384784
 "applicant_age_65-74, debt_to_income_ratio_44",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002260135608136488,0.8339483394833949,1.9615136607226633
 "debt_to_income_ratio_42, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0024601476088565314,0.8338983050847457,1.9613959757872665
@@ -1700,6 +1739,7 @@ loan_term_bin_15-25thn (menengah),loan_size_Small,0.06878412704762285,0.68924741
 "lien_status_1, loan_purpose_2",loan_size_Small,0.014870892253535212,0.6839926402943882,1.9413346221678935
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), debt_to_income_ratio_48",loan_purpose_1,0.0027201632097925877,0.951048951048951,1.9412355592314359
 "debt_to_income_ratio_<20%, loan_purpose_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006610396623797428,0.8252184769038702,1.9409803208318772
+"applicant_age_above_62_yes, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.011750705042302538,0.8251404494382022,1.9407967939482884
 "interest_rate_bin_max 3% (rendah), purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.00852051123067384,0.824782187802517,1.9399541337267396
 "derived_dwelling_category_single family (1-4 units):site-built, loan_type_4",loan_purpose_1,0.006500390023401404,0.9502923976608186,1.9396913186979914
 "construction_method_1, loan_type_4",loan_purpose_1,0.006500390023401404,0.9502923976608186,1.9396913186979914
@@ -1735,6 +1775,8 @@ derived_loan_product_type_fsa/rhs:first lien,loan_purpose_1,0.006500390023401404
 "income_bracket_High, purchaser_type_8",loan_size_Large,0.0011900714042842571,0.6432432432432432,1.9337521756017335
 "derived_race_asian, loan_term_bin_30thn (KPR standar)",loan_size_Large,0.02959177550653039,0.6428416250271562,1.9325448094812536
 "lien_status_2, purchaser_type_9",loan_purpose_1,0.0024901494089645377,0.9467680608365018,1.9324976112042533
+"applicant_age_above_62_yes, debt_to_income_ratio_43",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0035902154129247754,0.8215102974828374,1.9322583841765777
+"applicant_age_above_62_yes, debt_to_income_ratio_39",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0028501710102606156,0.8213256484149856,1.9318240746973412
 "interest_rate_bin_5-7% (tinggi), occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01403084185051103,0.820947922761849,1.9309356335391135
 "derived_race_joint, income_bracket_Very High",loan_size_Large,0.004970298217893074,0.6421188630490957,1.9303720038401562
 "loan_term_bin_max 15thn (pendek), purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.008090485429125747,0.8204868154158215,1.9298510719236386
@@ -1747,8 +1789,10 @@ derived_loan_product_type_fsa/rhs:first lien,loan_purpose_1,0.006500390023401404
 "co_applicant_age_25-34, combined_loan_to_value_ratio_bin_95-100% (DP minimal)",loan_purpose_1,0.010200612036722203,0.9444444444444444,1.9277547567367732
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), income_bracket_High",loan_size_Large,0.011650699041942516,0.6411667583929553,1.9275097359973896
 "derived_loan_product_type_fsa/rhs:first lien, income_bracket_Low",loan_size_Small,0.0018401104066243974,0.6789667896678967,1.9270700566561172
+"applicant_age_above_62_yes, debt_to_income_ratio_42",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0039902394143648615,0.8193018480492812,1.927063933240181
 "applicant_age_35-44, state_code_ca",loan_size_Large,0.014190851451087064,0.6406320541760722,1.9259022796368876
 "occupancy_type_2, state_code_ca",loan_size_Large,0.0013000780046802808,0.6403940886699507,1.925186895029254
+"applicant_age_above_62_yes, debt_to_income_ratio_30%-<36%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.013210792647558853,0.8184634448574968,1.9250919414080523
 "debt_to_income_ratio_<20%, derived_loan_product_type_conventional:first lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.027841670500230013,0.8183421516754849,1.924806650074999
 "interest_rate_bin_3-5% (sedang), loan_purpose_4",loan_size_Small,0.010030601836110167,0.67816091954023,1.9247828045898712
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), debt_to_income_ratio_37",loan_purpose_1,0.0021501290077404643,0.9429824561403508,1.9247706162464684
@@ -1800,14 +1844,17 @@ derived_loan_product_type_fsa/rhs:first lien,loan_purpose_1,0.006500390023401404
 "derived_loan_product_type_fsa/rhs:first lien, interest_rate_bin_3-5% (sedang)",loan_purpose_1,0.0027201632097925877,0.9347079037800687,1.9078809963580436
 "debt_to_income_ratio_49, income_bracket_High",loan_size_Large,0.003630217813068784,0.6346153846153846,1.907814646420262
 "debt_to_income_ratio_44, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0021001260075604535,0.8108108108108109,1.9070923297865645
+"applicant_age_above_62_yes, debt_to_income_ratio_40",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003080184811088665,0.8105263157894737,1.9064231745831304
 "debt_to_income_ratio_>60%, loan_type_3",loan_size_Large,0.001750105006300378,0.6340579710144928,1.9061389198972758
 "debt_to_income_ratio_>60%, derived_loan_product_type_va:first lien",loan_size_Large,0.001750105006300378,0.6340579710144928,1.9061389198972758
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), debt_to_income_ratio_47",loan_purpose_1,0.0024001440086405183,0.9338521400778209,1.9061342524840603
 "applicant_age_55-64, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009700582034922096,0.810359231411863,1.9060301786700027
+"applicant_age_above_62_yes, debt_to_income_ratio_38",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0028201692101526093,0.810344827586207,1.9059962997119746
 "debt_to_income_ratio_38, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0014100846050763046,0.810344827586207,1.9059962997119746
 "co_applicant_age_45-54, debt_to_income_ratio_20%-<30%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009610576634598076,0.8102866779089376,1.905859526987658
 "combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah), loan_type_1",loan_size_Small,0.006090365421925315,0.6714443219404631,1.9057194949934624
 "applicant_age_45-54, debt_to_income_ratio_<20%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009680580834850091,0.8093645484949833,1.9036906043376698
+"applicant_age_above_62_yes, debt_to_income_ratio_37",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002420145208712523,0.8093645484949833,1.9036906043376698
 "applicant_age_<25, loan_type_3",loan_purpose_1,0.0018001080064803888,0.9326424870466321,1.9036651666647806
 "applicant_age_<25, derived_loan_product_type_va:first lien",loan_purpose_1,0.0018001080064803888,0.9326424870466321,1.9036651666647806
 "loan_term_bin_15-25thn (menengah), state_code_tx",loan_size_Small,0.0056403384203052185,0.6706302021403091,1.9034088283846065
@@ -1852,9 +1899,11 @@ derived_loan_product_type_fsa/rhs:first lien,loan_purpose_1,0.006500390023401404
 "applicant_age_<25, state_code_tx",loan_purpose_1,0.002120127207632458,0.9257641921397379,1.8896255206030121
 "interest_rate_bin_3-5% (sedang), loan_purpose_32",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.05154309258555513,0.8033042394014963,1.8894362692520692
 "applicant_age_<25, purchaser_type_3",loan_purpose_1,0.00199011940716443,0.9255813953488373,1.8892524045502386
+"applicant_age_above_62_no, combined_loan_to_value_ratio_bin_95-100% (DP minimal)",loan_purpose_1,0.06598395903754226,0.9255155000701362,1.889117902264043
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), derived_race_joint",loan_purpose_1,0.001980118807128428,0.9252336448598131,1.8885425929109014
 "derived_loan_product_type_conventional:first lien, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.03552213132787967,0.8027118644067797,1.8880429555545721
 "debt_to_income_ratio_37, income_bracket_Very High",loan_size_Large,0.0032401944116647,0.6279069767441859,1.8876474725680392
+"applicant_age_above_62_no, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.0569534172050323,0.6649929939280711,1.8874090838989397
 "applicant_age_35-44, loan_type_3",loan_size_Large,0.008720523231393884,0.6277897768178546,1.8872951398931077
 "applicant_age_35-44, derived_loan_product_type_va:first lien",loan_size_Large,0.008720523231393884,0.6277897768178546,1.8872951398931077
 "applicant_age_45-54, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01213072784367062,0.8022486772486773,1.8869535020535892
@@ -1912,6 +1961,7 @@ derived_loan_product_type_fsa/rhs:first lien,loan_purpose_1,0.006500390023401404
 "debt_to_income_ratio_36, income_bracket_Low",loan_size_Small,0.002690161409684581,0.6609336609336608,1.8758877264738576
 "derived_loan_product_type_fsa/rhs:first lien, derived_race_race not available",loan_purpose_1,0.0022701362081724904,0.9190283400809717,1.87587662205917
 "debt_to_income_ratio_42, loan_purpose_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0021601296077764665,0.7970479704797048,1.8747210208676781
+"applicant_age_above_62_yes, interest_rate_bin_3-5% (sedang)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.03546212772766366,0.7970330411328389,1.874685905841439
 "conforming_loan_limit_nc, debt_to_income_ratio_42",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001060063603816229,0.7969924812030075,1.8745905056197758
 "derived_race_race not available, state_code_ca",loan_size_Large,0.019701182070924257,0.6232204998418223,1.8735587355295282
 "debt_to_income_ratio_46, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0013300798047882873,0.7964071856287426,1.8732138432893581
@@ -1943,11 +1993,13 @@ derived_loan_product_type_fsa/rhs:first lien,loan_purpose_1,0.006500390023401404
 "loan_term_bin_max 15thn (pendek), state_code_il",loan_size_Small,0.0030201812108726525,0.6579520697167757,1.867425257848465
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), total_units_1",loan_purpose_1,0.06849410964657879,0.914785628422599,1.867216602267639
 combined_loan_to_value_ratio_bin_95-100% (DP minimal),loan_purpose_1,0.07020421225273517,0.9147771696637998,1.867199336654392
+"applicant_age_above_62_yes, debt_to_income_ratio_48",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0025401524091445485,0.79375,1.8669639286806388
 "applicant_age_<25, derived_loan_product_type_fha:first lien",loan_purpose_1,0.0044902694161649695,0.9144602851323829,1.8665525271291004
 "applicant_age_25-34, derived_dwelling_category_single family (1-4 units):manufactured",loan_purpose_1,0.00930055803348201,0.9144542772861357,1.8665402642011444
 "applicant_age_25-34, construction_method_2",loan_purpose_1,0.00930055803348201,0.9144542772861357,1.8665402642011444
 "applicant_age_<25, interest_rate_bin_3-5% (sedang)",loan_purpose_1,0.006930415824949497,0.9142480211081795,1.8661192639713262
 "debt_to_income_ratio_49, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.0011900714042842571,0.6574585635359116,1.8660245693341075
+"applicant_age_above_62_yes, debt_to_income_ratio_49",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0033402004120247214,0.7933491686460807,1.8660211410532355
 "applicant_age_<25, derived_race_black or african american",loan_purpose_1,0.001490089405364322,0.9141104294478528,1.8658384184655452
 "debt_to_income_ratio_45, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.0011700702042122526,0.6573033707865168,1.8655840952123688
 "income_bracket_Very High, state_code_fl",loan_size_Large,0.011170670240214413,0.6205555555555556,1.8655472377554634
@@ -2002,9 +2054,11 @@ combined_loan_to_value_ratio_bin_95-100% (DP minimal),loan_purpose_1,0.070204212
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), state_code_other",loan_purpose_1,0.036322179330759846,0.9093640460691037,1.85615032808659
 "applicant_age_65-74, income_bracket_Low",loan_size_Small,0.02436146168770126,0.6539597315436242,1.8560940477412835
 "derived_loan_product_type_conventional:subordinate lien, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009500570034202052,0.7890365448504983,1.8558775025470027
+"applicant_age_above_62_yes, debt_to_income_ratio_45",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0028401704102246133,0.7888888888888889,1.8555302038330759
 "combined_loan_to_value_ratio_bin_max 80% (DP aman), income_bracket_Low",loan_size_Small,0.06402384143048583,0.6536655094956095,1.8552589752349913
 "debt_to_income_ratio_36, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002240134408064484,0.7887323943661972,1.8551621161116252
 "applicant_age_>74, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0023501410084605075,0.7885906040268456,1.8548286138136663
+"applicant_age_above_62_no, state_code_ca",loan_size_Large,0.042792567554053244,0.616926182237601,1.8546364219429579
 "purchaser_type_0, state_code_oh",loan_size_Small,0.01514090845450727,0.6534311609840311,1.8545938381379241
 "applicant_age_55-64, debt_to_income_ratio_36",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0024601476088565314,0.7884615384615384,1.854525041209114
 "income_bracket_Very High, occupancy_type_1",loan_size_Large,0.11396683801028061,0.6168669481433365,1.8544583492467317
@@ -2096,6 +2150,7 @@ combined_loan_to_value_ratio_bin_95-100% (DP minimal),loan_purpose_1,0.070204212
 "debt_to_income_ratio_<20%, total_units_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.03597215832949977,0.7805989583333334,1.8360316194948212
 "applicant_age_>74, debt_to_income_ratio_20%-<30%",loan_size_Small,0.0019601176070564233,0.6468646864686469,1.835956613742042
 debt_to_income_ratio_<20%,combined_loan_to_value_ratio_bin_max 80% (DP aman),0.036682200932055924,0.7802595192512232,1.8352332314352506
+"applicant_age_above_62_yes, debt_to_income_ratio_46",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002450147008820529,0.7802547770700636,1.8352220774432277
 "combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah), income_bracket_Low",loan_size_Small,0.004190251415084905,0.6466049382716049,1.8352193862658133
 "debt_to_income_ratio_<20%, reverse_mortgage_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.036632197931875915,0.7801916932907348,1.8350736993134742
 loan_term_bin_max 15thn (pendek),loan_size_Small,0.08021481288877333,0.6462815244541132,1.8343014605394283
@@ -2107,6 +2162,7 @@ loan_term_bin_max 15thn (pendek),loan_size_Small,0.08021481288877333,0.646281524
 "debt_to_income_ratio_50%-60%, loan_type_3",loan_size_Large,0.005580334820089205,0.6098360655737705,1.8333217347418556
 "debt_to_income_ratio_50%-60%, derived_loan_product_type_va:first lien",loan_size_Large,0.005580334820089205,0.6098360655737705,1.8333217347418556
 "loan_purpose_31, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.008550513030781847,0.7793983591613491,1.8332077135459728
+"applicant_age_above_62_yes, purchaser_type_6",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0021901314078844733,0.7793594306049823,1.8331161504460893
 "derived_dwelling_category_single family (1-4 units):manufactured, state_code_fl",loan_size_Small,0.0021501290077404643,0.6456456456456456,1.8324966844736366
 "construction_method_2, state_code_fl",loan_size_Small,0.0021501290077404643,0.6456456456456456,1.8324966844736366
 "applicant_age_<25, derived_ethnicity_not hispanic or latino",loan_purpose_1,0.016630997859871592,0.8974635725849972,1.8318596516986305
@@ -2114,6 +2170,7 @@ loan_term_bin_max 15thn (pendek),loan_size_Small,0.08021481288877333,0.646281524
 "derived_race_american indian or alaska native, income_bracket_Low",loan_size_Small,0.0014000840050403024,0.6451612903225806,1.8311219682812332
 "combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah), state_code_tx",loan_purpose_1,0.001130067804068244,0.8968253968253967,1.830557037909709
 "applicant_age_<25, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.01509090545432726,0.8966131907308377,1.8301238929951495
+"applicant_age_above_62_yes, income_bracket_Low",loan_size_Small,0.0435226113566814,0.6446452377425567,1.8296572876963246
 "applicant_age_45-54, interest_rate_bin_di atas 7% (sangat tinggi)",loan_size_Small,0.005020301218073084,0.6444159178433889,1.829006423003373
 "purchaser_type_2, state_code_tx",loan_purpose_1,0.006290377422645359,0.896011396011396,1.8288955384425798
 "conforming_loan_limit_c, debt_to_income_ratio_<20%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0342720563233794,0.7774500907441017,1.8286252293149319
@@ -2139,11 +2196,13 @@ loan_term_bin_max 15thn (pendek),loan_size_Small,0.08021481288877333,0.646281524
 "applicant_age_65-74, debt_to_income_ratio_<20%",loan_size_Small,0.002950177010620637,0.6427015250544663,1.8241405664413815
 state_code_ca,loan_size_Large,0.05917355041302478,0.6067473338802296,1.8240362246413226
 "debt_to_income_ratio_<20%, loan_size_Small",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.018581114866892012,0.7754590984974958,1.8239422551962599
+"applicant_age_above_62_yes, debt_to_income_ratio_41",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0029701782106926417,0.7754569190600523,1.8239371289838606
 "debt_to_income_ratio_41, state_code_ca",loan_size_Large,0.0014800888053283197,0.6065573770491803,1.8234651662755015
 "derived_ethnicity_joint, state_code_ca",loan_size_Large,0.0018801128067684062,0.6064516129032258,1.8231472124540062
 "conforming_loan_limit_nc, debt_to_income_ratio_20%-<30%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.004170250215012901,0.7750929368029741,1.8230810134000561
 "co_applicant_age_45-54, purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0064403864231853914,0.7749699157641396,1.8227916580085946
 "co_applicant_age_25-34, purchaser_type_71",loan_purpose_1,0.004810288617317039,0.8923933209647495,1.8215104969799174
+"applicant_age_above_62_yes, debt_to_income_ratio_<20%",loan_size_Small,0.005500330019801188,0.6417736289381564,1.8215069754489515
 "loan_term_bin_30thn (KPR standar), total_units_3",loan_size_Large,0.0018901134068044082,0.6057692307692307,1.8210957988557048
 "debt_to_income_ratio_<20%, loan_term_bin_30thn (KPR standar)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.021261275676540594,0.7742170429715951,1.8210208405641022
 "applicant_age_<25, derived_race_white",loan_purpose_1,0.017201032061923714,0.892116182572614,1.8209448153701029
@@ -2155,6 +2214,7 @@ state_code_ca,loan_size_Large,0.05917355041302478,0.6067473338802296,1.824036224
 "interest_rate_bin_max 3% (rendah), purchaser_type_0",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.026961617697061825,0.7729357798165137,1.8180072064303265
 "loan_purpose_31, purchaser_type_6",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0017701062063723823,0.7729257641921397,1.8179836488751395
 "applicant_age_>74, interest_rate_bin_3-5% (sedang)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006460387623257395,0.7727272727272726,1.8175167809632558
+"applicant_age_above_62_yes, debt_to_income_ratio_47",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0024101446086765206,0.7724358974358974,1.8168314428105548
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), derived_race_race not available",loan_purpose_1,0.010840650439026342,0.8899835796387521,1.8165918484230619
 "debt_to_income_ratio_20%-<30%, state_code_ny",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003050183010980659,0.7721518987341772,1.8161634549908336
 "applicant_age_<25, total_units_1",loan_purpose_1,0.02287137228233694,0.8895371450797355,1.8156806075874803
@@ -2167,6 +2227,7 @@ state_code_ca,loan_size_Large,0.05917355041302478,0.6067473338802296,1.824036224
 "debt_to_income_ratio_50%-60%, loan_purpose_32",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.008060483629017741,0.7712918660287081,1.814140588800476
 "income_bracket_High, purchaser_type_6",loan_size_Large,0.003910234614076844,0.6033950617283951,1.813958445146688
 "applicant_age_>74, income_bracket_Very High",loan_size_Large,0.0017801068064083846,0.6033898305084746,1.8139427187741088
+"applicant_age_above_62_no, interest_rate_bin_di atas 7% (sangat tinggi)",loan_size_Small,0.018211092665559935,0.6389473684210527,1.8134853724814721
 "applicant_age_<25, conforming_loan_limit_c",loan_purpose_1,0.023301398083885032,0.8882958444529164,1.8131469242120666
 applicant_age_<25,loan_purpose_1,0.023431405884353062,0.8881728582259287,1.812895890617149
 "co_applicant_age_<25, loan_term_bin_30thn (KPR standar)",loan_purpose_1,0.007450447026821609,0.8879618593563766,1.8124652098324425
@@ -2226,6 +2287,7 @@ applicant_age_<25,loan_purpose_1,0.023431405884353062,0.8881728582259287,1.81289
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), loan_type_3",loan_purpose_1,0.016150969058143488,0.8810692853246045,1.7983964179050094
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), derived_loan_product_type_va:first lien",loan_purpose_1,0.016150969058143488,0.8810692853246045,1.7983964179050094
 "loan_size_Small, purchaser_type_9",loan_purpose_1,0.005110306618397104,0.8810344827586207,1.7983253805745274
+"applicant_age_above_62_yes, state_code_pa",loan_size_Small,0.0038902334140048403,0.6335504885993485,1.798167737418843
 "income_bracket_Low, purchaser_type_9",loan_purpose_1,0.004360261615696942,0.8808080808080808,1.7978632597587874
 "debt_to_income_ratio_44, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.0016400984059043542,0.6332046332046332,1.7971861171316197
 "loan_type_3, state_code_tx",loan_purpose_1,0.005520331219873192,0.8803827751196173,1.796995146161608
@@ -2262,12 +2324,14 @@ applicant_age_<25,loan_purpose_1,0.023431405884353062,0.8881728582259287,1.81289
 "co_applicant_age_<25, derived_ethnicity_not hispanic or latino",loan_purpose_1,0.006140368422105327,0.8758915834522112,1.7878279408789812
 "debt_to_income_ratio_47, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0017101026061563695,0.7600000000000001,1.7875812104532733
 "derived_loan_product_type_conventional:subordinate lien, derived_race_asian",loan_size_Small,0.0060203612216733005,0.6297071129707114,1.787259318622614
+"applicant_age_above_62_no, purchaser_type_9",loan_purpose_1,0.01301078064683881,0.8755047106325705,1.7870382746125306
 "derived_dwelling_category_single family (1-4 units):manufactured, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.03153189191351481,0.8753470294280955,1.7867164232916162
 "income_bracket_High, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.017481048862931777,0.6294562477493699,1.7865473031549062
 "co_applicant_age_<25, interest_rate_bin_3-5% (sedang)",loan_purpose_1,0.0026601596095765746,0.875,1.7860080834473047
 "applicant_age_<25, derived_sex_male",loan_purpose_1,0.009510570634238054,0.874885004599816,1.7857733603452612
 "co_applicant_age_55-64, debt_to_income_ratio_43",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0012600756045362722,0.7590361445783133,1.7853141448724825
 "construction_method_2, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.03161189671380283,0.8746541228555618,1.7853020955891945
+"applicant_age_above_62_no, debt_to_income_ratio_<20%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.029011740704442266,0.7588281454355218,1.7848249141363717
 "co_applicant_age_<25, occupancy_type_1",loan_purpose_1,0.009390563433806029,0.8734883720930233,1.782922620977562
 "debt_to_income_ratio_40, income_bracket_Low",loan_size_Small,0.0032901974118447106,0.6278625954198472,1.782024136879799
 "co_applicant_age_<25, total_units_1",loan_purpose_1,0.009340560433626018,0.8728971962616823,1.7817159411906889
@@ -2276,6 +2340,7 @@ applicant_age_<25,loan_purpose_1,0.023431405884353062,0.8881728582259287,1.81289
 "derived_race_race not available, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.01171070264215853,0.627545551982851,1.7811242918161052
 "applicant_age_55-64, debt_to_income_ratio_30%-<36%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.013030781846910814,0.7571179546775131,1.7808024077346516
 "applicant_age_25-34, purchaser_type_71",loan_purpose_1,0.010800648038882333,0.8723747980613893,1.7806496470095443
+"applicant_age_above_62_yes, interest_rate_bin_di atas 7% (sangat tinggi)",loan_size_Small,0.0034502070124207453,0.6272727272727273,1.7803499500697992
 "debt_to_income_ratio_45, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0014000840050403024,0.7567567567567567,1.7799528411341266
 "co_applicant_age_45-54, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.005530331819909195,0.626984126984127,1.7795308334606112
 "derived_race_white, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.031281876912614755,0.7564691656590083,1.7792764037096154
@@ -2321,6 +2386,7 @@ co_applicant_age_<25,loan_purpose_1,0.009540572434346061,0.8704379562043797,1.77
 "applicant_age_45-54, state_code_oh",loan_size_Small,0.004210252615156909,0.621861152141802,1.7649906062066747
 "derived_race_black or african american, state_code_oh",loan_size_Small,0.0014800888053283197,0.6218487394957983,1.7649553761500627
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), state_code_ny",loan_purpose_1,0.0016600996059763587,0.8645833333333334,1.7647460824538843
+"applicant_age_above_62_yes, debt_to_income_ratio_>60%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.007860471628297698,0.75,1.7640604050525721
 "debt_to_income_ratio_<20%, state_code_oh",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.00162009720583235,0.75,1.7640604050525721
 "applicant_age_55-64, debt_to_income_ratio_40",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.00264015840950457,0.7499999999999999,1.764060405052572
 "co_applicant_age_<25, derived_race_white",loan_purpose_1,0.0066704002240134406,0.8639896373056994,1.7635342585630676
@@ -2390,6 +2456,8 @@ co_applicant_age_<25,loan_purpose_1,0.009540572434346061,0.8704379562043797,1.77
 "applicant_age_55-64, debt_to_income_ratio_49",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0028201692101526093,0.7401574803149606,1.7409100060361342
 "applicant_age_65-74, debt_to_income_ratio_47",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001310078604716283,0.7401129943502825,1.7408053714643086
 "derived_race_asian, purchaser_type_6",loan_purpose_1,0.001680100806048363,0.8527918781725888,1.7406779290450887
+"applicant_age_above_62_no, derived_dwelling_category_single family (1-4 units):manufactured",loan_purpose_1,0.029501770106206374,0.8526011560693642,1.7402886362244585
+"applicant_age_above_62_no, construction_method_2",loan_purpose_1,0.029501770106206374,0.8526011560693642,1.7402886362244585
 "derived_race_joint, loan_term_bin_max 15thn (pendek)",loan_size_Small,0.0013300798047882873,0.6129032258064516,1.7395658698671717
 "applicant_age_55-64, debt_to_income_ratio_45",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0023801428085685142,0.7391304347826086,1.738494312225723
 "income_bracket_Low, loan_purpose_31",loan_size_Small,0.021071264275856552,0.6125,1.738421418636996
@@ -2404,6 +2472,7 @@ co_applicant_age_<25,loan_purpose_1,0.009540572434346061,0.8704379562043797,1.77
 "debt_to_income_ratio_42, income_bracket_Low",loan_size_Small,0.004080244814688882,0.6116941529235383,1.7361342319955804
 "co_applicant_age_55-64, loan_term_bin_15-25thn (menengah)",loan_size_Small,0.004960297617857072,0.6115906288532676,1.7358404059366366
 "applicant_age_<25, state_code_fl",loan_purpose_1,0.0010800648038882333,0.8503937007874016,1.735782884250249
+"applicant_age_above_62_yes, interest_rate_bin_5-7% (tinggi)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.020441226473588415,0.7373737373737373,1.7343624184355253
 "co_applicant_age_45-54, debt_to_income_ratio_30%-<36%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006790407424445467,0.7372421281216069,1.7340528628746963
 "purchaser_type_0, state_code_pa",loan_size_Small,0.014840890453427206,0.6106995884773663,1.733311420345882
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), loan_type_1",loan_purpose_1,0.020071204272256334,0.8486257928118393,1.7321743151815112
@@ -2418,6 +2487,7 @@ co_applicant_age_<25,loan_purpose_1,0.009540572434346061,0.8704379562043797,1.77
 "debt_to_income_ratio_30%-<36%, occupancy_type_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0019201152069124147,0.735632183908046,1.730266144419381
 "applicant_age_35-44, purchaser_type_9",loan_purpose_1,0.0032801968118087083,0.8475452196382429,1.7299687009840263
 "debt_to_income_ratio_36, derived_race_asian",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001000060003600216,0.7352941176470588,1.7294709853456587
+"applicant_age_above_62_no, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.03568214092845571,0.735215330723264,1.729285672155389
 "co_applicant_age_65-74, income_bracket_Low",loan_size_Small,0.006330379822789368,0.6092396535129933,1.7291677759183177
 "derived_race_asian, loan_purpose_2",loan_size_Small,0.0028501710102606156,0.608974358974359,1.7284148065987925
 "co_applicant_age_35-44, purchaser_type_9",loan_purpose_1,0.0011600696041762506,0.8467153284671534,1.7282747668812293
@@ -2498,6 +2568,7 @@ purchaser_type_9,loan_purpose_1,0.014370862251735105,0.8403508771929825,1.715283
 "debt_to_income_ratio_41, income_bracket_Low",loan_size_Small,0.0031601896113766827,0.6007604562737643,1.705101787194198
 "loan_type_1, purchaser_type_72",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0013700822049322959,0.7248677248677249,1.7049472697862602
 "co_applicant_age_25-34, derived_loan_product_type_fha:first lien",loan_purpose_1,0.007650459027541652,0.8351528384279475,1.7046739661100285
+"applicant_age_above_62_yes, state_code_il",loan_size_Small,0.002750165009900594,0.6004366812227073,1.7041828362006017
 "derived_dwelling_category_single family (1-4 units):site-built, purchaser_type_9",loan_purpose_1,0.013220793247594856,0.8345959595959596,1.70353729171525
 "co_applicant_age_65-74, interest_rate_bin_5-7% (tinggi)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005590335420125207,0.7240932642487046,1.7031256760352118
 "income_bracket_Medium, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009840590435426125,0.7240618101545253,1.7030516934723874
@@ -2531,6 +2602,7 @@ purchaser_type_9,loan_purpose_1,0.014370862251735105,0.8403508771929825,1.715283
 "construction_method_2, loan_size_Medium",loan_purpose_1,0.008980538832329939,0.8299445471349353,1.694043051424008
 "derived_dwelling_category_single family (1-4 units):manufactured, interest_rate_bin_5-7% (tinggi)",loan_purpose_1,0.004780286817209032,0.8298611111111109,1.6938727458091496
 "co_applicant_age_25-34, state_code_tx",loan_purpose_1,0.006580394823689421,0.8297604035308953,1.693667186320773
+"applicant_age_above_62_yes, loan_purpose_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01352081124867492,0.7199148029818956,1.693297598602114
 "interest_rate_bin_max 3% (rendah), state_code_nc",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0022101326079564773,0.7198697068403909,1.6931915288452484
 "interest_rate_bin_5-7% (tinggi), occupancy_type_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003390203412204732,0.7197452229299364,1.6928987326619165
 "applicant_age_45-54, interest_rate_bin_3-5% (sedang)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.03976238574314459,0.7196380090497738,1.6926465569807607
@@ -2587,6 +2659,7 @@ purchaser_type_9,loan_purpose_1,0.014370862251735105,0.8403508771929825,1.715283
 "interest_rate_bin_max 3% (rendah), state_code_az",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0010900654039242355,0.7124183006535948,1.6756652213571275
 "combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah), state_code_other",loan_purpose_1,0.007790467428045683,0.82086406743941,1.6755084112665366
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), purchaser_type_0",loan_purpose_1,0.02181130867852071,0.820850583364697,1.675480888219182
+"applicant_age_above_62_yes, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01732103926235574,0.712171052631579,1.6750836740959731
 "loan_purpose_32, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01880112806768406,0.712121212121212,1.674966445201432
 "combined_loan_to_value_ratio_bin_95-100% (DP minimal), interest_rate_bin_max 3% (rendah)",loan_purpose_1,0.0032001920115206912,0.8205128205128205,1.6747914628663367
 "debt_to_income_ratio_20%-<30%, loan_term_bin_di atas 30thn",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0016300978058683521,0.7117903930131004,1.6741883320149593
@@ -2690,6 +2763,7 @@ construction_method_2,loan_purpose_1,0.035812148728923736,0.8153460837887068,1.6
 "debt_to_income_ratio_20%-<30%, purchaser_type_6",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0030701842110526633,0.6977272727272728,1.641110740457999
 "loan_purpose_2, state_code_ca",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.00722043322599356,0.697584541062802,1.6407750240875454
 "lien_status_1, loan_purpose_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.015160909654579275,0.6973321067157314,1.6401812781721554
+"applicant_age_above_62_no, combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah)",loan_purpose_1,0.011780706842410544,0.8035470668485675,1.6401617792250436
 "loan_term_bin_30thn (KPR standar), purchaser_type_6",loan_purpose_1,0.019591175470528233,0.8035274815422477,1.6401218026360107
 "loan_size_Large, purchaser_type_6",loan_purpose_1,0.0111106666399984,0.8033261026753434,1.639710757739866
 "co_applicant_age_35-44, purchaser_type_6",loan_purpose_1,0.0025301518091085467,0.8031746031746032,1.6394015242164828
@@ -2810,6 +2884,7 @@ combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah),loan_purpose_1,0
 "debt_to_income_ratio_>60%, lien_status_2",purchaser_type_0,0.015200912054723284,0.9973753280839894,1.6129960950417346
 "loan_purpose_2, occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002290137408244495,0.6856287425149702,1.612654022982192
 "applicant_age_25-34, debt_to_income_ratio_46",loan_purpose_1,0.0030101806108366502,0.7900262467191601,1.612563728886805
+"applicant_age_above_62_no, purchaser_type_8",loan_purpose_1,0.003950237014220853,0.79,1.612510155340995
 "debt_to_income_ratio_44, derived_loan_product_type_conventional:subordinate lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0032701962117727065,0.6855345911949685,1.6124325714945942
 "debt_to_income_ratio_44, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0032701962117727065,0.6855345911949685,1.6124325714945942
 "applicant_age_55-64, debt_to_income_ratio_>60%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005580334820089205,0.6855036855036855,1.61235987881955
@@ -2823,6 +2898,7 @@ combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah),loan_purpose_1,0
 "debt_to_income_ratio_40, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003000180010800648,0.684931506849315,1.6110140685411616
 "co_applicant_age_55-64, interest_rate_bin_5-7% (tinggi)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.008410504630277817,0.6848534201954397,1.6108304024421423
 "debt_to_income_ratio_43, loan_purpose_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001130067804068244,0.6848484848484848,1.6108187941086112
+"applicant_age_above_62_no, purchaser_type_6",loan_purpose_1,0.01781106866411985,0.7891005759858221,1.610674294129831
 "debt_to_income_ratio_37, loan_purpose_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0012600756045362722,0.6847826086956522,1.610663848091479
 "co_applicant_age_45-54, loan_purpose_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006270376222573354,0.6844978165938864,1.60999399413095
 "interest_rate_bin_3-5% (sedang), purchaser_type_9",loan_purpose_1,0.004630277816669,0.788756388415673,1.6099717549498216
@@ -2855,6 +2931,7 @@ combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah),loan_purpose_1,0
 "debt_to_income_ratio_36, derived_race_race not available",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0023001380082804967,0.6824925816023738,1.6052775199291456
 "debt_to_income_ratio_43, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0015900954057243434,0.6824034334763948,1.6050678363568465
 "debt_to_income_ratio_>60%, loan_purpose_31",purchaser_type_0,0.005220313218793128,0.9923954372623573,1.604942412317842
+"applicant_age_above_62_yes, derived_loan_product_type_conventional:subordinate lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.018021081264875893,0.6823173040514956,1.6048652530126137
 "applicant_age_45-54, derived_dwelling_category_single family (1-4 units):manufactured",loan_purpose_1,0.005480328819729183,0.7862266857962698,1.6048082471475678
 "applicant_age_45-54, construction_method_2",loan_purpose_1,0.005480328819729183,0.7862266857962698,1.6048082471475678
 "debt_to_income_ratio_30%-<36%, loan_size_Small",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.026091565493929637,0.6822698744769875,1.6047536948333894
@@ -2864,6 +2941,7 @@ combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah),loan_purpose_1,0
 "debt_to_income_ratio_39, derived_loan_product_type_conventional:subordinate lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002810168610116607,0.6820388349514563,1.6042102712614006
 "debt_to_income_ratio_39, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002810168610116607,0.6820388349514563,1.6042102712614006
 "derived_race_asian, occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005250315018901134,0.6818181818181819,1.6036912773205203
+"applicant_age_above_62_yes, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.018021081264875893,0.6818009837306092,1.603650826033414
 "debt_to_income_ratio_50%-60%, loan_purpose_4",purchaser_type_0,0.00588035282116927,0.9915682967959527,1.6036047269903688
 "debt_to_income_ratio_39, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01268076084565074,0.6817204301075269,1.60346135742413
 "debt_to_income_ratio_39, derived_loan_product_type_conventional:first lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009870592235534131,0.6816298342541436,1.6032482686803762
@@ -2885,6 +2963,7 @@ combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah),loan_purpose_1,0
 "combined_loan_to_value_ratio_bin_80-95% (DP kecil), purchaser_type_3",derived_loan_product_type_conventional:first lien,0.01657099425965558,1.0,1.6013387995644095
 "debt_to_income_ratio_30%-<36%, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.012090725443526611,1.0,1.6013387995644095
 "applicant_age_55-64, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.011970718243094586,1.0,1.6013387995644095
+"applicant_age_above_62_yes, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.011510690641438486,1.0,1.6013387995644095
 "interest_rate_bin_max 3% (rendah), purchaser_type_3",derived_loan_product_type_conventional:first lien,0.008510510630637838,1.0,1.6013387995644095
 "purchaser_type_3, state_code_ca",derived_loan_product_type_conventional:first lien,0.007790467428045683,1.0,1.6013387995644095
 "purchaser_type_3, state_code_fl",derived_loan_product_type_conventional:first lien,0.0077004620277216634,1.0,1.6013387995644095
@@ -2973,6 +3052,7 @@ combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah),loan_purpose_1,0
 purchaser_type_3,derived_loan_product_type_conventional:first lien,0.0865751945116707,0.9990767455279862,1.5998603563565026
 "purchaser_type_3, reverse_mortgage_2",derived_loan_product_type_conventional:first lien,0.08634518071084266,0.9990742883591762,1.5998564215967501
 "construction_method_1, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.08570514230853851,0.99906738167405,1.599845361653881
+"applicant_age_above_62_no, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.06371382282936976,0.9990591187078562,1.5998321298455156
 "preapproval_2, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.08393503610216613,0.9990477324128079,1.5998138965294713
 "interest_rate_bin_max 3% (rendah), purchaser_type_1",derived_loan_product_type_conventional:first lien,0.01032061923715423,0.9990319457889643,1.5997886167961963
 "loan_purpose_1, purchaser_type_3",derived_loan_product_type_conventional:first lien,0.051273076384583074,0.9990257209664849,1.5997786487464398
@@ -3001,6 +3081,7 @@ purchaser_type_3,derived_loan_product_type_conventional:first lien,0.08657519451
 "applicant_age_65-74, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.009830589835390124,0.6798063623789765,1.5989593159674305
 "loan_purpose_31, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.01338080284817089,0.9985074626865672,1.598948741654612
 "derived_dwelling_category_single family (1-4 units):site-built, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.10097605856351381,0.9984178779788391,1.5988052861862794
+"applicant_age_above_62_no, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.07460447626857611,0.9983940042826551,1.598767056310291
 "purchaser_type_1, state_code_ca",derived_loan_product_type_conventional:first lien,0.01167070024201452,0.9982891360136869,1.598599126682349
 "derived_ethnicity_not hispanic or latino, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.06354381262875773,0.9982717989002358,1.5985713640899073
 "debt_to_income_ratio_>60%, derived_loan_product_type_conventional:first lien",purchaser_type_0,0.020521231273876433,0.9884393063583816,1.5985443959243089
@@ -3036,6 +3117,7 @@ purchaser_type_1,derived_loan_product_type_conventional:first lien,0.10211612696
 "debt_to_income_ratio_20%-<30%, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.016490989459367562,0.9975801572897761,1.597463811543685
 "applicant_age_25-34, derived_ethnicity_joint",loan_purpose_1,0.004500270016200972,0.7826086956521738,1.5974233789839245
 "derived_sex_male, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.028441706502390144,0.9975447211504735,1.597407066278913
+"applicant_age_above_62_no, debt_to_income_ratio_20%-<30%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.062133728023681424,0.6790906109957373,1.5972758110673855
 "income_bracket_High, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.026821609296557792,0.9973968017850501,1.5971701972598535
 "debt_to_income_ratio_40, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.003820229213752825,0.9973890339425587,1.5971577583122831
 "purchaser_type_1, state_code_ga",derived_loan_product_type_conventional:first lien,0.003770226213572814,0.9973544973544973,1.5971024535338159
@@ -3057,6 +3139,7 @@ purchaser_type_1,derived_loan_product_type_conventional:first lien,0.10211612696
 "occupancy_type_3, purchaser_type_5",derived_loan_product_type_conventional:first lien,0.0031501890113406804,0.9968354430379747,1.5962712717176868
 "purchaser_type_3, state_code_nc",derived_loan_product_type_conventional:first lien,0.0031001860111606696,0.9967845659163986,1.596189800208897
 "debt_to_income_ratio_37, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.003060183611016661,0.996742671009772,1.5961227122694115
+"applicant_age_above_62_yes, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.015300918055083304,0.9967426710097719,1.5961227122694113
 "purchaser_type_1, state_code_ny",derived_loan_product_type_conventional:first lien,0.003050183010980659,0.9967320261437909,1.5961056662324997
 "loan_term_bin_max 15thn (pendek), purchaser_type_1",derived_loan_product_type_conventional:first lien,0.012190731443886634,0.9967293540474245,1.596101387300912
 "income_bracket_Medium, loan_term_bin_di atas 30thn",purchaser_type_0,0.003000180010800648,0.986842105263158,1.5959613371127968
@@ -3107,6 +3190,7 @@ purchaser_type_1,derived_loan_product_type_conventional:first lien,0.10211612696
 "applicant_age_25-34, derived_loan_product_type_conventional:first lien",loan_purpose_1,0.08827529651779106,0.7794948781349347,1.591067603834017
 "loan_purpose_2, state_code_ny",purchaser_type_0,0.004220253215192911,0.9836829836829838,1.5908522767329174
 "derived_ethnicity_joint, loan_purpose_2",purchaser_type_0,0.0024101446086765206,0.9836734693877551,1.5908368898262848
+"applicant_age_above_62_yes, debt_to_income_ratio_50%-60%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0065203912234734086,0.6763485477178424,1.590826257391808
 "purchaser_type_6, state_code_fl",loan_purpose_1,0.002010120607236434,0.7790697674418604,1.590199888252085
 "occupancy_type_3, preapproval_1",derived_loan_product_type_conventional:first lien,0.0014000840050403024,0.9929078014184397,1.5899817868015413
 "applicant_age_25-34, debt_to_income_ratio_49",loan_purpose_1,0.0038702322139328358,0.7786720321931588,1.589388050115796
@@ -3220,11 +3304,13 @@ derived_dwelling_category_multifamily:site-built,combined_loan_to_value_ratio_bi
 "co_applicant_age_55-64, debt_to_income_ratio_41",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0011600696041762506,0.6705202312138728,1.5771175875614518
 "income_bracket_Very High, loan_term_bin_di atas 30thn",purchaser_type_0,0.005500330019801188,0.9751773049645389,1.5770965458939692
 "debt_to_income_ratio_>60%, derived_race_asian",purchaser_type_0,0.0027401644098645917,0.9750889679715302,1.5769536837028173
+"applicant_age_above_62_yes, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.025751545092705563,0.9750094661113214,1.576825110049094
 "co_applicant_age_55-64, debt_to_income_ratio_>60%",purchaser_type_0,0.00273016380982859,0.9750000000000001,1.5768098010674432
 "derived_race_race not available, purchaser_type_9",loan_purpose_1,0.002240134408064484,0.7724137931034484,1.5766140322845172
 "loan_purpose_2, total_units_2",purchaser_type_0,0.0015500930055803348,0.9748427672955975,1.5765555179193915
 "loan_purpose_1, total_units_5-24",derived_loan_product_type_conventional:first lien,0.0012700762045722742,0.9844961240310076,1.576511841431628
 "debt_to_income_ratio_>60%, state_code_other",purchaser_type_0,0.01894113646818809,0.9747812660833761,1.5764560556484088
+"applicant_age_above_62_yes, lien_status_2",purchaser_type_0,0.025761545692741566,0.9746500189178964,1.5762437973746748
 "occupancy_type_3, state_code_oh",derived_loan_product_type_conventional:first lien,0.00250015000900054,0.984251968503937,1.5761208657130017
 "interest_rate_bin_5-7% (tinggi), purchaser_type_1",loan_purpose_1,0.02694161649698982,0.7721410146173688,1.5760572499060848
 "applicant_age_65-74, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.014080844850691042,0.9743944636678201,1.5758305029920752
@@ -3232,6 +3318,7 @@ derived_dwelling_category_multifamily:site-built,combined_loan_to_value_ratio_bi
 "co_applicant_age_55-64, state_code_oh",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0014000840050403024,0.6698564593301435,1.5755563426306862
 "lien_status_2, loan_purpose_2",purchaser_type_0,0.06912414744884693,0.9742071881606764,1.5755276333970352
 "applicant_age_55-64, debt_to_income_ratio_>60%",purchaser_type_0,0.007930475828549713,0.9742014742014741,1.5755183925489602
+"applicant_age_above_62_yes, combined_loan_to_value_ratio_bin_95-100% (DP minimal)",loan_purpose_1,0.004060243614616877,0.7718631178707224,1.5754900203793711
 "derived_loan_product_type_conventional:subordinate lien, loan_purpose_2",purchaser_type_0,0.06902414144848691,0.9741707833450953,1.5754687580431743
 "debt_to_income_ratio_36, income_bracket_Very High",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0035902154129247754,0.669776119402985,1.575367376651426
 "co_applicant_age_35-44, loan_purpose_2",purchaser_type_0,0.01051063063783827,0.9740500463392029,1.5752734972285665
@@ -3267,6 +3354,7 @@ total_units_5-24,derived_loan_product_type_conventional:first lien,0.00280016801
 "construction_method_1, total_units_5-24",derived_loan_product_type_conventional:first lien,0.0027401644098645917,0.9820788530465949,1.5726409716152265
 "state_code_other, total_units_5-24",purchaser_type_0,0.0014100846050763046,0.9724137931034483,1.5726272817012166
 "co_applicant_age_55-64, occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0023801428085685142,0.6685393258426966,1.5724583385861879
+"applicant_age_above_62_yes, loan_term_bin_di atas 30thn",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0024001440086405183,0.6685236768802229,1.572421530966081
 "loan_purpose_2, occupancy_type_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0012100726043562614,0.6685082872928176,1.5723853334170255
 purchaser_type_6,loan_purpose_1,0.020831249874992498,0.7703402366863905,1.5723815882589751
 "derived_race_asian, loan_purpose_2",purchaser_type_0,0.004550273016380983,0.9722222222222223,1.5723174654518666
@@ -3315,12 +3403,15 @@ purchaser_type_6,loan_purpose_1,0.020831249874992498,0.7703402366863905,1.572381
 "income_bracket_High, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.018521111266676,0.6669067338854879,1.5686183508137623
 "debt_to_income_ratio_43, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.013130787847270836,0.6668359573387507,1.5684518786754882
 "derived_race_asian, purchaser_type_3",loan_purpose_1,0.004080244814688882,0.768361581920904,1.5683428529383918
+"applicant_age_above_62_no, loan_term_bin_di atas 30thn",purchaser_type_0,0.012800768046082765,0.9696969696969697,1.5682335239831602
 "state_code_other, total_units_5-24",derived_loan_product_type_conventional:first lien,0.0014200852051123067,0.9793103448275862,1.5682076519872148
 "combined_loan_to_value_ratio_bin_100-120% (di atas nilai rumah), derived_sex_male",loan_purpose_1,0.004410264615876952,0.7682926829268292,1.5682022196122671
 "loan_purpose_32, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.015560933656019361,0.9792322215229705,1.5680825501083837
 "debt_to_income_ratio_44, purchaser_type_0",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.007940476428585716,0.6666666666666667,1.5680536933800642
+"applicant_age_above_62_yes, occupancy_type_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003800228013680821,0.6666666666666667,1.5680536933800642
 "applicant_age_45-54, debt_to_income_ratio_49",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003580214812888773,0.6666666666666667,1.5680536933800642
 "applicant_age_45-54, debt_to_income_ratio_40",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003000180010800648,0.6666666666666667,1.5680536933800642
+"applicant_age_above_62_no, debt_to_income_ratio_>60%",purchaser_type_0,0.03059183551013061,0.9695721077654517,1.5680315921704444
 "interest_rate_bin_5-7% (tinggi), loan_term_bin_30thn (KPR standar)",loan_purpose_1,0.13546812808768527,0.7681751162526937,1.5679622481490103
 "derived_race_race not available, purchaser_type_2",loan_purpose_1,0.027431645898753926,0.7681321758611034,1.5678746002787396
 "loan_term_bin_di atas 30thn, total_units_1",purchaser_type_0,0.016470988259295556,0.9693937610359034,1.5677431625590188
@@ -3383,6 +3474,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 "co_applicant_age_55-64, loan_term_bin_di atas 30thn",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0011500690041402483,0.6647398843930635,1.5635217462893702
 "loan_term_bin_15-25thn (menengah), purchaser_type_71",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001130067804068244,0.6647058823529411,1.5634417707524757
 "conforming_loan_limit_c, purchaser_type_6",loan_purpose_1,0.018781126867612057,0.765905383360522,1.5633293781002275
+"applicant_age_above_62_yes, debt_to_income_ratio_>60%",purchaser_type_0,0.010130607836470188,0.9666030534351144,1.5632299163058523
 "derived_ethnicity_hispanic or latino, interest_rate_bin_max 3% (rendah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0032101926115566935,0.6645962732919255,1.5631839614130454
 "derived_race_black or african american, loan_purpose_2",purchaser_type_0,0.0063603816228973735,0.9665653495440729,1.5631689400341264
 "debt_to_income_ratio_38, purchaser_type_0",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.007210432625957558,0.6645161290322581,1.5629954556594834
@@ -3422,6 +3514,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 "loan_term_bin_30thn (KPR standar), purchaser_type_5",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0029701782106926417,0.6629464285714285,1.559303393751827
 "co_applicant_age_35-44, debt_to_income_ratio_>60%",purchaser_type_0,0.002690161409684581,0.96415770609319,1.5592752007614823
 "derived_ethnicity_not hispanic or latino, loan_purpose_2",purchaser_type_0,0.06471388283296999,0.9640941597139453,1.5591724309629025
+"applicant_age_above_62_yes, state_code_ny",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.003440206412384743,0.6628131021194605,1.5589897991986765
 "applicant_age_65-74, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0068604116246974815,0.6628019323671497,1.5589635270416287
 "conforming_loan_limit_nc, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0011400684041042463,0.6627906976744187,1.5589371021394824
 "co_applicant_age_45-54, debt_to_income_ratio_36",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0011400684041042463,0.6627906976744187,1.5589371021394824
@@ -3430,6 +3523,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 "co_applicant_age_45-54, debt_to_income_ratio_>60%",purchaser_type_0,0.002670160209612577,0.9638989169675091,1.558856676423243
 "loan_term_bin_30thn (KPR standar), occupancy_type_3",derived_loan_product_type_conventional:first lien,0.0458327499649979,0.9734494477485132,1.5588223700942416
 "derived_dwelling_category_multifamily:site-built, loan_purpose_1",derived_loan_product_type_conventional:first lien,0.0018301098065883954,0.973404255319149,1.5587500017036542
+"applicant_age_above_62_yes, loan_term_bin_di atas 30thn",purchaser_type_0,0.0034602076124567475,0.9637883008356546,1.5586777834992795
 "debt_to_income_ratio_47, derived_loan_product_type_conventional:first lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.007150429025741544,0.6626506024096385,1.558607586793437
 "applicant_age_55-64, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.020501230073804427,0.6625727213962508,1.558424404377407
 "loan_term_bin_di atas 30thn, state_code_tx",purchaser_type_0,0.001320079204752285,0.9635036496350365,1.5582174339577204
@@ -3468,6 +3562,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 "combined_loan_to_value_ratio_bin_80-95% (DP kecil), loan_term_bin_30thn (KPR standar)",loan_purpose_1,0.08196491789507371,0.7622767857142857,1.5559228584113636
 "construction_method_1, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.04934296057763466,0.66148277248961,1.5558607567644263
 "debt_to_income_ratio_30%-<36%, state_code_pa",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0025401524091445485,0.6614583333333333,1.555803273900532
+"applicant_age_above_62_no, loan_purpose_2",purchaser_type_0,0.06961417685061104,0.9619955776672194,1.5557785184094444
 "co_applicant_age_45-54, loan_purpose_31",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.007440446426785607,0.6613333333333333,1.5555092638330237
 "applicant_age_65-74, loan_purpose_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0064803888233294,0.6612244897959184,1.5552532550667575
 "loan_size_Medium, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.023271396283777026,0.9712020033388982,1.555223450161261
@@ -3476,6 +3571,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 "construction_method_2, purchaser_type_1",derived_loan_product_type_conventional:first lien,0.001000060003600216,0.9708737864077669,1.5546978636547664
 "occupancy_type_3, total_units_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0015400924055443326,0.6609442060085836,1.5545940050248703
 "loan_purpose_2, loan_type_1",purchaser_type_0,0.08824529471768307,0.9611153469121011,1.5543549732998325
+"applicant_age_above_62_yes, loan_purpose_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.012020721243274596,0.6608026388125344,1.5542610275779307
 "co_applicant_age_>74, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.0014800888053283197,0.9610389610389611,1.5542314389475964
 "derived_dwelling_category_multifamily:site-built, derived_loan_product_type_conventional:first lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002610156609396564,0.660759493670886,1.554159546729861
 "debt_to_income_ratio_43, income_bracket_Very High",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002980178810728644,0.6607538802660755,1.5541463435496425
@@ -3492,6 +3588,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 "derived_dwelling_category_single family (1-4 units):site-built, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.04899293957637458,0.6601536181107667,1.5527344786152
 "income_bracket_Medium, loan_purpose_2",purchaser_type_0,0.01876112566754005,0.9600818833162742,1.5526836137850157
 "co_applicant_age_65-74, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.022021321279276758,0.6600719424460432,1.5525423708736066
+"applicant_age_above_62_no, derived_loan_product_type_fsa/rhs:first lien",state_code_other,0.0034502070124207453,0.7582417582417582,1.5524719761994017
 "debt_to_income_ratio_39, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0016100966057963479,0.6598360655737706,1.5519875694724818
 "lien_status_1, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.05419325159509571,0.6598076220625837,1.5519206680433277
 "co_applicant_age_55-64, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.0034502070124207453,0.9691011235955056,1.5518592299149474
@@ -3515,6 +3612,7 @@ loan_term_bin_di atas 30thn,purchaser_type_0,0.01685101106066364,0.9672789896670
 loan_purpose_2,purchaser_type_0,0.08885533131987919,0.9585715826950048,1.5502410939673996
 "co_applicant_age_35-44, lien_status_2",purchaser_type_0,0.020121207272436346,0.9585516912815627,1.5502089247615816
 "debt_to_income_ratio_50%-60%, state_code_tx",loan_purpose_1,0.004010240614436866,0.759469696969697,1.5501931633384614
+"applicant_age_above_62_yes, loan_purpose_2",purchaser_type_0,0.018001080064803887,0.9584664536741213,1.5500710750232911
 "applicant_age_55-64, occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006300378022681361,0.6589958158995817,1.5500112345650217
 "loan_purpose_2, total_units_1",purchaser_type_0,0.08667520051203072,0.9584208780272033,1.5499973682266242
 "co_applicant_age_45-54, purchaser_type_6",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.001430085805148309,0.6589861751152074,1.5499885586637039
@@ -3527,6 +3625,7 @@ loan_purpose_2,purchaser_type_0,0.08885533131987919,0.9585715826950048,1.5502410
 "lien_status_2, state_code_ga",purchaser_type_0,0.004780286817209032,0.9579158316633266,1.5491805866301582
 "applicant_age_45-54, loan_purpose_2",purchaser_type_0,0.02273136388183291,0.9578592498946481,1.5490890802840926
 "loan_purpose_2, state_code_tx",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.002450147008820529,0.6586021505376344,1.5490853019278858
+"applicant_age_above_62_yes, occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005400324019441166,0.6585365853658537,1.548931087363234
 "loan_term_bin_max 15thn (pendek), state_code_ny",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0029701782106926417,0.6585365853658537,1.548931087363234
 "derived_dwelling_category_multifamily:site-built, interest_rate_bin_3-5% (sedang)",derived_loan_product_type_conventional:first lien,0.0017701062063723823,0.9672131147540983,1.5488358881032813
 "purchaser_type_8, reverse_mortgage_2",loan_purpose_1,0.005190311418685121,0.7587719298245613,1.5487689144680885
@@ -3540,6 +3639,7 @@ loan_purpose_2,purchaser_type_0,0.08885533131987919,0.9585715826950048,1.5502410
 "conforming_loan_limit_nc, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0034502070124207453,0.6583969465648855,1.548602645656838
 "loan_size_Medium, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.017441046462787768,0.6583616459041147,1.5485196156595875
 "co_applicant_age_55-64, loan_purpose_4",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.004220253215192911,0.6583463338533541,1.5484836004829647
+"applicant_age_above_62_no, purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.04919295157709463,0.6583244111349036,1.548432036483512
 "applicant_age_55-64, loan_term_bin_di atas 30thn",purchaser_type_0,0.0031501890113406804,0.9574468085106383,1.5484220632413517
 "applicant_age_25-34, debt_to_income_ratio_40",loan_purpose_1,0.003550213012780767,0.7585470085470086,1.5483098159311188
 "debt_to_income_ratio_>60%, loan_purpose_32",purchaser_type_0,0.006960417625057503,0.9573590096286108,1.5482800713052451
@@ -3589,8 +3689,10 @@ loan_purpose_2,purchaser_type_0,0.08885533131987919,0.9585715826950048,1.5502410
 "applicant_age_45-54, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.042512550753045185,0.9550662772410695,1.5445721708950917
 "derived_ethnicity_not hispanic or latino, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.115756945416725,0.95503300330033,1.544518358919832
 "derived_loan_product_type_conventional:subordinate lien, derived_race_asian",purchaser_type_0,0.009130547832869972,0.9550209205020921,1.5444988181252823
+"applicant_age_above_62_no, loan_type_4",state_code_other,0.003500210012600756,0.7543103448275862,1.5444225525346995
 "loan_purpose_2, loan_term_bin_max 15thn (pendek)",purchaser_type_0,0.020561233674020442,0.9549465861588482,1.5443786015909409
 "derived_race_asian, state_code_tx",loan_purpose_1,0.005190311418685121,0.7565597667638484,1.5442535532014179
+"applicant_age_above_62_yes, loan_term_bin_15-25thn (menengah)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.012100726043562614,0.6565382528486164,1.5442308483368512
 "co_applicant_age_>74, lien_status_2",purchaser_type_0,0.0014800888053283197,0.9548387096774194,1.5442041393414827
 "applicant_age_25-34, income_bracket_Very High",loan_purpose_1,0.02495149708982539,0.7565191024863553,1.5441705512262063
 "derived_race_race not available, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.030681840910454627,0.9641734758013827,1.5439683963116304
@@ -3658,6 +3760,7 @@ loan_purpose_2,purchaser_type_0,0.08885533131987919,0.9585715826950048,1.5502410
 "derived_dwelling_category_single family (1-4 units):manufactured, derived_race_black or african american",purchaser_type_0,0.004110246614796888,0.9513888888888888,1.5386249483350405
 "construction_method_2, derived_race_black or african american",purchaser_type_0,0.004110246614796888,0.9513888888888888,1.5386249483350405
 "derived_ethnicity_hispanic or latino, loan_term_bin_di atas 30thn",purchaser_type_0,0.0013700822049322959,0.9513888888888887,1.5386249483350405
+"applicant_age_above_62_no, occupancy_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.029601776106566394,0.6541436464088398,1.538598541128726
 "debt_to_income_ratio_40, loan_size_Small",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.005220313218793128,0.6541353383458647,1.5385789998954764
 "debt_to_income_ratio_>60%, derived_race_black or african american",purchaser_type_0,0.005270316218973139,0.9512635379061373,1.5384222256087061
 "loan_purpose_2, loan_size_Large",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0034602076124567475,0.6540642722117203,1.5384118466242973
@@ -3697,6 +3800,7 @@ total_units_5-24,purchaser_type_0,0.0027101626097565854,0.9508771929824562,1.537
 "debt_to_income_ratio_>60%, lien_status_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.00995059703582215,0.6528871391076115,1.535643134757051
 "income_bracket_Low, loan_type_4",state_code_other,0.002070124207452447,0.75,1.53559728080593
 "debt_to_income_ratio_41, derived_loan_product_type_conventional:first lien",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01000060003600216,0.6527415143603134,1.5353006136227783
+"applicant_age_above_62_yes, interest_rate_bin_di atas 7% (sangat tinggi)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0035902154129247754,0.6527272727272727,1.5352671161548446
 "debt_to_income_ratio_43, purchaser_type_0",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0067104026241574495,0.6527237354085603,1.535258796096337
 "applicant_age_25-34, loan_purpose_4",purchaser_type_0,0.008410504630277817,0.9492099322799098,1.535101050758488
 "derived_loan_product_type_conventional:subordinate lien, derived_sex_female",purchaser_type_0,0.03227193631617897,0.9491176470588236,1.5349518033317162
@@ -3717,6 +3821,7 @@ total_units_5-24,purchaser_type_0,0.0027101626097565854,0.9508771929824562,1.537
 "income_bracket_Medium, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01695101706102366,0.651672433679354,1.532786049757329
 "derived_loan_product_type_conventional:subordinate lien, state_code_ca",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.013170790247414845,0.6516575952498764,1.5327511485761094
 "co_applicant_age_65-74, loan_size_Small",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01042062523751425,0.6516572858036273,1.5327504207336087
+"applicant_age_above_62_no, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.13220793247594856,0.9476702508960573,1.5326110151722523
 "debt_to_income_ratio_30%-<36%, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.01972118327099626,0.9476213358962038,1.5325319078377002
 "derived_loan_product_type_conventional:subordinate lien, state_code_other",purchaser_type_0,0.08191491489489369,0.9475937066173068,1.5324872246399965
 "derived_race_white, loan_purpose_2",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.04093245594735684,0.6515440942375038,1.5324841850536295
@@ -3725,6 +3830,7 @@ total_units_5-24,purchaser_type_0,0.0027101626097565854,0.9508771929824562,1.537
 "interest_rate_bin_5-7% (tinggi), loan_term_bin_di atas 30thn",purchaser_type_0,0.0032401944116647,0.9473684210526315,1.5321228836282847
 "co_applicant_age_45-54, loan_term_bin_di atas 30thn",purchaser_type_0,0.00162009720583235,0.9473684210526315,1.5321228836282847
 "loan_size_Large, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.011340680440826449,0.6513497989661113,1.5320271869267597
+"applicant_age_above_62_no, lien_status_2",purchaser_type_0,0.13234794087645257,0.9471800744345834,1.5318182817889656
 "lien_status_2, state_code_other",purchaser_type_0,0.0819449166950017,0.9470642625982433,1.531630986159611
 derived_dwelling_category_multifamily:site-built,derived_loan_product_type_conventional:first lien,0.003950237014220853,0.9564164648910412,1.5315467937722562
 "derived_dwelling_category_multifamily:site-built, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.003950237014220853,0.9564164648910412,1.5315467937722562
@@ -3800,6 +3906,7 @@ lien_status_2,purchaser_type_0,0.16002960177610656,0.9449069973427812,1.52814216
 "income_bracket_High, purchaser_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01746104766285977,0.6493120119003346,1.5272341476245397
 "debt_to_income_ratio_45, state_code_ca",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0013700822049322959,0.6492890995260663,1.5271802558748964
 "conforming_loan_limit_c, derived_loan_product_type_conventional:subordinate lien",purchaser_type_0,0.1545792747564854,0.9442849288288838,1.5271361341309302
+"applicant_age_above_62_yes, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.007820469228153689,0.9536585365853658,1.5271304161699613
 "derived_loan_product_type_conventional:subordinate lien, derived_sex_male",purchaser_type_0,0.05422325339520371,0.9442702890978752,1.5271124581603257
 "income_bracket_Medium, loan_purpose_4",purchaser_type_0,0.01675100506030362,0.9441939120631343,1.5269889381019095
 "debt_to_income_ratio_41, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01310078604716283,0.649157581764123,1.526870915506356
@@ -3813,6 +3920,7 @@ lien_status_2,purchaser_type_0,0.16002960177610656,0.9449069973427812,1.52814216
 "derived_sex_male, lien_status_2",purchaser_type_0,0.054293257595455724,0.943517553006604,1.5258951026256247
 "debt_to_income_ratio_30%-<36%, derived_dwelling_category_single family (1-4 units):site-built",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0633838030281817,0.648720573183214,1.5258430361273563
 "construction_method_1, debt_to_income_ratio_30%-<36%",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0633838030281817,0.648720573183214,1.5258430361273563
+"applicant_age_above_62_no, loan_purpose_4",purchaser_type_0,0.0578834730083805,0.943439282803586,1.5257685208581884
 "conforming_loan_limit_nc, occupancy_type_2",derived_loan_product_type_conventional:first lien,0.003630217813068784,0.952755905511811,1.5256849980101854
 "debt_to_income_ratio_45, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.010190611436686202,0.6486314449395291,1.5256333993198143
 "applicant_age_65-74, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.00440026401584095,0.9523809523809523,1.5250845710137233
@@ -3878,6 +3986,7 @@ lien_status_2,purchaser_type_0,0.16002960177610656,0.9449069973427812,1.52814216
 "derived_ethnicity_not hispanic or latino, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.03385203112186731,0.9489767311466218,1.5196332594688888
 "income_bracket_Medium, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.007610456627397644,0.9488778054862844,1.5194748459707181
 "derived_race_asian, purchaser_type_3",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0034302058123487408,0.6459510357815442,1.5193288610998925
+"applicant_age_above_62_yes, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.08569514170850251,0.6458882942639632,1.5191812879973359
 "loan_purpose_4, loan_size_Small",purchaser_type_0,0.0592535552133128,0.939283449587825,1.5190475377338666
 "interest_rate_bin_3-5% (sedang), state_code_ca",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.01978118687121227,0.6457721188377407,1.5189080340380834
 "loan_term_bin_30thn (KPR standar), occupancy_type_2",derived_loan_product_type_conventional:first lien,0.018231093865631938,0.9484911550468261,1.518855687620145
@@ -3909,6 +4018,7 @@ lien_status_2,purchaser_type_0,0.16002960177610656,0.9449069973427812,1.52814216
 "derived_ethnicity_not hispanic or latino, loan_purpose_4",purchaser_type_0,0.054553273196391784,0.9372852233676976,1.51581592471987
 "derived_race_white, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.027801668100086004,0.9465440926115083,1.515737780997296
 "preapproval_2, total_units_5-24",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0018301098065883954,0.6443661971830986,1.5156011930733366
+"applicant_age_above_62_no, occupancy_type_3",derived_loan_product_type_conventional:first lien,0.04282256935416125,0.9462983425414364,1.5153442518750944
 "derived_ethnicity_not hispanic or latino, loan_type_4",derived_race_white,0.003420205212312739,0.8769230769230769,1.5152680390856272
 "loan_size_Large, total_units_5-24",purchaser_type_0,0.0020801248074884494,0.9369369369369369,1.5152526616864317
 "loan_purpose_32, loan_type_1",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.09383563013780827,0.6442155853072433,1.515246941811034
@@ -3940,6 +4050,7 @@ derived_loan_product_type_fsa/rhs:first lien,state_code_other,0.0050603036182170
 "derived_loan_product_type_fsa/rhs:first lien, occupancy_type_1",state_code_other,0.005060303618217093,0.7386861313868615,1.512432552968955
 "loan_purpose_4, state_code_other",purchaser_type_0,0.037792267536052165,0.935164563226924,1.5123863065714547
 "loan_purpose_31, occupancy_type_2",derived_loan_product_type_conventional:first lien,0.0025501530091805507,0.9444444444444444,1.5123755329219424
+"applicant_age_above_62_no, purchaser_type_71",loan_purpose_1,0.032051923115386925,0.7408691631992603,1.5122266448579649
 "derived_loan_product_type_fsa/rhs:first lien, loan_purpose_1",state_code_other,0.004800288017281037,0.7384615384615384,1.5119727072550693
 "derived_race_asian, purchaser_type_6",derived_loan_product_type_conventional:first lien,0.0018601116066964017,0.9441624365482233,1.5119239427359399
 "co_applicant_age_55-64, occupancy_type_2",derived_loan_product_type_conventional:first lien,0.00338020281216873,0.9441340782122905,1.5118785314323195
@@ -3975,6 +4086,7 @@ total_units_5-24,combined_loan_to_value_ratio_bin_max 80% (DP aman),0.0018301098
 "derived_race_asian, interest_rate_bin_5-7% (tinggi)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.006530391823509411,0.6420845624385447,1.5102346043911237
 "co_applicant_age_65-74, loan_purpose_4",purchaser_type_0,0.003810228613716823,0.9338235294117646,1.5102175319424227
 "applicant_age_25-34, loan_size_Medium",loan_purpose_1,0.04470268216092966,0.7398212512413109,1.510087697169235
+"applicant_age_above_62_no, loan_term_bin_max 15thn (pendek)",combined_loan_to_value_ratio_bin_max 80% (DP aman),0.054983298997939876,0.6419897244278375,1.5100115377516803
 "income_bracket_Low, loan_purpose_4",purchaser_type_0,0.01703102186131168,0.9336622807017543,1.5099567539461625
 "debt_to_income_ratio_42, loan_purpose_2",purchaser_type_0,0.0025301518091085467,0.933579335793358,1.5098226120543594
 "conforming_loan_limit_nc, interest_rate_bin_3-5% (sedang)",loan_purpose_1,0.012530751845110707,0.7396694214876033,1.5097777895493152

@@ -1,0 +1,150 @@
+==============================================================================
+LAPORAN ANOMALI & OUTLIER -- PHASE 4
+Deteksi Anomali dan Outlier | HMDA 2022 | CAWU 5 Data Mining Project
+==============================================================================
+
+1. RINGKASAN EKSEKUTIF
+------------------------------------------------------------------------------
+Dataset dianalisis   : 99,994 baris x 12 fitur numerik inti
+Total baris anomali  : 10,318 (10.32%) -- minimal 1 dari 3 metode deteksi
+Prioritas investigasi: 3,387 baris (3.39%) -- tier 'Confirmed' atau 'High Confidence'
+
+Tiga metode deteksi digunakan berlapis untuk saling memvalidasi:
+  1. IQR (per kolom, robust terhadap skew; kolom IQR-degenerate seperti
+     loan_term dikecualikan dari flagging -- lihat bagian 2)
+  2. Z-score (per kolom, sensitif ke rentang normal-terdistribusi)
+  3. Isolation Forest (multivariat, menangkap kombinasi nilai janggal)
+Hasil ketiganya di-cross-reference dengan outlier cluster Phase 2
+(KMeans distance-to-centroid & DBSCAN noise) untuk validasi independen.
+
+==============================================================================
+2. METODE STATISTIK -- IQR & Z-SCORE
+------------------------------------------------------------------------------
+Kolom IQR-degenerate (Q1==Q3, dikecualikan dari flagging IQR): ['loan_term']
+  loan_term: 74% baris persis 360 bulan (30 tahun) -- variabel produk,
+  sama seperti temuan Phase 3. Tanpa guard ini, IQR akan menandai SEMUA
+  pinjaman non-360-bulan (15/20/40 tahun, dst.) sebagai 'anomali' palsu.
+
+Top 5 kolom dengan proporsi outlier IQR tertinggi:
+  - income                                  6.31%  (batas: -72.50 s/d 283.50)
+  - tract_to_msa_income_percentage          5.47%  (batas: 11.00 s/d 203.00)
+  - loan_amount                             4.76%  (batas: -260000.00 s/d 740000.00)
+  - rate_spread                             3.62%  (batas: -1.59 s/d 2.35)
+  - origination_charges                     2.70%  (batas: -4304.60 s/d 9827.66)
+
+Efek masking Z-score (kolom di mana IQR menangkap jauh lebih banyak
+outlier daripada Z-score -- tanda outlier ekstrem menggelembungkan std):
+  - income                                 IQR=6.31% vs Z-score=0.01% (gap=6.30pp)
+  - loan_amount                            IQR=4.76% vs Z-score=0.34% (gap=4.42pp)
+  - tract_to_msa_income_percentage         IQR=5.47% vs Z-score=1.10% (gap=4.37pp)
+
+Interpretasi: kolom persentase/bucket yang sudah dibatasi rentangnya
+(debt_to_income_ratio, applicant_age, tract_minority_population_percent)
+menunjukkan 0% outlier pada kedua metode -- konsisten dengan temuan
+Phase 3 bahwa variabel yang secara alami bounded/kategorikal tidak cocok
+diperlakukan sebagai kontinu murni.
+
+==============================================================================
+3. ISOLATION FOREST -- ANOMALI STRUKTURAL
+------------------------------------------------------------------------------
+Fitur yang dipakai (12): loan_amount, income, combined_loan_to_value_ratio, interest_rate, loan_term, debt_to_income_ratio, applicant_age, tract_population, tract_minority_population_percent, tract_to_msa_income_percentage, tract_owner_occupied_units, tract_median_age_of_housing_units
+Contamination rate   : 5% (mengikuti rekomendasi Phase 1: 5-10%)
+Baris ditandai       : 5,000 (5.00%)
+Isolation Forest menangkap kombinasi nilai yang masing-masing tampak
+wajar sendiri-sendiri namun janggal bersama -- pola yang tidak
+terdeteksi oleh IQR/Z-score per kolom. loan_term tetap ikut sebagai fitur
+multivariat di sini (bukan hanya univariat) karena metode ini tidak
+bergantung pada Q1/Q3 sehingga tidak terkena masalah degenerate yang sama.
+
+==============================================================================
+4. CROSS-REFERENCE DENGAN PHASE 2 (CLUSTERING)
+------------------------------------------------------------------------------
+KMeans (K=3, direproduksi persis, random_state=42):
+  - Outlier struktural (5% terjauh dari centroid per cluster): 4,998 baris
+  - Overlap dengan Isolation Forest: 1,641 baris (32.8% dari total IF-flag)
+
+DBSCAN (eps=2.0, min_samples=10, sampel 5.000, seed=42 -- direproduksi persis):
+  - Noise point: 363 dari 5.000 (7.26%)
+    -> cocok dengan laporan Phase 2 (7.26%), mengonfirmasi reproduksibilitas.
+  - Overlap dengan Isolation Forest (pada subset tersampel): 94 (25.9% dari noise DBSCAN)
+
+Interpretasi: overlap yang tidak 100% adalah hal wajar dan diharapkan --
+fitur clustering Phase 2 (auto-selected, nunique>5) didominasi kolom
+geografis-demografis (msa_md, county, tract, ethnicity/race code), BUKAN
+kolom finansial utama (yang tersimpan sebagai string di file asli sehingga
+lolos dari filter dtype numerik Phase 2). Cross-reference ini karena itu
+sengaja membandingkan dua sudut pandang berbeda: anomali finansial
+(Isolation Forest fase ini) vs outlier struktur geografis-demografis
+(cluster Phase 2). Baris yang tertangkap KEDUA sisi (tier 'High
+Confidence') adalah anomali paling meyakinkan karena janggal di dua ruang
+fitur independen sekaligus.
+
+==============================================================================
+5. DISTRIBUSI TIER KEPERCAYAAN ANOMALI
+------------------------------------------------------------------------------
+  High Confidence         :     856 baris ( 0.86%)
+  Confirmed (2 metode)    :   2,531 baris ( 2.53%)
+  Suspected (1 metode)    :   6,931 baris ( 6.93%)
+  Normal                  :  89,676 baris (89.68%)
+
+==============================================================================
+6. TIPOLOGI ANOMALI -- DATA ERROR / RISIKO / KASUS SAH
+------------------------------------------------------------------------------
+(dihitung atas 3,387 baris prioritas: tier Confirmed + High Confidence)
+
+  Unclassified / Manual Review    :  2,853 baris ( 84.2%)
+  Rare Legitimate                 :    331 baris (  9.8%)
+  Data Error                      :    149 baris (  4.4%)
+  Potential Risk Signal           :     54 baris (  1.6%)
+
+a) DATA ERROR
+   Definisi: pelanggaran batas fisik/logis yang mustahil secara bisnis
+   (usia bangunan negatif, LTV > 150% tanpa struktur piggyback wajar,
+   suku bunga <= 0%, tenor > 480 bulan, atau income = 0 dengan pinjaman disetujui).
+   Rekomendasi: kembalikan ke tim entri data / data engineering untuk
+   verifikasi & koreksi sumber, BUKAN untuk underwriting risk review.
+
+b) POTENTIAL RISK SIGNAL
+   Definisi: income rendah (<=Q1 populasi) dikombinasikan pinjaman besar
+   (>=Q3 populasi) DAN leverage tinggi (LTV>=95% atau DTI>=50%), atau
+   rate_spread >= 5 (indikasi higher-priced mortgage / HOEPA-adjacent).
+   Rekomendasi: manual underwriting review & enhanced verification
+   sebelum keputusan persetujuan kredit, sejalan dengan rekomendasi Phase 2
+   untuk kelompok outlier DBSCAN.
+
+c) RARE LEGITIMATE
+   Definisi: income tinggi (>=Q3), LTV rendah (<=60%, uang muka besar),
+   pinjaman besar (>=Q3) -- profil cocok dengan Cluster 2 Phase 2
+   ('High-Net-Worth / Conservative Borrowers').
+   Rekomendasi: TIDAK perlu risk flagging; justru kandidat produk
+   wealth management / priority banking / cross-selling.
+
+d) UNCLASSIFIED / MANUAL REVIEW
+   Definisi: anomali nyata secara statistik & struktural tetapi tidak
+   cocok pola bisnis baku manapun di atas.
+   Rekomendasi: watchlist untuk audit manual per-kasus oleh underwriter;
+   proporsi besar kategori ini realistis -- bukan semua penyimpangan
+   statistik punya penjelasan otomatis, dan itulah tepatnya nilai fase ini:
+   menyempitkan 99.994 baris menjadi watchlist yang bisa diaudit manusia.
+
+==============================================================================
+7. REKOMENDASI BISNIS
+------------------------------------------------------------------------------
+  1. Rujuk 149 baris 'Data Error' ke tim data
+     engineering untuk audit pipeline Phase 1 (kemungkinan kesalahan skala
+     input atau validasi batas yang belum tercakup preprocessing).
+  2. Rujuk 54 baris 'Potential Risk Signal' ke tim
+     underwriting untuk verifikasi manual sebelum persetujuan kredit.
+  3. Manfaatkan 331 baris 'Rare Legitimate' sebagai
+     daftar prospek wealth management / priority banking.
+  4. Masukkan sisa 2,853 baris ke watchlist
+     audit berkala; prioritaskan yang bertumpuk di tier 'High Confidence'.
+  5. File lengkap seluruh baris anomali (skor & tipologi per baris) tersedia
+     di reports/4-anomalies.csv untuk ditindaklanjuti tim terkait.
+
+Gambar analisis:
+  - 4-outlier_boxplots.png     : distribusi & batas IQR per kolom finansial
+  - 4-isolation_forest_scores.png : distribusi skor anomali Isolation Forest
+  - 4-anomaly_crossref.png     : peta income vs loan_amount per tier anomali
+
+==============================================================================
