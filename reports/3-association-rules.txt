@@ -4,12 +4,12 @@ Ringkasan Aturan Asosiasi (Top 10)
 - Jika co_applicant_age_<25, loan_term_bin_15-25thn (menengah) maka derived_dwelling_category_single family (1-4 units):manufactured (support=0.001, confidence=0.864, lift=19.73)
 - Jika derived_dwelling_category_multifamily:site-built maka occupancy_type_3 (support=0.004, confidence=1.000, lift=13.51)
 - Jika conforming_loan_limit_nc, purchaser_type_2 maka loan_type_3 (support=0.001, confidence=0.940, lift=12.53)
+- Jika derived_dwelling_category_multifamily:site-built, interest_rate_bin_3-5% (sedang) maka loan_amount_bin_Non-Conforming (>$647.2k) (support=0.001, confidence=0.749, lift=12.00)
+- Jika derived_dwelling_category_multifamily:site-built, loan_purpose_1 maka loan_amount_bin_Non-Conforming (>$647.2k) (support=0.001, confidence=0.707, lift=11.34)
 - Jika combined_loan_to_value_ratio_bin_95-100% (DP minimal), loan_purpose_32 maka loan_type_3 (support=0.002, confidence=0.804, lift=10.72)
 - Jika preapproval_1, purchaser_type_2 maka combined_loan_to_value_ratio_bin_95-100% (DP minimal) (support=0.001, confidence=0.750, lift=9.77)
 - Jika interest_rate_bin_max 3% (rendah), loan_type_3 maka purchaser_type_2 (support=0.005, confidence=0.726, lift=9.09)
 - Jika debt_to_income_ratio_>60%, derived_dwelling_category_single family (1-4 units):manufactured maka loan_term_bin_15-25thn (menengah) (support=0.004, confidence=0.807, lift=8.09)
-- Jika purchaser_type_2, reverse_mortgage_1 maka loan_purpose_31 (support=0.002, confidence=0.848, lift=6.52)
-- Jika combined_loan_to_value_ratio_bin_max 80% (DP aman), derived_dwelling_category_multifamily:site-built maka loan_term_bin_max 15thn (pendek) (support=0.002, confidence=0.704, lift=5.67)
 =================================================================
 ANALISIS TEKNIK BINNING UNTUK DATA OUTLIER
 =================================================================
@@ -73,6 +73,15 @@ KESIMPULAN & KEPUTUSAN:
     - 80-95% (DP kecil)                 20.6%
     - 95-100% (DP minimal)              11.8%
     - 100-120% (di atas nilai rumah)     2.5%
+  income_bin:
+    - Lower-Income (max $56.6k)         21.6%
+    - Middle-Income ($56.6k-$169.8k)    58.5%
+    - Upper-Income (>$169.8k)           19.9%
+  loan_amount_bin:
+    - Conforming-Kecil (max $150k)      32.1%
+    - Conforming-Sedang ($150k-$300k)   32.5%
+    - Conforming-Besar ($300k-$647.2k)  29.1%
+    - Non-Conforming (>$647.2k)          6.2%
 
 Gambar analisis:
   - 3-binning_per_column.png   : distribusi bin per kolom (income, loan_amount)
@@ -102,33 +111,33 @@ Aturan #4  (support=0.001, confidence=0.940, lift=12.53)
            MAKA pinjaman VA (jaminan Veterans Affairs)
   Bisnis : Pinjaman VA menyasar veteran dan biasanya disekuritisasi via Ginnie Mae; muncul kuat pada plafon di atas batas konvensional (non-conforming).
 
-Aturan #5  (support=0.002, confidence=0.804, lift=10.72)
+Aturan #5  (support=0.001, confidence=0.749, lift=12.00)
+  Pola   : JIKA hunian multifamily (site-built) + suku bunga 3-5% (sedang)
+           MAKA plafon Non-Conforming (>$647.2k)
+  Bisnis : Asosiasi behavioral yang konsisten (lift tinggi) -- pola segmen pasar yang tidak terlihat dari tabulasi atau agregasi sederhana; layak ditindaklanjuti.
+
+Aturan #6  (support=0.001, confidence=0.707, lift=11.34)
+  Pola   : JIKA hunian multifamily (site-built) + tujuan: pembelian rumah
+           MAKA plafon Non-Conforming (>$647.2k)
+  Bisnis : Asosiasi behavioral yang konsisten (lift tinggi) -- pola segmen pasar yang tidak terlihat dari tabulasi atau agregasi sederhana; layak ditindaklanjuti.
+
+Aturan #7  (support=0.002, confidence=0.804, lift=10.72)
   Pola   : JIKA rasio LTV 95-100% (DP minimal) + tujuan: cash-out refinancing
            MAKA pinjaman VA (jaminan Veterans Affairs)
   Bisnis : VA mengizinkan cash-out refinance hingga LTV sangat tinggi (mendekati 100%), kelonggaran yang jarang ada pada kredit konvensional -- daya tarik bagi veteran.
 
-Aturan #6  (support=0.001, confidence=0.750, lift=9.77)
+Aturan #8  (support=0.001, confidence=0.750, lift=9.77)
   Pola   : JIKA dengan preapproval + pinjaman dijual ke Ginnie Mae
            MAKA rasio LTV 95-100% (DP minimal)
   Bisnis : Ginnie Mae hanya mensekuritisasi program pemerintah (FHA/VA/USDA) yang memang dirancang untuk uang muka minimal -- wajar rasio LTV-nya menumpuk di kisaran 95-100%.
 
-Aturan #7  (support=0.005, confidence=0.726, lift=9.09)
+Aturan #9  (support=0.005, confidence=0.726, lift=9.09)
   Pola   : JIKA suku bunga max 3% (rendah) + pinjaman VA (jaminan Veterans Affairs)
            MAKA pinjaman dijual ke Ginnie Mae
   Bisnis : Pinjaman VA hampir selalu berakhir di Ginnie Mae -- penjamin utama sekuritas KPR program pemerintah (VA/FHA).
 
-Aturan #8  (support=0.004, confidence=0.807, lift=8.09)
+Aturan #10  (support=0.004, confidence=0.807, lift=8.09)
   Pola   : JIKA DTI >60% + rumah manufactured (1-4 unit)
            MAKA tenor 15-25thn (menengah)
   Bisnis : Kredit rumah manufactured umumnya bertenor lebih pendek dari 30 tahun standar -- plafonnya kecil dan sebagian berbentuk chattel loan (kredit barang bergerak), bukan KPR penuh; DTI tinggi memperkuat pola ini.
-
-Aturan #9  (support=0.002, confidence=0.848, lift=6.52)
-  Pola   : JIKA pinjaman dijual ke Ginnie Mae + produk reverse mortgage
-           MAKA tujuan: refinancing
-  Bisnis : Reverse mortgage kerap muncul dalam konteks refinancing -- mengonversi ekuitas rumah menjadi dana tunai bagi pemilik lansia.
-
-Aturan #10  (support=0.002, confidence=0.704, lift=5.67)
-  Pola   : JIKA rasio LTV max 80% (DP aman) + hunian multifamily (site-built)
-           MAKA tenor max 15thn (pendek)
-  Bisnis : Kredit multifamily/komersial umumnya bertenor lebih pendek dibanding KPR rumah tinggal yang lazim bertenor 30 tahun.
 
