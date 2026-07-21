@@ -31,16 +31,16 @@ try:
     
     # Translate to very simple business language but keep financial terms
     business_rules = [
-        {"kondisi": "KPR kedua (Piggyback/HELOC) dari investor swasta", "hasil": "Utang melampaui nilai rumah (LTV > 100%)", "insight": "Pinjaman kedua (piggyback/HELOC) mendorong total utang melewati nilai rumah. Karena tidak memenuhi syarat Fannie/Freddie, pinjaman berisiko tinggi ini dijual ke pembeli non-GSE.", "lift": 38.02, "risk": "high"},
-        {"kondisi": "Nasabah muda (di bawah 25 tahun) + cicilan menengah", "hasil": "Memilih properti Manufactured Housing", "insight": "Rumah manufactured (pabrikan) adalah jalur kepemilikan rumah termurah, sering dipilih pemohon muda atau berpendapatan rendah sebagai segmen entry-level.", "lift": 19.73, "risk": "medium"},
-        {"kondisi": "Pembelian properti tipe Multifamily (Apartemen/Kos)", "hasil": "Ditujukan untuk investasi atau bisnis sewa", "insight": "Properti multifamily hampir selalu untuk investasi/disewakan, bukan ditempati pemilik. Ini menandai segmen landlord/investor properti.", "lift": 13.51, "risk": "low"},
-        {"kondisi": "Pinjaman Jumbo (Non-Conforming) + jaminan pemerintah", "hasil": "Berasal dari program VA Loan (Veteran)", "insight": "Pinjaman VA menyasar veteran dan biasanya disekuritisasi via Ginnie Mae. Muncul kuat pada plafon di atas batas konvensional.", "lift": 12.53, "risk": "low"},
-        {"kondisi": "Properti Multifamily + bunga sedang (3-5%)", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "insight": "Pola segmen pasar yang tidak terlihat dari tabulasi sederhana: investor multifamily konsisten mengambil pinjaman besar dengan bunga standar.", "lift": 12.00, "risk": "medium"},
-        {"kondisi": "Pembelian rumah baru tipe Multifamily", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "insight": "Pembelian properti multifamily baru secara konsisten membutuhkan plafon di atas batas konvensional, menunjukkan segmen investor yang aktif.", "lift": 11.34, "risk": "medium"},
-        {"kondisi": "Uang muka nyaris 0% (LTV 95-100%) + Cash-out Refinance", "hasil": "Menggunakan fasilitas VA Loan (Veteran)", "insight": "VA mengizinkan cash-out refinance hingga LTV sangat tinggi (mendekati 100%), kelonggaran yang jarang ada pada kredit konvensional.", "lift": 10.72, "risk": "high"},
-        {"kondisi": "Pre-Approval + didukung Ginnie Mae", "hasil": "Uang muka sangat minim (LTV 95-100%)", "insight": "Ginnie Mae hanya mensekuritisasi program pemerintah (FHA/VA/USDA) yang memang dirancang untuk uang muka minimal.", "lift": 9.77, "risk": "low"},
-        {"kondisi": "VA Loan (Veteran) + bunga rendah (di bawah 3%)", "hasil": "Disokong program penjaminan Ginnie Mae", "insight": "Pinjaman VA hampir selalu berakhir di Ginnie Mae sebagai penjamin utama sekuritas KPR program pemerintah.", "lift": 9.09, "risk": "low"},
-        {"kondisi": "DTI di atas 60% + rumah Manufactured Housing", "hasil": "Tenor pinjaman lebih pendek (15-25 tahun)", "insight": "Kredit rumah manufactured umumnya bertenor lebih pendek karena plafonnya kecil dan sebagian berbentuk chattel loan. DTI tinggi memperkuat pola ini.", "lift": 8.09, "risk": "high"}
+        {"kondisi": "KPR kedua (Piggyback/HELOC) dari investor swasta", "hasil": "Utang melampaui nilai rumah (LTV > 100%)", "peluang_bisnis": "Tawarkan program konsolidasi utang (Debt Consolidation) dengan suku bunga tetap khusus atau produk asuransi kredit tambahan (credit insurance) untuk melindungi nasabah dan memitigasi risiko kredit macet bagi bank.", "lift": 38.02, "risk": "high"},
+        {"kondisi": "Nasabah muda (di bawah 25 tahun) + cicilan menengah", "hasil": "Memilih properti Manufactured Housing", "peluang_bisnis": "Luncurkan paket pembiayaan KPR mikro khusus 'Rumah Pertama Generasi Muda' untuk Manufactured Housing dengan uang muka fleksibel dan opsi cicilan progresif guna menarik pasar nasabah pemula (first-time buyers).", "lift": 19.73, "risk": "medium"},
+        {"kondisi": "Pembelian properti tipe Multifamily (Apartemen/Kos)", "hasil": "Ditujukan untuk investasi atau bisnis sewa", "peluang_bisnis": "Buat produk KPR Investasi Properti Komersial dengan fitur cross-selling asuransi properti sewa dan integrasi layanan pengelolaan kas (cash management) untuk membantu investor/landlord mengelola arus kas sewa mereka.", "lift": 13.51, "risk": "low"},
+        {"kondisi": "Pinjaman Jumbo (Non-Conforming) + jaminan pemerintah", "hasil": "Berasal dari program VA Loan (Veteran)", "peluang_bisnis": "Mengembangkan kampanye pemasaran KPR Jumbo khusus Veteran (VA Jumbo Loan) dengan suku bunga bersaing dan biaya administrasi rendah untuk merebut pangsa pasar nasabah pensiunan militer/veteran bernilai tinggi.", "lift": 12.53, "risk": "low"},
+        {"kondisi": "Properti Multifamily + bunga sedang (3-5%)", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "peluang_bisnis": "Desain paket bundling investasi properti komersial yang menggabungkan KPR plafon besar (> $647K) dengan bunga tetap menengah serta fasilitas kredit modal kerja untuk renovasi atau perawatan properti multifamily.", "lift": 12.00, "risk": "medium"},
+        {"kondisi": "Pembelian rumah baru tipe Multifamily", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "peluang_bisnis": "Jalin kemitraan eksklusif (partnership) dengan pengembang (developer) apartemen atau ruko baru untuk menawarkan skema KPR Jumbo Investor instan di lokasi-lokasi strategis yang sedang berkembang.", "lift": 11.34, "risk": "medium"},
+        {"kondisi": "Uang muka nyaris 0% (LTV 95-100%) + Cash-out Refinance", "hasil": "Menggunakan fasilitas VA Loan (Veteran)", "peluang_bisnis": "Tawarkan produk tabungan atau investasi tambahan (cross-selling) kepada nasabah veteran yang melakukan cash-out refinance untuk membantu mereka menaruh dana segar hasil refinance tersebut ke dalam portofolio investasi yang aman.", "lift": 10.72, "risk": "high"},
+        {"kondisi": "Pre-Approval + didukung Ginnie Mae", "hasil": "Uang muka sangat minim (LTV 95-100%)", "peluang_bisnis": "Optimalkan layanan 'Instant Pre-Approval' berbasis digital khusus untuk segmen program pemerintah guna mempermudah pembeli rumah pertama berpendapatan rendah mendapatkan persetujuan KPR secara cepat.", "lift": 9.77, "risk": "low"},
+        {"kondisi": "VA Loan (Veteran) + bunga rendah (di bawah 3%)", "hasil": "Disokong program penjaminan Ginnie Mae", "peluang_bisnis": "Gunakan sekuritisasi Ginnie Mae untuk mendanai KPR berbiaya rendah secara berkelanjutan, sekaligus menawarkan kartu kredit atau asuransi kendaraan khusus veteran (VA-tailored products) kepada nasabah ini.", "lift": 9.09, "risk": "low"},
+        {"kondisi": "DTI di atas 60% + rumah Manufactured Housing", "hasil": "Tenor pinjaman lebih pendek (15-25 tahun)", "peluang_bisnis": "Tawarkan jasa pendampingan konsolidasi utang atau program perbaikan skor kredit bagi nasabah DTI tinggi ini, seraya membatasi tenor KPR mereka untuk mempercepat pelunasan dan menekan risiko default.", "lift": 8.09, "risk": "high"}
     ]
 except Exception as e:
     business_rules = []
@@ -48,7 +48,16 @@ except Exception as e:
 
 try:
     df_anomalies = pd.read_csv(anomalies_path)
-    anomaly_counts = df_anomalies['typology'].value_counts().reset_index()
+    
+    # Tier mapping
+    tier_counts = df_anomalies['tier'].value_counts().reset_index()
+    tier_counts.columns = ['Tier', 'Jumlah']
+    
+    # Filter only priority rows (Confirmed + High Confidence) for typology breakdown
+    priority_tiers = ['Confirmed (2 metode)', 'High Confidence']
+    df_priority = df_anomalies[df_anomalies['tier'].isin(priority_tiers)]
+    
+    anomaly_counts = df_priority['typology'].value_counts().reset_index()
     anomaly_counts.columns = ['Tipologi', 'Jumlah']
     
     # Translate typology to simple words
@@ -61,7 +70,9 @@ try:
     anomaly_counts['Tipologi_Indo'] = anomaly_counts['Tipologi'].map(tipologi_map)
 except Exception as e:
     df_anomalies = pd.DataFrame()
+    df_priority = pd.DataFrame()
     anomaly_counts = pd.DataFrame()
+    tier_counts = pd.DataFrame()
     print(f"Error loading anomalies: {e}")
 
 try:
@@ -82,50 +93,159 @@ except Exception as e:
 
 def create_header():
     return html.Div(className="dashboard-header", children=[
-        html.H1("Insight Komunikator: Pasar KPR 2022"),
-        html.P("Mengungkap pola tersembunyi, segmentasi nasabah, dan deteksi risiko dari 100.000 data pengajuan Kredit Pemilikan Rumah (HMDA 2022).")
+        html.H1("Insight Komunikator: HMDA 2022"),
     ])
 
 def tab_1_executive():
     return html.Div(className="tab-content", children=[
+        html.Div("HMDA 2022 ", className="section-title"),
+        html.P("Analisis dataset pengajuan Kredit Pemilikan Rumah (KPR) dari institusi keuangan AS yang dilaporkan di bawah payung regulasi federal HMDA (Home Mortgage Disclosure Act). Kami telah menyaring dan membersihkan data mentahnya agar siap memberikan insight bisnis yang tajam.", className="mb-4 text-muted"),
+        
+        # --- BARIS 1: Metrik Utama ---
         dbc.Row([
-            dbc.Col(html.Div(className="glass-card metric-card", children=[
-                html.Div("Total Pengajuan KPR", className="metric-title"),
-                html.Div("99.994", className="metric-value")
-            ]), width=3),
-            dbc.Col(html.Div(className="glass-card metric-card", children=[
-                html.Div("Segmen Pasar Utama", className="metric-title"),
-                html.Div("3", className="metric-value"),
-                html.Div("Kelompok Nasabah Berbeda", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
-            ]), width=3),
-            dbc.Col(html.Div(className="glass-card metric-card", children=[
-                html.Div("Pola Perilaku Unik", className="metric-title"),
-                html.Div("10", className="metric-value"),
-                html.Div("Temuan Tersembunyi", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
-            ]), width=3),
-            dbc.Col(html.Div(className="glass-card metric-card", children=[
-                html.Div("Deteksi Pengajuan Berisiko", className="metric-title"),
-                html.Div("3.301", className="metric-value", style={'color': '#f43f5e'}),
-                html.Div("Kasus Perlu Perhatian", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
-            ]), width=3),
+            dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
+                html.Div("Data Mentah", className="metric-title"),
+                html.Div("100.000", className="metric-value"),
+                html.Div("Pengajuan", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=2),
+            dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
+                html.Div("Data Siap Analisis", className="metric-title"),
+                html.Div("99.994", className="metric-value", style={'color': '#10b981'}),
+                html.Div("Setelah Hapus Duplikat", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=2),
+            dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
+                html.Div("Kolom Mentah", className="metric-title"),
+                html.Div("99", className="metric-value"),
+                html.Div("Variabel", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=2),
+            dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
+                html.Div("Kolom Dipakai", className="metric-title"),
+                html.Div("56", className="metric-value", style={'color': '#3b82f6'}),
+                html.Div("Fitur Terpenting", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=2),
+            dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
+                html.Div("Data Kosong Awal", className="metric-title"),
+                html.Div("2,85 Juta", className="metric-value", style={'color': '#f59e0b'}),
+                html.Div("Sel yang Kosong", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=2),
+            dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
+                html.Div("Data Kosong Akhir", className="metric-title"),
+                html.Div("0", className="metric-value", style={'color': '#10b981'}),
+                html.Div("100% Terisi (Imputed)", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=2),
         ], className="mb-4"),
         
+        # --- BARIS 2: Profil Finansial ---
+        html.H4("Profil Finansial Nasabah", className="mb-3 mt-5", style={'color': 'var(--accent-blue)'}),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
+                html.H5("Nilai Pinjaman (Loan)", className="mb-3", style={'color': 'var(--text-secondary)'}),
+                html.Div("$204K", className="stat-highlight", style={'color': '#3b82f6'}),
+                html.Div("Rata-rata", className="small text-muted mb-2"),
+                html.Div("Median: $175K", className="small mb-1"),
+                html.Div("Range: $5K - $1.5M", className="small text-muted")
+            ]), width=3),
+            dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
+                html.H5("Pendapatan (Income)", className="mb-3", style={'color': 'var(--text-secondary)'}),
+                html.Div("$95K", className="stat-highlight", style={'color': '#10b981'}),
+                html.Div("Rata-rata / Tahun", className="small text-muted mb-2"),
+                html.Div("Median: $65K", className="small mb-1"),
+                html.Div("Range: $1K - $774K", className="small text-muted")
+            ]), width=3),
+            dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
+                html.H5("Suku Bunga (Interest)", className="mb-3", style={'color': 'var(--text-secondary)'}),
+                html.Div("4,12%", className="stat-highlight", style={'color': '#f97316'}),
+                html.Div("Rata-rata", className="small text-muted mb-2"),
+                html.Div("Median: 4.00%", className="small mb-1"),
+                html.Div("Range: 0% - 10,45%", className="small text-muted")
+            ]), width=3),
+            dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
+                html.H5("Utang vs Nilai Rumah", className="mb-3", style={'color': 'var(--text-secondary)'}),
+                html.Div("68,5%", className="stat-highlight", style={'color': '#f43f5e'}),
+                html.Div("Rata-rata LTV", className="small text-muted mb-2"),
+                html.Div("Median: 75%", className="small mb-1"),
+                html.Div("Lebih rendah = Lebih aman", className="small text-muted")
+            ]), width=3),
+        ], className="mb-4"),
+
+        # --- BARIS 3: Komposisi ---
+        html.H4("Siapa Saja yang Mengajukan KPR?", className="mb-3 mt-5", style={'color': 'var(--accent-teal)'}),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card h-100", children=[
-                html.H3("Apa yang kita pelajari dari data mentah?"),
-                html.Div(className="insight-item", children=[
-                    html.Div("1. Pasar KPR Punya 3 Kelompok Berbeda", className="insight-title"),
-                    html.Div("Pelanggan kita tidaklah sama secara finansial. Mereka terbagi menjadi 3 segmen utama yang strategi pembiayaan dan toleransi leverage-nya benar-benar berbeda. Ada yang sangat konservatif, ada yang agresif memaksimalkan leverage.", className="insight-desc")
+                html.H5("Tipe Produk KPR", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Konvensional"), html.Strong("42,3%")]),
+                html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
+                    html.Div(className="progress-bar", style={'width': '42.3%', 'backgroundColor': '#3b82f6'})
                 ]),
-                html.Div(className="insight-item", children=[
-                    html.Div("2. Perilaku Tersembunyi Nasabah", className="insight-title"),
-                    html.Div("Kami menemukan kebiasaan perilaku yang spesifik. Misalnya, korelasi kuat antara usia pemohon yang sangat muda dengan pemilihan Manufactured Housing. Hal seperti ini tidak selalu terlihat dalam laporan agregasi standar.", className="insight-desc")
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("FHA (Pemerintah)"), html.Strong("28,2%")]),
+                html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
+                    html.Div(className="progress-bar", style={'width': '28.2%', 'backgroundColor': '#10b981'})
                 ]),
-                html.Div(className="insight-item", children=[
-                    html.Div("3. Ribuan Data Berbahaya Lolos dari Sistem Standar", className="insight-title"),
-                    html.Div("Sistem deteksi standar tidak cukup. Kami menemukan ribuan pengajuan di mana komponen seperti gaji, LTV, dan suku bunga secara mandiri tampak normal, tetapi kombinasinya mengindikasikan sinyal risiko yang tinggi.", className="insight-desc")
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("VA (Veteran)"), html.Strong("19,2%")]),
+                html.Div(className="progress mb-0", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
+                    html.Div(className="progress-bar", style={'width': '19.2%', 'backgroundColor': '#f59e0b'})
+                ])
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H5("Tujuan Pinjaman", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Pembelian Rumah Baru"), html.Strong("45,2%")]),
+                html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
+                    html.Div(className="progress-bar", style={'width': '45.2%', 'backgroundColor': '#8b5cf6'})
                 ]),
-            ]), width=12)
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Refinancing (KPR Ulang)"), html.Strong("42,1%")]),
+                html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
+                    html.Div(className="progress-bar", style={'width': '42.1%', 'backgroundColor': '#ec4899'})
+                ]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Perbaikan Rumah"), html.Strong("12,7%")]),
+                html.Div(className="progress mb-0", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
+                    html.Div(className="progress-bar", style={'width': '12.7%', 'backgroundColor': '#14b8a6'})
+                ])
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H5("Jenis Kelamin", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
+                html.Div(className="d-flex justify-content-center align-items-center h-100", children=[
+                    html.Div(className="text-center me-4", children=[
+                        html.H3("52,3%", style={'color': '#3b82f6', 'marginBottom': '5px'}),
+                        html.Span("Pria", className="text-muted")
+                    ]),
+                    html.Div(style={'width': '1px', 'height': '40px', 'backgroundColor': 'rgba(255,255,255,0.2)'}),
+                    html.Div(className="text-center ms-4", children=[
+                        html.H3("47,7%", style={'color': '#ec4899', 'marginBottom': '5px'}),
+                        html.Span("Wanita", className="text-muted")
+                    ])
+                ])
+            ]), width=4),
+        ], className="mb-4"),
+
+        # --- BARIS 4: Proses Pembersihan ---
+        html.H4("Proses Pembersihan Data (Data Preprocessing Pipeline)", className="mb-3 mt-5", style={'color': 'var(--text-secondary)'}),
+        dbc.Row([
+            dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("1. Data Mentah"), html.Br(), html.Span("100.000 Baris", className="small text-muted")]), width=2),
+            dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
+            dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("2. Buang Kolom"), html.Br(), html.Span("Hapus data ambigu/bocor", className="small text-muted")]), width=2),
+            dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
+            dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("3. Hapus Duplikat"), html.Br(), html.Span("6 baris identik dihapus", className="small text-muted")]), width=2),
+            dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
+            dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("4. Isi Data Kosong"), html.Br(), html.Span("100% Imputasi Sukses", className="small text-muted")]), width=2),
+            dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
+            dbc.Col(html.Div(className="pipeline-step", style={'borderColor': '#10b981'}, children=[html.Strong("5. Data Siap Pakai", style={'color': '#10b981'}), html.Br(), html.Span("Kualitas Data 98%", className="small text-muted")]), width=2),
+        ], className="align-items-center mb-5", style={'justifyContent': 'center'}),
+        
+        # --- BARIS 5: Ringkasan Temuan ---
+        html.H4("3 Ringkasan Temuan Proyek", className="mb-3", style={'color': 'var(--text-secondary)'}),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.Div("1. Tiga Kelompok Pasar Utama", className="insight-title", style={'color': '#3b82f6'}),
+                html.Div("Nasabah kita tidaklah sama. Sistem AI membagi mereka menjadi 3 segmen besar dengan strategi meminjam yang sangat berbeda, dari yang super aman hingga yang sangat berisiko.", className="insight-desc")
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.Div("2. Pola Bisnis Tersembunyi", className="insight-title", style={'color': '#10b981'}),
+                html.Div("Kami menemukan kebiasaan nasabah yang tak kasat mata. Contohnya, ada ceruk pasar besar pada anak muda bergaji rendah yang selalu menyasar properti siap rakit (Manufactured Housing).", className="insight-desc")
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.Div("3. Deteksi Otomatis Kasus Berisiko", className="insight-title", style={'color': '#f43f5e'}),
+                html.Div("Sistem kami menemukan 3.301 kasus pengajuan yang secara individual angkanya tampak normal, tapi saat digabungkan mengindikasikan sinyal risiko yang tinggi dan perlu ditinjau manusia.", className="insight-desc")
+            ]), width=4)
         ])
     ])
 
@@ -412,8 +532,8 @@ def tab_arm_visualization():
                     ], className="mb-2 small", style={'color': '#5eead4'}),
                     html.Hr(style={'borderColor': 'rgba(255,255,255,0.08)', 'margin': '8px 0'}),
                     html.P([
-                        html.Span("Insight: ", style={'fontWeight': '600'}),
-                        rule['insight']
+                        html.Span("Analisis Peluang Bisnis: ", style={'color': '#38bdf8', 'fontWeight': '600'}),
+                        rule['peluang_bisnis']
                     ], className="mb-0 small text-muted")
                 ]),
                 width=6
@@ -590,26 +710,56 @@ def tab_4_anomalies():
             orientation='h',
             color='Tipologi',
             color_discrete_map={
-                'Perlu Tinjauan Manual (Anomali)': '#f97316',
-                'Profil Konservatif (Leverage Rendah)': '#10b981',
-                'Data Error (Mustahil Secara Fisik/Logika)': '#ef4444',
-                'Sinyal Risiko Kredit Tinggi': '#f59e0b'
-            }
+                'Unclassified / Manual Review': '#f97316',
+                'Rare Legitimate': '#10b981',
+                'Data Error': '#ef4444',
+                'Potential Risk Signal': '#f59e0b'
+            },
+            text='Jumlah'
         )
         fig_bar.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc'),
+            font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
             showlegend=False,
             margin=dict(l=20, r=20, t=20, b=20)
         )
         fig_bar.update_yaxes(title="")
+        fig_bar.update_traces(texttemplate='%{text}', textposition='outside')
     else:
         fig_bar = go.Figure()
 
+    # Donut chart untuk tier
+    if not tier_counts.empty:
+        # Susun urutan dan warna
+        tier_order = ['Normal', 'Suspected (1 metode)', 'Confirmed (2 metode)', 'High Confidence']
+        tier_colors = ['#334155', '#3b82f6', '#f59e0b', '#ef4444']
+        
+        fig_tier = go.Figure(data=[go.Pie(
+            labels=tier_counts['Tier'],
+            values=tier_counts['Jumlah'],
+            hole=.6,
+            marker_colors=[
+                '#ef4444' if t == 'High Confidence' else 
+                '#f59e0b' if t == 'Confirmed (2 metode)' else 
+                '#3b82f6' if t == 'Suspected (1 metode)' else '#334155' 
+                for t in tier_counts['Tier']
+            ],
+            textinfo='percent'
+        )])
+        fig_tier.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#f8fafc'),
+            margin=dict(t=20, b=20, l=20, r=20),
+            legend=dict(orientation='h', yanchor='bottom', y=-0.3, xanchor='center', x=0.5),
+            annotations=[dict(text='<b>Deteksi<br>Berlapis</b>', x=0.5, y=0.5, font_size=14, showarrow=False, font_color='#f8fafc')]
+        )
+    else:
+        fig_tier = go.Figure()
+
     # Outlier Scatter Plot: tampilkan posisi anomali vs data normal
     fig_outlier = go.Figure()
-    if not df_raw.empty and not df_anomalies.empty:
+    if not df_raw.empty and not df_priority.empty:
         normal_sample = df_raw[['loan_amount', 'income']].dropna().sample(min(800, len(df_raw)))
         fig_outlier.add_trace(go.Scatter(
             x=normal_sample['income'], y=normal_sample['loan_amount'],
@@ -617,7 +767,8 @@ def tab_4_anomalies():
             marker=dict(color='rgba(148,163,184,0.3)', size=5),
             hovertemplate='Income: %{x}<br>Loan: %{y}<extra></extra>'
         ))
-        outlier_sample = df_anomalies[['income', 'loan_amount', 'typology']].dropna().head(400)
+        # Hanya plot prioritas
+        outlier_sample = df_priority[['income', 'loan_amount', 'typology']].dropna().head(400)
         color_map = {'Potential Risk Signal': '#f59e0b', 'Data Error': '#ef4444', 'Rare Legitimate': '#10b981', 'Unclassified / Manual Review': '#f97316'}
         for typ, grp in outlier_sample.groupby('typology'):
             fig_outlier.add_trace(go.Scatter(
@@ -636,40 +787,99 @@ def tab_4_anomalies():
     )
 
     return html.Div(className="tab-content", children=[
-        html.Div("Deteksi 3.301 Kasus Prioritas Tinggi (Dari 100.000 Pengajuan)", className="section-title"),
-        html.P("Sistem AI mendeteksi kasus-kasus aneh menggunakan metode berlapis. Ini bukan berarti pengajuan mereka ditolak, tetapi sangat direkomendasikan untuk ditinjau oleh manusia."),
+        html.Div("Sistem Peringatan Dini: Deteksi Kasus Tidak Wajar (Anomali)", className="section-title"),
+        html.P("Dari 99.994 pengajuan kredit, sistem AI mendeteksi kasus-kasus aneh yang berpotensi menjadi risiko kredit atau error data. Kasus ini disaring melalui 3 metode pengawasan cerdas.", className="mb-4 text-muted"),
         
+        # --- BARIS 1: Metrik Proses ---
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card metric-card", children=[
+                html.Div("Total Anomali Ditemukan", className="metric-title"),
+                html.Div("12.217", className="metric-value")
+            ]), width=3),
+            dbc.Col(html.Div(className="glass-card metric-card", style={'borderColor': '#f43f5e', 'boxShadow': '0 0 10px rgba(244,63,94,0.1)'}, children=[
+                html.Div("Prioritas Tinggi (Confirmed/HC)", className="metric-title", style={'color': '#f43f5e'}),
+                html.Div("3.301", className="metric-value", style={'color': '#f43f5e'}),
+                html.Div("Kasus Paling Janggal", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=3),
+            dbc.Col(html.Div(className="glass-card metric-card", children=[
+                html.Div("Metode Pengawasan", className="metric-title"),
+                html.Div("3 Lapis", className="metric-value", style={'color': '#38bdf8'}),
+                html.Div("IQR, Z-Score, Isolation Forest", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+            ]), width=6),
+        ], className="mb-4"),
+
+        # --- BARIS 2: Cara Kerja & Tier ---
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H4("Tingkat Kepercayaan Sistem (Tier)"),
+                html.P("Semakin banyak metode yang menangkap kejanggalan, semakin tinggi prioritas kasus tersebut.", className="small text-muted mb-2"),
+                dcc.Graph(figure=fig_tier, config={'displayModeBar': False}, style={'height': '300px'})
+            ]), width=5),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H4("Bagaimana Sistem Menangkap Anomali?"),
+                html.P("Kasus tidak hanya ditolak karena satu angka aneh, tetapi dianalisis dari berbagai sisi secara bersamaan:", className="small text-muted mb-3"),
+                
+                html.Div(className="mb-3", children=[
+                    html.Strong("1. Filter IQR (Kewajaran Nilai)", style={'color': '#38bdf8'}),
+                    html.P("Melihat batas normal nilai tiap bagian, misalnya gaji terlalu ekstrem.", className="small text-muted mb-1")
+                ]),
+                html.Div(className="mb-3", children=[
+                    html.Strong("2. Z-Score (Distribusi Ekstrem)", style={'color': '#10b981'}),
+                    html.P("Mendeteksi angka yang benar-benar mustahil secara statistik normal.", className="small text-muted mb-1")
+                ]),
+                html.Div(className="mb-3", children=[
+                    html.Strong("3. Isolation Forest (Anomali Kombinasi)", style={'color': '#f59e0b'}),
+                    html.P("Menangkap kombinasi aneh. Misalnya: Gaji tampak wajar, hutang tampak wajar, tapi jika digabung (gaji kecil berhutang besar), AI akan menangkapnya.", className="small text-muted mb-0")
+                ])
+            ]), width=7),
+        ], className="mb-4"),
+        
+        # --- BARIS 3: Visualisasi Utama ---
+        html.Div("Peta Kasus Prioritas (3.301 Kasus High Confidence & Confirmed)", className="section-title mt-4"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4 h-100", children=[
-                html.H4("Posisi Nasabah Anomali vs Normal"),
-                html.P("Titik berwarna = anomali yang terdeteksi. Abu-abu = data normal. Terlihat jelas anomali berada di luar pola umum.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, style={'height': '450px'})
+                html.H4("Posisi 3.301 Nasabah Paling Janggal vs Normal"),
+                html.P("Titik berwarna adalah kasus prioritas. Titik abu-abu adalah data normal. Terlihat jelas anomali berada di luar pola umum.", className="small text-muted mb-2"),
+                dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, style={'height': '420px'})
             ]), width=7),
             dbc.Col(html.Div(className="glass-card h-100", children=[
-                html.H4("Pengelompokan Kasus Tidak Wajar"),
-                dcc.Graph(figure=fig_bar, config={'displayModeBar': False}, style={'height': '450px'})
+                html.H4("Pengelompokan Jenis Kasus Prioritas"),
+                dcc.Graph(figure=fig_bar, config={'displayModeBar': False}, style={'height': '420px'})
             ]), width=5),
         ], className="mb-4"),
         
+        # --- BARIS 4: Tipologi ---
         dbc.Row([
             dbc.Col(html.Div(className="d-flex flex-column gap-3", children=[
-                html.Div(className="glass-card", children=[
-                    html.H5(html.Span("Sinyal Risiko Kredit Tinggi (76 Kasus)", className="badge badge-high-risk")),
-                    html.P("Pendapatan rendah dikombinasikan dengan pinjaman Jumbo dan leverage yang agresif. Saran: Underwriting review secara manual sangat direkomendasikan.", className="small")
+                html.Div(className="glass-card", style={'borderLeft': '4px solid #f59e0b'}, children=[
+                    html.H5("Sinyal Risiko Kredit Tinggi (76 Kasus)", className="mb-2", style={'color': '#f59e0b'}),
+                    html.P(html.B("Definisi:"), className="small mb-1"),
+                    html.P("Pendapatan rendah (di bawah rata-rata) dikombinasikan dengan pinjaman Jumbo (sangat besar) dan leverage/utang yang sangat agresif.", className="small text-muted mb-2"),
+                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                    html.P("Kirim ke tim Underwriting untuk verifikasi manual secara mendalam (enhanced verification) sebelum persetujuan kredit.", className="small mb-0")
                 ]),
-                html.Div(className="glass-card", children=[
-                    html.H5(html.Span("Data Error (179 Kasus)", className="badge badge-high-risk")),
-                    html.P("Nilai finansial yang melanggar batas fisik/logika (Misal: Suku bunga 0% atau LTV > 150%). Saran: Eskalasi ke tim Data Engineering untuk koreksi.", className="small")
+                html.Div(className="glass-card", style={'borderLeft': '4px solid #ef4444'}, children=[
+                    html.H5("Data Error (179 Kasus)", className="mb-2", style={'color': '#ef4444'}),
+                    html.P(html.B("Definisi:"), className="small mb-1"),
+                    html.P("Nilai finansial yang melanggar batas fisik/logika bisnis. Misalnya: Suku bunga 0% atau rasio utang vs nilai rumah (LTV) > 150%.", className="small text-muted mb-2"),
+                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                    html.P("Kembalikan ke tim Data Engineering (Bukan ke analis risiko) untuk koreksi pada sistem penginputan aplikasi kredit.", className="small mb-0")
                 ]),
             ]), width=6),
             dbc.Col(html.Div(className="d-flex flex-column gap-3", children=[
-                html.Div(className="glass-card", children=[
-                    html.H5(html.Span("Profil Konservatif / Prospek (372 Kasus)", className="badge badge-low-risk")),
-                    html.P("Anomali yang muncul dari nasabah Ultra High-Net-Worth yang memiliki rasio leverage sangat rendah. Saran: Prospek ideal untuk Wealth Management.", className="small")
+                html.Div(className="glass-card", style={'borderLeft': '4px solid #10b981'}, children=[
+                    html.H5("Profil Konservatif / Prospek (372 Kasus)", className="mb-2", style={'color': '#10b981'}),
+                    html.P(html.B("Definisi:"), className="small mb-1"),
+                    html.P("Nasabah sangat kaya (Ultra High-Net-Worth) namun mengambil pinjaman yang sangat kecil dengan uang muka raksasa.", className="small text-muted mb-2"),
+                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                    html.P("JANGAN tandai sebagai risiko. Jadikan daftar ini sebagai prospek target (leads) untuk produk Priority Banking atau Wealth Management.", className="small mb-0")
                 ]),
-                html.Div(className="glass-card", children=[
-                    html.H5(html.Span("Perlu Tinjauan Manual (2.674 Kasus)", className="badge badge-medium-risk")),
-                    html.P("Penyimpangan data yang terdeteksi oleh sistem anomali namun butuh audit manusia untuk validasi. Saran: Masukkan ke daftar pantauan audit internal.", className="small")
+                html.Div(className="glass-card", style={'borderLeft': '4px solid #f97316'}, children=[
+                    html.H5("Perlu Tinjauan Manual (2.674 Kasus)", className="mb-2", style={'color': '#f97316'}),
+                    html.P(html.B("Definisi:"), className="small mb-1"),
+                    html.P("Anomali nyata secara statistik kombinasi (AI) tetapi tidak masuk ke dalam kotak risiko standar.", className="small text-muted mb-2"),
+                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                    html.P("Masukkan ke daftar pantauan audit (watchlist). Underwriter dapat menggunakan daftar ini untuk audit keamanan internal secara berkala.", className="small mb-0")
                 ])
             ]), width=6)
         ])

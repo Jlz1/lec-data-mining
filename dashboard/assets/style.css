@@ -216,3 +216,32 @@ h1, h2, h3, h4, h5, h6 {
     color: #6ee7b7;
     border: 1px solid rgba(16, 185, 129, 0.3);
 }
+
+.pipeline-step {
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.pipeline-step:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+.pipeline-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-teal);
+    font-size: 1.5rem;
+}
+.stat-highlight {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-family: var(--font-heading);
+}

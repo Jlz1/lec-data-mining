@@ -70,31 +70,32 @@ Sistem ARM menganalisis ratusan kombinasi atribut dari 99.994 pengajuan dan mene
 **JIKA** nasabah mengambil KPR kedua (Piggyback/HELOC) dari investor swasta  
 **MAKA** total utangnya hampir pasti akan melampaui nilai rumah yang dibeli (LTV > 100%)
 
-> **Dampak Bisnis:** Sinyal risiko serius. Nasabah dengan profil ini secara matematis sudah "negatif ekuitas" sejak hari pertama. Tanpa deteksi dini, kasus seperti ini bisa berujung pada kredit macet besar.
+> **Analisis Peluang Bisnis:** Tawarkan program konsolidasi utang (Debt Consolidation) dengan suku bunga tetap khusus atau produk asuransi kredit tambahan (credit insurance) untuk melindungi nasabah dan memitigasi risiko kredit macet bagi bank.
 
 #### Pola #2 — Generasi Muda & Properti Ekonomis (Kekuatan: 19,7x lebih pasti)
 **JIKA** pemohon berusia di bawah 25 tahun dan mengambil cicilan jangka pendek  
 **MAKA** mereka hampir pasti memilih properti Manufactured Housing
 
-> **Dampak Bisnis:** Segmen pasar tersembunyi — generasi muda yang tidak mampu rumah konvensional namun tetap ingin memiliki properti. Lembaga keuangan yang cepat masuk ke segmen ini bisa mendominasi pasar generasi pertama pemilik rumah.
+> **Analisis Peluang Bisnis:** Luncurkan paket pembiayaan KPR mikro khusus 'Rumah Pertama Generasi Muda' untuk Manufactured Housing dengan uang muka fleksibel dan opsi cicilan progresif guna menarik pasar nasabah pemula (first-time buyers).
 
 #### Pola #3 — Investor Properti Punya Perilaku Khas (Kekuatan: 13,5x lebih pasti)
 **JIKA** nasabah membeli properti Multifamily (kos/apartemen)  
 **MAKA** dapat dipastikan tujuannya adalah investasi/bisnis sewa, bukan untuk ditinggali
 
-> **Dampak Bisnis:** Investor properti memerlukan produk dan syarat yang berbeda dari pembeli rumah primer. Menggabungkan mereka dalam satu portofolio tanpa diferensiasi meningkatkan risiko sistemik.
+> **Analisis Peluang Bisnis:** Buat produk KPR Investasi Properti Komersial dengan fitur cross-selling asuransi properti sewa dan integrasi layanan pengelolaan kas (cash management) untuk membantu investor/landlord mengelola arus kas sewa mereka.
 
 #### Pola #4 — Ekosistem VA Loan yang Tertutup (Kekuatan: 10,7x lebih pasti)
 **JIKA** nasabah melakukan Cash-out Refinance dengan uang muka nyaris 0%  
 **MAKA** hampir pasti nasabah tersebut adalah peserta program VA Loan (Veteran)
 
-> **Dampak Bisnis:** Nasabah veteran membentuk ekosistem pembiayaan yang sangat tertutup dan berpola. Strategi cross-sell yang disesuaikan untuk segmen ini bisa meningkatkan loyalitas jangka panjang.
+> **Analisis Peluang Bisnis:** Tawarkan produk tabungan atau investasi tambahan (cross-selling) kepada nasabah veteran yang melakukan cash-out refinance untuk membantu mereka menaruh dana segar hasil refinance tersebut ke dalam portofolio investasi yang aman.
 
 #### Pola #5-10 — Pola Tambahan Signifikan
-- Investor Multifamily hampir selalu berujung pada pinjaman Jumbo (Non-Conforming) — Kekuatan 12x
-- VA Loan selalu disalurkan melalui penjaminan Ginnie Mae — Kekuatan 9,1x
-- Nasabah dengan DTI > 60% terpaksa mengambil tenor yang lebih pendek — Kekuatan 8,1x
-- Pre-Approval pemerintah hampir selalu berarti uang muka sangat minim — Kekuatan 9,8x
+- **Multifamily + Bunga Sedang -> Jumbo Loan (Kekuatan 12x):** Desain paket bundling investasi properti komersial yang menggabungkan KPR plafon besar (> $647K) dengan bunga tetap menengah serta fasilitas kredit modal kerja untuk renovasi.
+- **Beli Multifamily Baru -> Jumbo Loan (Kekuatan 11,3x):** Jalin kemitraan eksklusif (partnership) dengan pengembang apartemen/ruko baru untuk menawarkan skema KPR Jumbo Investor instan di lokasi strategis.
+- **Pre-Approval + Ginnie Mae -> DP Minim (Kekuatan 9,8x):** Optimalkan layanan 'Instant Pre-Approval' berbasis digital khusus untuk segmen program pemerintah guna mempermudah pembeli rumah pertama berpendapatan rendah.
+- **VA Loan + Bunga Rendah -> Ginnie Mae (Kekuatan 9,1x):** Gunakan sekuritisasi Ginnie Mae untuk mendanai KPR berbiaya rendah secara berkelanjutan, sekaligus menawarkan produk khusus veteran (VA-tailored products).
+- **DTI > 60% + Manufactured Housing -> Tenor Pendek (Kekuatan 8,1x):** Tawarkan jasa pendampingan konsolidasi utang atau program perbaikan skor kredit bagi nasabah berisiko tinggi ini seraya membatasi tenor KPR.
 
 ---
 
