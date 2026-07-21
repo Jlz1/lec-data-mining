@@ -210,7 +210,7 @@ def tab_segmentation():
                 html.P(html.B("Peluang Bisnis:"), className="mb-1"),
                 html.P("Segmen ini paling besar volumenya. Fokus pada produk KPR standar dengan proses mudah dan cepat. Mereka sangat menghargai kemudahan administrasi dan suku bunga yang kompetitif.", className="small text-muted"),
                 html.P(html.B("Dampak:"), className="mb-1"),
-                html.P("Menjaga stabilitas dan volume portofolio KPR — tulang punggung pendapatan rutin perusahaan.", className="small text-muted")
+                html.P("Menjaga stabilitas dan volume portofolio KPR tulang punggung pendapatan rutin perusahaan.", className="small text-muted")
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", style={'borderTop': '3px solid #f43f5e'}, children=[
                 html.H4("Grup 2: Peminjam Agresif", style={'color': '#f43f5e'}),
@@ -220,7 +220,7 @@ def tab_segmentation():
                 html.P(html.B("Peluang Bisnis:"), className="mb-1"),
                 html.P("Sumber pendapatan bunga terbesar. Tawarkan produk KPR premium dengan layanan dedicated relationship manager dan fleksibilitas tenor.", className="small text-muted"),
                 html.P(html.B("Risiko yang Perlu Diawasi:"), className="mb-1"),
-                html.P("Rasio utang mereka paling tinggi — paling rentan jika terjadi guncangan ekonomi. Perlu sistem monitoring cicilan yang aktif.", className="small text-muted")
+                html.P("Rasio utang mereka paling tinggi paling rentan jika terjadi guncangan ekonomi. Perlu sistem monitoring cicilan yang aktif.", className="small text-muted")
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", style={'borderTop': '3px solid #10b981'}, children=[
                 html.H4("Grup 3: Konservatif HNW", style={'color': '#10b981'}),
@@ -228,7 +228,7 @@ def tab_segmentation():
                 html.P("Penghasilan paling tinggi, namun secara mengejutkan mereka hanya meminjam sedikit. Uang muka mereka sangat besar."),
                 html.Hr(style={'borderColor': 'rgba(255,255,255,0.1)'}),
                 html.P(html.B("Peluang Bisnis:"), className="mb-1"),
-                html.P("Jangan tawarkan KPR — mereka tidak terlalu butuh. Tawarkan produk Wealth Management, reksa dana, asuransi jiwa premium, atau deposito.", className="small text-muted"),
+                html.P("Jangan tawarkan KPR  mereka tidak terlalu butuh. Tawarkan produk Wealth Management, reksa dana, asuransi jiwa premium, atau deposito.", className="small text-muted"),
                 html.P(html.B("Dampak:"), className="mb-1"),
                 html.P("Meningkatkan Fee-based Income (pendapatan dari komisi produk) tanpa menambah risiko kredit macet sama sekali.", className="small text-muted")
             ]), width=4),
@@ -240,58 +240,148 @@ def tab_arm_visualization():
     # Buat Scatter Plot untuk Visualisasi ARM (Support vs Confidence vs Lift)
     if not df_rules.empty:
         plot_df = df_rules.head(100).copy()
+        # Konversi ke format persen agar mudah dipahami stakeholder
+        plot_df['jangkauan_pasar'] = plot_df['support'] * 100
+        plot_df['tingkat_kepastian'] = plot_df['confidence'] * 100
         fig_arm = px.scatter(
             plot_df,
-            x='support',
-            y='confidence',
+            x='jangkauan_pasar',
+            y='tingkat_kepastian',
             size='lift',
             color='lift',
             hover_data=['antecedents', 'consequents'],
-            color_continuous_scale=[(0, '#3b82f6'), (0.5, '#14b8a6'), (1, '#f97316')],
-            labels={'support': 'Volume Pasar (Ukuran Segmen)', 'confidence': 'Kepastian Pola', 'lift': 'Potensi Nilai Bisnis'}
+            color_continuous_scale=[(0, '#3b82f6'), (0.3, '#14b8a6'), (0.6, '#facc15'), (1, '#f97316')],
+            labels={
+                'jangkauan_pasar': 'Jangkauan Pasar (% dari Total Nasabah)',
+                'tingkat_kepastian': 'Tingkat Kepastian Pola (%)',
+                'lift': 'Kekuatan Pola'
+            }
+        )
+        fig_arm.update_traces(
+            marker=dict(line=dict(width=1, color='rgba(255,255,255,0.25)'), sizemin=5),
+            hovertemplate=(
+                '<b>Kekuatan Pola: %{marker.color:.1f}x</b><br>'
+                'Jangkauan Pasar: %{x:.2f}%<br>'
+                'Tingkat Kepastian: %{y:.0f}%'
+                '<extra></extra>'
+            )
         )
         fig_arm.update_layout(
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc', family="Plus Jakarta Sans"),
-            margin=dict(l=20, r=20, t=20, b=20),
-            coloraxis_colorbar=dict(title="Nilai Peluang")
+            font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
+            margin=dict(l=60, r=20, t=10, b=60),
+            coloraxis_colorbar=dict(
+                title=dict(text='Kekuatan<br>Pola', font=dict(size=12)),
+                ticksuffix='x',
+                len=0.65,
+                thickness=14,
+                outlinewidth=0
+            ),
+            xaxis=dict(
+                ticksuffix='%',
+                showgrid=True,
+                gridcolor='rgba(148,163,184,0.12)',
+                gridwidth=1,
+                zeroline=False,
+                title=dict(text='Jangkauan Pasar (% dari Total Nasabah)', font=dict(size=13)),
+                tickfont=dict(size=11)
+            ),
+            yaxis=dict(
+                ticksuffix='%',
+                showgrid=True,
+                gridcolor='rgba(148,163,184,0.12)',
+                gridwidth=1,
+                zeroline=False,
+                title=dict(text='Tingkat Kepastian Pola (%)', font=dict(size=13)),
+                tickfont=dict(size=11),
+                range=[55, 105]
+            )
         )
-        # Rule Network Graph menggunakan Plotly
-        # Ambil top 12 rules untuk network agar tidak terlalu padat
-        top_rules = df_rules.head(12).copy()
-        node_x, node_y, node_text, node_color, edge_x, edge_y = [], [], [], [], [], []
-        nodes = {}
-        node_idx = 0
+        # Rule Network: Flow diagram bisnis yang mudah dipahami
+        # Gunakan top 6 rules dari business_rules agar terbaca jelas
         import math
-        all_labels = list(top_rules['antecedents']) + list(top_rules['consequents'])
-        unique_labels = list(dict.fromkeys(all_labels))
-        n = len(unique_labels)
-        for i, label in enumerate(unique_labels):
-            angle = 2 * math.pi * i / n
-            x = math.cos(angle)
-            y = math.sin(angle)
-            nodes[label] = (x, y)
-            short = label[:35] + '...' if len(label) > 35 else label
-            node_x.append(x); node_y.append(y); node_text.append(short)
-            node_color.append('#3b82f6' if label in list(top_rules['antecedents']) else '#f97316')
-        for _, row in top_rules.iterrows():
-            x0, y0 = nodes[row['antecedents']]
-            x1, y1 = nodes[row['consequents']]
-            edge_x += [x0, x1, None]; edge_y += [y0, y1, None]
+        flow_rules = [
+            {'jika': 'KPR Kedua dari<br>Investor Swasta', 'maka': 'Utang Melampaui<br>Nilai Rumah (LTV &gt;100%)', 'lift': 38.0, 'jika_plain': 'KPR Kedua dari Investor Swasta', 'maka_plain': 'Utang Melampaui Nilai Rumah'},
+            {'jika': 'Nasabah Muda<br>(Usia &lt; 25 Tahun)', 'maka': 'Pilih Manufactured<br>Housing', 'lift': 19.7, 'jika_plain': 'Nasabah Muda (Usia di bawah 25)', 'maka_plain': 'Pilih Manufactured Housing'},
+            {'jika': 'Beli Properti<br>Multifamily (Kos)', 'maka': 'Tujuan Investasi<br>atau Bisnis Sewa', 'lift': 13.5, 'jika_plain': 'Beli Properti Multifamily', 'maka_plain': 'Tujuan Investasi/Bisnis Sewa'},
+            {'jika': 'Pinjaman Jumbo +<br>Jaminan Pemerintah', 'maka': 'Berasal dari<br>Program VA Veteran', 'lift': 12.5, 'jika_plain': 'Pinjaman Jumbo + Jaminan Pemerintah', 'maka_plain': 'Program VA Veteran'},
+            {'jika': 'Uang Muka ~0% +<br>Cash-out Refinance', 'maka': 'Fasilitas<br>VA Loan Veteran', 'lift': 10.7, 'jika_plain': 'Uang Muka ~0% + Cash-out Refinance', 'maka_plain': 'Fasilitas VA Loan Veteran'},
+            {'jika': 'Pre-Approval +<br>Ginnie Mae', 'maka': 'Uang Muka Sangat<br>Minim (LTV 95-100%)', 'lift': 9.8, 'jika_plain': 'Pre-Approval + Ginnie Mae', 'maka_plain': 'Uang Muka Minim (LTV 95-100%)'},
+        ]
         fig_network = go.Figure()
-        fig_network.add_trace(go.Scatter(x=edge_x, y=edge_y, mode='lines',
-            line=dict(width=1.5, color='rgba(148,163,184,0.3)'), hoverinfo='none'))
-        fig_network.add_trace(go.Scatter(x=node_x, y=node_y, mode='markers+text',
-            marker=dict(size=18, color=node_color, line=dict(width=2, color='rgba(255,255,255,0.3)')),
-            text=node_text, textposition='top center',
-            textfont=dict(size=9, color='#f8fafc'), hoverinfo='text'))
+        n_rules = len(flow_rules)
+        # Posisi: JIKA di kiri (x=0), MAKA di kanan (x=1), diurutkan dari atas ke bawah
+        for i, rule in enumerate(flow_rules):
+            y_pos = n_rules - 1 - i  # top-to-bottom
+            # Ukuran node (lebih kecil agar tidak menabrak teks)
+            node_size = 14 + (rule['lift'] / 38.0) * 12
+            # Edge (garis penghubung)
+            fig_network.add_trace(go.Scatter(
+                x=[0.15, 0.85], y=[y_pos, y_pos], mode='lines',
+                line=dict(width=1.5 + rule['lift'] / 15, color='rgba(59,130,246,0.3)'),
+                hoverinfo='none', showlegend=False
+            ))
+            # Arrow head
+            fig_network.add_annotation(
+                x=0.82, y=y_pos, ax=0.18, ay=y_pos,
+                xref='x', yref='y', axref='x', ayref='y',
+                showarrow=True, arrowhead=3, arrowsize=1.5, arrowwidth=2,
+                arrowcolor='rgba(20,184,166,0.6)'
+            )
+            # Node JIKA (kiri)
+            fig_network.add_trace(go.Scatter(
+                x=[0], y=[y_pos], mode='markers',
+                marker=dict(size=node_size, color='#3b82f6',
+                            line=dict(width=2, color='rgba(96,165,250,0.5)')),
+                hovertext='Kondisi: ' + rule['jika_plain'],
+                hoverinfo='text',
+                showlegend=False
+            ))
+            # Label Kondisi di kiri node
+            fig_network.add_annotation(
+                x=-0.08, y=y_pos,
+                text=rule['jika'],
+                showarrow=False,
+                xanchor='right', yanchor='middle',
+                font=dict(size=11, color='#e2e8f0', family='Plus Jakarta Sans'),
+                xref='x', yref='y'
+            )
+            # Node MAKA (kanan)
+            fig_network.add_trace(go.Scatter(
+                x=[1], y=[y_pos], mode='markers',
+                marker=dict(size=node_size, color='#14b8a6',
+                            line=dict(width=2, color='rgba(45,212,191,0.5)')),
+                hovertext='Hasil: ' + rule['maka_plain'] + ' | Kekuatan: ' + str(rule['lift']) + 'x',
+                hoverinfo='text',
+                showlegend=False
+            ))
+            # Label Hasil di kanan node
+            fig_network.add_annotation(
+                x=1.08, y=y_pos,
+                text=rule['maka'],
+                showarrow=False,
+                xanchor='left', yanchor='middle',
+                font=dict(size=11, color='#e2e8f0', family='Plus Jakarta Sans'),
+                xref='x', yref='y'
+            )
+            # Lift label di tengah
+            fig_network.add_annotation(
+                x=0.5, y=y_pos + 0.18,
+                text='<b>' + str(rule['lift']) + 'x</b>',
+                showarrow=False,
+                font=dict(size=10, color='#facc15', family='Plus Jakarta Sans'),
+                xref='x', yref='y'
+            )
         fig_network.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc'), showlegend=False,
-            margin=dict(l=10, r=10, t=10, b=10),
-            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+            font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
+            showlegend=False,
+            margin=dict(l=160, r=170, t=10, b=10),
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
+                       range=[-0.55, 1.55]),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
+                       range=[-0.8, n_rules - 0.2])
         )
     else:
         fig_arm = go.Figure()
@@ -320,17 +410,29 @@ def tab_arm_visualization():
 
     return html.Div(className="tab-content", children=[
         html.Div("Peta Peluang Bisnis Tersembunyi (Hasil Analisis ARM)", className="section-title"),
-        html.P("Setiap titik mewakili satu peluang bisnis spesifik. Semakin besar dan terang titiknya, semakin tinggi kepastian bahwa nasabah akan mengambil produk tersebut — cocok dijadikan target Cross-Selling atau peringatan risiko.", className="mb-4 text-muted"),
+        html.P("Setiap titik mewakili satu peluang bisnis spesifik. Semakin besar dan terang titiknya, semakin tinggi kepastian bahwa nasabah akan mengambil produk tersebut cocok dijadikan target Cross-Selling atau peringatan risiko.", className="mb-4 text-muted"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4", children=[
-                html.H4("Sebaran 100 Pola Perilaku Terkuat"),
-                html.P("Sumbu X = seberapa besar segmen pasar ini. Sumbu Y = seberapa pasti polanya terjadi.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_arm, config={'displayModeBar': False})
+                html.H4("Peta 100 Peluang Bisnis Terkuat"),
+                html.P([
+                    "Setiap gelembung = satu pola perilaku nasabah. ",
+                    html.B("Makin ke kanan"),
+                    " = makin banyak nasabah yang terlibat. ",
+                    html.B("Makin ke atas"),
+                    " = makin pasti polanya terjadi. ",
+                    html.B("Makin besar & terang"),
+                    " = makin kuat peluang bisnisnya."
+                ], className="small text-muted mb-2"),
+                dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, style={'height': '420px'})
             ]), width=6),
             dbc.Col(html.Div(className="glass-card mb-4", children=[
-                html.H4("Jaringan Hubungan Antar Pola (Rule Network)"),
-                html.P("Biru = kondisi awal (JIKA). Oranye = hasil yang terjadi (MAKA). Garis = kekuatan hubungan.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_network, config={'displayModeBar': False})
+                html.H4("6 Pola Perilaku Nasabah Terkuat"),
+                dcc.Graph(figure=fig_network, config={'displayModeBar': False}, style={'height': '400px'}),
+                html.P([
+                    html.Span("●", style={'color': '#3b82f6'}), " Kondisi → ",
+                    html.Span("●", style={'color': '#14b8a6'}), " Hasil ",
+                   
+                ], className="small text-muted text-center mt-2 mb-0")
             ]), width=6),
         ]),
         html.Div("4 Peluang Bisnis Utama dari Pola Nasabah", className="section-title mt-2"),
@@ -516,8 +618,8 @@ def tab_4_anomalies():
     fig_outlier.update_layout(
         paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
         font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
-        margin=dict(l=10, r=10, t=10, b=10),
-        legend=dict(orientation='h', yanchor='bottom', y=-0.35, xanchor='center', x=0.5),
+        margin=dict(l=10, r=10, t=10, b=120),
+        legend=dict(orientation='h', yanchor='top', y=-0.2, xanchor='center', x=0.5),
         xaxis_title='Pendapatan Nasabah (Income)', yaxis_title='Nilai Pinjaman (Loan Amount)'
     )
 
@@ -529,11 +631,11 @@ def tab_4_anomalies():
             dbc.Col(html.Div(className="glass-card mb-4 h-100", children=[
                 html.H4("Posisi Nasabah Anomali vs Normal"),
                 html.P("Titik berwarna = anomali yang terdeteksi. Abu-abu = data normal. Terlihat jelas anomali berada di luar pola umum.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, style={'height': '350px'})
+                dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, style={'height': '450px'})
             ]), width=7),
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Pengelompokan Kasus Tidak Wajar"),
-                dcc.Graph(figure=fig_bar, config={'displayModeBar': False}, style={'height': '350px'})
+                dcc.Graph(figure=fig_bar, config={'displayModeBar': False}, style={'height': '450px'})
             ]), width=5),
         ], className="mb-4"),
         
@@ -610,12 +712,12 @@ app.layout = html.Div([
     create_header(),
     dbc.Container([
         dbc.Tabs([
-            dbc.Tab(tab_1_executive(), label="1. Ringkasan Eksekutif", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
-            dbc.Tab(tab_segmentation(), label="2. Segmentasi Nasabah", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
-            dbc.Tab(tab_arm_visualization(), label="3. Visualisasi ARM", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
-            dbc.Tab(tab_distributions(), label="4. Distribusi Pasar", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
-            dbc.Tab(tab_4_anomalies(), label="5. Deteksi Anomali", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
-            dbc.Tab(tab_conclusions(), label="6. Kesimpulan & Peluang", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_1_executive(), label="1. Common Information", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_segmentation(), label="2. Segmentation Nasabah", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_arm_visualization(), label="3. Visualization ARM", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_distributions(), label="4. Market Distribution", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_4_anomalies(), label="5. Anomali Detection", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_conclusions(), label="6. Conclusion", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
         ], className="custom-tabs"),
         
         html.Div(className="text-center mt-5 mb-4 text-muted small", children=[
