@@ -31,16 +31,16 @@ try:
     
     # Translate to very simple business language but keep financial terms
     business_rules = [
-        {"desc": "KPR kedua (Piggyback/HELOC) dari investor swasta", "result": "Cenderung menyebabkan utang melampaui nilai rumah (LTV > 100%)", "lift": 38.02},
-        {"desc": "Nasabah muda (di bawah 25 tahun) dengan cicilan pendek", "result": "Sangat sering memilih properti Manufactured Housing", "lift": 19.73},
-        {"desc": "Pembelian properti tipe Multifamily (Apartemen/Kos)", "result": "Secara konsisten ditujukan untuk investasi atau bisnis sewa", "lift": 13.51},
-        {"desc": "Pinjaman Jumbo (Non-Conforming) dengan jaminan pemerintah", "result": "Sebagian besar berasal dari program khusus VA Loan (Veteran)", "lift": 12.53},
-        {"desc": "Pembeli properti Multifamily dengan bunga standar", "result": "Rata-rata mengambil pinjaman Jumbo (Non-Conforming)", "lift": 12.00},
-        {"desc": "Pembelian rumah baru berjenis properti Multifamily", "result": "Juga berujung pada nilai pinjaman Jumbo (Non-Conforming)", "lift": 11.34},
-        {"desc": "Nasabah dengan uang muka nyaris 0% yang melakukan Cash-out Refinance", "result": "Biasanya memanfaatkan fasilitas dari VA Loan (Veteran)", "lift": 10.72},
-        {"desc": "Nasabah dengan Pre-Approval yang didukung oleh Ginnie Mae", "result": "Hampir selalu difasilitasi dengan uang muka sangat minim (LTV 95-100%)", "lift": 9.77},
-        {"desc": "Nasabah VA Loan (Veteran) yang mendapat bunga di bawah 3%", "result": "Sebagian besar disokong oleh program penjaminan Ginnie Mae", "lift": 9.09},
-        {"desc": "Nasabah dengan rasio Debt-to-Income (DTI) di atas 60%", "result": "Umumnya terpaksa mengambil jangka waktu pinjaman yang lebih pendek", "lift": 8.09}
+        {"kondisi": "KPR kedua (Piggyback/HELOC) dari investor swasta", "hasil": "Utang melampaui nilai rumah (LTV > 100%)", "insight": "Pinjaman kedua (piggyback/HELOC) mendorong total utang melewati nilai rumah. Karena tidak memenuhi syarat Fannie/Freddie, pinjaman berisiko tinggi ini dijual ke pembeli non-GSE.", "lift": 38.02, "risk": "high"},
+        {"kondisi": "Nasabah muda (di bawah 25 tahun) + cicilan menengah", "hasil": "Memilih properti Manufactured Housing", "insight": "Rumah manufactured (pabrikan) adalah jalur kepemilikan rumah termurah, sering dipilih pemohon muda atau berpendapatan rendah sebagai segmen entry-level.", "lift": 19.73, "risk": "medium"},
+        {"kondisi": "Pembelian properti tipe Multifamily (Apartemen/Kos)", "hasil": "Ditujukan untuk investasi atau bisnis sewa", "insight": "Properti multifamily hampir selalu untuk investasi/disewakan, bukan ditempati pemilik. Ini menandai segmen landlord/investor properti.", "lift": 13.51, "risk": "low"},
+        {"kondisi": "Pinjaman Jumbo (Non-Conforming) + jaminan pemerintah", "hasil": "Berasal dari program VA Loan (Veteran)", "insight": "Pinjaman VA menyasar veteran dan biasanya disekuritisasi via Ginnie Mae. Muncul kuat pada plafon di atas batas konvensional.", "lift": 12.53, "risk": "low"},
+        {"kondisi": "Properti Multifamily + bunga sedang (3-5%)", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "insight": "Pola segmen pasar yang tidak terlihat dari tabulasi sederhana: investor multifamily konsisten mengambil pinjaman besar dengan bunga standar.", "lift": 12.00, "risk": "medium"},
+        {"kondisi": "Pembelian rumah baru tipe Multifamily", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "insight": "Pembelian properti multifamily baru secara konsisten membutuhkan plafon di atas batas konvensional, menunjukkan segmen investor yang aktif.", "lift": 11.34, "risk": "medium"},
+        {"kondisi": "Uang muka nyaris 0% (LTV 95-100%) + Cash-out Refinance", "hasil": "Menggunakan fasilitas VA Loan (Veteran)", "insight": "VA mengizinkan cash-out refinance hingga LTV sangat tinggi (mendekati 100%), kelonggaran yang jarang ada pada kredit konvensional.", "lift": 10.72, "risk": "high"},
+        {"kondisi": "Pre-Approval + didukung Ginnie Mae", "hasil": "Uang muka sangat minim (LTV 95-100%)", "insight": "Ginnie Mae hanya mensekuritisasi program pemerintah (FHA/VA/USDA) yang memang dirancang untuk uang muka minimal.", "lift": 9.77, "risk": "low"},
+        {"kondisi": "VA Loan (Veteran) + bunga rendah (di bawah 3%)", "hasil": "Disokong program penjaminan Ginnie Mae", "insight": "Pinjaman VA hampir selalu berakhir di Ginnie Mae sebagai penjamin utama sekuritas KPR program pemerintah.", "lift": 9.09, "risk": "low"},
+        {"kondisi": "DTI di atas 60% + rumah Manufactured Housing", "hasil": "Tenor pinjaman lebih pendek (15-25 tahun)", "insight": "Kredit rumah manufactured umumnya bertenor lebih pendek karena plafonnya kecil dan sebagian berbentuk chattel loan. DTI tinggi memperkuat pola ini.", "lift": 8.09, "risk": "high"}
     ]
 except Exception as e:
     business_rules = []
@@ -299,85 +299,89 @@ def tab_arm_visualization():
             )
         )
         # Rule Network: Flow diagram bisnis yang mudah dipahami
-        # Gunakan top 6 rules dari business_rules agar terbaca jelas
+        # Gunakan semua 10 rules dari business_rules
         import math
         flow_rules = [
-            {'jika': 'KPR Kedua dari<br>Investor Swasta', 'maka': 'Utang Melampaui<br>Nilai Rumah (LTV &gt;100%)', 'lift': 38.0, 'jika_plain': 'KPR Kedua dari Investor Swasta', 'maka_plain': 'Utang Melampaui Nilai Rumah'},
-            {'jika': 'Nasabah Muda<br>(Usia &lt; 25 Tahun)', 'maka': 'Pilih Manufactured<br>Housing', 'lift': 19.7, 'jika_plain': 'Nasabah Muda (Usia di bawah 25)', 'maka_plain': 'Pilih Manufactured Housing'},
-            {'jika': 'Beli Properti<br>Multifamily (Kos)', 'maka': 'Tujuan Investasi<br>atau Bisnis Sewa', 'lift': 13.5, 'jika_plain': 'Beli Properti Multifamily', 'maka_plain': 'Tujuan Investasi/Bisnis Sewa'},
-            {'jika': 'Pinjaman Jumbo +<br>Jaminan Pemerintah', 'maka': 'Berasal dari<br>Program VA Veteran', 'lift': 12.5, 'jika_plain': 'Pinjaman Jumbo + Jaminan Pemerintah', 'maka_plain': 'Program VA Veteran'},
-            {'jika': 'Uang Muka ~0% +<br>Cash-out Refinance', 'maka': 'Fasilitas<br>VA Loan Veteran', 'lift': 10.7, 'jika_plain': 'Uang Muka ~0% + Cash-out Refinance', 'maka_plain': 'Fasilitas VA Loan Veteran'},
-            {'jika': 'Pre-Approval +<br>Ginnie Mae', 'maka': 'Uang Muka Sangat<br>Minim (LTV 95-100%)', 'lift': 9.8, 'jika_plain': 'Pre-Approval + Ginnie Mae', 'maka_plain': 'Uang Muka Minim (LTV 95-100%)'},
+            {'kondisi': 'KPR Kedua dari<br>Investor Swasta', 'hasil': 'Utang Melampaui<br>Nilai Rumah (LTV &gt;100%)', 'lift': 38.0, 'kondisi_plain': 'KPR Kedua dari Investor Swasta', 'hasil_plain': 'Utang Melampaui Nilai Rumah'},
+            {'kondisi': 'Nasabah Muda<br>(Usia &lt; 25 Tahun)', 'hasil': 'Pilih Manufactured<br>Housing', 'lift': 19.7, 'kondisi_plain': 'Nasabah Muda (Usia di bawah 25)', 'hasil_plain': 'Pilih Manufactured Housing'},
+            {'kondisi': 'Beli Properti<br>Multifamily (Kos)', 'hasil': 'Tujuan Investasi<br>atau Bisnis Sewa', 'lift': 13.5, 'kondisi_plain': 'Beli Properti Multifamily', 'hasil_plain': 'Tujuan Investasi/Bisnis Sewa'},
+            {'kondisi': 'Pinjaman Jumbo +<br>Jaminan Pemerintah', 'hasil': 'Program<br>VA Loan Veteran', 'lift': 12.5, 'kondisi_plain': 'Pinjaman Jumbo + Jaminan Pemerintah', 'hasil_plain': 'Program VA Veteran'},
+            {'kondisi': 'Multifamily +<br>Bunga Sedang (3-5%)', 'hasil': 'Pinjaman Jumbo<br>Non-Conforming', 'lift': 12.0, 'kondisi_plain': 'Multifamily + Bunga Sedang', 'hasil_plain': 'Pinjaman Jumbo Non-Conforming'},
+            {'kondisi': 'Beli Rumah Baru<br>Tipe Multifamily', 'hasil': 'Pinjaman Jumbo<br>Non-Conforming', 'lift': 11.3, 'kondisi_plain': 'Beli Rumah Baru Tipe Multifamily', 'hasil_plain': 'Pinjaman Jumbo Non-Conforming'},
+            {'kondisi': 'Uang Muka ~0% +<br>Cash-out Refinance', 'hasil': 'Fasilitas<br>VA Loan Veteran', 'lift': 10.7, 'kondisi_plain': 'Uang Muka ~0% + Cash-out Refinance', 'hasil_plain': 'Fasilitas VA Loan Veteran'},
+            {'kondisi': 'Pre-Approval +<br>Ginnie Mae', 'hasil': 'Uang Muka Sangat<br>Minim (LTV 95-100%)', 'lift': 9.8, 'kondisi_plain': 'Pre-Approval + Ginnie Mae', 'hasil_plain': 'Uang Muka Minim (LTV 95-100%)'},
+            {'kondisi': 'VA Loan Veteran +<br>Bunga &lt; 3%', 'hasil': 'Disokong<br>Ginnie Mae', 'lift': 9.1, 'kondisi_plain': 'VA Loan Veteran + Bunga rendah', 'hasil_plain': 'Disokong Ginnie Mae'},
+            {'kondisi': 'DTI &gt; 60% +<br>Manufactured Housing', 'hasil': 'Tenor Pinjaman<br>Lebih Pendek', 'lift': 8.1, 'kondisi_plain': 'DTI tinggi + Manufactured Housing', 'hasil_plain': 'Tenor Pinjaman Lebih Pendek'},
         ]
         fig_network = go.Figure()
         n_rules = len(flow_rules)
-        # Posisi: JIKA di kiri (x=0), MAKA di kanan (x=1), diurutkan dari atas ke bawah
+        # Posisi: Kondisi di kiri (x=0), Hasil di kanan (x=1), diurutkan dari atas ke bawah
         for i, rule in enumerate(flow_rules):
             y_pos = n_rules - 1 - i  # top-to-bottom
             # Ukuran node (lebih kecil agar tidak menabrak teks)
-            node_size = 14 + (rule['lift'] / 38.0) * 12
+            node_size = 12 + (rule['lift'] / 38.0) * 10
             # Edge (garis penghubung)
             fig_network.add_trace(go.Scatter(
                 x=[0.15, 0.85], y=[y_pos, y_pos], mode='lines',
-                line=dict(width=1.5 + rule['lift'] / 15, color='rgba(59,130,246,0.3)'),
+                line=dict(width=1 + rule['lift'] / 20, color='rgba(59,130,246,0.25)'),
                 hoverinfo='none', showlegend=False
             ))
             # Arrow head
             fig_network.add_annotation(
                 x=0.82, y=y_pos, ax=0.18, ay=y_pos,
                 xref='x', yref='y', axref='x', ayref='y',
-                showarrow=True, arrowhead=3, arrowsize=1.5, arrowwidth=2,
-                arrowcolor='rgba(20,184,166,0.6)'
+                showarrow=True, arrowhead=3, arrowsize=1.2, arrowwidth=1.5,
+                arrowcolor='rgba(20,184,166,0.5)'
             )
-            # Node JIKA (kiri)
+            # Node Kondisi (kiri)
             fig_network.add_trace(go.Scatter(
                 x=[0], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#3b82f6',
-                            line=dict(width=2, color='rgba(96,165,250,0.5)')),
-                hovertext='Kondisi: ' + rule['jika_plain'],
+                            line=dict(width=1.5, color='rgba(96,165,250,0.5)')),
+                hovertext='Kondisi: ' + rule['kondisi_plain'],
                 hoverinfo='text',
                 showlegend=False
             ))
             # Label Kondisi di kiri node
             fig_network.add_annotation(
                 x=-0.08, y=y_pos,
-                text=rule['jika'],
+                text=rule['kondisi'],
                 showarrow=False,
                 xanchor='right', yanchor='middle',
-                font=dict(size=11, color='#e2e8f0', family='Plus Jakarta Sans'),
+                font=dict(size=9, color='#e2e8f0', family='Plus Jakarta Sans'),
                 xref='x', yref='y'
             )
-            # Node MAKA (kanan)
+            # Node Hasil (kanan)
             fig_network.add_trace(go.Scatter(
                 x=[1], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#14b8a6',
-                            line=dict(width=2, color='rgba(45,212,191,0.5)')),
-                hovertext='Hasil: ' + rule['maka_plain'] + ' | Kekuatan: ' + str(rule['lift']) + 'x',
+                            line=dict(width=1.5, color='rgba(45,212,191,0.5)')),
+                hovertext='Hasil: ' + rule['hasil_plain'] + ' | Kekuatan: ' + str(rule['lift']) + 'x',
                 hoverinfo='text',
                 showlegend=False
             ))
             # Label Hasil di kanan node
             fig_network.add_annotation(
                 x=1.08, y=y_pos,
-                text=rule['maka'],
+                text=rule['hasil'],
                 showarrow=False,
                 xanchor='left', yanchor='middle',
-                font=dict(size=11, color='#e2e8f0', family='Plus Jakarta Sans'),
+                font=dict(size=9, color='#e2e8f0', family='Plus Jakarta Sans'),
                 xref='x', yref='y'
             )
             # Lift label di tengah
             fig_network.add_annotation(
-                x=0.5, y=y_pos + 0.18,
+                x=0.5, y=y_pos + 0.15,
                 text='<b>' + str(rule['lift']) + 'x</b>',
                 showarrow=False,
-                font=dict(size=10, color='#facc15', family='Plus Jakarta Sans'),
+                font=dict(size=9, color='#facc15', family='Plus Jakarta Sans'),
                 xref='x', yref='y'
             )
         fig_network.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
             showlegend=False,
-            margin=dict(l=160, r=170, t=10, b=10),
+            margin=dict(l=150, r=160, t=10, b=10),
             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
                        range=[-0.55, 1.55]),
             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
@@ -387,30 +391,38 @@ def tab_arm_visualization():
         fig_arm = go.Figure()
         fig_network = go.Figure()
 
+    risk_badge = {'high': 'badge badge-high-risk', 'medium': 'badge badge-medium-risk', 'low': 'badge badge-low-risk'}
+    risk_color = {'high': '#f43f5e', 'medium': '#f97316', 'low': '#10b981'}
     rules_html = []
-    for i, rule in enumerate(business_rules[:4]):
+    for i, rule in enumerate(business_rules):
         rules_html.append(
-            html.Div(className="glass-card mb-3", children=[
-                dbc.Row([
-                    dbc.Col([
-                        html.Span(f"Pola ARM #{i+1}", className="badge badge-medium-risk mb-2" if rule['lift'] > 15 else "badge badge-low-risk mb-2"),
-                        html.H5("JIKA " + rule['desc']),
-                        html.H5("MAKA " + rule['result'], style={'color': 'var(--accent-teal)'}),
-                    ], width=9),
-                    dbc.Col([
-                        html.Div(className="text-center", children=[
-                            html.Div("Potensi Bisnis", className="small text-muted"),
-                            html.Div(f"{rule['lift']}x", style={'fontFamily': 'var(--font-heading)', 'fontSize': '2rem', 'fontWeight': 'bold', 'color': 'var(--accent-orange)'}),
-                            html.Div("Lebih Akurat", className="small text-muted")
-                        ])
-                    ], width=3, className="d-flex flex-column justify-content-center align-items-center border-start border-secondary")
-                ])
-            ])
+            dbc.Col(
+                html.Div(className="glass-card mb-3 h-100", style={'borderLeft': f'3px solid {risk_color.get(rule["risk"], "#3b82f6")}'}, children=[
+                    html.Div(className="d-flex justify-content-between align-items-start mb-2", children=[
+                        html.Span(f"Pola #{i+1}", className=risk_badge.get(rule['risk'], 'badge badge-low-risk')),
+                        html.Div(f"{rule['lift']}x", style={'fontFamily': 'var(--font-heading)', 'fontSize': '1.5rem', 'fontWeight': 'bold', 'color': 'var(--accent-orange)', 'lineHeight': '1'})
+                    ]),
+                    html.P([
+                        html.Span("Kondisi: ", style={'color': '#94a3b8', 'fontWeight': '600'}),
+                        rule['kondisi']
+                    ], className="mb-1 small"),
+                    html.P([
+                        html.Span("Hasil: ", style={'color': '#14b8a6', 'fontWeight': '600'}),
+                        rule['hasil']
+                    ], className="mb-2 small", style={'color': '#5eead4'}),
+                    html.Hr(style={'borderColor': 'rgba(255,255,255,0.08)', 'margin': '8px 0'}),
+                    html.P([
+                        html.Span("Insight: ", style={'fontWeight': '600'}),
+                        rule['insight']
+                    ], className="mb-0 small text-muted")
+                ]),
+                width=6
+            )
         )
 
     return html.Div(className="tab-content", children=[
         html.Div("Peta Peluang Bisnis Tersembunyi (Hasil Analisis ARM)", className="section-title"),
-        html.P("Setiap titik mewakili satu peluang bisnis spesifik. Semakin besar dan terang titiknya, semakin tinggi kepastian bahwa nasabah akan mengambil produk tersebut cocok dijadikan target Cross-Selling atau peringatan risiko.", className="mb-4 text-muted"),
+        html.P("Setiap titik mewakili satu peluang bisnis spesifik. Semakin besar dan terang titiknya, semakin tinggi kepastian bahwa nasabah akan mengambil produk tersebut — cocok dijadikan target Cross-Selling atau peringatan risiko.", className="mb-4 text-muted"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.H4("Peta 100 Peluang Bisnis Terkuat"),
@@ -423,20 +435,20 @@ def tab_arm_visualization():
                     html.B("Makin besar & terang"),
                     " = makin kuat peluang bisnisnya."
                 ], className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, style={'height': '420px'})
+                dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, style={'height': '520px'})
             ]), width=6),
             dbc.Col(html.Div(className="glass-card mb-4", children=[
-                html.H4("6 Pola Perilaku Nasabah Terkuat"),
-                dcc.Graph(figure=fig_network, config={'displayModeBar': False}, style={'height': '400px'}),
+                html.H4("10 Pola Perilaku Nasabah Terkuat"),
+                dcc.Graph(figure=fig_network, config={'displayModeBar': False}, style={'height': '500px'}),
                 html.P([
                     html.Span("●", style={'color': '#3b82f6'}), " Kondisi → ",
-                    html.Span("●", style={'color': '#14b8a6'}), " Hasil ",
-                   
+                    html.Span("●", style={'color': '#14b8a6'}), " Hasil"
                 ], className="small text-muted text-center mt-2 mb-0")
             ]), width=6),
         ]),
-        html.Div("4 Peluang Bisnis Utama dari Pola Nasabah", className="section-title mt-2"),
-        html.Div(rules_html)
+        html.Div("10 Peluang Bisnis dari Pola Nasabah", className="section-title mt-2"),
+        html.P("Setiap kartu menunjukkan satu pola tersembunyi dari data. Angka oranye menunjukkan seberapa kuat pola ini dibanding rata-rata populasi.", className="mb-3 text-muted small"),
+        dbc.Row(rules_html)
     ])
 
 
