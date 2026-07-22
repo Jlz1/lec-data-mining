@@ -89,6 +89,17 @@ except Exception as e:
     df_raw = pd.DataFrame()
     print(f"Error loading raw data: {e}")
 
+
+def fmt_count(value):
+    """Format current artifact counts in the Indonesian dashboard style."""
+    return f"{int(value):,}".replace(",", ".")
+
+
+def priority_typology_count(typology):
+    if df_priority.empty or "typology" not in df_priority.columns:
+        return 0
+    return int((df_priority["typology"] == typology).sum())
+
 # Layout Komponen
 
 def create_header():
@@ -244,7 +255,7 @@ def tab_1_executive():
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.Div("3. Deteksi Otomatis Kasus Berisiko", className="insight-title", style={'color': '#f43f5e'}),
-                html.Div("Sistem kami menemukan 3.301 kasus pengajuan yang secara individual angkanya tampak normal, tapi saat digabungkan mengindikasikan sinyal risiko yang tinggi dan perlu ditinjau manusia.", className="insight-desc")
+                html.Div(f"Sistem kami menemukan {fmt_count(len(df_priority))} kasus pengajuan yang secara individual angkanya tampak normal, tapi saat digabungkan mengindikasikan sinyal risiko yang tinggi dan perlu ditinjau manusia.", className="insight-desc")
             ]), width=4)
         ])
     ])
@@ -794,11 +805,11 @@ def tab_4_anomalies():
         dbc.Row([
             dbc.Col(html.Div(className="glass-card metric-card", children=[
                 html.Div("Total Anomali Ditemukan", className="metric-title"),
-                html.Div("12.217", className="metric-value")
+                html.Div(fmt_count(len(df_anomalies)), className="metric-value")
             ]), width=3),
             dbc.Col(html.Div(className="glass-card metric-card", style={'borderColor': '#f43f5e', 'boxShadow': '0 0 10px rgba(244,63,94,0.1)'}, children=[
                 html.Div("Prioritas Tinggi (Confirmed/HC)", className="metric-title", style={'color': '#f43f5e'}),
-                html.Div("3.301", className="metric-value", style={'color': '#f43f5e'}),
+                html.Div(fmt_count(len(df_priority)), className="metric-value", style={'color': '#f43f5e'}),
                 html.Div("Kasus Paling Janggal", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
             ]), width=3),
             dbc.Col(html.Div(className="glass-card metric-card", children=[
@@ -835,10 +846,10 @@ def tab_4_anomalies():
         ], className="mb-4"),
         
         # --- BARIS 3: Visualisasi Utama ---
-        html.Div("Peta Kasus Prioritas (3.301 Kasus High Confidence & Confirmed)", className="section-title mt-4"),
+        html.Div(f"Peta Kasus Prioritas ({fmt_count(len(df_priority))} Kasus High Confidence & Confirmed)", className="section-title mt-4"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4 h-100", children=[
-                html.H4("Posisi 3.301 Nasabah Paling Janggal vs Normal"),
+                html.H4(f"Posisi {fmt_count(len(df_priority))} Nasabah Paling Janggal vs Normal"),
                 html.P("Titik berwarna adalah kasus prioritas. Titik abu-abu adalah data normal. Terlihat jelas anomali berada di luar pola umum.", className="small text-muted mb-2"),
                 dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, style={'height': '420px'})
             ]), width=7),
@@ -852,14 +863,14 @@ def tab_4_anomalies():
         dbc.Row([
             dbc.Col(html.Div(className="d-flex flex-column gap-3", children=[
                 html.Div(className="glass-card", style={'borderLeft': '4px solid #f59e0b'}, children=[
-                    html.H5("Sinyal Risiko Kredit Tinggi (76 Kasus)", className="mb-2", style={'color': '#f59e0b'}),
+                    html.H5(f"Sinyal Risiko Kredit Tinggi ({fmt_count(priority_typology_count('Potential Risk Signal'))} Kasus)", className="mb-2", style={'color': '#f59e0b'}),
                     html.P(html.B("Definisi:"), className="small mb-1"),
                     html.P("Pendapatan rendah (di bawah rata-rata) dikombinasikan dengan pinjaman Jumbo (sangat besar) dan leverage/utang yang sangat agresif.", className="small text-muted mb-2"),
                     html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
                     html.P("Kirim ke tim Underwriting untuk verifikasi manual secara mendalam (enhanced verification) sebelum persetujuan kredit.", className="small mb-0")
                 ]),
                 html.Div(className="glass-card", style={'borderLeft': '4px solid #ef4444'}, children=[
-                    html.H5("Data Error (179 Kasus)", className="mb-2", style={'color': '#ef4444'}),
+                    html.H5(f"Data Error ({fmt_count(priority_typology_count('Data Error'))} Kasus)", className="mb-2", style={'color': '#ef4444'}),
                     html.P(html.B("Definisi:"), className="small mb-1"),
                     html.P("Nilai finansial yang melanggar batas fisik/logika bisnis. Misalnya: Suku bunga 0% atau rasio utang vs nilai rumah (LTV) > 150%.", className="small text-muted mb-2"),
                     html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
@@ -868,14 +879,14 @@ def tab_4_anomalies():
             ]), width=6),
             dbc.Col(html.Div(className="d-flex flex-column gap-3", children=[
                 html.Div(className="glass-card", style={'borderLeft': '4px solid #10b981'}, children=[
-                    html.H5("Profil Konservatif / Prospek (372 Kasus)", className="mb-2", style={'color': '#10b981'}),
+                    html.H5(f"Profil Konservatif / Prospek ({fmt_count(priority_typology_count('Rare Legitimate'))} Kasus)", className="mb-2", style={'color': '#10b981'}),
                     html.P(html.B("Definisi:"), className="small mb-1"),
                     html.P("Nasabah sangat kaya (Ultra High-Net-Worth) namun mengambil pinjaman yang sangat kecil dengan uang muka raksasa.", className="small text-muted mb-2"),
                     html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
                     html.P("JANGAN tandai sebagai risiko. Jadikan daftar ini sebagai prospek target (leads) untuk produk Priority Banking atau Wealth Management.", className="small mb-0")
                 ]),
                 html.Div(className="glass-card", style={'borderLeft': '4px solid #f97316'}, children=[
-                    html.H5("Perlu Tinjauan Manual (2.674 Kasus)", className="mb-2", style={'color': '#f97316'}),
+                    html.H5(f"Perlu Tinjauan Manual ({fmt_count(priority_typology_count('Unclassified / Manual Review'))} Kasus)", className="mb-2", style={'color': '#f97316'}),
                     html.P(html.B("Definisi:"), className="small mb-1"),
                     html.P("Anomali nyata secara statistik kombinasi (AI) tetapi tidak masuk ke dalam kotak risiko standar.", className="small text-muted mb-2"),
                     html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
@@ -949,4 +960,4 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050)
+    app.run(debug=True, port=8050)

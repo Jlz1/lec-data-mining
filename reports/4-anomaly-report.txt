@@ -7,7 +7,7 @@ Deteksi Anomali dan Outlier | HMDA 2022 | CAWU 5 Data Mining Project
 ------------------------------------------------------------------------------
 Dataset dianalisis   : 99,994 baris x 12 fitur numerik inti
 Total baris anomali  : 12,217 (12.22%) -- minimal 1 dari 3 metode deteksi
-Prioritas investigasi: 3,301 baris (3.30%) -- tier 'Confirmed' atau 'High Confidence'
+Prioritas investigasi: 3,320 baris (3.32%) -- tier 'Confirmed' atau 'High Confidence'
 
 Tiga metode deteksi digunakan berlapis untuk saling memvalidasi:
   1. IQR (per kolom, robust terhadap skew; kolom IQR-degenerate seperti
@@ -60,10 +60,10 @@ bergantung pada Q1/Q3 sehingga tidak terkena masalah degenerate yang sama.
 4. CROSS-REFERENCE DENGAN PHASE 2 (CLUSTERING)
 ------------------------------------------------------------------------------
 
-DBSCAN (eps optimal dari k-distance graph, direproduksi dengan sample 5.000):
-  - Noise point: 158 dari 5.000 (3.16%)
-    -> cocok dengan laporan Phase 2 (7.26%), mengonfirmasi reproduksibilitas.
-  - Overlap dengan Isolation Forest (pada subset tersampel): 33 (20.9% dari noise DBSCAN)
+DBSCAN (parameter Phase 2: eps=2.0, min_samples=10, sample 5.000):
+  - Noise point: 363 dari 5.000 (7.26%)
+    -> parameter-identical rerun of Phase 2; the result is directly comparable.
+  - Overlap dengan Isolation Forest (pada subset tersampel): 116 (32.0% dari noise DBSCAN)
 
 Interpretasi: overlap yang tidak 100% adalah hal wajar dan diharapkan --
 fitur clustering Phase 2 (auto-selected, nunique>5) didominasi kolom
@@ -79,18 +79,18 @@ fitur independen sekaligus.
 ==============================================================================
 5. DISTRIBUSI TIER KEPERCAYAAN ANOMALI
 ------------------------------------------------------------------------------
-  High Confidence         :      19 baris ( 0.02%)
-  Confirmed (2 metode)    :   3,282 baris ( 3.28%)
-  Suspected (1 metode)    :   8,916 baris ( 8.92%)
+  High Confidence         :      83 baris ( 0.08%)
+  Confirmed (2 metode)    :   3,237 baris ( 3.24%)
+  Suspected (1 metode)    :   8,897 baris ( 8.90%)
   Normal                  :  87,777 baris (87.78%)
 
 ==============================================================================
 6. TIPOLOGI ANOMALI -- DATA ERROR / RISIKO / KASUS SAH
 ------------------------------------------------------------------------------
-(dihitung atas 3,301 baris prioritas: tier Confirmed + High Confidence)
+(dihitung atas 3,320 baris prioritas: tier Confirmed + High Confidence)
 
-  Unclassified / Manual Review    :  2,674 baris ( 81.0%)
-  Rare Legitimate                 :    372 baris ( 11.3%)
+  Unclassified / Manual Review    :  2,693 baris ( 81.1%)
+  Rare Legitimate                 :    372 baris ( 11.2%)
   Data Error                      :    179 baris (  5.4%)
   Potential Risk Signal           :     76 baris (  2.3%)
 
@@ -134,7 +134,7 @@ d) UNCLASSIFIED / MANUAL REVIEW
      underwriting untuk verifikasi manual sebelum persetujuan kredit.
   3. Manfaatkan 372 baris 'Rare Legitimate' sebagai
      daftar prospek wealth management / priority banking.
-  4. Masukkan sisa 2,674 baris ke watchlist
+  4. Masukkan sisa 2,693 baris ke watchlist
      audit berkala; prioritaskan yang bertumpuk di tier 'High Confidence'.
   5. File lengkap seluruh baris anomali (skor & tipologi per baris) tersedia
      di reports/4-anomalies.csv untuk ditindaklanjuti tim terkait.
