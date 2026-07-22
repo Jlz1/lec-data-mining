@@ -887,46 +887,64 @@ def tab_4_anomalies():
 
 def tab_conclusions():
     return html.Div(className="tab-content", children=[
-        html.Div("Eksekusi & Dampak Finansial dari Pola Tersembunyi", className="section-title"),
-        html.P("Berdasarkan pemetaan kebiasaan nasabah (ARM), berikut adalah strategi nyata yang bisa langsung diterapkan perusahaan beserta dampak finansialnya.", className="mb-4 text-muted"),
+        # --- HEADER ---
+        html.Div(className="text-center mb-5", children=[
+            html.H2("Kesimpulan & Langkah Strategis", style={'fontFamily': 'var(--font-heading)', 'fontWeight': '700', 'color': 'var(--text-primary)', 'fontSize': '2.5rem', 'marginBottom': '10px'})
+        ]),
         
+        # --- 3 PILAR AKSI BISNIS ---
         dbc.Row([
-            dbc.Col(html.Div(className="glass-card mb-4", children=[
-                html.H4("1. Monetisasi Segmen High-Net-Worth yang Pasif", style={'color': 'var(--accent-blue)'}),
-                html.P("Temuan: Orang kaya (Grup 3) secara mengejutkan jarang memaksimalkan limit utangnya dan sangat berhati-hati (Konservatif)."),
-                html.P(html.B("Peluang Bisnis: ")),
-                html.P("Berhenti menargetkan mereka dengan iklan KPR. Alihkan mereka ke produk Wealth Management, reksadana, atau asuransi jiwa premium berbalut investasi."),
-                html.P(html.B("Dampak: ")),
-                html.P("Meningkatkan pemasukan dari komisi (Fee-based Income) tanpa menambah risiko gagal bayar (NPL) sama sekali.", className="text-muted mb-0")
-            ]), width=12),
-            
-            dbc.Col(html.Div(className="glass-card mb-4", children=[
-                html.H4("2. Optimalisasi Bundling Program Veteran (VA Loan)", style={'color': 'var(--accent-orange)'}),
-                html.P("Temuan: Nasabah Veteran punya pola pasti: minta bunga terendah, uang muka 0%, dan sangat hobi mencairkan uang tunai (Cash-out)."),
-                html.P(html.B("Peluang Bisnis: ")),
-                html.P("Ciptakan program 'Bundling Veteran': Tawarkan KPR VA otomatis sepaket dengan fasilitas kartu kredit limit tinggi atau pinjaman renovasi rumah."),
-                html.P(html.B("Dampak: ")),
-                html.P("Meningkatkan jumlah produk yang dipakai per nasabah (Cross-sell Ratio) dan mengamankan loyalitas nasabah dengan profil khusus ini.", className="text-muted mb-0")
-            ]), width=12),
-            
-            dbc.Col(html.Div(className="glass-card mb-4", children=[
-                html.H4("3. Ekspansi Pasar Properti Ekonomis (Manufactured Housing)", style={'color': 'var(--accent-teal)'}),
-                html.P("Temuan: Anak muda bergaji rendah (Entry-level) selalu berujung mengambil rumah siap rakit (Manufactured Housing) dengan tenor pendek."),
-                html.P(html.B("Peluang Bisnis: ")),
-                html.P("Buat divisi kredit mikro perumahan khusus untuk melayani developer penyedia Manufactured Housing. Jadikan proses persetujuannya instan (Fast-track)."),
-                html.P(html.B("Dampak: ")),
-                html.P("Mendominasi ceruk pasar (niche market) perumahan ekonomis dengan perputaran uang (cash-flow) cepat karena tenor cicilan yang lebih pendek.", className="text-muted mb-0")
-            ]), width=12),
-            
-            dbc.Col(html.Div(className="glass-card", children=[
-                html.H4("4. Mitigasi Risiko pada Investor Properti Agresif", style={'color': 'var(--accent-rose)'}),
-                html.P("Temuan: Orang yang membeli properti Multifamily (kos/apartemen) sangat sering memanfaatkan pinjaman sekunder (KPR Kedua) hingga batas maksimal."),
-                html.P(html.B("Peluang Bisnis (Mitigasi): ")),
-                html.P("Ketatkan syarat persetujuan (Underwriting) khusus untuk investor Multifamily. Tawarkan produk KPR berbunga *floating* (mengambang) alih-alih tetap (fixed) untuk mereka."),
-                html.P(html.B("Dampak: ")),
-                html.P("Menekan potensi kerugian besar akibat gagal bayar (Mitigasi Risiko) dari segmen peminjam yang paling agresif berutang.", className="text-muted mb-0")
-            ]), width=12)
-        ])
+            # Pilar 1: Produk & Sales
+            dbc.Col(html.Div(className="pillar-card", style={'borderTopColor': '#3b82f6'}, children=[
+                html.H4("Produk & Pemasaran", style={'color': '#3b82f6', 'marginBottom': '20px'}),
+                html.Div(className="mb-4", children=[
+                    html.Strong("Insight Utama:", style={'color': 'var(--text-secondary)'}),
+                    html.P("Pasar terpecah secara ekstrem. Anak muda memilih rumah siap rakit (Manufactured Housing), sedangkan nasabah kaya justru paling konservatif dalam meminjam.", className="small mt-1")
+                ]),
+                html.Div(children=[
+                    html.Strong("Instruksi Eksekusi:", style={'color': '#f8fafc'}),
+                    html.Ul(className="recommendation-list mt-2", children=[
+                        html.Li("Setop promosi 'satu ukuran untuk semua'."),
+                        html.Li("Rilis KPR Mikro Fast-Track khusus pemuda."),
+                        html.Li("Alihkan nasabah ultra-kaya ke divisi Wealth Management (Investasi & Asuransi).")
+                    ])
+                ])
+            ]), width=4),
+
+            # Pilar 2: Manajemen Risiko
+            dbc.Col(html.Div(className="pillar-card", style={'borderTopColor': '#f43f5e'}, children=[
+                html.H4("Manajemen Risiko", style={'color': '#f43f5e', 'marginBottom': '20px'}),
+                html.Div(className="mb-4", children=[
+                    html.Strong("Insight Utama:", style={'color': 'var(--text-secondary)'}),
+                    html.P("Investor properti kos/apartemen (Multifamily) adalah kelompok peminjam yang paling agresif dalam memaksimalkan utang (LTV tinggi).", className="small mt-1")
+                ]),
+                html.Div(children=[
+                    html.Strong("Instruksi Eksekusi:", style={'color': '#f8fafc'}),
+                    html.Ul(className="recommendation-list mt-2", children=[
+                        html.Li("Perketat syarat persetujuan (underwriting) untuk investor."),
+                        html.Li("Wajibkan suku bunga mengambang (floating) untuk KPR kedua."),
+                        html.Li("Batasi rasio utang berbanding nilai rumah (LTV) maksimal 75%.")
+                    ])
+                ])
+            ]), width=4),
+
+            # Pilar 3: Operasional & IT
+            dbc.Col(html.Div(className="pillar-card", style={'borderTopColor': '#10b981'}, children=[
+                html.H4("Operasional & IT", style={'color': '#10b981', 'marginBottom': '20px'}),
+                html.Div(className="mb-4", children=[
+                    html.Strong("Insight Utama:", style={'color': 'var(--text-secondary)'}),
+                    html.P("Sistem mendeteksi 3.301 pengajuan anomali yang angkanya secara individual tampak normal, namun secara kombinasi berisiko tinggi.", className="small mt-1")
+                ]),
+                html.Div(children=[
+                    html.Strong("Instruksi Eksekusi:", style={'color': '#f8fafc'}),
+                    html.Ul(className="recommendation-list mt-2", children=[
+                        html.Li("Integrasikan Anomaly Detection ke sistem persetujuan otomatis."),
+                        html.Li("Jadikan output sistem sebagai lapis kedua verifikasi kredit."),
+                        html.Li("Eskalasikan 179 kasus Data Error ke tim Data Engineering.")
+                    ])
+                ])
+            ]), width=4),
+        ], className="mb-5", style={'alignItems': 'stretch'})
     ])
 
 # Main Layout

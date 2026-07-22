@@ -245,3 +245,66 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 5px;
     font-family: var(--font-heading);
 }
+
+.pillar-card {
+    background: rgba(17, 24, 39, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid transparent;
+    border-radius: 16px;
+    padding: 30px;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+.pillar-card:hover {
+    background: rgba(17, 24, 39, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.pillar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.roadmap-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+.roadmap-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.roadmap-step {
+    background: var(--bg-base);
+    border: 2px solid var(--accent-blue);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--text-primary);
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.roadmap-content {
+    text-align: center;
+    margin-top: 15px;
+    width: 150px;
+}
