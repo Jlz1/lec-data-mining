@@ -23,6 +23,7 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rules_path = os.path.join(base_dir, 'reports', '3-association-rules.csv')
 anomalies_path = os.path.join(base_dir, 'reports', '4-anomalies.csv')
 pca_path = os.path.join(base_dir, 'reports', 'pca_clusters.csv')
+cluster_summary_path = os.path.join(base_dir, 'reports', 'cluster_profile_summary.csv')
 data_path = os.path.join(base_dir, 'data', 'processed_dataset.csv')
 
 try:
@@ -80,6 +81,12 @@ try:
 except Exception as e:
     df_pca = pd.DataFrame()
     print(f"Error loading PCA data: {e}")
+
+try:
+    df_cluster_summary = pd.read_csv(cluster_summary_path).set_index('cluster_name')
+except Exception as e:
+    df_cluster_summary = pd.DataFrame()
+    print(f"Error loading cluster profile summary: {e}")
 
 try:
     df_raw = pd.read_csv(data_path, nrows=3000)
@@ -303,6 +310,38 @@ def tab_segmentation():
     else:
         fig_pca = go.Figure()
 
+    # Grafik pembanding karakteristik antar-segmen (mengukuhkan klaim di kartu profil
+    # dengan angka nyata hasil clustering pada SELURUH 99.994 baris, bukan sekadar narasi)
+    cluster_order = ['Kelas Menengah (Grup 1)', 'Peminjam Agresif (Grup 2)', 'Konservatif HNW (Grup 3)']
+
+    def _bar_compare(series_key, y_title, value_fmt='{:,.0f}'):
+        if df_cluster_summary.empty:
+            return go.Figure()
+        ordered = df_cluster_summary.reindex(cluster_order)
+        fig = go.Figure(data=[go.Bar(
+            x=cluster_order,
+            y=ordered[series_key],
+            marker_color=[cluster_colors[c] for c in cluster_order],
+            text=[value_fmt.format(v) for v in ordered[series_key]],
+            textposition='outside'
+        )])
+        fig.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#f8fafc', family='Plus Jakarta Sans', size=11),
+            margin=dict(l=10, r=10, t=10, b=10),
+            showlegend=False,
+            xaxis=dict(showgrid=False, tickfont=dict(size=10)),
+            yaxis=dict(title=y_title, showgrid=True, gridcolor='rgba(148,163,184,0.12)', tickfont=dict(size=10)),
+        )
+        return fig
+
+    if not df_cluster_summary.empty:
+        fig_income_cmp = _bar_compare('avg_income', 'Rata-rata Pendapatan ($, ribuan)')
+        fig_loan_cmp = _bar_compare('avg_loan_amount', 'Rata-rata Pinjaman ($)')
+        fig_leverage_cmp = _bar_compare('loan_to_income_ratio', 'Pinjaman / Pendapatan (kali)', value_fmt='{:.2f}x')
+    else:
+        fig_income_cmp = fig_loan_cmp = fig_leverage_cmp = go.Figure()
+
     return html.Div(className="tab-content", children=[
         html.Div("Siapa Sebenarnya Nasabah KPR Kita?", className="section-title"),
         html.P(
@@ -322,12 +361,35 @@ def tab_segmentation():
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Peta Posisi Nasabah (Cluster Map)"),
                 html.P(
-                    "Setiap titik = satu pengajuan KPR. Titik yang mengelompok artinya nasabah tersebut sangat mirip satu sama lain. "
+                    "Setiap titik = satu pengajuan KPR, diproyeksikan dari 14 fitur finansial ke 2 dimensi (PCA) agar bisa dilihat mata. "
+                    "Titik yang mengelompok artinya nasabah tersebut sangat mirip satu sama lain. "
                     "Ketiga warna ini adalah tiga 'dunia' yang berbeda di dalam pasar yang sama.",
                     className="small text-muted mb-2"
                 ),
                 dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, style={'height': '320px'})
             ]), width=8),
+        ], className="mb-4"),
+
+        # --- BARIS 1.5: Pembanding Kuantitatif Antar Segmen ---
+        html.Div("Apakah Klaim di Atas Didukung Data? (Perbandingan Kuantitatif)", className="section-title"),
+        html.P(
+            "Ketiga grafik ini dihitung langsung dari rata-rata seluruh 99.994 nasabah di tiap segmen, "
+            "sebagai bukti kuantitatif atas klaim karakteristik pada kartu profil di bawah.",
+            className="mb-3 text-muted small"
+        ),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H5("Rata-rata Pendapatan", className="mb-2"),
+                dcc.Graph(figure=fig_income_cmp, config={'displayModeBar': False}, style={'height': '260px'})
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H5("Rata-rata Nilai Pinjaman", className="mb-2"),
+                dcc.Graph(figure=fig_loan_cmp, config={'displayModeBar': False}, style={'height': '260px'})
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H5("Rasio Leverage (Pinjaman / Pendapatan)", className="mb-2"),
+                dcc.Graph(figure=fig_leverage_cmp, config={'displayModeBar': False}, style={'height': '260px'})
+            ]), width=4),
         ], className="mb-4"),
 
         # --- BARIS 2: Profil 3 Segmen ---
@@ -580,60 +642,6 @@ def tab_arm_visualization():
         html.Div("10 Peluang Bisnis dari Pola Nasabah", className="section-title mt-2"),
         html.P("Setiap kartu menunjukkan satu pola tersembunyi dari data. Angka oranye menunjukkan seberapa kuat pola ini dibanding rata-rata populasi.", className="mb-3 text-muted small"),
         dbc.Row(rules_html)
-    ])
-
-
-def tab_cluster_map():
-    if not df_pca.empty:
-        cluster_colors = {'Kelas Menengah (Grup 1)': '#3b82f6', 'Peminjam Agresif (Grup 2)': '#f43f5e', 'Konservatif HNW (Grup 3)': '#10b981'}
-        fig_pca = px.scatter(
-            df_pca.sample(min(1500, len(df_pca))),
-            x='pca_x', y='pca_y',
-            color='cluster_name',
-            color_discrete_map=cluster_colors,
-            hover_data=['loan_amount', 'income'],
-            labels={'pca_x': 'Dimensi 1 (PCA)', 'pca_y': 'Dimensi 2 (PCA)', 'cluster_name': 'Segmen Nasabah'},
-            opacity=0.7
-        )
-        fig_pca.update_traces(marker=dict(size=6))
-        fig_pca.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
-            margin=dict(l=20, r=20, t=20, b=20),
-            legend=dict(orientation='h', yanchor='bottom', y=-0.25, xanchor='center', x=0.5)
-        )
-        # Bar chart distribusi per cluster
-        cluster_dist = df_pca['cluster_name'].value_counts().reset_index()
-        cluster_dist.columns = ['Segmen', 'Jumlah']
-        fig_dist_cluster = px.bar(
-            cluster_dist, x='Segmen', y='Jumlah',
-            color='Segmen',
-            color_discrete_map=cluster_colors,
-            text='Jumlah'
-        )
-        fig_dist_cluster.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc'), showlegend=False,
-            margin=dict(l=10, r=10, t=10, b=10)
-        )
-        fig_dist_cluster.update_traces(texttemplate='%{text}', textposition='outside')
-    else:
-        fig_pca = go.Figure()
-        fig_dist_cluster = go.Figure()
-
-    return html.Div(className="tab-content", children=[
-        html.Div("Peta Visual Segmentasi Nasabah (Cluster Map)", className="section-title"),
-        html.P("Setiap titik mewakili satu pengajuan KPR. Titik yang berdekatan berarti nasabah tersebut memiliki profil finansial yang mirip satu sama lain. Cluster yang terpisah jauh artinya perilaku keuangannya sangat berbeda.", className="mb-4 text-muted"),
-        dbc.Row([
-            dbc.Col(html.Div(className="glass-card", children=[
-                html.H4("Posisi Setiap Nasabah dalam Ruang 2D (PCA)"),
-                dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, style={'height': '420px'})
-            ]), width=8),
-            dbc.Col(html.Div(className="glass-card", children=[
-                html.H4("Ukuran Tiap Segmen"),
-                dcc.Graph(figure=fig_dist_cluster, config={'displayModeBar': False}, style={'height': '420px'})
-            ]), width=4),
-        ])
     ])
 
 

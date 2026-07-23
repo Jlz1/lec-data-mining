@@ -19,15 +19,40 @@
     2. Metodologi Pendekatan
     2.1 Feature Selection
     Seleksi fitur dilakukan secara otomatis untuk memastikan hanya variabel numerik kontinu yang digunakan dalam proses clustering. Variabel dengan jumlah unique values ≤ 5 dieliminasi karena dianggap bersifat biner atau kategorikal dan kurang sesuai untuk pendekatan berbasis jarak Euclidean.
-    Fitur utama yang digunakan meliputi:
+    14 fitur yang lolos seleksi otomatis dan benar-benar dipakai dalam model K-Means/DBSCAN/Hierarchical adalah:
     - loan_amount
     - income
-    - property_value
-    - interest_rate
-    - loan_to_value_ratio
+    - derived_msa_md
+    - county_code
+    - applicant_ethnicity_1
+    - co_applicant_ethnicity_1
+    - applicant_race_1
+    - co_applicant_race_1
+    - tract_population
+    - tract_minority_population_percent
+    - ffiec_msa_md_median_family_income
     - tract_to_msa_income_percentage
-    - housing_age
-    - minority_population_percentage
+    - tract_owner_occupied_units
+    - tract_median_age_of_housing_units
+
+    Catatan keterbatasan (feature selection):
+    interest_rate dan combined_loan_to_value_ratio TIDAK ikut dalam proses clustering ini.
+    Kedua kolom tersebut ter-load sebagai object dtype (campuran representasi string/angka pada CSV sumber),
+    sehingga otomatis tersaring keluar oleh filter `select_dtypes(['int64','float64'])` di atas.
+    property_value, loan_to_value_ratio (nama kolom generik), housing_age, dan minority_population_percentage
+    yang sempat disebut pada draf sebelumnya bukan kolom yang tersedia di processed_dataset.csv dan tidak pernah
+    menjadi bagian dari model -- baris ini memperbaiki kesalahan penyebutan tersebut.
+
+    Enam dari 14 fitur (derived_msa_md, county_code, applicant_ethnicity_1, co_applicant_ethnicity_1,
+    applicant_race_1, co_applicant_race_1) sebenarnya adalah kode kategorikal/ID (kode wilayah HMDA, kode
+    ras & etnis) yang lolos filter nunique()>5 karena punya banyak nilai unik, bukan karena secara semantik
+    kontinu. Memasukkannya ke perhitungan jarak Euclidean berarti "jarak" antar kode kategori tersebut
+    diperlakukan seolah berjarak secara numerik (mis. kode ras 5 dianggap "lebih dekat" ke kode 4 dibanding
+    ke kode 1), yang tidak punya makna finansial nyata. Ini adalah keterbatasan metodologis yang perlu
+    diperhitungkan saat menilai rigiditas pipeline; centroid loan_amount dan income tetap menjadi driver
+    interpretasi bisnis utama karena skalanya paling dominan, namun idealnya feature selection tahap
+    berikutnya secara eksplisit mengecualikan kolom ID/kategorikal ini dan mempertimbangkan opsi
+    memasukkan interest_rate & combined_loan_to_value_ratio secara benar (dengan koersi tipe data lebih dulu).
     Pendekatan ini bertujuan menjaga validitas pengukuran jarak antar data sehingga hasil segmentasi benar-benar mencerminkan kedekatan finansial antar pemohon.
 
     2.2 Data Standardization
