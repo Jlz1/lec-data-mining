@@ -27,7 +27,7 @@ Kami menggunakan tiga pendekatan analisis yang bekerja secara berlapis:
 |---|---|---|
 | **Clustering** | Mengelompokkan nasabah seperti segmentasi pasar | 3 profil nasabah yang berbeda |
 | **Association Rules (ARM)** | Menemukan "kalau beli A, biasanya juga beli B" di dunia KPR | 10 pola perilaku tersembunyi |
-| **Anomaly Detection** | Menemukan transaksi yang "aneh" di antara puluhan ribu data | 3.301 kasus yang butuh perhatian |
+| **Anomaly Detection** | Menemukan transaksi yang "aneh" di antara puluhan ribu data | 3.320 kasus prioritas (dari 12.217 total yang tersentuh minimal 1 metode) |
 
 ---
 
@@ -99,18 +99,18 @@ Sistem ARM menganalisis ratusan kombinasi atribut dari 99.994 pengajuan dan mene
 
 ---
 
-### 3.3 Deteksi 3.301 Kasus yang Butuh Perhatian
+### 3.3 Deteksi 3.320 Kasus Prioritas yang Butuh Perhatian
 
-Dari 99.994 pengajuan, sistem anomali mendeteksi **3.301 kasus yang menyimpang** dari pola normal:
+Tiga metode deteksi (IQR, Z-score, Isolation Forest) menandai **12.217 dari 99.994 pengajuan (12,22%)** sebagai anomali oleh setidaknya satu metode. Dari jumlah itu, **3.320 kasus (3,32%)** masuk tier prioritas tertinggi — "Confirmed" (lolos ≥2 metode) atau "High Confidence" (lolos ≥2 metode **dan** cocok dengan outlier cluster Phase 2):
 
 | Kategori | Jumlah Kasus | Apa Artinya | Tindakan |
 |---|---|---|---|
 | **Sinyal Risiko Kredit Tinggi** | 76 kasus | Kombinasi gaji rendah + pinjaman jumbo + leverage agresif | Prioritas review manual sebelum disetujui |
 | **Data Error** | 179 kasus | Nilai tidak logis (bunga 0%, LTV > 150%) | Eskalasi ke tim data untuk koreksi |
 | **Profil Konservatif (Prospek)** | 372 kasus | "Terlalu sehat" — pendapatan sangat tinggi tapi pinjaman sangat kecil | Tawarkan produk Wealth Management |
-| **Perlu Tinjauan Manual** | 2.674 kasus | Pola statistik tidak biasa, perlu validasi manusia | Masuk daftar audit internal berkala |
+| **Perlu Tinjauan Manual** | 2.693 kasus | Pola statistik tidak biasa, perlu validasi manusia | Masuk daftar audit internal berkala |
 
-> **Yang Tidak Terlihat di Data Mentah:** Secara individual, setiap komponen dari kasus-kasus ini tampak normal. Yang membuat mereka anomali adalah **kombinasi** dari semua faktor tersebut secara bersamaan. Ini tidak mungkin ditemukan tanpa algoritma deteksi berlapis.
+> **Yang Tidak Terlihat di Data Mentah:** Secara individual, setiap komponen dari kasus-kasus ini tampak normal. Yang membuat mereka anomali adalah **kombinasi** dari semua faktor tersebut secara bersamaan. Ini tidak mungkin ditemukan tanpa algoritma deteksi berlapis. Perlu dicatat: 81% dari 3.320 kasus prioritas ("Perlu Tinjauan Manual") memang tidak cocok dengan pola bisnis baku manapun — ini realistis, bukan kegagalan sistem, karena tidak semua penyimpangan statistik punya penjelasan otomatis. Nilai fase ini justru menyempitkan 99.994 baris menjadi watchlist yang bisa diaudit manusia.
 
 ---
 
@@ -129,7 +129,7 @@ Data mentah menunjukkan VA Loan sebagai salah satu kolom dari banyak kolom. ARM 
 Tidak ada laporan standar yang langsung menyoroti bahwa usia pemohon di bawah 25 tahun hampir selalu berujung ke Manufactured Housing dengan tenor pendek. **Ini adalah ceruk pasar yang belum digarap secara maksimal.**
 
 **Temuan 4 — Anomali Bukan Hanya Alarm Bahaya**  
-Dari 3.301 "kasus aneh", ternyata 372 di antaranya adalah nasabah dengan kesehatan finansial yang justru terlalu baik. **Sistem anomali secara tidak terduga menghasilkan daftar prospek bisnis premium.**
+Dari 3.320 "kasus aneh" prioritas, ternyata 372 di antaranya adalah nasabah dengan kesehatan finansial yang justru terlalu baik. **Sistem anomali secara tidak terduga menghasilkan daftar prospek bisnis premium.**
 
 ---
 
@@ -159,10 +159,23 @@ Implementasikan flag otomatis untuk nasabah yang memiliki kombinasi risiko tingg
 
 | Fase | Teknik | Tools | Parameter |
 |---|---|---|---|
-| Preprocessing | Imputasi, Encoding, Binning, Normalisasi | Python, Pandas | 99.994 baris, 80 kolom |
-| Clustering | K-Means | Scikit-learn | K=3 |
-| ARM | Apriori Algorithm | mlxtend | min_support=0.001, min_confidence=0.5 |
-| Anomaly Detection | Isolation Forest + LOF | Scikit-learn | contamination=0.05 |
+| Preprocessing | Imputasi (median/mode), Encoding (one-hot), Binning, Normalisasi (StandardScaler) | Python, Pandas | 99.994 baris, 80 kolom final |
+| Clustering | K-Means (utama) + DBSCAN & Hierarchical/Ward (validasi silang) | Scikit-learn, SciPy | K=3 (silhouette tertinggi=0,154); DBSCAN eps=2,0, min_samples=10; ARI KMeans-vs-Ward=0,356 |
+| ARM | Apriori Algorithm + domain-based discretization | mlxtend | min_support=0,001, min_confidence=0,6, min_lift=1,5 |
+| Anomaly Detection | IQR + Z-score (univariat) + Isolation Forest (multivariat), cross-referenced ke cluster Phase 2 | Scikit-learn | IF contamination='auto' (n_estimators=200) |
+
+**Ringkasan validasi silang (corroboration):** setiap fase divalidasi dengan lebih dari satu metode agar temuan tidak bergantung pada satu algoritma saja — K=3 dikonfirmasi Elbow *dan* Silhouette *dan* struktur dendrogram Ward (ARI=0,356 terhadap K-Means, cluster HNW paling stabil lintas metode); status noise DBSCAN (363/5.000, 7,26%) direproduksi persis ulang di Phase 4; dan anomali Isolation Forest di-cross-reference ke outlier cluster Phase 2 (overlap 32,0% pada subset tersampel).
+
+## Batasan & Kejujuran Analisis (Limitations)
+
+Rubric penilaian mensyaratkan kami menyatakan dengan jujur apa yang **tidak** bisa diklaim dari analisis ini:
+
+1. **Korelasi bukan kausalitas.** Semua pola yang ditemukan (cluster, association rules, anomali) adalah **asosiasi statistik**, bukan bukti sebab-akibat. Contoh: "usia < 25 tahun → Manufactured Housing" (lift 19,7x) menunjukkan keduanya sering muncul bersama, BUKAN bahwa usia muda *menyebabkan* pilihan properti tersebut — variabel lain yang tidak terukur di HMDA (kekayaan keluarga, lokasi, preferensi budaya) bisa jadi penyebab sebenarnya. Rekomendasi bisnis di laporan ini harus diperlakukan sebagai **hipotesis yang layak diuji lebih lanjut** (mis. lewat A/B test produk), bukan kepastian.
+2. **Snapshot satu tahun (2022).** Seluruh temuan berbasis data HMDA 2022 saja. Pola bisa bergeser signifikan mengikuti siklus suku bunga (2022 adalah tahun kenaikan suku bunga agresif The Fed), sehingga generalisasi ke tahun lain harus divalidasi ulang sebelum dijadikan keputusan bisnis permanen.
+3. **Fitur clustering didominasi variabel geografis-demografis, bukan variabel harga kredit.** Karena `interest_rate`, `combined_loan_to_value_ratio`, `rate_spread`, dan `debt_to_income_ratio` tersimpan sebagai teks (bercampur kategori seperti "exempt" atau bucket rentang) di data sumber, filter otomatis "kolom numerik murni" pada Phase 2 **tidak menyertakan variabel-variabel harga/leverage tersebut** ke dalam pembentukan cluster. Ketiga segmen nasabah pada dasarnya terbentuk dari pola *loan_amount, income*, dan konteks wilayah (median family income area, populasi, usia bangunan) — bukan langsung dari suku bunga atau LTV individual. Lihat detail di `reports/2-clustering-report.txt` Bagian 2.1.
+4. **Kode ras/etnis diperlakukan sebagai variabel numerik kontinu dalam jarak Euclidean K-Means** (karena lolos filter `nunique > 5` otomatis). Kode-kode ini bersifat nominal (tidak ada urutan/jarak matematis yang bermakna antar kategori), sehingga kontribusinya pada pembentukan cluster harus dibaca sebagai sinyal kasar keberagaman area, bukan sebagai skala yang presisi. Ini juga alasan mengapa laporan ini secara sengaja tidak membuat klaim prediktif berbasis ras/etnis individu — segmentasi difokuskan pada perilaku finansial (income, loan_amount), bukan demografi personal.
+5. **Sampling untuk algoritma berat.** DBSCAN (5.000 baris) dan Hierarchical Clustering (800 baris) dijalankan pada subsample acak (bukan populasi penuh 99.994) karena kompleksitas O(N²)/O(N³) — hasil tetap konsisten antar rerun karena `random_state`/seed tetap, tapi estimasi persentase noise/dendrogram tetap tunduk pada varians sampling, bukan sensus penuh.
+6. **Rasio keberagaman data mengikuti populasi pelapor HMDA**, bukan populasi umum AS — HMDA hanya mencakup pemohon KPR yang benar-benar mengajukan ke lembaga pelapor, sehingga tidak merepresentasikan rumah tangga yang tidak mengajukan KPR sama sekali (mis. karena ditolak duluan secara informal, atau memilih tidak mengajukan).
 
 ---
 

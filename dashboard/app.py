@@ -130,9 +130,9 @@ def tab_1_executive():
                 html.Div("Variabel", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
             ]), width=2),
             dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
-                html.Div("Kolom Dipakai", className="metric-title"),
-                html.Div("56", className="metric-value", style={'color': '#3b82f6'}),
-                html.Div("Fitur Terpenting", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+                html.Div("Fitur Final", className="metric-title"),
+                html.Div("80", className="metric-value", style={'color': '#3b82f6'}),
+                html.Div("Setelah Encoding & Seleksi", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
             ]), width=2),
             dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
                 html.Div("Data Kosong Awal", className="metric-title"),
@@ -140,41 +140,43 @@ def tab_1_executive():
                 html.Div("Sel yang Kosong", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
             ]), width=2),
             dbc.Col(html.Div(className="glass-card metric-card h-100", children=[
-                html.Div("Data Kosong Akhir", className="metric-title"),
-                html.Div("0", className="metric-value", style={'color': '#10b981'}),
-                html.Div("100% Terisi (Imputed)", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
+                html.Div("Kelengkapan Akhir", className="metric-title"),
+                html.Div("96,5%", className="metric-value", style={'color': '#10b981'}),
+                html.Div("Sisa Kosong: Kolom Finansial*", style={'color': 'var(--text-secondary)', 'fontSize': '0.9rem'})
             ]), width=2),
         ], className="mb-4"),
-        
+        html.P("* Beberapa kolom finansial (suku bunga, LTV, biaya pinjaman) tersimpan sebagai teks bercampur nilai non-numerik di sumber data, menyisakan celah imputasi kecil. Fase Clustering & Anomaly Detection tetap melakukan imputasi ulang sebelum pemodelan, jadi tidak ada nilai kosong yang mencapai model manapun — detail lengkap di tab \"7. Metodologi & Validitas\".", className="small text-muted mb-4", style={'marginTop': '-0.75rem'}),
+
         # --- BARIS 2: Profil Finansial ---
         html.H4("Profil Finansial Nasabah", className="mb-3 mt-5", style={'color': 'var(--accent-blue)'}),
+        html.P("Nilai pinjaman & pendapatan sangat right-skewed (ekor outlier ekstrem), jadi Median dijadikan angka utama — lebih representatif dibanding Rata-rata untuk data finansial yang timpang. Ini konsisten dengan temuan skewness di Fase 1 & 3.", className="small text-muted mb-3", style={'maxWidth': '900px'}),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
                 html.H5("Nilai Pinjaman (Loan)", className="mb-3", style={'color': 'var(--text-secondary)'}),
-                html.Div("$204K", className="stat-highlight", style={'color': '#3b82f6'}),
-                html.Div("Rata-rata", className="small text-muted mb-2"),
-                html.Div("Median: $175K", className="small mb-1"),
-                html.Div("Range: $5K - $1.5M", className="small text-muted")
+                html.Div("$225K", className="stat-highlight", style={'color': '#3b82f6'}),
+                html.Div("Median", className="small text-muted mb-2"),
+                html.Div("Rata-rata: $306K (naik krn outlier)", className="small mb-1"),
+                html.Div("Range: $5K - $93,2 Juta", className="small text-muted")
             ]), width=3),
             dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
                 html.H5("Pendapatan (Income)", className="mb-3", style={'color': 'var(--text-secondary)'}),
                 html.Div("$95K", className="stat-highlight", style={'color': '#10b981'}),
-                html.Div("Rata-rata / Tahun", className="small text-muted mb-2"),
-                html.Div("Median: $65K", className="small mb-1"),
-                html.Div("Range: $1K - $774K", className="small text-muted")
+                html.Div("Median / Tahun", className="small text-muted mb-2"),
+                html.Div("Rata-rata: $153,6K (outlier ekstrem)", className="small mb-1"),
+                html.Div("Range: $0 - $1,08 Juta", className="small text-muted")
             ]), width=3),
             dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
                 html.H5("Suku Bunga (Interest)", className="mb-3", style={'color': 'var(--text-secondary)'}),
-                html.Div("4,12%", className="stat-highlight", style={'color': '#f97316'}),
+                html.Div("4,77%", className="stat-highlight", style={'color': '#f97316'}),
                 html.Div("Rata-rata", className="small text-muted mb-2"),
-                html.Div("Median: 4.00%", className="small mb-1"),
-                html.Div("Range: 0% - 10,45%", className="small text-muted")
+                html.Div("Median: 4,75%", className="small mb-1"),
+                html.Div("Range: 0% - 15,25%", className="small text-muted")
             ]), width=3),
             dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
                 html.H5("Utang vs Nilai Rumah", className="mb-3", style={'color': 'var(--text-secondary)'}),
-                html.Div("68,5%", className="stat-highlight", style={'color': '#f43f5e'}),
+                html.Div("74,0%", className="stat-highlight", style={'color': '#f43f5e'}),
                 html.Div("Rata-rata LTV", className="small text-muted mb-2"),
-                html.Div("Median: 75%", className="small mb-1"),
+                html.Div("Median: 78,2%", className="small mb-1"),
                 html.Div("Lebih rendah = Lebih aman", className="small text-muted")
             ]), width=3),
         ], className="mb-4"),
@@ -184,47 +186,48 @@ def tab_1_executive():
         dbc.Row([
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H5("Tipe Produk KPR", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
-                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Konvensional"), html.Strong("42,3%")]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Konvensional"), html.Strong("79,4%")]),
                 html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
-                    html.Div(className="progress-bar", style={'width': '42.3%', 'backgroundColor': '#3b82f6'})
+                    html.Div(className="progress-bar", style={'width': '79.4%', 'backgroundColor': '#3b82f6'})
                 ]),
-                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("FHA (Pemerintah)"), html.Strong("28,2%")]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("FHA (Pemerintah)"), html.Strong("12,4%")]),
                 html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
-                    html.Div(className="progress-bar", style={'width': '28.2%', 'backgroundColor': '#10b981'})
+                    html.Div(className="progress-bar", style={'width': '12.4%', 'backgroundColor': '#10b981'})
                 ]),
-                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("VA (Veteran)"), html.Strong("19,2%")]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("VA (Veteran)"), html.Strong("7,5%")]),
                 html.Div(className="progress mb-0", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
-                    html.Div(className="progress-bar", style={'width': '19.2%', 'backgroundColor': '#f59e0b'})
+                    html.Div(className="progress-bar", style={'width': '7.5%', 'backgroundColor': '#f59e0b'})
                 ])
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H5("Tujuan Pinjaman", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
-                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Pembelian Rumah Baru"), html.Strong("45,2%")]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Pembelian Rumah Baru"), html.Strong("49,0%")]),
                 html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
-                    html.Div(className="progress-bar", style={'width': '45.2%', 'backgroundColor': '#8b5cf6'})
+                    html.Div(className="progress-bar", style={'width': '49.0%', 'backgroundColor': '#8b5cf6'})
                 ]),
-                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Refinancing (KPR Ulang)"), html.Strong("42,1%")]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Refinancing (termasuk Cash-out)"), html.Strong("33,2%")]),
                 html.Div(className="progress mb-3", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
-                    html.Div(className="progress-bar", style={'width': '42.1%', 'backgroundColor': '#ec4899'})
+                    html.Div(className="progress-bar", style={'width': '33.2%', 'backgroundColor': '#ec4899'})
                 ]),
-                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Perbaikan Rumah"), html.Strong("12,7%")]),
+                html.Div(className="d-flex justify-content-between mb-2", children=[html.Span("Perbaikan Rumah"), html.Strong("9,3%")]),
                 html.Div(className="progress mb-0", style={'height': '8px', 'backgroundColor': 'rgba(255,255,255,0.1)'}, children=[
-                    html.Div(className="progress-bar", style={'width': '12.7%', 'backgroundColor': '#14b8a6'})
+                    html.Div(className="progress-bar", style={'width': '9.3%', 'backgroundColor': '#14b8a6'})
                 ])
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", children=[
-                html.H5("Jenis Kelamin", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
-                html.Div(className="d-flex justify-content-center align-items-center h-100", children=[
+                html.H5("Jenis Kelamin Pemohon", className="mb-3", style={'color': 'var(--text-secondary)', 'textAlign': 'center'}),
+                html.Div(className="d-flex justify-content-center align-items-center", children=[
                     html.Div(className="text-center me-4", children=[
-                        html.H3("52,3%", style={'color': '#3b82f6', 'marginBottom': '5px'}),
+                        html.H3("30,8%", style={'color': '#3b82f6', 'marginBottom': '5px'}),
                         html.Span("Pria", className="text-muted")
                     ]),
                     html.Div(style={'width': '1px', 'height': '40px', 'backgroundColor': 'rgba(255,255,255,0.2)'}),
                     html.Div(className="text-center ms-4", children=[
-                        html.H3("47,7%", style={'color': '#ec4899', 'marginBottom': '5px'}),
+                        html.H3("20,7%", style={'color': '#ec4899', 'marginBottom': '5px'}),
                         html.Span("Wanita", className="text-muted")
                     ])
-                ])
+                ]),
+                html.P("48,5% sisanya adalah pengajuan Joint (bersama pasangan/co-applicant) atau data jenis kelamin tidak tersedia — proporsi ini cukup besar untuk dicatat, bukan diabaikan.", className="small text-muted text-center mt-3 mb-0")
             ]), width=4),
         ], className="mb-4"),
 
@@ -237,9 +240,9 @@ def tab_1_executive():
             dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
             dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("3. Hapus Duplikat"), html.Br(), html.Span("6 baris identik dihapus", className="small text-muted")]), width=2),
             dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
-            dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("4. Isi Data Kosong"), html.Br(), html.Span("100% Imputasi Sukses", className="small text-muted")]), width=2),
+            dbc.Col(html.Div(className="pipeline-step", children=[html.Strong("4. Isi Data Kosong"), html.Br(), html.Span("Imputasi Median/Mode (96,5%)", className="small text-muted")]), width=2),
             dbc.Col(html.Div(className="pipeline-arrow", children="➔"), width=1, style={'padding': 0, 'width': '4%'}),
-            dbc.Col(html.Div(className="pipeline-step", style={'borderColor': '#10b981'}, children=[html.Strong("5. Data Siap Pakai", style={'color': '#10b981'}), html.Br(), html.Span("Kualitas Data 98%", className="small text-muted")]), width=2),
+            dbc.Col(html.Div(className="pipeline-step", style={'borderColor': '#10b981'}, children=[html.Strong("5. Data Siap Pakai", style={'color': '#10b981'}), html.Br(), html.Span("80 Fitur Final", className="small text-muted")]), width=2),
         ], className="align-items-center mb-5", style={'justifyContent': 'center'}),
         
         # --- BARIS 5: Ringkasan Temuan ---
@@ -326,7 +329,12 @@ def tab_segmentation():
                     "Ketiga warna ini adalah tiga 'dunia' yang berbeda di dalam pasar yang sama.",
                     className="small text-muted mb-2"
                 ),
-                dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, style={'height': '320px'})
+                dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, style={'height': '320px'}),
+                html.P(
+                    "Peta 2D ini adalah proyeksi PCA dari 14 fitur asli — 2 dimensi ini hanya menangkap ±27,9% dari total variasi data (PC1 15,3% + PC2 12,6%). "
+                    "Artinya: pemisahan warna yang terlihat di sini justru KONSERVATIF — cluster sebenarnya lebih terpisah di ruang 14 dimensi daripada yang tampak di 2D ini.",
+                    className="small text-muted mt-2 mb-0", style={'fontStyle': 'italic'}
+                )
             ]), width=8),
         ], className="mb-4"),
 
@@ -580,60 +588,6 @@ def tab_arm_visualization():
         html.Div("10 Peluang Bisnis dari Pola Nasabah", className="section-title mt-2"),
         html.P("Setiap kartu menunjukkan satu pola tersembunyi dari data. Angka oranye menunjukkan seberapa kuat pola ini dibanding rata-rata populasi.", className="mb-3 text-muted small"),
         dbc.Row(rules_html)
-    ])
-
-
-def tab_cluster_map():
-    if not df_pca.empty:
-        cluster_colors = {'Kelas Menengah (Grup 1)': '#3b82f6', 'Peminjam Agresif (Grup 2)': '#f43f5e', 'Konservatif HNW (Grup 3)': '#10b981'}
-        fig_pca = px.scatter(
-            df_pca.sample(min(1500, len(df_pca))),
-            x='pca_x', y='pca_y',
-            color='cluster_name',
-            color_discrete_map=cluster_colors,
-            hover_data=['loan_amount', 'income'],
-            labels={'pca_x': 'Dimensi 1 (PCA)', 'pca_y': 'Dimensi 2 (PCA)', 'cluster_name': 'Segmen Nasabah'},
-            opacity=0.7
-        )
-        fig_pca.update_traces(marker=dict(size=6))
-        fig_pca.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
-            margin=dict(l=20, r=20, t=20, b=20),
-            legend=dict(orientation='h', yanchor='bottom', y=-0.25, xanchor='center', x=0.5)
-        )
-        # Bar chart distribusi per cluster
-        cluster_dist = df_pca['cluster_name'].value_counts().reset_index()
-        cluster_dist.columns = ['Segmen', 'Jumlah']
-        fig_dist_cluster = px.bar(
-            cluster_dist, x='Segmen', y='Jumlah',
-            color='Segmen',
-            color_discrete_map=cluster_colors,
-            text='Jumlah'
-        )
-        fig_dist_cluster.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#f8fafc'), showlegend=False,
-            margin=dict(l=10, r=10, t=10, b=10)
-        )
-        fig_dist_cluster.update_traces(texttemplate='%{text}', textposition='outside')
-    else:
-        fig_pca = go.Figure()
-        fig_dist_cluster = go.Figure()
-
-    return html.Div(className="tab-content", children=[
-        html.Div("Peta Visual Segmentasi Nasabah (Cluster Map)", className="section-title"),
-        html.P("Setiap titik mewakili satu pengajuan KPR. Titik yang berdekatan berarti nasabah tersebut memiliki profil finansial yang mirip satu sama lain. Cluster yang terpisah jauh artinya perilaku keuangannya sangat berbeda.", className="mb-4 text-muted"),
-        dbc.Row([
-            dbc.Col(html.Div(className="glass-card", children=[
-                html.H4("Posisi Setiap Nasabah dalam Ruang 2D (PCA)"),
-                dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, style={'height': '420px'})
-            ]), width=8),
-            dbc.Col(html.Div(className="glass-card", children=[
-                html.H4("Ukuran Tiap Segmen"),
-                dcc.Graph(figure=fig_dist_cluster, config={'displayModeBar': False}, style={'height': '420px'})
-            ]), width=4),
-        ])
     ])
 
 
@@ -940,6 +894,93 @@ def tab_conclusions():
         ])
     ])
 
+
+def tab_methodology():
+    # Silhouette by K chart (rationale for K=3)
+    k_vals = [2, 3, 4, 5, 6]
+    sil_vals = [0.1405, 0.1535, 0.1338, 0.1516, 0.1516]
+    bar_colors = ['#334155' if k != 3 else '#10b981' for k in k_vals]
+    fig_sil = go.Figure(data=[go.Bar(
+        x=[f"K={k}" for k in k_vals], y=sil_vals,
+        marker_color=bar_colors,
+        text=[f"{v:.4f}" for v in sil_vals], textposition='outside'
+    )])
+    fig_sil.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
+        margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
+        yaxis=dict(title='Silhouette Score', range=[0, 0.19], showgrid=True, gridcolor='rgba(148,163,184,0.12)'),
+        xaxis=dict(showgrid=False)
+    )
+
+    pipeline_rows = [
+        ("1. Preprocessing", "Median/Mode Imputation, One-Hot Encoding, Quantile Binning, StandardScaler",
+         "Median dipilih (bukan mean) karena data finansial right-skewed — mean akan tertarik outlier. One-hot dipakai agar tidak memaksakan urutan palsu pada kategori nominal."),
+        ("2. Segmentation", "K-Means (K=3) + DBSCAN + Hierarchical/Ward untuk validasi silang",
+         "K=3 dipilih karena silhouette tertinggi (0,1535) di antara K=2..6 DAN satu-satunya yang menghasilkan interpretasi bisnis yang jelas (mass-market / agresif / konservatif-HNW)."),
+        ("3. Association Rules", "Apriori + domain-based binning (bukan qcut otomatis)",
+         "Domain binning dipilih setelah qcut terbukti gagal pada loan_term (74% data terjebak di 1 bin, 360 bulan) — batas domain (mis. LTV 80% = ambang bebas PMI) punya makna bisnis langsung."),
+        ("4. Anomaly Detection", "IQR + Z-score (univariat) + Isolation Forest (multivariat), cross-ref ke cluster Fase 2",
+         "Tiga metode dipakai berlapis karena masing-masing menangkap jenis anomali berbeda — IQR/Z-score bisa saling menutupi (masking effect), Isolation Forest menangkap kombinasi nilai yang wajar sendiri-sendiri tapi janggal bersama."),
+        ("5. Knowledge Discovery", "Sintesis lintas-fase + dashboard interaktif",
+         "Setiap insight di dashboard ini disyaratkan muncul di ≥2 metode (lihat Corroboration) sebelum ditulis sebagai temuan utama, bukan hasil satu model saja."),
+    ]
+    pipeline_table = dbc.Table([
+        html.Thead(html.Tr([html.Th("Fase"), html.Th("Metode & Parameter Kunci"), html.Th("Rasionalisasi (Kenapa)")])),
+        html.Tbody([
+            html.Tr([html.Td(html.B(p)), html.Td(m, className="small"), html.Td(r, className="small text-muted")])
+            for p, m, r in pipeline_rows
+        ])
+    ], bordered=False, hover=True, responsive=True, className="align-middle")
+
+    corroboration_cards = [
+        {"title": "Silhouette Score (K=3)", "value": "0,1535", "desc": "Tertinggi di antara K=2..6 pada sampel 10.000 baris — dasar kuantitatif pemilihan K=3.", "color": "#3b82f6"},
+        {"title": "Adjusted Rand Index", "value": "0,356", "desc": "K-Means vs Agglomerative-Ward (n=800): korroborasi MODERAT, jujur bukan sempurna. Cluster HNW paling stabil lintas metode.", "color": "#10b981"},
+        {"title": "Reproduksi DBSCAN", "value": "7,26%", "desc": "Noise rate direproduksi ULANG persis sama (363/5.000) di Fase 4 dari Fase 2 — bukti pipeline deterministik & konsisten.", "color": "#f59e0b"},
+        {"title": "Overlap IF x DBSCAN", "value": "32,0%", "desc": "Anomali Isolation Forest (finansial) vs noise DBSCAN (geografis-demografis): overlap sebagian, BUKAN 100% — keduanya sengaja memotret sudut pandang berbeda.", "color": "#f43f5e"},
+    ]
+
+    limitations = [
+        ("Korelasi, bukan kausalitas", "Semua pola (cluster, association rules, anomali) adalah asosiasi statistik. \"Usia < 25 → Manufactured Housing\" (lift 19,7x) menunjukkan ko-kemunculan, BUKAN hubungan sebab-akibat. Rekomendasi bisnis di sini adalah hipotesis yang layak diuji lebih lanjut (mis. A/B test), bukan kepastian."),
+        ("Snapshot satu tahun (2022)", "2022 adalah tahun kenaikan suku bunga agresif The Fed. Pola bisa bergeser signifikan di tahun lain — generalisasi lintas tahun perlu divalidasi ulang, tidak diasumsikan otomatis berlaku."),
+        ("Clustering tak mencakup harga kredit langsung", "interest_rate, LTV, rate_spread, DTI tersimpan sebagai teks di sumber data sehingga otomatis ter-exclude dari filter numerik Fase 2. Tiga segmen nasabah terbentuk dari loan_amount + income + konteks wilayah — bukan langsung dari suku bunga/leverage individual."),
+        ("Kode demografis diperlakukan kontinu", "Kode ras/etnis numerik ikut sebagai fitur jarak Euclidean K-Means walau bersifat nominal (tanpa urutan bermakna). Nama segmen merujuk pada profil finansial dominan, bukan klasifikasi demografis — tidak untuk keputusan berbasis ras/etnis individu."),
+        ("Sampling untuk algoritma berat", "DBSCAN (5.000 baris) & Hierarchical (800 baris) memakai subsample acak berseed tetap (reproducible) karena kompleksitas O(N²)/O(N³) — bukan sensus penuh 99.994 baris."),
+        ("Representativitas data HMDA", "Data hanya mencakup pemohon yang benar-benar mengajukan KPR ke lembaga pelapor — tidak merepresentasikan rumah tangga yang tidak mengajukan sama sekali."),
+    ]
+
+    return html.Div(className="tab-content", children=[
+        html.Div("Metodologi, Validitas & Batasan Analisis", className="section-title"),
+        html.P("Setiap insight bisnis di dashboard ini bersandar pada pipeline yang bisa diaudit: pilihan metode punya alasan, klaim utama dikonfirmasi lebih dari satu metode, dan kami menyatakan secara terbuka apa yang TIDAK bisa diklaim dari analisis ini.", className="mb-4 text-muted"),
+
+        html.H4("Pipeline & Rasionalisasi Tiap Fase", className="mb-3", style={'color': 'var(--accent-blue)'}),
+        html.Div(className="glass-card mb-4", children=[pipeline_table]),
+
+        html.H4("Validasi Korroborasi Kuantitatif", className="mb-3 mt-5", style={'color': 'var(--accent-teal)'}),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100 text-center", style={'borderTop': f'3px solid {c["color"]}'}, children=[
+                html.Div(c["title"], className="metric-title mb-2"),
+                html.Div(c["value"], className="stat-highlight", style={'color': c["color"]}),
+                html.P(c["desc"], className="small text-muted mt-2 mb-0")
+            ]), width=3) for c in corroboration_cards
+        ], className="mb-4"),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100", children=[
+                html.H5("Kenapa K=3? (Silhouette Score per K)", className="mb-3"),
+                dcc.Graph(figure=fig_sil, config={'displayModeBar': False}, style={'height': '260px'}),
+                html.P("Catatan jujur: nilai absolut ~0,15 tergolong sedang (bukan pemisahan tajam >0,5) — wajar untuk data finansial kontinu yang tumpang-tindih alami. K=3 adalah pilihan RELATIF TERBAIK, bukan klaim cluster terpisah sempurna.", className="small text-muted mt-2 mb-0")
+            ]), width=12),
+        ], className="mb-4"),
+
+        html.H4("Batasan & Kejujuran Analisis (Limitations)", className="mb-3 mt-5", style={'color': 'var(--accent-rose)'}),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #f43f5e'}, children=[
+                html.H5(title, className="mb-2", style={'color': '#f43f5e', 'fontSize': '1rem'}),
+                html.P(desc, className="small text-muted mb-0")
+            ]), width=6, className="mb-3") for title, desc in limitations
+        ]),
+    ])
+
 # Main Layout
 app.layout = html.Div([
     create_header(),
@@ -951,6 +992,7 @@ app.layout = html.Div([
             dbc.Tab(tab_distributions(), label="4. Market Distribution", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
             dbc.Tab(tab_4_anomalies(), label="5. Anomali Detection", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
             dbc.Tab(tab_conclusions(), label="6. Conclusion", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_methodology(), label="7. Metodologi & Validitas", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
         ], className="custom-tabs"),
         
         html.Div(className="text-center mt-5 mb-4 text-muted small", children=[
@@ -960,4 +1002,5 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8050)
+    port = int(os.environ.get('PORT', 8050))
+    app.run(debug=True, port=port)
