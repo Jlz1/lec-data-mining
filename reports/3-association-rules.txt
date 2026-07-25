@@ -141,3 +141,19 @@ Aturan #10  (support=0.004, confidence=0.807, lift=8.09)
            MAKA tenor 15-25thn (menengah)
   Bisnis : Kredit rumah manufactured umumnya bertenor lebih pendek dari 30 tahun standar -- plafonnya kecil dan sebagian berbentuk chattel loan (kredit barang bergerak), bukan KPR penuh; DTI tinggi memperkuat pola ini.
 
+
+=================================================================
+ALASAN PEMILIHAN THRESHOLD (MIN-SUPPORT, MIN-CONFIDENCE, MIN-LIFT)
+=================================================================
+
+1. Mengapa Min-Support = 0.001 (0.1%)?
+   - Alasan Statistik : Dataset HMDA setelah preprocessing sangat masif (~100.000+ baris). Jika menggunakan batas konvensional seperti 1% atau 5%, kita membutuhkan 1.000 hingga 5.000 transaksi berulang untuk satu pola. Akibatnya, kita akan kehilangan pola-pola pada segmen khusus/minoritas yang berisiko tinggi.
+   - Alasan Bisnis    : Produk pinjaman sekunder (second mortgage), rumah manufactured, atau pinjaman VA/jumbo kerap memiliki populasi di bawah 1%, namun membawa eksposur risiko dan implikasi strategi bisnis yang sangat besar. Support 0.1% (~100 transaksi) memastikan pola cukup robust secara statistik tanpa mengabaikan *rare-but-critical business signals*.
+
+2. Mengapa Min-Confidence = 0.6 (60%)?
+   - Alasan Statistik : Confidence 60% menetapkan batas bawah bahwa mayoritas (>60%) transaksi yang memenuhi kondisi premis (Antecedents) akan berujung pada konsekuensi (Consequents) tersebut.
+   - Alasan Bisnis    : Dalam manajemen risiko kredit dan penawaran produk KPR, bank membutuhkan kepastian prediktif yang mayoritas. Batas 60% (di mana top rules kita mencapai 70% hingga 100%) menjamin bahwa aturan yang ditemukan adalah ketetapan perilaku yang dapat diandalkan untuk kebijakan underwriting atau marketing, bukan sebaran acak.
+
+3. Mengapa Min-Lift >= 2.0 (Threshold Filter Laporan)?
+   - Alasan Statistik : Lift mengukur seberapa kuat hubungan antar item dibandingkan jika kedua item tersebut muncul secara independen (kebetulan). Nilai Lift = 1.0 berarti tidak ada hubungan sama sekali.
+   - Alasan Bisnis    : Dengan menetapkan Lift >= 2.0 (dan top rules kita memiliki Lift hingga 38x), kita menyingkirkan pola-pola yang muncul hanya karena produk tersebut dominan di pasar (seperti KPR 30 tahun konvensional). Ini memastikan presentasi berfokus eksklusif pada "Non-Obvious Relationships" -- hubungan tersembunyi yang bernilai tinggi bagi pengambil keputusan bank.

@@ -393,13 +393,13 @@ def tab_arm_visualization():
             labels={
                 'jangkauan_pasar': 'Jangkauan Pasar (% dari Total Nasabah)',
                 'tingkat_kepastian': 'Tingkat Kepastian Pola (%)',
-                'lift': 'Kekuatan Pola'
+                'lift': 'Skor Peluang'
             }
         )
         fig_arm.update_traces(
             marker=dict(line=dict(width=1, color='rgba(255,255,255,0.25)'), sizemin=5),
             hovertemplate=(
-                '<b>Kekuatan Pola: %{marker.color:.1f}x</b><br>'
+                '<b>Skor Peluang: %{marker.color:.1f}</b><br>'
                 'Jangkauan Pasar: %{x:.2f}%<br>'
                 'Tingkat Kepastian: %{y:.0f}%'
                 '<extra></extra>'
@@ -411,8 +411,8 @@ def tab_arm_visualization():
             font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
             margin=dict(l=60, r=20, t=10, b=60),
             coloraxis_colorbar=dict(
-                title=dict(text='Kekuatan<br>Pola', font=dict(size=12)),
-                ticksuffix='x',
+                title=dict(text='Skor<br>Peluang', font=dict(size=12)),
+                ticksuffix='',
                 len=0.65,
                 thickness=14,
                 outlinewidth=0
@@ -495,7 +495,7 @@ def tab_arm_visualization():
                 x=[1], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#14b8a6',
                             line=dict(width=1.5, color='rgba(45,212,191,0.5)')),
-                hovertext='Hasil: ' + rule['hasil_plain'] + ' | Kekuatan: ' + str(rule['lift']) + 'x',
+                hovertext='Hasil: ' + rule['hasil_plain'],
                 hoverinfo='text',
                 showlegend=False
             ))
@@ -511,7 +511,7 @@ def tab_arm_visualization():
             # Lift label di tengah
             fig_network.add_annotation(
                 x=0.5, y=y_pos + 0.15,
-                text='<b>' + str(rule['lift']) + 'x</b>',
+                text='<b>Pola #' + str(i+1) + '</b>',
                 showarrow=False,
                 font=dict(size=9, color='#facc15', family='Plus Jakarta Sans'),
                 xref='x', yref='y'
@@ -539,7 +539,7 @@ def tab_arm_visualization():
                 html.Div(className="glass-card mb-3 h-100", style={'borderLeft': f'3px solid {risk_color.get(rule["risk"], "#3b82f6")}'}, children=[
                     html.Div(className="d-flex justify-content-between align-items-start mb-2", children=[
                         html.Span(f"Pola #{i+1}", className=risk_badge.get(rule['risk'], 'badge badge-low-risk')),
-                        html.Div(f"{rule['lift']}x", style={'fontFamily': 'var(--font-heading)', 'fontSize': '1.5rem', 'fontWeight': 'bold', 'color': 'var(--accent-orange)', 'lineHeight': '1'})
+                        html.Div("", style={'fontFamily': 'var(--font-heading)', 'fontSize': '1.5rem', 'fontWeight': 'bold', 'color': 'var(--accent-orange)', 'lineHeight': '1'})
                     ]),
                     html.P([
                         html.Span("Kondisi: ", style={'color': '#94a3b8', 'fontWeight': '600'}),
@@ -586,7 +586,7 @@ def tab_arm_visualization():
             ]), width=6),
         ]),
         html.Div("10 Peluang Bisnis dari Pola Nasabah", className="section-title mt-2"),
-        html.P("Setiap kartu menunjukkan satu pola tersembunyi dari data. Angka oranye menunjukkan seberapa kuat pola ini dibanding rata-rata populasi.", className="mb-3 text-muted small"),
+        html.P("Setiap kartu menunjukkan satu pola tersembunyi dari data beserta rekomendasi aksi bisnis yang relevan.", className="mb-3 text-muted small"),
         dbc.Row(rules_html)
     ])
 
