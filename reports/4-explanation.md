@@ -180,8 +180,12 @@ Setiap baris bertier != "Normal" diperiksa dengan aturan bisnis
    (≥Q3) + leverage tinggi (LTV≥95% atau DTI≥50%), atau `rate_spread≥5`
    (indikasi *higher-priced mortgage*).
 3. **Rare Legitimate** — income tinggi (≥Q3) + LTV rendah (≤60%) + pinjaman
-   besar (≥Q3) — profil cocok Cluster 2 Phase 2 ("High-Net-Worth
-   Conservative Borrowers").
+   besar (≥Q3) — profil SEBAGIAN cocok Cluster 2 Phase 2 ("High-Net-Worth
+   Conservative Borrowers"). **Koreksi berbasis cross-check:** hanya 39,0%
+   dari 372 baris tipologi ini benar-benar berada di Cluster 2; 38,7% ada di
+   Cluster 1 (konsentrasi 1,53x relatif populasinya) dan 22,3% di Cluster 0.
+   Lihat `reports/4-anomaly-report.txt` bagian 6c dan sintesis lintas-fase di
+   `reports/5-knowledge-discovery-report.md` Bagian 3.4.
 4. **Unclassified / Manual Review** — anomali nyata secara statistik/
    struktural tapi tidak cocok pola baku manapun; ~81% dari 3.320 baris
    prioritas (tier Confirmed + High Confidence) jatuh di sini — realistis,

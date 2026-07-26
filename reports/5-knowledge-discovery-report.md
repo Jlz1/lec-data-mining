@@ -37,28 +37,42 @@ Kami menggunakan tiga pendekatan analisis yang bekerja secara berlapis:
 
 Analisis clustering mengungkap bahwa nasabah KPR **tidak bisa disamaratakan**. Mereka terbagi secara alami menjadi tiga kelompok dengan strategi keuangan yang sangat kontras:
 
-#### Grup 1: Kelas Menengah — Tulang Punggung Pasar (42,6%)
+Semua angka di bawah adalah **rata-rata aktual anggota tiap cluster**, identik dengan isi
+`reports/cluster_profile_summary.csv` dan angka yang tampil di dashboard — jadi bisa
+diverifikasi langsung oleh pembaca.
+
+| Segmen | Populasi | Pendapatan | Nilai Pinjaman | Pinjaman ÷ Pendapatan | LTV | Bunga |
+|---|---|---|---|---|---|---|
+| Grup 1 — Kelas Menengah | 42.579 (42,58%) | $107.483 | $256.726 | **2,39x** | 75,18% | 4,87% |
+| Grup 2 — Peminjam Agresif | 25.336 (25,34%) | $152.332 | $375.773 | **2,47x** | 73,45% | 4,73% |
+| Grup 3 — Konservatif/HNW | 32.079 (32,08%) | $207.565 | $317.120 | **1,53x** | 72,99% | 4,69% |
+
+**Pembeda utamanya adalah kolom "Pinjaman ÷ Pendapatan", bukan LTV.** Perhatikan kolom LTV:
+ketiganya nyaris identik (72,99%–75,18%, selisih hanya ~2 poin persen) — begitu juga suku
+bunga (4,69%–4,87%). Jadi ketiga segmen ini **tidak** dibedakan oleh LTV maupun bunga. Yang
+benar-benar kontras adalah berapa kali lipat pendapatan tahunan yang mereka pinjam.
+
+#### Grup 1: Kelas Menengah — Tulang Punggung Pasar (42,58%)
 - Pembeli rumah pertama atau kelas menengah tipikal
-- Pendapatan rata-rata: **$105.580/tahun**
-- Nilai pinjaman: Moderat, proporsional dengan pendapatan
-- Ciri khas: Membeli properti yang usianya lebih lama, menghindari risiko berlebihan
+- Pendapatan rata-rata: **$107.483/tahun**, pinjaman **$256.726** (2,39x pendapatan)
+- Ciri khas: Membeli properti yang usianya lebih lama, di area dengan proporsi minoritas lebih tinggi
 - **Nilai Strategis:** Segmen terbesar — menjadi penjamin stabilitas portofolio KPR
 
-#### Grup 2: Peminjam Agresif — Pendorong Pendapatan Bunga (25,3%)
-- Profesional berpendapatan tinggi yang memaksimalkan leverage
-- Pendapatan rata-rata: **$143.800/tahun**
-- Nilai pinjaman rata-rata: **$376.044** — jauh di atas proporsi pendapatannya
-- Ciri khas: Membeli rumah baru di kawasan premium, rasio Debt-to-Income tinggi
-- **Nilai Strategis:** Sumber pendapatan bunga terbesar, namun berisiko paling tinggi
+#### Grup 2: Peminjam Agresif — Pendorong Pendapatan Bunga (25,34%)
+- Profesional berpendapatan tinggi dengan beban pinjaman paling berat relatif pendapatan
+- Pendapatan rata-rata: **$152.332/tahun**, pinjaman **$375.773** (**2,47x** pendapatan — tertinggi)
+- Ciri khas: Membeli rumah baru di kawasan paling makmur
+- **Nilai Strategis:** Pendapatan bunga **per nasabah** tertinggi (~$17.763/tahun vs $12.502 Grup 1), namun beban cicilan relatif paling berat. *Catatan: secara **total portofolio**, Grup 1 justru penyumbang bunga terbesar (~$532 juta vs ~$450 juta) karena jumlah nasabahnya 1,7x lipat — jadi Grup 2 bernilai tinggi per kepala, bukan per portofolio.*
 
-#### Grup 3: Konservatif / High-Net-Worth — Pelanggan Tersembunyi (32,1%)
-- Pendapatan tertinggi namun meminjam jauh di bawah kemampuan
-- Pendapatan rata-rata: **$204.680/tahun**
-- LTV (Loan-to-Value) sangat rendah — uang muka sangat besar
-- Ciri khas: Tidak tergiur memaksimalkan kredit meski sanggup
-- **Nilai Strategis:** Risiko gagal bayar (NPL) paling rendah, prospek ideal Wealth Management
+#### Grup 3: Konservatif / High-Net-Worth — Pelanggan Tersembunyi (32,08%)
+- Pendapatan tertinggi namun meminjam paling sedikit relatif kemampuannya
+- Pendapatan rata-rata: **$207.565/tahun**, pinjaman **$317.120** (**1,53x** pendapatan — terendah)
+- Ciri khas: Membeli properti yang lebih murah dibanding kapasitas finansialnya
+- **Nilai Strategis:** Beban cicilan paling ringan relatif pendapatan → prospek ideal Wealth Management
 
-> **Yang Tidak Terlihat di Data Mentah:** Berdasarkan data mentah, kita hanya bisa melihat bahwa ada nasabah berpenghasilan tinggi dan rendah. Yang tidak terlihat adalah temuan mengejutkan ini: **kelompok TERKAYA justru yang paling SEDIKIT berhutang**, sementara kelompok kelas menengah ke atas (Grup 2) justru yang paling agresif memaksimalkan utang mereka. Ini membalikkan asumsi umum.
+> **Yang Tidak Terlihat di Data Mentah:** Berdasarkan data mentah, kita hanya bisa melihat bahwa ada nasabah berpenghasilan tinggi dan rendah. Yang tidak terlihat adalah temuan ini: **kelompok TERKAYA justru meminjam paling sedikit relatif pendapatannya** (1,53x), sementara Grup 2 yang berpendapatan lebih rendah justru paling besar kelipatan pinjamannya (2,47x). Ini membalikkan asumsi umum.
+>
+> **Batas klaim (penting):** temuan ini berbasis rasio **pinjaman terhadap pendapatan**. Data TIDAK mendukung klaim bahwa Grup 3 menyetor uang muka lebih besar — LTV mereka (72,99%) praktis sama dengan grup lain. Penjelasan yang konsisten dengan data: mereka membeli properti yang lebih murah relatif kemampuannya, bukan menyetor DP lebih besar untuk properti yang sama. Membedakan keduanya butuh data aset/tabungan yang tidak ada di HMDA. Demikian pula, HMDA tidak memuat data gagal bayar, jadi "risiko lebih rendah" adalah inferensi dari ringannya beban cicilan — bukan hasil pengukuran NPL.
 
 ---
 
@@ -84,15 +98,16 @@ Sistem ARM menganalisis ratusan kombinasi atribut dari 99.994 pengajuan dan mene
 
 > **Analisis Peluang Bisnis:** Buat produk KPR Investasi Properti Komersial dengan fitur cross-selling asuransi properti sewa dan integrasi layanan pengelolaan kas (cash management) untuk membantu investor/landlord mengelola arus kas sewa mereka.
 
-#### Pola #4 — Ekosistem VA Loan yang Tertutup (Kekuatan: 10,7x lebih pasti)
-**JIKA** nasabah melakukan Cash-out Refinance dengan uang muka nyaris 0%  
-**MAKA** hampir pasti nasabah tersebut adalah peserta program VA Loan (Veteran)
+#### Pola #4 — Pinjaman Jumbo Veteran (Kekuatan: 12,5x lebih pasti)
+**JIKA** pinjaman melebihi batas plafon konvensional (non-conforming) dan dijual ke Ginnie Mae  
+**MAKA** hampir pasti pinjaman tersebut berasal dari program VA Loan (Veteran)
 
-> **Analisis Peluang Bisnis:** Tawarkan produk tabungan atau investasi tambahan (cross-selling) kepada nasabah veteran yang melakukan cash-out refinance untuk membantu mereka menaruh dana segar hasil refinance tersebut ke dalam portofolio investasi yang aman.
+> **Analisis Peluang Bisnis:** Kembangkan kampanye pemasaran KPR Jumbo khusus Veteran (VA Jumbo Loan) dengan suku bunga bersaing dan biaya administrasi rendah untuk merebut pangsa pasar nasabah pensiunan militer bernilai tinggi.
 
 #### Pola #5-10 — Pola Tambahan Signifikan
 - **Multifamily + Bunga Sedang -> Jumbo Loan (Kekuatan 12x):** Desain paket bundling investasi properti komersial yang menggabungkan KPR plafon besar (> $647K) dengan bunga tetap menengah serta fasilitas kredit modal kerja untuk renovasi.
 - **Beli Multifamily Baru -> Jumbo Loan (Kekuatan 11,3x):** Jalin kemitraan eksklusif (partnership) dengan pengembang apartemen/ruko baru untuk menawarkan skema KPR Jumbo Investor instan di lokasi strategis.
+- **Cash-out Refinance + DP Minim -> VA Loan (Kekuatan 10,7x):** Tawarkan produk tabungan atau investasi tambahan (cross-selling) kepada nasabah veteran yang melakukan cash-out refinance, untuk menempatkan dana segar hasil refinance ke portofolio investasi yang aman.
 - **Pre-Approval + Ginnie Mae -> DP Minim (Kekuatan 9,8x):** Optimalkan layanan 'Instant Pre-Approval' berbasis digital khusus untuk segmen program pemerintah guna mempermudah pembeli rumah pertama berpendapatan rendah.
 - **VA Loan + Bunga Rendah -> Ginnie Mae (Kekuatan 9,1x):** Gunakan sekuritisasi Ginnie Mae untuk mendanai KPR berbiaya rendah secara berkelanjutan, sekaligus menawarkan produk khusus veteran (VA-tailored products).
 - **DTI > 60% + Manufactured Housing -> Tenor Pendek (Kekuatan 8,1x):** Tawarkan jasa pendampingan konsolidasi utang atau program perbaikan skor kredit bagi nasabah berisiko tinggi ini seraya membatasi tenor KPR.
@@ -114,13 +129,99 @@ Tiga metode deteksi (IQR, Z-score, Isolation Forest) menandai **12.217 dari 99.9
 
 ---
 
+### 3.4 Sintesis: Menyatukan Ketiga Analisis Jadi Satu Cerita
+
+Tiga bagian di atas (segmentasi, pola ARM, anomali) sering disajikan terpisah — padahal
+nilai terbesarnya muncul justru saat ketiganya **disilangkan**. Kami menempelkan label
+segmen dari Phase 2 ke setiap pola ARM Phase 3 dan setiap kasus anomali Phase 4, lalu
+membandingkan konsentrasinya terhadap proporsi populasi (Grup 1 = 42,6%, Grup 2 = 25,3%,
+Grup 3 = 32,1%). Angka dalam tanda kurung adalah **rasio konsentrasi**: 1,00x berarti
+tersebar merata sesuai populasi, di atas 1,25x berarti benar-benar menumpuk di segmen itu.
+
+**A. Di segmen mana pola ARM sebenarnya terjadi?**
+
+| Pola ARM (Phase 3) | Grup 1 Kelas Menengah | Grup 2 Peminjam Agresif | Grup 3 Konservatif HNW |
+|---|---|---|---|
+| Properti multifamily / investor (pola #3,#5,#6) | **74,6% (1,75x)** | 19,1% (0,75x) | 6,4% (0,20x) |
+| Pinjaman jumbo / non-conforming (#4,#5,#6) | 21,7% (0,51x) | **36,2% (1,43x)** | **42,1% (1,31x)** |
+| Rumah manufactured (#2,#10) | 50,9% (1,20x) | 14,2% (0,56x) | 34,9% (1,09x) |
+| Pinjaman VA / Veteran (#4,#7,#9) | 42,0% (0,99x) | 29,5% (1,17x) | 28,5% (0,89x) |
+
+Tiga hal yang **hanya terlihat setelah disilangkan**:
+
+1. **Investor properti multifamily justru duduk di segmen "kelas menengah", bukan segmen kaya.**
+   74,6% dari mereka ada di Grup 1 — konsentrasi 1,75x, tertinggi dari semua pola. Ini
+   berlawanan dengan dugaan awal bahwa pembeli properti sewa adalah nasabah paling makmur.
+   Penjelasannya konsisten dengan profil Grup 1 (properti lebih tua, area urban lama):
+   mereka membeli rumah petak/apartemen kecil lama untuk disewakan, bukan gedung mewah.
+   **Implikasi:** produk "KPR Investasi Properti" jangan dipasarkan sebagai produk premium —
+   pasar terbesarnya ada di segmen mass-market.
+
+2. **Pinjaman jumbo adalah satu-satunya pola yang benar-benar memisahkan segmen.** Grup 2 dan
+   Grup 3 sama-sama menumpuk (1,43x dan 1,31x) sementara Grup 1 sangat kurang (0,51x —
+   setengah dari yang diharapkan). Jadi batas "mampu/tidak mampu masuk pasar jumbo" adalah
+   garis pemisah ekonomi yang nyata di data ini.
+
+3. **Pinjaman VA menyebar hampir merata (0,89x–1,17x) di ketiga segmen.** Artinya status
+   veteran **memotong** semua kelas ekonomi. **Implikasi penting untuk strategi:** program
+   bundling veteran (Rekomendasi 2 di Bagian 5) tidak boleh dirancang untuk satu segmen saja —
+   harus punya varian untuk ketiga segmen sekaligus.
+
+**B. Di segmen mana anomali menumpuk?**
+
+| Tipologi anomali (Phase 4) | Grup 1 | Grup 2 | Grup 3 |
+|---|---|---|---|
+| Perlu Tinjauan Manual (2.693) | 25,7% (0,60x) | **49,0% (1,93x)** | 25,3% (0,79x) |
+| Sinyal Risiko Kredit (76) | 39,5% (0,93x) | **36,8% (1,45x)** | 23,7% (0,74x) |
+| Profil Konservatif/Prospek (372) | 22,3% (0,52x) | **38,7% (1,53x)** | 39,0% (1,22x) |
+| Data Error (179) | **56,4% (1,33x)** | 20,1% (0,79x) | 23,5% (0,73x) |
+
+4. **Grup 2 adalah pusat gravitasi hampir semua anomali.** Konsentrasi 1,93x pada kategori
+   "Perlu Tinjauan Manual" adalah angka tertinggi di seluruh analisis ini. Padahal Grup 2 hanya
+   25,3% populasi, tapi memuat 49% kasus yang perlu diperiksa manusia. Ini **menguatkan secara
+   independen** temuan Bagian 3.1 bahwa Grup 2 adalah segmen dengan beban pinjaman terberat
+   (2,47x pendapatan): dua metode yang sama sekali berbeda — clustering berbasis jarak dan
+   deteksi anomali berbasis Isolation Forest — sampai pada segmen yang sama sebagai titik
+   perhatian utama. **Implikasi:** kapasitas tim underwriting sebaiknya dialokasikan mengikuti
+   Grup 2, bukan dibagi rata.
+
+5. **Koreksi penting terhadap dugaan awal Phase 4.** Laporan Phase 4 semula menduga tipologi
+   "Profil Konservatif" identik dengan Grup 3 (HNW Konservatif). Setelah disilangkan:
+   hanya **39,0%** yang benar di Grup 3, sementara **38,7%** ada di Grup 2 dengan konsentrasi
+   lebih tinggi (1,53x vs 1,22x). Jadi daftar prospek wealth management **tidak boleh disaring
+   hanya dari Grup 3** — sekitar 4 dari 10 prospek terbaik justru bersembunyi di segmen yang
+   selama ini dilabeli "berisiko". Tanpa penyilangan ini, bank akan kehilangan hampir separuh
+   pipeline prospeknya.
+
+6. **Masalah kualitas data terkonsentrasi di segmen mass-market.** 56,4% "Data Error" ada di
+   Grup 1 (1,33x). Ini bukan temuan bisnis melainkan temuan operasional: proses input data
+   untuk pengajuan segmen mass-market kemungkinan paling longgar kontrolnya — kandidat
+   perbaikan pertama untuk tim data engineering.
+
+> **Kenapa bagian ini penting:** poin 1, 4, 5, dan 6 di atas **tidak mungkin muncul** dari
+> satu teknik saja. Poin 1 & 5 bahkan **membantah** dugaan yang tampak masuk akal di
+> masing-masing fase. Inilah bentuk konkret dari "temuan berlapis": clustering memberi
+> *siapa*, ARM memberi *perilaku apa*, deteksi anomali memberi *mana yang perlu diperiksa* —
+> dan hanya gabungan ketiganya yang memberi arahan tindakan yang spesifik.
+
+> **Batas klaim untuk seluruh Bagian 3.4:** semua angka di atas adalah **konsentrasi
+> statistik**, bukan hubungan sebab-akibat. "Investor multifamily menumpuk di Grup 1" tidak
+> berarti berada di Grup 1 *menyebabkan* seseorang jadi investor properti. Selain itu, label
+> cluster Phase 2 dibentuk tanpa variabel harga kredit (lihat Batasan poin 3), sehingga
+> penyilangan ini membandingkan segmen "pendapatan–pinjaman–wilayah" dengan pola produk,
+> bukan dengan segmen risiko kredit formal.
+
+---
+
 ## Bagian 4: Jawaban atas Pertanyaan Sentral
 
 ### "Apa yang kami temukan yang TIDAK sudah jelas dari data mentah?"
 
 **Temuan 1 — Perilaku Leverage yang Paradoksal**  
-Asumsi umum: "Orang kaya pinjam banyak, orang biasa pinjam sedikit."  
-Kenyataan yang ditemukan: Justru sebaliknya. Kelompok terkaya (Grup 3, penghasilan $204k) memilih LTV rendah dan uang muka besar. **Ini tidak terlihat dalam laporan ringkasan biasa.**
+Asumsi umum: "Makin tinggi pendapatan, makin besar pinjaman yang diambil (proporsional)."  
+Kenyataan yang ditemukan: Justru terbalik pada kelompok teratas. Grup 3 (pendapatan $207.565 — tertinggi) hanya meminjam **1,53x** pendapatan tahunannya, sementara Grup 2 yang berpendapatan lebih rendah ($152.332) meminjam **2,47x**. Jadi kelipatan pinjaman justru MENURUN di segmen paling kaya. **Ini tidak terlihat dalam laporan ringkasan biasa** karena laporan standar menampilkan rata-rata pendapatan dan rata-rata pinjaman secara terpisah — rasio antar keduanya per segmen hanya muncul setelah clustering.
+
+*Catatan verifikasi:* temuan ini murni dari rasio pinjaman-ke-pendapatan. LTV ketiga segmen nyaris sama (72,99% / 73,45% / 75,18%), jadi temuan ini **bukan** soal besar-kecilnya uang muka.
 
 **Temuan 2 — VA Loan Bukan Sekadar Program, Ini Ekosistem**  
 Data mentah menunjukkan VA Loan sebagai salah satu kolom dari banyak kolom. ARM mengungkap bahwa VA Loan membentuk jaringan perilaku yang sangat terstruktur dan bisa diprediksi dengan kepastian 85–95%.
@@ -150,6 +251,8 @@ Buat jalur persetujuan fast-track khusus untuk Manufactured Housing yang menyasa
 ### Rekomendasi 4: Konversi Daftar Anomali Menjadi Pipeline Bisnis
 Dari 372 nasabah "Profil Konservatif", buat tim relationship manager khusus yang proaktif menghubungi mereka untuk menawarkan produk Wealth Management.
 
+**Penting (berdasarkan Bagian 3.4):** jangan saring daftar ini hanya dari Grup 3. Hasil penyilangan menunjukkan hanya 39,0% prospek ini ada di Grup 3, sementara 38,7% justru di Grup 2 — dengan konsentrasi lebih tinggi (1,53x vs 1,22x). Menyaring berdasarkan label segmen saja akan membuang hampir separuh pipeline. Gunakan langsung daftar 372 baris dari `reports/4-anomalies.csv` (filter `typology == "Rare Legitimate"`), lintas segmen.
+
 ### Rekomendasi 5: Sistem Peringatan Dini Kredit Berlapis
 Implementasikan flag otomatis untuk nasabah yang memiliki kombinasi risiko tinggi (LTV > 100% + DTI > 60% + KPR berlapis).
 
@@ -161,7 +264,7 @@ Implementasikan flag otomatis untuk nasabah yang memiliki kombinasi risiko tingg
 |---|---|---|---|
 | Preprocessing | Imputasi (median/mode), Encoding (one-hot), Binning, Normalisasi (StandardScaler) | Python, Pandas | 99.994 baris, 80 kolom final |
 | Clustering | K-Means (utama) + DBSCAN & Hierarchical/Ward (validasi silang) | Scikit-learn, SciPy | K=3 (silhouette tertinggi=0,154); DBSCAN eps=2,0, min_samples=10; ARI KMeans-vs-Ward=0,356 |
-| ARM | Apriori Algorithm + domain-based discretization | mlxtend | min_support=0,001, min_confidence=0,6, min_lift=1,5 |
+| ARM | Apriori Algorithm + domain-based discretization | mlxtend | min_support=0,001, min_confidence=0,6, min_lift=1,5 (ambang penambangan → 4.016 rule); **lift ≥ 2,0** (ambang seleksi 10 rule untuk laporan) |
 | Anomaly Detection | IQR + Z-score (univariat) + Isolation Forest (multivariat), cross-referenced ke cluster Phase 2 | Scikit-learn | IF contamination='auto' (n_estimators=200) |
 
 **Ringkasan validasi silang (corroboration):** setiap fase divalidasi dengan lebih dari satu metode agar temuan tidak bergantung pada satu algoritma saja — K=3 dikonfirmasi Elbow *dan* Silhouette *dan* struktur dendrogram Ward (ARI=0,356 terhadap K-Means, cluster HNW paling stabil lintas metode); status noise DBSCAN (363/5.000, 7,26%) direproduksi persis ulang di Phase 4; dan anomali Isolation Forest di-cross-reference ke outlier cluster Phase 2 (overlap 32,0% pada subset tersampel).

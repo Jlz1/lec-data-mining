@@ -128,6 +128,13 @@ Mesin penambangan aturan.
 **Parameter:** `MIN_SUPPORT=0.001`, `MIN_CONF=0.6`, `MIN_LIFT=1.5`, `MAX_LEN=3`,
 `MAX_ITEMSETS=150`.
 
+> **Catatan dua ambang lift (sering disalahpahami sebagai inkonsistensi):**
+> `MIN_LIFT=1.5` adalah ambang **penambangan** di Cell [10] — menghasilkan 4.016 rule
+> yang tersimpan lengkap di `3-association-rules.csv`. Sementara `lift ≥ 2.0` adalah
+> ambang **seleksi pelaporan** di Cell [12] (`select_report_rules`) — dipakai untuk
+> memilih 10 rule terkuat yang ditampilkan di laporan & dashboard. Jadi keduanya benar
+> dan berlaku di tahap berbeda, bukan angka yang saling bertentangan.
+
 **Langkah:**
 1. Filter item ke yang `support ≥ MIN_SUPPORT`, batasi maksimal 150 item teratas (hemat
    memori), konversi ke `bool` → 124 item.

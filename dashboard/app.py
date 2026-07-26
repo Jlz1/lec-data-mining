@@ -5,6 +5,7 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 import os
 
 # Inisialisasi App
@@ -80,6 +81,13 @@ try:
 except Exception as e:
     df_pca = pd.DataFrame()
     print(f"Error loading PCA data: {e}")
+
+try:
+    profile_path = os.path.join(base_dir, 'reports', 'cluster_profile_summary.csv')
+    df_profile = pd.read_csv(profile_path)
+except Exception as e:
+    df_profile = pd.DataFrame()
+    print(f"Error loading cluster profile summary: {e}")
 
 try:
     df_raw = pd.read_csv(data_path, nrows=3000)
@@ -267,10 +275,61 @@ def tab_segmentation():
     # === CHARTS ===
     cluster_colors = {'Kelas Menengah (Grup 1)': '#3b82f6', 'Peminjam Agresif (Grup 2)': '#f43f5e', 'Konservatif HNW (Grup 3)': '#10b981'}
 
+    # Chart pembanding: LTV (hampir sama) vs Rasio Pinjaman-ke-Pendapatan (jelas beda).
+    # Sumber: reports/cluster_profile_summary.csv -- rata-rata aktual per cluster.
+    # Chart ini sengaja menampilkan keduanya berdampingan supaya jelas variabel MANA
+    # yang benar-benar membedakan segmen, dan mana yang TIDAK.
+    if not df_profile.empty:
+        order = ['Kelas Menengah (Grup 1)', 'Peminjam Agresif (Grup 2)', 'Konservatif HNW (Grup 3)']
+        prof = df_profile.set_index('cluster_name').reindex(order).reset_index()
+        short = ['Grup 1<br>Kelas Menengah', 'Grup 2<br>Peminjam Agresif', 'Grup 3<br>Konservatif HNW']
+        bar_cols = [cluster_colors[c] for c in order]
+
+        fig_diff = make_subplots(
+            rows=1, cols=2,
+            subplot_titles=(
+                'Rasio Pinjaman ÷ Pendapatan<br><sub style="color:#10b981">JELAS BERBEDA — ini pembedanya</sub>',
+                'Rasio Utang ÷ Nilai Rumah (LTV)<br><sub style="color:#94a3b8">HAMPIR SAMA — bukan pembeda</sub>'
+            ),
+            horizontal_spacing=0.16
+        )
+        fig_diff.add_trace(go.Bar(
+            x=short, y=prof['loan_to_income_ratio'],
+            marker_color=bar_cols,
+            text=[f"{v:.2f}x" for v in prof['loan_to_income_ratio']],
+            textposition='outside', textfont=dict(size=13, color='#f8fafc'),
+            hovertemplate='%{x}<br>Pinjaman = %{y:.2f}x pendapatan tahunan<extra></extra>',
+            showlegend=False
+        ), row=1, col=1)
+        fig_diff.add_trace(go.Bar(
+            x=short, y=prof['avg_ltv'],
+            marker_color=bar_cols, marker_opacity=0.45,
+            text=[f"{v:.1f}%" for v in prof['avg_ltv']],
+            textposition='outside', textfont=dict(size=13, color='#f8fafc'),
+            hovertemplate='%{x}<br>LTV rata-rata = %{y:.1f}%<extra></extra>',
+            showlegend=False
+        ), row=1, col=2)
+        fig_diff.update_yaxes(range=[0, 3.1], title_text='kali pendapatan', row=1, col=1,
+                              showgrid=True, gridcolor='rgba(148,163,184,0.12)')
+        # Sumbu-y LTV dimulai dari 0 (bukan di-zoom) supaya kemiripan ketiganya terlihat
+        # apa adanya -- memotong sumbu akan membesar-besarkan selisih 2 poin persen.
+        fig_diff.update_yaxes(range=[0, 100], title_text='% nilai rumah', row=1, col=2,
+                              showgrid=True, gridcolor='rgba(148,163,184,0.12)')
+        fig_diff.update_xaxes(tickfont=dict(size=10))
+        fig_diff.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
+            margin=dict(l=10, r=10, t=70, b=10), bargap=0.45
+        )
+        for ann in fig_diff['layout']['annotations'][:2]:
+            ann['font'] = dict(size=12, color='#f8fafc')
+    else:
+        fig_diff = go.Figure()
+
     # Donut chart proporsi
     fig_donut = go.Figure(data=[go.Pie(
         labels=['Kelas Menengah (Grup 1)', 'Peminjam Agresif (Grup 2)', 'Konservatif HNW (Grup 3)'],
-        values=[42.6, 25.3, 32.1],
+        values=[42.58, 25.34, 32.08],
         hole=.55,
         marker_colors=['#3b82f6', '#f43f5e', '#10b981'],
         textinfo='percent',
@@ -338,13 +397,43 @@ def tab_segmentation():
             ]), width=8),
         ], className="mb-4"),
 
+        # --- BARIS 1b: Apa yang SEBENARNYA membedakan ketiga segmen ---
+        html.Div("Apa yang Sebenarnya Membedakan Ketiga Segmen?", className="section-title"),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card mb-4", children=[
+                html.P([
+                    "Banyak orang mengira segmen nasabah dibedakan oleh besar uang muka (LTV). ",
+                    html.B("Data kami menunjukkan itu tidak benar."),
+                    " Grafik kiri dan kanan memakai skala yang sama-sama dimulai dari nol, jadi bisa dibandingkan apa adanya:"
+                ], className="small text-muted mb-2"),
+                dcc.Graph(figure=fig_diff, config={'displayModeBar': False}, style={'height': '340px'}),
+                html.P([
+                    html.B("Cara membacanya: "),
+                    "Grup 3 (paling kaya, pendapatan $207.565) hanya meminjam ", html.B("1,53x"),
+                    " pendapatan tahunannya, sedangkan Grup 2 yang berpendapatan lebih rendah ($152.332) meminjam ", html.B("2,47x"),
+                    " — jadi kelipatan pinjaman justru MENURUN di segmen paling kaya. Sebaliknya, LTV ketiganya nyaris sama (72,99%–75,18%), "
+                    "begitu juga suku bunga (4,69%–4,87%). Kesimpulan jujurnya: ketiga segmen ini dibedakan oleh ",
+                    html.B("seberapa besar pinjaman relatif terhadap pendapatan"),
+                    ", BUKAN oleh uang muka atau bunga."
+                ], className="small text-muted mt-2 mb-1"),
+                html.P([
+                    html.B("Batas klaim: "),
+                    "karena LTV mereka sama, data TIDAK mendukung kesimpulan bahwa Grup 3 menyetor uang muka lebih besar. "
+                    "Yang konsisten dengan data: mereka membeli properti lebih murah relatif kemampuannya. Untuk memastikan mana yang benar "
+                    "dibutuhkan data aset/tabungan yang tidak tersedia di HMDA."
+                ], className="small mb-0", style={'color': '#94a3b8', 'fontStyle': 'italic'}),
+                html.P("Sumber angka: reports/cluster_profile_summary.csv (rata-rata aktual anggota tiap cluster) — identik dengan angka di laporan Phase 2 & 5.",
+                       className="small text-muted mt-2 mb-0", style={'fontSize': '0.75rem'})
+            ]), width=12),
+        ]),
+
         # --- BARIS 2: Profil 3 Segmen ---
         html.Div("Profil & Peluang Bisnis Tiap Segmen", className="section-title"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card h-100", style={'borderTop': '3px solid #3b82f6'}, children=[
                 html.H4("Grup 1: Kelas Menengah", style={'color': '#3b82f6'}),
-                html.P("42,6% dari seluruh nasabah", className="badge badge-low-risk mb-3"),
-                html.P("Mereka adalah pembeli rumah pertama atau keluarga kelas menengah tipikal. Pinjam secukupnya, cicil dengan disiplin."),
+                html.P("42,58% dari seluruh nasabah (42.579 orang)", className="badge badge-low-risk mb-3"),
+                html.P("Pembeli rumah pertama atau keluarga kelas menengah tipikal. Pendapatan $107.483, pinjaman $256.726 — setara 2,39x pendapatan tahunan."),
                 html.Hr(style={'borderColor': 'rgba(255,255,255,0.1)'}),
                 html.P(html.B("Peluang Bisnis:"), className="mb-1"),
                 html.P("Segmen ini paling besar volumenya. Fokus pada produk KPR standar dengan proses mudah dan cepat. Mereka sangat menghargai kemudahan administrasi dan suku bunga yang kompetitif.", className="small text-muted"),
@@ -353,21 +442,21 @@ def tab_segmentation():
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", style={'borderTop': '3px solid #f43f5e'}, children=[
                 html.H4("Grup 2: Peminjam Agresif", style={'color': '#f43f5e'}),
-                html.P("25,3% dari seluruh nasabah", className="badge badge-high-risk mb-3"),
-                html.P("Profesional berpenghasilan tinggi yang sengaja meminjam jauh lebih besar dari kebutuhannya untuk mendapatkan properti premium."),
+                html.P("25,34% dari seluruh nasabah (25.336 orang)", className="badge badge-high-risk mb-3"),
+                html.P("Profesional berpendapatan tinggi ($152.332) dengan pinjaman terbesar ($375.773) — setara 2,47x pendapatan tahunan, kelipatan tertinggi dari semua segmen."),
                 html.Hr(style={'borderColor': 'rgba(255,255,255,0.1)'}),
                 html.P(html.B("Peluang Bisnis:"), className="mb-1"),
-                html.P("Sumber pendapatan bunga terbesar. Tawarkan produk KPR premium dengan layanan dedicated relationship manager dan fleksibilitas tenor.", className="small text-muted"),
+                html.P("Pendapatan bunga per nasabah tertinggi (~$17.763/tahun). Tawarkan produk KPR premium dengan layanan dedicated relationship manager dan fleksibilitas tenor. Catatan: secara total portofolio, Grup 1 tetap penyumbang bunga terbesar karena jumlah nasabahnya jauh lebih banyak.", className="small text-muted"),
                 html.P(html.B("Risiko yang Perlu Diawasi:"), className="mb-1"),
                 html.P("Rasio utang mereka paling tinggi paling rentan jika terjadi guncangan ekonomi. Perlu sistem monitoring cicilan yang aktif.", className="small text-muted")
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", style={'borderTop': '3px solid #10b981'}, children=[
                 html.H4("Grup 3: Konservatif HNW", style={'color': '#10b981'}),
-                html.P("32,1% dari seluruh nasabah", className="badge badge-low-risk mb-3"),
-                html.P("Penghasilan paling tinggi, namun secara mengejutkan mereka hanya meminjam sedikit. Uang muka mereka sangat besar."),
+                html.P("32,08% dari seluruh nasabah (32.079 orang)", className="badge badge-low-risk mb-3"),
+                html.P("Penghasilan paling tinggi ($207.565), namun secara mengejutkan mereka meminjam paling sedikit relatif kemampuannya — hanya 1,53x pendapatan tahunan."),
                 html.Hr(style={'borderColor': 'rgba(255,255,255,0.1)'}),
                 html.P(html.B("Peluang Bisnis:"), className="mb-1"),
-                html.P("Jangan tawarkan KPR  mereka tidak terlalu butuh. Tawarkan produk Wealth Management, reksa dana, asuransi jiwa premium, atau deposito.", className="small text-muted"),
+                html.P("Jangan tawarkan KPR — mereka tidak terlalu butuh. Tawarkan produk Wealth Management, reksa dana, asuransi jiwa premium, atau deposito.", className="small text-muted"),
                 html.P(html.B("Dampak:"), className="mb-1"),
                 html.P("Meningkatkan Fee-based Income (pendapatan dari komisi produk) tanpa menambah risiko kredit macet sama sekali.", className="small text-muted")
             ]), width=4),
@@ -850,7 +939,80 @@ def tab_4_anomalies():
         ])
     ])
 
+def build_crossphase_heatmap():
+    """Heatmap konsentrasi: pola ARM (Phase 3) & tipologi anomali (Phase 4) per segmen (Phase 2).
+
+    Nilai = rasio konsentrasi terhadap proporsi populasi tiap segmen
+    (Grup 1=42,6% · Grup 2=25,3% · Grup 3=32,1%). 1,00x = tersebar merata;
+    >1,25x = benar-benar menumpuk di segmen itu. Angka dihitung dengan menempelkan
+    label cluster Phase 2 ke baris yang cocok pola ARM dan ke baris anomali via row_index.
+    """
+    cols = ['Grup 1<br>Kelas Menengah', 'Grup 2<br>Peminjam Agresif', 'Grup 3<br>Konservatif HNW']
+    rows = [
+        'Data Error (179)',
+        'Rumah manufactured (#2,#10)',
+        'Pinjaman VA/Veteran (#4,#7,#9)',
+        'Sinyal Risiko Kredit (76)',
+        'Profil Konservatif/Prospek (372)',
+        'Perlu Tinjauan Manual (2.693)',
+        'Pinjaman Jumbo (#4,#5,#6)',
+        'Multifamily/Investor (#3,#5,#6)',
+    ]
+    ratio = [
+        [1.33, 0.79, 0.73],
+        [1.20, 0.56, 1.09],
+        [0.99, 1.17, 0.89],
+        [0.93, 1.45, 0.74],
+        [0.52, 1.53, 1.22],
+        [0.60, 1.93, 0.79],
+        [0.51, 1.43, 1.31],
+        [1.75, 0.75, 0.20],
+    ]
+    pct = [
+        [56.4, 20.1, 23.5],
+        [50.9, 14.2, 34.9],
+        [42.0, 29.5, 28.5],
+        [39.5, 36.8, 23.7],
+        [22.3, 38.7, 39.0],
+        [25.7, 49.0, 25.3],
+        [21.7, 36.2, 42.1],
+        [74.6, 19.1, 6.4],
+    ]
+    # Skala diverging berpusat di 1,00x: biru = kurang dari proporsi populasi,
+    # oranye/merah = menumpuk. Titik tengah dikunci di 1.0 lewat zmid supaya
+    # warna netral benar-benar berarti "tersebar merata", bukan rata-rata data.
+    fig = go.Figure(data=go.Heatmap(
+        z=ratio, x=cols, y=rows,
+        customdata=pct,
+        colorscale=[[0, '#1e3a5f'], [0.35, '#3b82f6'], [0.5, '#1e293b'],
+                    [0.68, '#f59e0b'], [1, '#f43f5e']],
+        zmid=1.0, zmin=0.2, zmax=2.0,
+        text=[[f"{r:.2f}x" for r in row] for row in ratio],
+        texttemplate="%{text}",
+        textfont=dict(size=12, family='Plus Jakarta Sans'),
+        hovertemplate=('<b>%{y}</b><br>%{x}<br>'
+                       'Porsi di segmen ini: %{customdata:.1f}%<br>'
+                       'Konsentrasi: %{z:.2f}x populasi<extra></extra>'),
+        colorbar=dict(
+            title=dict(text='Konsentrasi', font=dict(size=11)),
+            tickvals=[0.5, 1.0, 1.5, 2.0],
+            ticktext=['0,5x<br>kurang', '1,0x<br>merata', '1,5x', '2,0x<br>menumpuk'],
+            tickfont=dict(size=9), len=0.9, thickness=14, outlinewidth=0
+        )
+    ))
+    fig.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='#f8fafc', family='Plus Jakarta Sans'),
+        margin=dict(l=10, r=10, t=10, b=10),
+        xaxis=dict(side='top', tickfont=dict(size=10)),
+        yaxis=dict(tickfont=dict(size=10), autorange='reversed')
+    )
+    return fig
+
+
 def tab_strategic_recommendations():
+    fig_cross = build_crossphase_heatmap()
+
     # Streamlined strategic recommendations focusing purely on key points and core actions
     recommendations = [
         {
@@ -859,7 +1021,7 @@ def tab_strategic_recommendations():
             'impact': 'VERY HIGH',
             'impact_color': '#f43f5e',
             'border_color': '#f43f5e',
-            'key_point': 'Peluang besar dari segmen peminjam agresif (25,3%) dan investor Multifamily yang secara konsisten menyasar Pinjaman Jumbo bernilai tinggi.',
+            'key_point': 'Investor Multifamily secara konsisten menyasar Pinjaman Jumbo bernilai tinggi — namun 74,6% dari mereka justru berada di segmen Kelas Menengah (Grup 1), bukan segmen premium. Posisikan produknya sebagai KPR investasi terjangkau, bukan produk mewah.',
             'actions': [
                 'Paket KPR Jumbo Investasi + fasilitas kredit modal kerja renovasi',
                 'Kemitraan eksklusif dengan pengembang apartemen/ruko di lokasi strategis',
@@ -872,9 +1034,9 @@ def tab_strategic_recommendations():
             'impact': 'HIGH',
             'impact_color': '#10b981',
             'border_color': '#10b981',
-            'key_point': 'Segmen Konservatif HNW (32,1%) berpenghasilan tinggi dengan LTV sangat rendah. Target utama produk non-KPR bermargin tinggi.',
+            'key_point': 'Segmen Konservatif HNW (32,08%) berpendapatan tertinggi ($207.565) tapi meminjam hanya 1,53x pendapatan — kelipatan terendah dari semua segmen. Target utama produk non-KPR bermargin tinggi.',
             'actions': [
-                'Konversi 372 nasabah anomali konservatif menjadi prospek Priority Banking',
+                'Konversi 372 nasabah anomali konservatif jadi prospek Priority Banking — ambil lintas segmen, jangan hanya Grup 3 (hanya 39% ada di sana)',
                 'Cross-selling Reksa Dana, Asuransi Jiwa Premium, dan Deposito',
                 'Tingkatkan Fee-based Income tanpa menambah risiko kredit'
             ]
@@ -1009,8 +1171,56 @@ def tab_strategic_recommendations():
                 'fontSize': '2.1rem',
                 'marginBottom': '6px'
             }),
-            
+
         ]),
+
+        # --- SINTESIS LINTAS-FASE: dasar bukti di balik rekomendasi ---
+        html.Div("Dasar Bukti: Menyilangkan Ketiga Analisis", className="section-title"),
+        dbc.Row([
+            dbc.Col(html.Div(className="glass-card mb-4", children=[
+                html.P([
+                    "Rekomendasi di bawah tidak berdiri di atas satu analisis saja. Kami menempelkan label segmen (dari Clustering) "
+                    "ke setiap pola perilaku (dari ARM) dan setiap kasus anomali (dari Anomaly Detection), lalu mengukur ",
+                    html.B("di segmen mana masing-masing benar-benar menumpuk"), "."
+                ], className="small text-muted mb-2"),
+                dcc.Graph(figure=fig_cross, config={'displayModeBar': False}, style={'height': '420px'}),
+                html.P([
+                    html.B("Cara membacanya: "),
+                    "1,00x berarti tersebar merata mengikuti besar populasi segmen. Di atas 1,25x (warna oranye/merah) berarti "
+                    "benar-benar menumpuk di segmen itu. Di bawah 0,8x (biru) berarti justru jarang ditemukan di sana."
+                ], className="small text-muted mt-2 mb-3"),
+                dbc.Row([
+                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #f43f5e'}, children=[
+                        html.Div("Investor multifamily ada di segmen mass-market, bukan segmen kaya", className="small mb-1", style={'fontWeight': '600', 'color': '#f43f5e'}),
+                        html.P("74,6% (1,75x — konsentrasi tertinggi di seluruh analisis) berada di Grup 1, dan hampir tidak ada di Grup 3 (0,20x). Mereka membeli rumah petak/apartemen lama untuk disewakan, bukan properti mewah.", className="small text-muted mb-0"),
+                        html.P("→ Produk KPR Investasi jangan diposisikan sebagai produk premium.", className="small mb-0", style={'color': '#5eead4'})
+                    ]), width=6, className="mb-3"),
+                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #f59e0b'}, children=[
+                        html.Div("Grup 2 adalah pusat gravitasi hampir semua anomali", className="small mb-1", style={'fontWeight': '600', 'color': '#f59e0b'}),
+                        html.P("Hanya 25,3% populasi, tapi memuat 49,0% kasus yang perlu diperiksa manusia (1,93x — tertinggi). Ini menguatkan temuan segmentasi bahwa Grup 2 punya beban pinjaman terberat (2,47x pendapatan) — dua metode berbeda menunjuk segmen yang sama.", className="small text-muted mb-0"),
+                        html.P("→ Alokasikan kapasitas underwriting mengikuti Grup 2, jangan dibagi rata.", className="small mb-0", style={'color': '#5eead4'})
+                    ]), width=6, className="mb-3"),
+                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #10b981'}, children=[
+                        html.Div("Prospek wealth management tidak hanya di Grup 3", className="small mb-1", style={'fontWeight': '600', 'color': '#10b981'}),
+                        html.P("Dugaan awal: 372 kasus \"Profil Konservatif\" = Grup 3. Kenyataannya hanya 39,0% di Grup 3, sementara 38,7% ada di Grup 2 dengan konsentrasi lebih tinggi (1,53x vs 1,22x).", className="small text-muted mb-0"),
+                        html.P("→ Menyaring prospek hanya dari Grup 3 akan kehilangan ~4 dari 10 prospek terbaik.", className="small mb-0", style={'color': '#5eead4'})
+                    ]), width=6, className="mb-3"),
+                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #3b82f6'}, children=[
+                        html.Div("Program Veteran memotong semua kelas ekonomi", className="small mb-1", style={'fontWeight': '600', 'color': '#3b82f6'}),
+                        html.P("Pinjaman VA menyebar hampir merata (0,89x–1,17x) di ketiga segmen — status veteran tidak terikat kelas ekonomi. Sementara pinjaman jumbo justru pembeda paling tegas (Grup 1 hanya 0,51x).", className="small text-muted mb-0"),
+                        html.P("→ Program bundling veteran butuh varian untuk ketiga segmen, bukan satu paket seragam.", className="small mb-0", style={'color': '#5eead4'})
+                    ]), width=6, className="mb-3"),
+                ]),
+                html.P([
+                    html.B("Batas klaim: "),
+                    "semua angka di atas adalah konsentrasi statistik, bukan sebab-akibat. Menumpuknya investor multifamily di Grup 1 "
+                    "tidak berarti berada di Grup 1 menyebabkan seseorang jadi investor properti. Label segmen juga dibentuk tanpa variabel "
+                    "harga kredit (lihat tab 7), jadi ini membandingkan segmen pendapatan–pinjaman–wilayah dengan pola produk, bukan segmen risiko formal."
+                ], className="small mb-0", style={'color': '#94a3b8', 'fontStyle': 'italic'})
+            ]), width=12),
+        ]),
+
+        html.Div("Rekomendasi Prioritas", className="section-title"),
 
         # Priority Legend
         html.Div(className="d-flex justify-content-center gap-4 mb-4 flex-wrap", children=[
