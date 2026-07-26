@@ -18,17 +18,37 @@
 
     2. Metodologi Pendekatan
     2.1 Feature Selection
-    Seleksi fitur dilakukan secara otomatis untuk memastikan hanya variabel numerik kontinu yang digunakan dalam proses clustering. Variabel dengan jumlah unique values ≤ 5 dieliminasi karena dianggap bersifat biner atau kategorikal dan kurang sesuai untuk pendekatan berbasis jarak Euclidean.
-    Fitur utama yang digunakan meliputi:
-    - loan_amount
-    - income
-    - property_value
-    - interest_rate
-    - loan_to_value_ratio
-    - tract_to_msa_income_percentage
-    - housing_age
-    - minority_population_percentage
-    Pendekatan ini bertujuan menjaga validitas pengukuran jarak antar data sehingga hasil segmentasi benar-benar mencerminkan kedekatan finansial antar pemohon.
+    Seleksi fitur dilakukan secara otomatis: kolom bertipe int64/float64 diambil, lalu variabel dengan jumlah unique values ≤ 5 dieliminasi karena dianggap bersifat biner atau kategorikal dan kurang sesuai untuk pendekatan berbasis jarak Euclidean.
+    Hasil seleksi otomatis ini menghasilkan 14 fitur:
+    - loan_amount, income (finansial inti)
+    - derived_msa_md, county_code (lokasi)
+    - tract_population, tract_minority_population_percent, ffiec_msa_md_median_family_income,
+      tract_to_msa_income_percentage, tract_owner_occupied_units, tract_median_age_of_housing_units
+      (konteks wilayah/tract sensus)
+    - applicant_ethnicity_1, co_applicant_ethnicity_1, applicant_race_1, co_applicant_race_1
+      (kode demografi numerik)
+
+    CATATAN PENTING (kejujuran metodologis): filter otomatis "int64/float64" ini TIDAK
+    menyertakan interest_rate, combined_loan_to_value_ratio (LTV), rate_spread, maupun
+    debt_to_income_ratio -- meskipun keempatnya finansial dan relevan secara bisnis. Alasan
+    teknis: di file sumber, keempat kolom ini tersimpan sebagai teks (bercampur nilai
+    non-numerik seperti "exempt" atau notasi bucket, lihat reports/4-explanation.md Cell [2]),
+    sehingga pandas membacanya sebagai dtype object, bukan float64, dan otomatis gugur dari
+    filter. Konsekuensinya: segmentasi tiga kelompok nasabah pada dasarnya dibentuk oleh pola
+    loan_amount, income, dan konteks geografis-demografis area (median family income wilayah,
+    populasi, usia bangunan) -- BUKAN langsung oleh suku bunga atau rasio LTV individual.
+    Interpretasi bisnis di Bagian 4 (mis. "leverage tinggi") tetap valid karena loan_amount
+    relatif terhadap income sudah menjadi proxy leverage yang kuat, tapi pembaca laporan ini
+    harus tahu interest_rate/LTV BUKAN input langsung pembentuk cluster.
+
+    Catatan kedua: applicant_ethnicity_1/race_1 (kode numerik nominal) ikut lolos filter
+    "unique>5" dan dipakai apa adanya dalam jarak Euclidean, padahal kode-kode ini tidak
+    memiliki urutan/jarak matematis yang bermakna antar kategori. Kontribusinya pada
+    pembentukan cluster karena itu dibaca sebagai sinyal kasar keberagaman area, bukan skala
+    presisi -- laporan ini secara sengaja tidak membuat klaim prediktif berbasis ras/etnis
+    individu dari hasil clustering.
+
+    Pendekatan ini bertujuan menjaga validitas pengukuran jarak antar data sehingga hasil segmentasi benar-benar mencerminkan kedekatan finansial-geografis antar pemohon.
 
     2.2 Data Standardization
     Seluruh fitur dinormalisasi menggunakan Z-score Standardization.
@@ -74,9 +94,21 @@
         3.2 Silhouette Score
             Silhouette Score digunakan untuk mengevaluasi:
             - kohesi intra-cluster, dan separasi antar cluster.
-            Hasil menunjukkan bahwa K=3 menghasilkan nilai silhouette yang relatif tinggi dan stabil dibandingkan jumlah cluster lainnya, menandakan bahwa:
-            - anggota cluster cukup homogen,
-            - namun tetap memiliki pemisahan yang jelas antar kelompok.
+            Dihitung pada sampel 10.000 baris (random_state=42) untuk K=2..6:
+
+              K=2: inertia=124.579  silhouette=0,1405
+              K=3: inertia=115.939  silhouette=0,1535  <-- tertinggi
+              K=4: inertia=108.056  silhouette=0,1338
+              K=5: inertia=100.897  silhouette=0,1516
+              K=6: inertia=93.347   silhouette=0,1516
+
+            K=3 menghasilkan silhouette TERTINGGI di antara seluruh kandidat (0,1535),
+            sedikit di atas K=5/K=6 (0,1516) dan jauh di atas K=4 (0,1338). Catatan jujur:
+            nilai absolut 0,15 tergolong "lemah-sedang" menurut konvensi umum (>0,5 baru
+            dianggap struktur kuat) -- wajar untuk data finansial riil yang kontinu dan
+            tumpang tindih secara alami, bukan gugus yang terpisah rapi. Klaim yang valid
+            bukan "cluster terpisah sempurna", melainkan "K=3 adalah pemisahan RELATIF
+            TERBAIK yang tersedia dan satu-satunya yang juga masuk akal secara bisnis."
 
         3.3 Justifikasi Bisnis Pemilihan K=3
         Selain valid secara statistik, penggunaan K=3 juga menghasilkan interpretasi bisnis yang paling realistis dan mudah dijelaskan dalam konteks pasar KPR nasional.
@@ -199,6 +231,35 @@
     Hal ini memperkuat validitas keputusan penggunaan:
     K=3 serta keberadaan tiga segmen utama dalam pasar KPR HMDA 2022.
 
+    6.1 Validasi Kuantitatif: Adjusted Rand Index (ARI)
+    Selain perbandingan visual dendrogram, korroborasi diukur dengan metrik kuantitatif
+    formal: Adjusted Rand Index antara label K-Means (K=3, fit penuh) dengan label
+    Agglomerative Clustering (Ward, k=3) pada sampel 800 baris yang identik (random_state=42,
+    sampel sama yang dipakai dendrogram di atas).
+
+      Adjusted Rand Index (K-Means vs Ward) = 0,356
+
+    Interpretasi jujur: ARI=0,356 menunjukkan kesepakatan MODERAT antar dua algoritma
+    (skala ARI: 0=acak, 1=identik sempurna) -- bukan validasi sempurna, dan itu wajar untuk
+    K-Means (berbasis centroid/jarak ke pusat) dibandingkan Ward (berbasis penggabungan
+    varians hierarkis), dua kriteria yang secara matematis berbeda. Cross-tabulasi
+    menunjukkan pola yang lebih informatif daripada angka ARI tunggal:
+
+      Ward=0  Ward=1  Ward=2   (baris = label K-Means)
+      K-Means=0   277      5      50
+      K-Means=1   173      6      27
+      K-Means=2    20      0     242
+
+    Cluster 2 (Konservatif/HNW) adalah PALING STABIL lintas metode: 242 dari 262
+    anggotanya (92%) tetap dikelompokkan bersama oleh Ward, nyaris tanpa tercampur ke
+    cluster lain. Sebaliknya, Cluster 0 (Kelas Menengah) dan Cluster 1 (Peminjam Agresif)
+    saling tumpang tindih lebih banyak antar metode (Ward cenderung menyatukan sebagian
+    besar keduanya ke satu cabang yang sama). Kesimpulan yang bisa dipertanggungjawabkan:
+    batas antara "kaya-konservatif" vs "sisanya" adalah struktur paling robust dalam data;
+    batas antara "kelas menengah" vs "peminjam agresif" nyata tapi lebih halus/gradual --
+    bukan kegagalan model, melainkan cerminan bahwa pasar KPR adalah spektrum kontinu, bukan
+    kotak-kotak terpisah tegas.
+
     7. Kesimpulan Akhir
     Analisis clustering berhasil mengidentifikasi tiga profil utama pemohon KPR yang memiliki karakteristik finansial dan perilaku pembiayaan berbeda secara signifikan.
 
@@ -212,3 +273,35 @@
     - mitigasi risiko,
     - peningkatan underwriting,
     -  optimalisasi cross-selling layanan finansial.
+
+    8. Batasan Analisis (Limitations)
+    Sesuai prinsip kejujuran ilmiah, berikut batasan yang secara sadar TIDAK bisa diklaim
+    dari analisis segmentasi ini:
+
+    8.1 Korelasi, bukan kausalitas
+    Cluster menunjukkan KESAMAAN pola finansial (income, loan_amount, konteks wilayah),
+    bukan hubungan sebab-akibat. Contoh: Cluster 1 "leverage tinggi" tidak berarti
+    pendapatan tinggi MENYEBABKAN keputusan mengambil pinjaman besar -- variabel lain yang
+    tidak terekam di HMDA (toleransi risiko personal, rencana keluarga, nasihat penasihat
+    keuangan) bisa jadi pendorong sebenarnya.
+
+    8.2 Fitur clustering tidak mencakup harga kredit langsung
+    Seperti dijelaskan di Bagian 2.1, interest_rate/LTV/DTI tidak masuk fitur clustering
+    karena tersimpan sebagai teks di data sumber. Segmentasi ini adalah segmentasi
+    "income-loan-geografis", bukan segmentasi "risiko kredit" murni.
+
+    8.3 Kode demografis diperlakukan sebagai kontinu
+    applicant_ethnicity_1/race_1 ikut sebagai fitur jarak Euclidean walau bersifat nominal
+    (lihat Bagian 2.1). Nama cluster ("Kelas Menengah", dst.) merujuk pada profil finansial
+    dominan, BUKAN klasifikasi demografis, dan tidak boleh dipakai untuk keputusan yang
+    membedakan individu berdasarkan ras/etnis.
+
+    8.4 Kekuatan struktur cluster tergolong sedang, bukan sangat kuat
+    Silhouette tertinggi hanya 0,1535 (lihat Bagian 3.2) dan ARI=0,356 vs Ward (Bagian 6.1)
+    -- K=3 adalah pilihan TERBAIK YANG TERSEDIA, bukan pemisahan yang sangat tajam. Batas
+    antar Cluster 0 dan 1 khususnya bersifat gradual (lihat cross-tab 6.1).
+
+    8.5 Snapshot satu tahun & sampling untuk algoritma berat
+    Seluruh hasil berbasis data HMDA 2022 saja (tidak tervalidasi lintas tahun). DBSCAN
+    (5.000 baris) dan Hierarchical (800 baris) memakai subsample acak berseed tetap karena
+    kompleksitas O(N^2)/O(N^3) -- hasil reproducible tapi bukan sensus penuh 99.994 baris.

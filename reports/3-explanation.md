@@ -131,7 +131,7 @@ Mesin penambangan aturan.
 **Langkah:**
 1. Filter item ke yang `support ≥ MIN_SUPPORT`, batasi maksimal 150 item teratas (hemat
    memori), konversi ke `bool` → 124 item.
-2. `apriori(...)` → **90.002 frequent itemsets** (max_len=3, low_memory).
+2. `apriori(...)` → **88.680 frequent itemsets** (max_len=3, low_memory).
 3. `association_rules(metric="confidence", min_threshold=0.6)` → menghitung
    **Support, Confidence, Lift** tiap rule.
 4. `apply_filters(...)` — filter "meaningful & non-trivial":
@@ -141,14 +141,14 @@ Mesin penambangan aturan.
      atribut yang secara definisi sama, mis. `loan_type` ↔ `derived_loan_product_type`,
      `derived_dwelling_category` ↔ `construction_method`/`total_units`,
      `reverse_mortgage` ↔ `above_62` [syarat legal HECM], atau antar-atribut usia
-     applicant/co-applicant) → **1.654 rule terhapus**. Tiap item diatribusikan ke
+     applicant/co-applicant) → **1.697 rule terhapus**. Tiap item diatribusikan ke
      **satu prefix terpanjang** supaya `applicant_age_above_62_*` tidak salah match
      dengan prefix `applicant_age_` (bug versi lama yang diam-diam membuang SEMUA
      rule ber-`above_62`).
 5. **Relaksasi otomatis**: kalau rule < 10, confidence diturunkan bertahap (0,55 → 0,50 →
    0,45) agar deliverable minimal 10 rule selalu tercapai (tidak terpicu di sini).
 
-**Hasil: 4.202 rule lolos filter.**
+**Hasil: 4.016 rule lolos filter.**
 
 ---
 
@@ -163,7 +163,7 @@ Mesin penambangan aturan.
   supaya rule yang cuma beda rentang tidak tampil dobel.
 
 **Ekspor:**
-- `3-association-rules.csv` — seluruh 4.202 rule (ranked).
+- `3-association-rules.csv` — seluruh 4.016 rule (ranked).
 - `3-association-rules.txt` — ringkasan top-10.
 
 (`safe_write_*` otomatis menulis ke file alternatif kalau file aslinya sedang terkunci.)

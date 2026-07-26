@@ -112,8 +112,12 @@ acak berulang: titik anomali butuh lebih sedikit split untuk terisolasi.
 
 - Fitur: 12 kolom `IF_FEATURES`, di-scale `StandardScaler`, NaN diisi median
   per kolom.
-- `contamination=0.05` mengikuti rekomendasi Phase 1 (rentang 5–10%).
-- Hasil: 5.000 baris (5,00%) ditandai anomali struktural.
+- `contamination="auto"` — pipeline final TIDAK memakai angka tetap 0,05 dari
+  rekomendasi awal Phase 1; ambang keputusan dihitung otomatis mengikuti
+  formula offset dari paper asli Isolation Forest (Liu et al., 2008), yang
+  lebih adaptif terhadap struktur data aktual dibanding contamination rate
+  tetap yang diasumsikan di muka.
+- Hasil: 7.642 baris (7,64%) ditandai anomali struktural.
 
 Histogram skor disimpan ke `reports/4-isolation_forest_scores.png`.
 
@@ -179,7 +183,7 @@ Setiap baris bertier != "Normal" diperiksa dengan aturan bisnis
    besar (≥Q3) — profil cocok Cluster 2 Phase 2 ("High-Net-Worth
    Conservative Borrowers").
 4. **Unclassified / Manual Review** — anomali nyata secara statistik/
-   struktural tapi tidak cocok pola baku manapun; ~84% dari 3.387 baris
+   struktural tapi tidak cocok pola baku manapun; ~81% dari 3.320 baris
    prioritas (tier Confirmed + High Confidence) jatuh di sini — realistis,
    karena tidak semua penyimpangan statistik punya penjelasan otomatis.
 
@@ -194,7 +198,7 @@ verifikasi manual bahwa aturan klasifikasi masuk akal terhadap data nyata.
 
 ## Cell [12] — Ekspor `reports/4-anomalies.csv`
 
-Seluruh 10.318 baris bertier != "Normal" diekspor dengan kolom asli (loan
+Seluruh 12.217 baris bertier != "Normal" diekspor dengan kolom asli (loan
 amount, income, LTV, dst.) + skor tiap metode + tier + tipologi, diurutkan
 prioritas (High Confidence → Confirmed → Suspected). File ini dimaksudkan
 untuk ditindaklanjuti tim underwriting/data engineering secara langsung.
@@ -220,13 +224,13 @@ daftar file deliverable yang dihasilkan.
 
 | File | Isi |
 |---|---|
-| `reports/4-anomalies.csv` | 10.318 baris anomali + skor tiap metode + tier + tipologi |
+| `reports/4-anomalies.csv` | 12.217 baris anomali + skor tiap metode + tier + tipologi |
 | `reports/4-anomaly-report.txt` | Laporan naratif lengkap (ringkasan eksekutif s/d rekomendasi bisnis) |
 | `reports/4-outlier_boxplots.png` | Distribusi & batas IQR — 6 kolom finansial utama |
 | `reports/4-isolation_forest_scores.png` | Distribusi skor anomali Isolation Forest |
 | `reports/4-anomaly_crossref.png` | Peta income vs loan_amount per tier anomali |
 
-**Angka kunci:** 10.318 baris (10,32%) ditandai anomali oleh minimal satu
-metode; 3.387 baris (3,39%) di tier prioritas (Confirmed/High Confidence).
-Dari baris prioritas: 4,4% Data Error, 1,6% Potential Risk Signal, 9,8% Rare
-Legitimate, 84,2% perlu review manual.
+**Angka kunci:** 12.217 baris (12,22%) ditandai anomali oleh minimal satu
+metode; 3.320 baris (3,32%) di tier prioritas (Confirmed/High Confidence).
+Dari baris prioritas: 5,4% Data Error, 2,3% Potential Risk Signal, 11,2% Rare
+Legitimate, 81,1% perlu review manual.
