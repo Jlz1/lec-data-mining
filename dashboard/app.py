@@ -898,7 +898,7 @@ def tab_strategic_recommendations():
             'impact': 'HIGH',
             'impact_color': '#f59e0b',
             'border_color': '#f59e0b',
-            'key_point': 'Mencegah risiko kredit dari 3.301 kasus anomali kombinasi yang berpotensi lolos dari pemeriksaan underwriting manual biasa.',
+            'key_point': 'Mencegah risiko kredit dari 3.320 kasus anomali kombinasi yang berpotensi lolos dari pemeriksaan underwriting manual biasa.',
             'actions': [
                 'Integrasikan model Isolation Forest ke pipeline persetujuan kredit',
                 'Verifikasi mendalam untuk 76 kasus sinyal risiko kredit tinggi',
@@ -1131,6 +1131,7 @@ app.layout = html.Div([
             dbc.Tab(tab_4_anomalies(), label="5. Anomali Detection", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
 
             dbc.Tab(tab_strategic_recommendations(), label="6. Strategic Recommendation", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_methodology(), label="7. Metodologi & Validitas", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
 
         ], className="custom-tabs"),
         
