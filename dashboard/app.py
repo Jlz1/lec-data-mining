@@ -12,7 +12,7 @@ app = dash.Dash(
     __name__, 
     external_stylesheets=[
         dbc.themes.DARKLY,
-        "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
     ],
     suppress_callback_exceptions=True
 )
@@ -542,7 +542,7 @@ def tab_arm_visualization():
 
     return html.Div(className="tab-content", children=[
         html.Div("Peta Peluang Bisnis Tersembunyi (Hasil Analisis ARM)", className="section-title"),
-        html.P("Setiap titik mewakili satu peluang bisnis spesifik. Semakin besar dan terang titiknya, semakin tinggi kepastian bahwa nasabah akan mengambil produk tersebut — cocok dijadikan target Cross-Selling atau peringatan risiko.", className="mb-4 text-muted"),
+        html.P("Setiap titik mewakili satu peluang bisnis spesifik. Semakin besar dan terang titiknya, semakin tinggi kepastian bahwa nasabah akan mengambil produk tersebut, sehingga cocok dijadikan target Cross-Selling atau peringatan risiko.", className="mb-4 text-muted"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.H4("Peta 100 Peluang Bisnis Terkuat"),
@@ -632,13 +632,13 @@ def tab_distributions():
         {
             'col': 'loan_amount', 'label': 'Seberapa Besar Pinjaman Nasabah?',
             'color': '#3b82f6',
-            'insight': 'Mayoritas nasabah mengajukan pinjaman di kisaran moderat. Namun ada ekor panjang di kanan — ini adalah segmen Jumbo Loan (nasabah agresif & investor) yang jumlahnya kecil tapi bernilai tinggi.',
+            'insight': 'Mayoritas nasabah mengajukan pinjaman di kisaran moderat. Namun ada ekor panjang di kanan, yaitu segmen Jumbo Loan (nasabah agresif & investor) yang jumlahnya kecil tapi bernilai tinggi.',
             'opportunity': 'Jangan buat produk yang terlalu standar. Ada dua pasar: pasar massal (pinjaman kecil-menengah) dan pasar premium (Jumbo Loan). Keduanya butuh pendekatan yang berbeda.'
         },
         {
             'col': 'income', 'label': 'Sebaran Penghasilan Pemohon KPR',
             'color': '#10b981',
-            'insight': 'Sebagian besar pemohon berpenghasilan menengah. Tapi ada segmen kecil dengan penghasilan sangat tinggi yang justru meminjam di bawah kapasitasnya — ini adalah kelompok Konservatif HNW.',
+            'insight': 'Sebagian besar pemohon berpenghasilan menengah. Tapi ada segmen kecil dengan penghasilan sangat tinggi yang justru meminjam di bawah kapasitasnya, yaitu kelompok Konservatif HNW.',
             'opportunity': 'Segmen berpenghasilan sangat tinggi ini adalah target utama Wealth Management. Mereka tidak datang mencari KPR, tapi bisa ditawarkan produk investasi & asuransi bermargin tinggi.'
         },
         {
@@ -650,7 +650,7 @@ def tab_distributions():
         {
             'col': 'combined_loan_to_value_ratio', 'label': 'Distribusi Rasio Utang vs Nilai Rumah (LTV)',
             'color': '#f43f5e',
-            'insight': 'Mayoritas nasabah berada di LTV 60–95% (zona normal). Namun ada kasus ekstrem di atas 100% — artinya nilai pinjaman melampaui harga rumah. Ini adalah zona merah risiko kredit macet.',
+            'insight': 'Mayoritas nasabah berada di LTV 60–95% (zona normal). Namun ada kasus ekstrem di atas 100%, di mana nilai pinjaman melampaui harga rumah. Ini adalah zona merah risiko kredit macet.',
             'opportunity': 'Nasabah dengan LTV di atas 95% perlu dimonitor ketat. Di sisi lain, nasabah dengan LTV di bawah 50% (uang muka besar) adalah kandidat terbaik untuk ditawari produk premium tambahan.'
         },
     ]
@@ -692,7 +692,7 @@ def tab_distributions():
     return html.Div(className="tab-content", children=[
         html.Div("Memahami Pasar dari Distribusi Data", className="section-title"),
         html.P(
-            "Grafik distribusi menunjukkan 'bentuk' pasar KPR kita — di mana konsentrasinya, seberapa merata atau terpolarisasi, "
+            "Grafik distribusi menunjukkan 'bentuk' pasar KPR kita untuk melihat di mana konsentrasinya, seberapa merata atau terpolarisasi, "
             "dan di mana peluang bisnis tersembunyi berada. Setiap grafik dilengkapi dengan interpretasi dan rekomendasi langsung untuk tim bisnis.",
             className="mb-4 text-muted"
         ),
@@ -885,66 +885,186 @@ def tab_4_anomalies():
         ])
     ])
 
-def tab_conclusions():
+def tab_strategic_recommendations():
+    # Streamlined strategic recommendations focusing purely on key points and core actions
+    recommendations = [
+        {
+            'rank': 1,
+            'title': 'Program KPR Investasi Properti Multifamily',
+            'impact': 'VERY HIGH',
+            'impact_color': '#f43f5e',
+            'border_color': '#f43f5e',
+            'key_point': 'Peluang besar dari segmen peminjam agresif (25,3%) dan investor Multifamily yang secara konsisten menyasar Pinjaman Jumbo bernilai tinggi.',
+            'actions': [
+                'Paket KPR Jumbo Investasi + fasilitas kredit modal kerja renovasi',
+                'Kemitraan eksklusif dengan pengembang apartemen/ruko di lokasi strategis',
+                'Layanan cash management terintegrasi untuk kelola arus kas sewa'
+            ]
+        },
+        {
+            'rank': 2,
+            'title': 'Layanan Wealth Management Nasabah Ultra-Kaya',
+            'impact': 'HIGH',
+            'impact_color': '#10b981',
+            'border_color': '#10b981',
+            'key_point': 'Segmen Konservatif HNW (32,1%) berpenghasilan tinggi dengan LTV sangat rendah. Target utama produk non-KPR bermargin tinggi.',
+            'actions': [
+                'Konversi 372 nasabah anomali konservatif menjadi prospek Priority Banking',
+                'Cross-selling Reksa Dana, Asuransi Jiwa Premium, dan Deposito',
+                'Tingkatkan Fee-based Income tanpa menambah risiko kredit'
+            ]
+        },
+        {
+            'rank': 3,
+            'title': 'KPR Mikro "Rumah Pertama" Manufactured Housing',
+            'impact': 'HIGH',
+            'impact_color': '#3b82f6',
+            'border_color': '#3b82f6',
+            'key_point': 'Ceruk pasar spesifik nasabah muda (<25 tahun) yang secara konsisten memilih Manufactured Housing sebagai hunian pertama.',
+            'actions': [
+                'KPR Mikro Fast-Track khusus pemuda dengan uang muka fleksibel',
+                'Skema cicilan progresif sesuai pertumbuhan karier nasabah',
+                'Kanal pengajuan digital self-service yang cepat dan efisien'
+            ]
+        },
+        {
+            'rank': 4,
+            'title': 'Integrasi Sistem Deteksi Anomali Kredit Otomatis',
+            'impact': 'HIGH',
+            'impact_color': '#f59e0b',
+            'border_color': '#f59e0b',
+            'key_point': 'Mencegah risiko kredit dari 3.301 kasus anomali kombinasi yang berpotensi lolos dari pemeriksaan underwriting manual biasa.',
+            'actions': [
+                'Integrasikan model Isolation Forest ke pipeline persetujuan kredit',
+                'Verifikasi mendalam untuk 76 kasus sinyal risiko kredit tinggi',
+                'Eskalasi 179 kasus data error ke tim Data Engineering untuk perbaikan'
+            ]
+        },
+        {
+            'rank': 5,
+            'title': 'Program KPR Jumbo Khusus Veteran (VA Jumbo)',
+            'impact': 'MEDIUM',
+            'impact_color': '#8b5cf6',
+            'border_color': '#8b5cf6',
+            'key_point': 'Pasar loyal nasabah Veteran dengan pola pembiayaan bersubsidi pemerintah yang sangat terprediksi dan berisiko rendah.',
+            'actions': [
+                'Kampanye VA Jumbo Loan dengan bunga bersaing dan bebas biaya admin',
+                'Cross-sell produk tabungan/investasi untuk nasabah cash-out refinance',
+                'Optimalisasi sekuritisasi Ginnie Mae untuk pendanaan berkelanjutan'
+            ]
+        },
+        {
+            'rank': 6,
+            'title': 'Konsolidasi Utang & Proteksi KPR Kedua',
+            'impact': 'MEDIUM',
+            'impact_color': '#f97316',
+            'border_color': '#f97316',
+            'key_point': 'Mitigasi risiko kredit pada KPR kedua dari investor swasta yang memiliki kecenderungan utang melampaui nilai rumah (LTV >100%).',
+            'actions': [
+                'Program konsolidasi utang dengan suku bunga tetap khusus',
+                'Wajib asuransi kredit tambahan untuk seluruh skema KPR kedua',
+                'Monitoring aktif rasio LTV untuk peminjam di atas 95%'
+            ]
+        },
+    ]
+
+    impact_badge_style = {
+        'VERY HIGH': {'backgroundColor': 'rgba(244,63,94,0.15)', 'color': '#f43f5e', 'border': '1px solid rgba(244,63,94,0.3)'},
+        'HIGH': {'backgroundColor': 'rgba(59,130,246,0.15)', 'color': '#3b82f6', 'border': '1px solid rgba(59,130,246,0.3)'},
+        'MEDIUM': {'backgroundColor': 'rgba(249,115,22,0.15)', 'color': '#f97316', 'border': '1px solid rgba(249,115,22,0.3)'},
+    }
+
+    rank_cards = []
+    for rec in recommendations:
+        badge_s = impact_badge_style.get(rec['impact'], impact_badge_style['MEDIUM'])
+        action_lis = [html.Li(a, className="mb-1") for a in rec['actions']]
+
+        card = dbc.Col(
+            html.Div(className="glass-card h-100 p-4", style={
+                'borderLeft': f'4px solid {rec["border_color"]}',
+                'display': 'flex',
+                'flexDirection': 'column',
+                'justifyContent': 'space-between'
+            }, children=[
+                html.Div([
+                    # Header: Rank + Title + Impact Badge
+                    html.Div(className="d-flex align-items-center justify-content-between mb-3", children=[
+                        html.Div(className="d-flex align-items-center gap-2", children=[
+                            html.Span(f"#{rec['rank']}", style={
+                                'backgroundColor': rec['border_color'],
+                                'color': '#ffffff',
+                                'fontWeight': '700',
+                                'fontSize': '0.8rem',
+                                'padding': '3px 10px',
+                                'borderRadius': '6px',
+                                'fontFamily': 'var(--font-heading)'
+                            }),
+                            html.H5(rec['title'], className="mb-0", style={
+                                'fontFamily': 'var(--font-heading)',
+                                'fontWeight': '700',
+                                'fontSize': '1.05rem',
+                                'color': '#f8fafc'
+                            })
+                        ]),
+                        html.Span(f"{rec['impact']}", style={
+                            **badge_s,
+                            'padding': '3px 10px',
+                            'borderRadius': '12px',
+                            'fontSize': '0.68rem',
+                            'fontWeight': '700',
+                            'whiteSpace': 'nowrap'
+                        })
+                    ]),
+
+                    # Poin Utama
+                    html.P(rec['key_point'], className="small mb-3", style={
+                        'color': '#94a3b8',
+                        'lineHeight': '1.5',
+                        'fontSize': '0.88rem'
+                    }),
+
+                    # Rekomendasi Aksi
+                    html.Div([
+                        html.Strong("Rekomendasi Aksi:", style={'color': '#cbd5e1', 'fontSize': '0.8rem', 'display': 'block', 'marginBottom': '6px'}),
+                        html.Ul(action_lis, className="ps-3 mb-0 small text-muted", style={'lineHeight': '1.4'})
+                    ])
+                ])
+            ]),
+            width=6
+        )
+        rank_cards.append(card)
+
     return html.Div(className="tab-content", children=[
-        # --- HEADER ---
-        html.Div(className="text-center mb-5", children=[
-            html.H2("Kesimpulan & Langkah Strategis", style={'fontFamily': 'var(--font-heading)', 'fontWeight': '700', 'color': 'var(--text-primary)', 'fontSize': '2.5rem', 'marginBottom': '10px'})
+        # Header
+        html.Div(className="text-center mb-4", children=[
+            html.H2("Business Strategic Recommendations", style={
+                'fontFamily': 'var(--font-heading)',
+                'fontWeight': '700',
+                'color': 'var(--text-primary)',
+                'fontSize': '2.1rem',
+                'marginBottom': '6px'
+            }),
+            
         ]),
-        
-        # --- 3 PILAR AKSI BISNIS ---
-        dbc.Row([
-            # Pilar 1: Produk & Sales
-            dbc.Col(html.Div(className="pillar-card", style={'borderTopColor': '#3b82f6'}, children=[
-                html.H4("Produk & Pemasaran", style={'color': '#3b82f6', 'marginBottom': '20px'}),
-                html.Div(className="mb-4", children=[
-                    html.Strong("Insight Utama:", style={'color': 'var(--text-secondary)'}),
-                    html.P("Pasar terpecah secara ekstrem. Anak muda memilih rumah siap rakit (Manufactured Housing), sedangkan nasabah kaya justru paling konservatif dalam meminjam.", className="small mt-1")
-                ]),
-                html.Div(children=[
-                    html.Strong("Instruksi Eksekusi:", style={'color': '#f8fafc'}),
-                    html.Ul(className="recommendation-list mt-2", children=[
-                        html.Li("Setop promosi 'satu ukuran untuk semua'."),
-                        html.Li("Rilis KPR Mikro Fast-Track khusus pemuda."),
-                        html.Li("Alihkan nasabah ultra-kaya ke divisi Wealth Management (Investasi & Asuransi).")
-                    ])
-                ])
-            ]), width=4),
 
-            # Pilar 2: Manajemen Risiko
-            dbc.Col(html.Div(className="pillar-card", style={'borderTopColor': '#f43f5e'}, children=[
-                html.H4("Manajemen Risiko", style={'color': '#f43f5e', 'marginBottom': '20px'}),
-                html.Div(className="mb-4", children=[
-                    html.Strong("Insight Utama:", style={'color': 'var(--text-secondary)'}),
-                    html.P("Investor properti kos/apartemen (Multifamily) adalah kelompok peminjam yang paling agresif dalam memaksimalkan utang (LTV tinggi).", className="small mt-1")
-                ]),
-                html.Div(children=[
-                    html.Strong("Instruksi Eksekusi:", style={'color': '#f8fafc'}),
-                    html.Ul(className="recommendation-list mt-2", children=[
-                        html.Li("Perketat syarat persetujuan (underwriting) untuk investor."),
-                        html.Li("Wajibkan suku bunga mengambang (floating) untuk KPR kedua."),
-                        html.Li("Batasi rasio utang berbanding nilai rumah (LTV) maksimal 75%.")
-                    ])
-                ])
-            ]), width=4),
+        # Priority Legend
+        html.Div(className="d-flex justify-content-center gap-4 mb-4 flex-wrap", children=[
+            html.Div(className="d-flex align-items-center", children=[
+                html.Div(style={'width': '10px', 'height': '10px', 'borderRadius': '50%', 'backgroundColor': '#f43f5e', 'marginRight': '6px'}),
+                html.Span("Very High Impact", className="small text-muted")
+            ]),
+            html.Div(className="d-flex align-items-center", children=[
+                html.Div(style={'width': '10px', 'height': '10px', 'borderRadius': '50%', 'backgroundColor': '#3b82f6', 'marginRight': '6px'}),
+                html.Span("High Impact", className="small text-muted")
+            ]),
+            html.Div(className="d-flex align-items-center", children=[
+                html.Div(style={'width': '10px', 'height': '10px', 'borderRadius': '50%', 'backgroundColor': '#f97316', 'marginRight': '6px'}),
+                html.Span("Medium Impact", className="small text-muted")
+            ]),
+        ]),
 
-            # Pilar 3: Operasional & IT
-            dbc.Col(html.Div(className="pillar-card", style={'borderTopColor': '#10b981'}, children=[
-                html.H4("Operasional & IT", style={'color': '#10b981', 'marginBottom': '20px'}),
-                html.Div(className="mb-4", children=[
-                    html.Strong("Insight Utama:", style={'color': 'var(--text-secondary)'}),
-                    html.P("Sistem mendeteksi 3.301 pengajuan anomali yang angkanya secara individual tampak normal, namun secara kombinasi berisiko tinggi.", className="small mt-1")
-                ]),
-                html.Div(children=[
-                    html.Strong("Instruksi Eksekusi:", style={'color': '#f8fafc'}),
-                    html.Ul(className="recommendation-list mt-2", children=[
-                        html.Li("Integrasikan Anomaly Detection ke sistem persetujuan otomatis."),
-                        html.Li("Jadikan output sistem sebagai lapis kedua verifikasi kredit."),
-                        html.Li("Eskalasikan 179 kasus Data Error ke tim Data Engineering.")
-                    ])
-                ])
-            ]), width=4),
-        ], className="mb-5", style={'alignItems': 'stretch'})
+        # Cards Layout Grid with clean row spacing
+        dbc.Row(rank_cards, className="g-4 mb-4")
     ])
 
 # Main Layout
@@ -957,7 +1077,7 @@ app.layout = html.Div([
             dbc.Tab(tab_arm_visualization(), label="3. Visualization ARM", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
             dbc.Tab(tab_distributions(), label="4. Market Distribution", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
             dbc.Tab(tab_4_anomalies(), label="5. Anomali Detection", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
-            dbc.Tab(tab_conclusions(), label="6. Conclusion", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
+            dbc.Tab(tab_strategic_recommendations(), label="6. Strategic Recommendation", tabClassName="custom-tab", activeTabClassName="custom-tab-selected"),
         ], className="custom-tabs"),
         
         html.Div(className="text-center mt-5 mb-4 text-muted small", children=[
