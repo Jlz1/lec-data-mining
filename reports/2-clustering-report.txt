@@ -121,15 +121,49 @@
     Oleh karena itu, K=3 dipilih sebagai jumlah segmentasi optimal baik dari sisi matematis maupun interpretasi finansial.
 
     4. Profiling Klaster (Business Interpretation)
-    Nilai centroid hasil K-Means dikembalikan ke skala asli menggunakan inverse transformation agar dapat diterjemahkan ke dalam konteks bisnis nyata.
+
+    CATATAN SUMBER ANGKA (penting agar tidak dianggap tidak konsisten):
+    Ada DUA cara menghitung "rata-rata" per cluster, dan keduanya menghasilkan angka
+    yang sedikit berbeda:
+      (a) CENTROID K-Means — pusat matematis cluster, hasil inverse-transform dari
+          centroid terstandardisasi. Dihitung di atas data yang sudah diimputasi
+          median, jadi baris ber-income kosong ikut menarik nilainya.
+      (b) MEAN AKTUAL — rata-rata nilai asli anggota cluster, dihitung hanya dari
+          baris yang benar-benar terisi (non-null).
+    Laporan ini memakai (b) MEAN AKTUAL sebagai angka utama, karena inilah yang
+    tersimpan di `reports/cluster_profile_summary.csv` dan ditampilkan dashboard --
+    jadi angka di laporan, CSV, dan dashboard semuanya identik dan bisa diverifikasi
+    pembaca. Nilai centroid dicantumkan sebagai pembanding di tabel berikut.
+
+    ┌──────────────────┬──────────────┬──────────────┬───────────────┬─────────┐
+    │ Cluster          │ Income       │ Income       │ Loan Amount   │ Loan-to-│
+    │                  │ (centroid)   │ (MEAN AKTUAL)│ (MEAN AKTUAL) │ Income  │
+    ├──────────────────┼──────────────┼──────────────┼───────────────┼─────────┤
+    │ 0 Mass Market    │ $105.580     │ $107.483     │ $256.726      │  2,39x  │
+    │ 1 High-Leverage  │ $143.800     │ $152.332     │ $375.773      │  2,47x  │
+    │ 2 HNW Konservatif│ $204.680     │ $207.565     │ $317.120      │  1,53x  │
+    └──────────────────┴──────────────┴──────────────┴───────────────┴─────────┘
+
+    TEMUAN PEMBEDA UTAMA -- RASIO PINJAMAN-KE-PENDAPATAN (Loan-to-Income), BUKAN LTV:
+    Pengecekan langsung ke data menunjukkan rata-rata LTV ketiga cluster NYARIS
+    IDENTIK: 75,18% (Cluster 0) / 73,45% (Cluster 1) / 72,99% (Cluster 2) -- rentang
+    hanya ~2 poin persen, dan justru Cluster 0 yang tertinggi. Karena itu LTV BUKAN
+    variabel yang membedakan ketiga segmen, dan laporan ini TIDAK mengklaim demikian.
+    Yang benar-benar membedakan adalah rasio pinjaman terhadap pendapatan tahunan:
+    2,39x / 2,47x / 1,53x -- Cluster 2 meminjam jauh lebih sedikit relatif terhadap
+    penghasilannya (1,53x vs ~2,4x pada dua cluster lain). Rata-rata suku bunga juga
+    hampir sama (4,87% / 4,73% / 4,69%), konsisten dengan Bagian 2.1: interest_rate
+    dan LTV memang bukan fitur pembentuk cluster.
+
         4.1 Cluster 0 — “The Mass Market / Urban Borrowers”
         Populasi: 42.579 nasabah (~42,58%) — kelompok terbesar
         Karakteristik Utama:
-        - Pendapatan rata-rata terendah (~$105.580)
-        - Nilai pinjaman moderat (~$256.780)
+        - Pendapatan rata-rata terendah (~$107.483)
+        - Nilai pinjaman moderat (~$256.726)
+        - Rasio pinjaman-ke-pendapatan 2,39x (menengah)
         - Tinggal di area dengan persentase minoritas tinggi
         - Usia properti relatif tua (~39,7 tahun)
-    
+
         Interpretasi Bisnis:
         Kelompok ini merepresentasikan pasar KPR utama kelas menengah ke bawah dan first-time homebuyers.
         Mereka cenderung membeli rumah di area urban lama dan memiliki keterbatasan daya beli dan mencari pembiayaan dengan risiko moderat.
@@ -142,14 +176,18 @@
         4.2 Cluster 1 — “The Premium Upgraders / High-Leverage Borrowers”
         Populasi: 25.336 nasabah (~25,34%)
         Karakteristik Utama:
-        - Pendapatan tinggi (~$143.800)
-        - Nilai pinjaman tertinggi (~$376.044)
+        - Pendapatan tinggi (~$152.332)
+        - Nilai pinjaman tertinggi (~$375.773)
+        - Rasio pinjaman-ke-pendapatan TERTINGGI: 2,47x
         - Tinggal di kawasan paling makmur
         - Membeli properti dengan usia bangunan paling baru
-        
+
         Interpretasi Bisnis:
         Kelompok ini menggambarkan profesional mapan yang sedang melakukan upgrade tempat tinggal menuju kawasan suburban premium.
-        Walaupun memiliki pendapatan tinggi, mereka menggunakan leverage pinjaman secara agresif untuk memperoleh properti bernilai besar.
+        Walaupun memiliki pendapatan tinggi, mereka mengambil pinjaman dengan kelipatan pendapatan
+        paling besar (2,47x) untuk memperoleh properti bernilai besar. Catatan kejujuran: klaim
+        "leverage agresif" di sini bersandar pada rasio pinjaman-ke-pendapatan, BUKAN pada LTV
+        (yang nyaris sama di semua cluster) dan BUKAN pada DTI (yang tidak masuk fitur clustering).
         
         Implikasi bisnis:
         sangat profitable dari sisi bunga kredit,
@@ -163,17 +201,31 @@
         4.3 Cluster 2 — “The High-Net-Worth / Conservative Borrowers”
         Populasi: 32.079 nasabah (~32,08%)
         Karakteristik Utama:
-        - Pendapatan tertinggi (~$204.680)
-        - Nilai pinjaman hanya pada level menengah (~$317.035)
-        - Rasio leverage relatif rendah
-        
+        - Pendapatan tertinggi (~$207.565)
+        - Nilai pinjaman hanya pada level menengah (~$317.120)
+        - Rasio pinjaman-ke-pendapatan TERENDAH: 1,53x (vs 2,39x & 2,47x cluster lain)
+          --> INILAH pembeda utamanya, bukan LTV
+
         Interpretasi Bisnis:
         Segmen ini merupakan kelompok finansial paling kuat dan paling stabil.
-        Meskipun memiliki kemampuan finansial sangat tinggi, mereka tidak memaksimalkan pinjaman. Hal ini mengindikasikan kemungkinan:
-        uang muka besar, pembelian properti kedua atau strategi investasi konservatif.
+        Meskipun berpendapatan tertinggi, mereka meminjam dengan kelipatan pendapatan paling
+        rendah -- hanya 1,53x penghasilan tahunan, sekitar 38% lebih hemat dibanding dua cluster
+        lain. Ini konsisten dengan strategi finansial konservatif.
 
-        Kelompok ini memiliki probabilitas gagal bayar paling rendah dan sangat potensial untuk:
-        wealth management, investasi, priority banking, dan cross-selling produk finansial bernilai tinggi.
+        BATAS KLAIM (agar tidak overclaim):
+        Rendahnya rasio pinjaman-ke-pendapatan TIDAK otomatis berarti "uang muka sangat besar".
+        Rata-rata LTV cluster ini 72,99% -- praktis sama dengan cluster lain (75,18% dan 73,45%),
+        jadi data TIDAK mendukung klaim bahwa mereka menyetor uang muka lebih besar. Penjelasan
+        yang konsisten dengan data adalah: mereka membeli properti yang lebih murah relatif
+        terhadap kemampuan finansialnya (bukan menyetor DP lebih besar untuk properti yang sama).
+        Untuk memastikan mana yang benar dibutuhkan data yang tidak tersedia di HMDA, mis. nilai
+        aset/tabungan pemohon.
+
+        Kelompok ini berpotensi memiliki probabilitas gagal bayar lebih rendah (karena beban
+        cicilan relatif terhadap pendapatan paling ringan) dan sangat potensial untuk:
+        wealth management, investasi, priority banking, dan cross-selling produk finansial
+        bernilai tinggi. Catatan: HMDA tidak memuat data gagal bayar, jadi klaim risiko di sini
+        adalah inferensi dari rasio beban utang, bukan hasil pengukuran default rate.
 
     5. Identifikasi Anomali (Outlier Detection via DBSCAN)
     DBSCAN diterapkan pada sampel sebanyak 5.000 data untuk mendeteksi observasi yang tidak mengikuti pola umum populasi.

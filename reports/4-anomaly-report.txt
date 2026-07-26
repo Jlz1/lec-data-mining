@@ -111,8 +111,17 @@ b) POTENTIAL RISK SIGNAL
 
 c) RARE LEGITIMATE
    Definisi: income tinggi (>=Q3), LTV rendah (<=60%, uang muka besar),
-   pinjaman besar (>=Q3) -- profil cocok dengan Cluster 2 Phase 2
+   pinjaman besar (>=Q3) -- profilnya SEBAGIAN cocok dengan Cluster 2 Phase 2
    ('High-Net-Worth / Conservative Borrowers').
+   KOREKSI BERBASIS DATA: cross-check row_index ke label cluster Phase 2
+   menunjukkan hanya 39,0% dari 372 baris 'Rare Legitimate' benar-benar
+   berada di Cluster 2. Sebanyak 38,7% justru di Cluster 1 ('Peminjam
+   Agresif', konsentrasi 1,53x di atas proporsi populasinya) dan 22,3% di
+   Cluster 0. Jadi klaim yang benar bukan "Rare Legitimate = Cluster 2",
+   melainkan: profil ini tersebar di Cluster 1 DAN Cluster 2, dan justru
+   LEBIH terkonsentrasi (relatif populasi) di Cluster 1. Implikasinya,
+   daftar prospek wealth management tidak boleh disaring hanya dari
+   Cluster 2.
    Rekomendasi: TIDAK perlu risk flagging; justru kandidat produk
    wealth management / priority banking / cross-selling.
 
