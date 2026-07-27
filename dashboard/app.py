@@ -602,7 +602,14 @@ def tab_arm_visualization():
                 x=[0], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#1d4ed8',
                             line=dict(width=1.5, color='rgba(29,78,216,0.35)')),
-                hovertext='Kondisi: ' + rule['kondisi_plain'],
+                hovertext=(
+                    f"<b>Pola #{i+1}</b><br>"
+                    f"Kondisi: {rule['kondisi_plain']}<br>"
+                    f"Hasil: {rule['hasil_plain']}<br><br>"
+                    f"<b>Skor Peluang: {rule['lift']:.1f}</b><br>"
+                    f"Jangkauan Pasar: {rule['support']:.2f}%<br>"
+                    f"Tingkat Kepastian: {rule['confidence']:.0f}%"
+                ),
                 hoverinfo='text',
                 showlegend=False
             ))
@@ -620,7 +627,14 @@ def tab_arm_visualization():
                 x=[1], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#0f766e',
                             line=dict(width=1.5, color='rgba(15,118,110,0.35)')),
-                hovertext='Hasil: ' + rule['hasil_plain'],
+                hovertext=(
+                    f"<b>Pola #{i+1}</b><br>"
+                    f"Kondisi: {rule['kondisi_plain']}<br>"
+                    f"Hasil: {rule['hasil_plain']}<br><br>"
+                    f"<b>Skor Peluang: {rule['lift']:.1f}</b><br>"
+                    f"Jangkauan Pasar: {rule['support']:.2f}%<br>"
+                    f"Tingkat Kepastian: {rule['confidence']:.0f}%"
+                ),
                 hoverinfo='text',
                 showlegend=False
             ))
@@ -698,15 +712,6 @@ def tab_arm_visualization():
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.H4("Peta 100 Peluang Bisnis Terkuat"),
-                html.P([
-                    "Setiap gelembung = satu pola perilaku nasabah. ",
-                    html.B("Makin ke kanan"),
-                    " = makin banyak nasabah yang terlibat. ",
-                    html.B("Makin ke atas"),
-                    " = makin pasti polanya terjadi. ",
-                    html.B("Makin besar & terang"),
-                    " = makin kuat peluang bisnisnya."
-                ], className="small text-muted mb-2"),
                 dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, responsive=True, style={'height': '520px'})
             ]), width=6),
             dbc.Col(html.Div(className="glass-card mb-4", children=[
