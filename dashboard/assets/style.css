@@ -1,153 +1,423 @@
+/* ==========================================================================
+   SPACEX-INSPIRED DESIGN SYSTEM — LIGHT ("SHOP SITE") VARIANT
+   White canvas · black ink · uppercase D-DIN/Inter display · 1px hairlines ·
+   ghost outlined pill CTAs · zero shadows, zero gradients, zero brand accent.
+   Two black full-bleed bands bookend the page (hero + footer) exactly as the
+   marketing surface does; everything between them is the light shop surface.
+   Color appears ONLY where it carries data or semantic meaning (charts, risk
+   chips) — never as decoration.
+   ========================================================================== */
+
 :root {
-    --bg-base: #0f172a; /* Slate 900 for professional dark mode */
-    --bg-card: #1e293b; /* Slate 800 */
-    --text-primary: #f8fafc; /* Slate 50 for max readability */
-    --text-secondary: #94a3b8; /* Slate 400 */
-    --accent-blue: #38bdf8; /* Lighter blue for dark background */
-    --accent-orange: #fb923c;
-    --accent-teal: #2dd4bf;
-    --accent-rose: #fb7185;
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --font-main: 'Inter', sans-serif;
-    --font-heading: 'Outfit', sans-serif;
+    /* --- Surface --- */
+    --canvas-light: #ffffff;
+    --canvas-cool: #f0f0fa;
+    --canvas-night: #000000;
+    --canvas-night-soft: #0a0a0a;
+
+    /* --- Hairlines --- */
+    --hairline-on-light: #e0e0e8;
+    --hairline-on-light-soft: #eeeef4;
+    --hairline-on-dark: #3a3a3f;
+
+    /* --- Text --- */
+    --ink: #000000;
+    --ink-mute: #5a5a5f;
+    --on-primary: #ffffff;
+    --on-primary-mute: #f0f0fa;
+
+    /* --- Radius --- */
+    --r-xs: 4px;
+    --r-sm: 8px;
+    --r-md: 16px;
+    --r-pill: 32px;
+
+    /* --- Spacing --- */
+    --s-xxs: 4px;
+    --s-xs: 8px;
+    --s-sm: 12px;
+    --s-md: 16px;
+    --s-lg: 18px;
+    --s-xl: 24px;
+    --s-xxl: 32px;
+    --s-huge: 48px;
+
+    /* --- Type stacks (D-DIN with the documented Inter substitute) --- */
+    --font-main: 'D-DIN', 'Inter', Arial, Verdana, sans-serif;
+    --font-heading: 'D-DIN-Bold', 'Inter', 'Arial Narrow', Arial, Verdana, sans-serif;
+
+    /* --- Legacy aliases still referenced by inline styles in app.py --- */
+    --bg-base: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #5a5a5f;
+    --glass-border: #e0e0e8;
+    --accent-blue: #000000;
+    --accent-orange: #000000;
+    --accent-teal: #000000;
+    --accent-rose: #000000;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+html {
+    background-color: var(--canvas-light);
 }
 
 body {
-    background-color: var(--bg-base);
-    color: var(--text-primary);
+    background-color: var(--canvas-light);
+    color: var(--ink);
     font-family: var(--font-main);
-    font-size: 16px; /* Base size for readability */
-    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.32px;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
+::selection {
+    background: var(--ink);
+    color: var(--canvas-light);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--canvas-cool);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--hairline-on-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-mute);
+}
+
+/* --- Display tier: always uppercase, tight leading, wide tracking --- */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--s-md);
 }
 
+h1 {
+    font-size: 80px;
+    line-height: 0.95;
+    letter-spacing: 1.6px;
+}
+
+h2 {
+    font-size: 60px;
+    line-height: 1.2;
+    letter-spacing: 1.2px;
+}
+
+h3 {
+    font-size: 48px;
+    line-height: 1.25;
+    letter-spacing: 0.96px;
+}
+
+h4 {
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: 0.9px;
+}
+
+h5 {
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: 0.8px;
+}
+
+h6 {
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.8px;
+}
+
+/* Color is never decorative on chrome — every heading is ink. */
+h1, h2, h3, h4, h5, h6,
+.tab-content h1, .tab-content h2, .tab-content h3,
+.tab-content h4, .tab-content h5, .tab-content h6 {
+    color: var(--ink) !important;
+}
+
+p {
+    line-height: 1.7;
+    letter-spacing: 0.32px;
+}
+
+/* link-on-light: persistent underline — but never on nav chrome */
+a, a:hover, a:focus {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+a.nav-link,
+a.nav-link:hover,
+a.nav-link:focus,
+.custom-tab,
+.custom-tab:hover,
+.custom-tab:focus {
+    text-decoration: none !important;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--hairline-on-light);
+    opacity: 1;
+}
+
+b, strong {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.text-muted {
+    color: var(--ink-mute) !important;
+}
+
+.small, small {
+    font-size: 13.008px;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+/* ==========================================================================
+   HERO — the one full-bleed black band, bookending the light canvas
+   ========================================================================== */
+
+.dashboard-header {
+    position: relative;
+    background-color: var(--canvas-night);
+    padding: 140px 48px 72px;
+    margin-bottom: 0;
+    text-align: left;
+    overflow: hidden;
+}
+
+/* Engineering-blueprint grid — the only decorative element, and it is 4% white. */
+.dashboard-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+}
+
+.dashboard-header > * {
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-header h1,
+.dashboard-header h2,
+.dashboard-header h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 6.4vw, 80px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--on-primary) !important;
+    margin: 0;
+    max-width: 1200px;
+}
+
+.dashboard-header p {
+    color: var(--on-primary-mute);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: var(--s-xl) 0 0;
+}
+
+/* ==========================================================================
+   NAV — the tab strip reads as the fixed nav bar, on light
+   ========================================================================== */
+
+.custom-tabs,
+ul.custom-tabs.nav-tabs {
+    background: var(--canvas-light);
+    backdrop-filter: none;
+    border: 0;
+    border-bottom: 1px solid var(--hairline-on-light);
+    border-radius: 0;
+    padding: var(--s-sm) 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-xxs);
+    justify-content: flex-start;
+    align-items: center;
+    /* Sticky, but every tab stays visible — the strip is kept deliberately
+       compact so it never eats more than ~100px of the viewport. */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.custom-tabs .nav-item {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.custom-tab,
+.nav-tabs .nav-link.custom-tab {
+    flex: 0 0 auto;
+    text-align: center;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    color: var(--ink-mute) !important;
+    font-family: var(--font-main) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 0.94 !important;
+    letter-spacing: 0.96px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    padding: var(--s-sm) var(--s-lg) !important;
+    border-radius: var(--r-pill) !important;
+    transition: color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.custom-tab:hover,
+.nav-tabs .nav-link.custom-tab:hover {
+    color: var(--ink) !important;
+    background-color: transparent !important;
+    border-color: var(--hairline-on-light) !important;
+}
+
+/* Ghost outlined pill on light — the brand's signature control */
+.custom-tab-selected,
+.nav-tabs .nav-link.custom-tab-selected {
+    background-color: transparent !important;
+    border: 1px solid var(--ink) !important;
+    color: var(--ink) !important;
+    font-weight: 700 !important;
+    border-radius: var(--r-pill) !important;
+}
+
+/* Bootstrap's own pane wrapper shares this class name — only the inner
+   (app-authored) band carries the vertical rhythm. */
+.tab-content {
+    padding: 0;
+}
+
+.tab-content .tab-content {
+    padding: var(--s-huge) 0 64px;
+}
+
+/* ==========================================================================
+   SECTION OPENERS
+   ========================================================================== */
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: block;
+    width: 100%;
+    margin-bottom: var(--s-xl);
+    padding-bottom: var(--s-md);
+    border-bottom: 1px solid var(--hairline-on-light);
+}
+
+/* ==========================================================================
+   CARDS — card-shop-product: white, 8px, hairlined, never shadowed
+   ========================================================================== */
+
 .glass-card {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px; /* Less rounded for professional look */
-    padding: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    background: var(--canvas-light);
+    border: 1px solid var(--hairline-on-light) !important;
+    border-radius: var(--r-sm);
+    padding: var(--s-xl);
+    box-shadow: none !important;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .glass-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    transform: none;
+    box-shadow: none !important;
+    border-color: var(--ink) !important;
+    background: var(--canvas-light);
+}
+
+/* Nested cards drop to the pale cool surface so the nesting still reads */
+.glass-card .glass-card {
+    background: var(--canvas-cool);
+    border-color: transparent !important;
+}
+
+.glass-card .glass-card:hover {
+    background: var(--canvas-cool);
+    border-color: var(--ink) !important;
 }
 
 .metric-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    padding: var(--s-xl);
+}
+
+.metric-title {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 2.0;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    color: var(--ink-mute) !important;
 }
 
 .metric-value {
     font-family: var(--font-heading);
-    font-size: 2.75rem;
+    font-size: 44px;
     font-weight: 700;
-    color: var(--accent-blue);
-    margin: 12px 0;
-    letter-spacing: -0.03em;
+    line-height: 1.0;
+    letter-spacing: 0.96px;
+    color: var(--ink) !important;
+    margin: var(--s-sm) 0 var(--s-xs);
 }
 
-.metric-title {
-    font-size: 1rem;
-    color: var(--text-secondary);
+.stat-highlight {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.96px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-}
-
-.dashboard-header {
-    text-align: center;
-    padding: 50px 20px 40px;
-    margin-bottom: 20px;
-}
-
-.dashboard-header h1 {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    letter-spacing: -0.03em;
-}
-
-.dashboard-header p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.custom-tabs {
-    background: rgba(30, 41, 59, 0.6); /* Slate 800 */
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 6px;
-    border: 1px solid var(--glass-border);
-    display: flex;
-    justify-content: space-between;
-}
-
-.custom-tab {
-    flex: 1;
-    text-align: center;
-    background-color: transparent !important;
-    border: none !important;
-    color: var(--text-secondary) !important;
-    font-weight: 500 !important;
-    padding: 12px 20px !important;
-    border-radius: 8px !important;
-    transition: all 0.3s ease !important;
-}
-
-.custom-tab:hover {
-    color: var(--text-primary) !important;
-    background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-.custom-tab-selected {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    color: #fff !important;
-    font-weight: 600 !important;
-    border-radius: 10px !important;
-}
-
-.tab-content {
-    padding: 30px 0;
-}
-
-.section-title {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 0.75rem;
-    display: inline-block;
-    color: var(--text-primary);
+    color: var(--ink) !important;
+    margin-bottom: var(--s-xxs);
 }
 
 .insight-item {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: var(--s-xl);
+    padding-bottom: var(--s-xl);
+    border-bottom: 1px solid var(--hairline-on-light);
 }
 
 .insight-item:last-child {
@@ -157,16 +427,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .insight-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent-blue);
-    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--ink) !important;
+    margin-bottom: var(--s-sm);
 }
 
 .insight-desc {
-    color: var(--text-secondary);
-    line-height: 1.6;
+    color: var(--ink-mute);
+    line-height: 1.7;
 }
+
+/* ==========================================================================
+   LISTS
+   ========================================================================== */
 
 .recommendation-list {
     list-style-type: none;
@@ -175,9 +453,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .recommendation-list li {
     position: relative;
-    padding-left: 30px;
-    margin-bottom: 15px;
-    color: var(--text-secondary);
+    padding-left: var(--s-xxl);
+    margin-bottom: var(--s-md);
+    color: var(--ink-mute);
     line-height: 1.5;
 }
 
@@ -185,94 +463,127 @@ h1, h2, h3, h4, h5, h6 {
     content: "→";
     position: absolute;
     left: 0;
-    color: var(--accent-teal);
-    font-weight: bold;
+    color: var(--ink);
+    font-weight: 700;
 }
 
+ul.small li,
+.tab-content ul li {
+    color: var(--ink-mute);
+}
+
+ul.small li::marker,
+.tab-content ul li::marker {
+    color: var(--hairline-on-light);
+}
+
+/* ==========================================================================
+   BADGES — uppercase micro-caps; the hue is the only carrier of risk level
+   ========================================================================== */
+
 .badge {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    padding: var(--s-xs) var(--s-md);
+    border-radius: var(--r-pill);
+    background-color: transparent;
+    border: 1px solid var(--hairline-on-light);
+    color: var(--ink-mute);
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: var(--s-sm);
 }
 
 .badge-high-risk {
-    background-color: rgba(244, 63, 94, 0.2);
-    color: #fda4af;
-    border: 1px solid rgba(244, 63, 94, 0.3);
+    background-color: transparent;
+    border-color: rgba(190, 18, 60, 0.4);
+    color: #be123c;
 }
 
 .badge-medium-risk {
-    background-color: rgba(245, 158, 11, 0.2);
-    color: #fcd34d;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    background-color: transparent;
+    border-color: rgba(180, 83, 9, 0.4);
+    color: #b45309;
 }
 
 .badge-low-risk {
-    background-color: rgba(16, 185, 129, 0.2);
-    color: #6ee7b7;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background-color: transparent;
+    border-color: var(--hairline-on-light);
+    color: var(--ink-mute);
 }
 
+/* ==========================================================================
+   PIPELINE / PROCESS ROW
+   ========================================================================== */
+
 .pipeline-step {
-    padding: 15px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--s-lg) var(--s-md);
+    border-radius: var(--r-sm);
+    background: var(--canvas-cool);
+    border: 1px solid transparent !important;
     position: relative;
-    text-align: center;
-    transition: all 0.3s ease;
+    text-align: left;
+    transition: border-color 0.2s ease;
 }
+
 .pipeline-step:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--accent-blue);
-    transform: translateY(-2px);
+    background: var(--canvas-cool);
+    border-color: var(--ink) !important;
+    transform: none;
 }
+
+.pipeline-step strong {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    color: var(--ink) !important;
+}
+
 .pipeline-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent-teal);
-    font-size: 1.5rem;
-}
-.stat-highlight {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 5px;
-    font-family: var(--font-heading);
+    color: var(--hairline-on-light);
+    font-size: 18px;
 }
 
+/* ==========================================================================
+   PILLARS / ROADMAP
+   ========================================================================== */
+
 .pillar-card {
-    background: rgba(30, 41, 59, 0.4); /* Slate 800 */
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 3px solid transparent;
-    border-radius: 12px;
-    padding: 30px;
+    background: var(--canvas-light);
+    backdrop-filter: none;
+    border: 1px solid var(--hairline-on-light) !important;
+    border-radius: var(--r-sm);
+    padding: var(--s-xxl);
     height: 100%;
-    transition: all 0.4s ease;
+    transition: border-color 0.2s ease;
 }
 
 .pillar-card:hover {
-    background: rgba(17, 24, 39, 0.7);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    background: var(--canvas-light);
+    transform: none;
+    box-shadow: none !important;
+    border-color: var(--ink) !important;
 }
 
 .pillar-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 32px;
+    margin-bottom: var(--s-xl);
 }
 
 .roadmap-container {
     display: flex;
     justify-content: space-between;
     position: relative;
-    padding: 20px 0;
-    margin-top: 20px;
+    padding: var(--s-xl) 0;
+    margin-top: var(--s-xl);
 }
 
 .roadmap-container::before {
@@ -281,29 +592,157 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     left: 5%;
     right: 5%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
+    height: 1px;
+    background: var(--hairline-on-light);
     z-index: 1;
 }
 
 .roadmap-step {
-    background: var(--bg-base);
-    border: 2px solid var(--accent-blue);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    background: var(--canvas-light);
+    border: 1px solid var(--ink);
+    border-radius: 9999px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.96px;
+    color: var(--ink);
     z-index: 2;
     position: relative;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    box-shadow: none;
 }
 
 .roadmap-content {
     text-align: center;
-    margin-top: 15px;
+    margin-top: var(--s-md);
     width: 150px;
+}
+
+/* ==========================================================================
+   PROGRESS BARS — composition, not decoration
+   ========================================================================== */
+
+.progress {
+    background-color: var(--canvas-cool) !important;
+    border-radius: 0;
+    height: 4px !important;
+}
+
+.progress-bar {
+    background-color: var(--ink) !important;
+    border-radius: 0;
+}
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+
+.table {
+    color: var(--ink);
+    margin-bottom: 0;
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--ink);
+    --bs-table-hover-bg: var(--canvas-cool);
+    --bs-table-hover-color: var(--ink);
+    --bs-table-striped-bg: transparent;
+}
+
+.table > thead th {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border-bottom: 1px solid var(--hairline-on-light);
+    padding: var(--s-sm) var(--s-md);
+}
+
+.table > tbody td {
+    border-bottom: 1px solid var(--hairline-on-light-soft);
+    padding: var(--s-md);
+    vertical-align: top;
+}
+
+.table > tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* ==========================================================================
+   PLOTLY FRAMES
+   ========================================================================== */
+
+.js-plotly-plot .plotly .modebar {
+    display: none;
+}
+
+.dash-graph,
+.js-plotly-plot {
+    border-radius: var(--r-sm);
+}
+
+/* ==========================================================================
+   FOOTER — the closing black band
+   ========================================================================== */
+
+.dashboard-footer {
+    background: var(--canvas-night);
+    border-top: 0;
+    padding: var(--s-huge) var(--s-xl);
+    margin: var(--s-huge) 0 0;
+    font-family: var(--font-main);
+    font-size: 13.008px;
+    font-weight: 400;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    color: var(--on-primary) !important;
+    text-align: center;
+}
+
+/* Bleed the two black bands past the fluid container's gutters */
+.dashboard-footer {
+    margin-left: calc(-1 * var(--s-huge));
+    margin-right: calc(-1 * var(--s-huge));
+}
+
+/* ==========================================================================
+   RESPONSIVE — display stair-steps 80 → 60 → 48 → 40
+   ========================================================================== */
+
+@media (max-width: 1279px) {
+    .dashboard-header { padding: 112px 32px 56px; }
+    .section-title { font-size: 28px; }
+    .metric-value { font-size: 38px; }
+}
+
+/* Below this the strip wraps to 3+ rows — too tall to pin, so it scrolls away. */
+@media (max-width: 1199px) {
+    .custom-tabs,
+    ul.custom-tabs.nav-tabs { position: static; }
+}
+
+@media (max-width: 960px) {
+    h1 { font-size: 60px; }
+    h2 { font-size: 48px; }
+    .section-title { font-size: 26px; }
+    .custom-tab { padding: var(--s-xs) var(--s-md) !important; }
+    .dashboard-footer { margin-left: calc(-1 * var(--s-xl)); margin-right: calc(-1 * var(--s-xl)); }
+}
+
+@media (max-width: 767px) {
+    .dashboard-header { padding: 88px 20px 44px; }
+    h1 { font-size: 48px; }
+    .section-title { font-size: 22px; }
+    .metric-value { font-size: 32px; }
+    .stat-highlight { font-size: 26px; }
+    .tab-content .tab-content { padding: var(--s-xxl) 0; }
+}
+
+@media (max-width: 599px) {
+    h1 { font-size: 40px; }
+    .custom-tabs { padding: var(--s-xs) 0; }
+    .custom-tab { padding: var(--s-xs) var(--s-sm) !important; font-size: 11px !important; }
 }
