@@ -1223,48 +1223,36 @@ def tab_strategic_recommendations():
         ]),
 
         # --- SINTESIS LINTAS-FASE: dasar bukti di balik rekomendasi ---
-        html.Div("Dasar Bukti: Menyilangkan Ketiga Analisis", className="section-title"),
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.P([
                     "Rekomendasi di bawah tidak berdiri di atas satu analisis saja. Kami menempelkan label segmen (dari Clustering) "
                     "ke setiap pola perilaku (dari ARM) dan setiap kasus anomali (dari Anomaly Detection), lalu mengukur ",
                     html.B("di segmen mana masing-masing benar-benar menumpuk"), "."
-                ], className="small text-muted mb-2"),
+                ], className="small text-muted mb-3"),
                 dcc.Graph(figure=fig_cross, config={'displayModeBar': False}, responsive=True, style={'height': '420px'}),
-                html.P([
-                    html.B("Cara membacanya: "),
-                    "1,00x berarti tersebar merata mengikuti besar populasi segmen. Di atas 1,25x (warna oranye/merah) berarti "
-                    "benar-benar menumpuk di segmen itu. Di bawah 0,8x (biru) berarti justru jarang ditemukan di sana."
-                ], className="small text-muted mt-2 mb-3"),
                 dbc.Row([
-                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #e11d48'}, children=[
-                        html.Div("Investor multifamily ada di segmen mass-market, bukan segmen kaya", className="small mb-1", style={'fontWeight': '700', 'letterSpacing': '0.8px', 'textTransform': 'uppercase', 'color': '#000000'}),
-                        html.P("74,6% (1,75x, konsentrasi tertinggi di seluruh analisis) berada di Grup 1, dan hampir tidak ada di Grup 3 (0,20x). Mereka membeli rumah petak/apartemen lama untuk disewakan, bukan properti mewah.", className="small text-muted mb-0"),
-                        html.P("→ Produk KPR Investasi jangan diposisikan sebagai produk premium.", className="small mb-0", style={'color': '#000000'})
+                    dbc.Col(html.Div(className="glass-card h-100 p-3", style={'borderLeft': '4px solid #e11d48'}, children=[
+                        html.H6("Investor Multifamily di Mass-Market", className="fw-bold mb-2", style={'color': '#1e293b'}),
+                        html.P("74,6% investor multifamily menumpuk di Grup 1 (Kelas Menengah), bukan segmen premium.", className="small text-muted mb-2"),
+                        html.Div("→ Posisikan produk KPR Investasi untuk pasar terjangkau.", className="small fw-semibold", style={'color': '#e11d48'})
                     ]), width=6, className="mb-3"),
-                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #b45309'}, children=[
-                        html.Div("Grup 2 adalah pusat gravitasi hampir semua anomali", className="small mb-1", style={'fontWeight': '700', 'letterSpacing': '0.8px', 'textTransform': 'uppercase', 'color': '#000000'}),
-                        html.P("Hanya 25,3% populasi, tapi memuat 49,0% kasus yang perlu diperiksa manusia (1,93x, tertinggi). Ini menguatkan temuan segmentasi bahwa Grup 2 punya beban pinjaman terberat (2,47x pendapatan), di mana dua metode berbeda menunjuk segmen yang sama.", className="small text-muted mb-0"),
-                        html.P("→ Alokasikan kapasitas underwriting mengikuti Grup 2, jangan dibagi rata.", className="small mb-0", style={'color': '#000000'})
+                    dbc.Col(html.Div(className="glass-card h-100 p-3", style={'borderLeft': '4px solid #b45309'}, children=[
+                        html.H6("Grup 2 Pusat Sinyal Anomali", className="fw-bold mb-2", style={'color': '#1e293b'}),
+                        html.P("Memuat 49,0% kasus anomali (1,93x konsentrasi) dengan beban pinjaman tertinggi (2,47x pendapatan).", className="small text-muted mb-2"),
+                        html.Div("→ Prioritaskan kapasitas analisis risiko & underwriting untuk Grup 2.", className="small fw-semibold", style={'color': '#b45309'})
                     ]), width=6, className="mb-3"),
-                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #059669'}, children=[
-                        html.Div("Prospek wealth management tidak hanya di Grup 3", className="small mb-1", style={'fontWeight': '700', 'letterSpacing': '0.8px', 'textTransform': 'uppercase', 'color': '#000000'}),
-                        html.P("Dugaan awal: 372 kasus \"Profil Konservatif\" = Grup 3. Kenyataannya hanya 39,0% di Grup 3, sementara 38,7% ada di Grup 2 dengan konsentrasi lebih tinggi (1,53x vs 1,22x).", className="small text-muted mb-0"),
-                        html.P("→ Menyaring prospek hanya dari Grup 3 akan kehilangan ~4 dari 10 prospek terbaik.", className="small mb-0", style={'color': '#000000'})
+                    dbc.Col(html.Div(className="glass-card h-100 p-3", style={'borderLeft': '4px solid #059669'}, children=[
+                        html.H6("Potensi Wealth Management Lintas Segmen", className="fw-bold mb-2", style={'color': '#1e293b'}),
+                        html.P("Nasabah profil konservatif tersebar seimbang di Grup 3 (39,0%) dan Grup 2 (38,7%).", className="small text-muted mb-2"),
+                        html.Div("→ Jangan hanya mengincar Grup 3 agar tidak kehilangan 40% potensi pasar.", className="small fw-semibold", style={'color': '#059669'})
                     ]), width=6, className="mb-3"),
-                    dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '3px solid #2563eb'}, children=[
-                        html.Div("Program Veteran memotong semua kelas ekonomi", className="small mb-1", style={'fontWeight': '700', 'letterSpacing': '0.8px', 'textTransform': 'uppercase', 'color': '#000000'}),
-                        html.P("Pinjaman VA menyebar hampir merata (0,89x s/d 1,17x) di ketiga segmen; status veteran tidak terikat kelas ekonomi. Sementara pinjaman jumbo justru pembeda paling tegas (Grup 1 hanya 0,51x).", className="small text-muted mb-0"),
-                        html.P("→ Program bundling veteran butuh varian untuk ketiga segmen, bukan satu paket seragam.", className="small mb-0", style={'color': '#000000'})
+                    dbc.Col(html.Div(className="glass-card h-100 p-3", style={'borderLeft': '4px solid #2563eb'}, children=[
+                        html.H6("Program Veteran di Seluruh Kelas Ekonomi", className="fw-bold mb-2", style={'color': '#1e293b'}),
+                        html.P("Pinjaman VA tersebar merata di semua segmen (0,89x s/d 1,17x) tanpa terikat kelas ekonomi.", className="small text-muted mb-2"),
+                        html.Div("→ Sediakan varian paket program veteran untuk tiap tingkatan segmen.", className="small fw-semibold", style={'color': '#2563eb'})
                     ]), width=6, className="mb-3"),
-                ]),
-                html.P([
-                    html.B("Batas klaim: "),
-                    "semua angka di atas adalah konsentrasi statistik, bukan sebab-akibat. Menumpuknya investor multifamily di Grup 1 "
-                    "tidak berarti berada di Grup 1 menyebabkan seseorang jadi investor properti. Label segmen juga dibentuk tanpa variabel "
-                    "harga kredit (lihat tab 7), jadi ini membandingkan segmen pendapatan, pinjaman, dan wilayah dengan pola produk, bukan segmen risiko formal."
-                ], className="small mb-0", style={'color': '#5a5a5f', 'fontStyle': 'italic'})
+                ], className="mt-3"),
             ]), width=12),
         ]),
 
