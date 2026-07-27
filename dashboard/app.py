@@ -606,9 +606,7 @@ def tab_arm_visualization():
                     f"<b>Pola #{i+1}</b><br>"
                     f"Kondisi: {rule['kondisi_plain']}<br>"
                     f"Hasil: {rule['hasil_plain']}<br><br>"
-                    f"<b>Skor Peluang: {rule['lift']:.1f}</b><br>"
-                    f"Jangkauan Pasar: {rule['support']:.2f}%<br>"
-                    f"Tingkat Kepastian: {rule['confidence']:.0f}%"
+                    f"<b>Skor Peluang: {rule['lift']:.1f}</b>"
                 ),
                 hoverinfo='text',
                 showlegend=False
@@ -631,9 +629,7 @@ def tab_arm_visualization():
                     f"<b>Pola #{i+1}</b><br>"
                     f"Kondisi: {rule['kondisi_plain']}<br>"
                     f"Hasil: {rule['hasil_plain']}<br><br>"
-                    f"<b>Skor Peluang: {rule['lift']:.1f}</b><br>"
-                    f"Jangkauan Pasar: {rule['support']:.2f}%<br>"
-                    f"Tingkat Kepastian: {rule['confidence']:.0f}%"
+                    f"<b>Skor Peluang: {rule['lift']:.1f}</b>"
                 ),
                 hoverinfo='text',
                 showlegend=False
