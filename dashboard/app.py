@@ -40,10 +40,14 @@ pio.templates['spacex'] = go.layout.Template(
             bgcolor='#ffffff', bordercolor='#000000',
             font=dict(family=PLOT_FONT, color=PLOT_INK, size=12)
         ),
+        # automargin + standoff: sumbu memesan ruangnya sendiri, jadi label tidak
+        # pernah terpotong dan judul sumbu tidak menabrak angka tick.
         xaxis=dict(gridcolor=PLOT_GRID, zerolinecolor=PLOT_HAIRLINE,
-                   linecolor=PLOT_HAIRLINE, tickfont=dict(color=PLOT_INK_MUTE)),
+                   linecolor=PLOT_HAIRLINE, tickfont=dict(color=PLOT_INK_MUTE),
+                   automargin=True, title=dict(standoff=14, font=dict(color=PLOT_INK_MUTE, size=12))),
         yaxis=dict(gridcolor=PLOT_GRID, zerolinecolor=PLOT_HAIRLINE,
-                   linecolor=PLOT_HAIRLINE, tickfont=dict(color=PLOT_INK_MUTE)),
+                   linecolor=PLOT_HAIRLINE, tickfont=dict(color=PLOT_INK_MUTE),
+                   automargin=True, title=dict(standoff=14, font=dict(color=PLOT_INK_MUTE, size=12))),
     )
 )
 pio.templates.default = 'spacex'
@@ -130,6 +134,25 @@ except Exception as e:
 def fmt_count(value):
     """Format current artifact counts in the Indonesian dashboard style."""
     return f"{int(value):,}".replace(",", ".")
+
+
+def wrap_label(text, width=20):
+    """Pecah label sumbu jadi beberapa baris TANPA mengubah kata-katanya.
+
+    Label tipologi yang panjang membuat automargin memesan >250px di kiri
+    sehingga batang grafik tergencet. Dipecah per baris, teksnya tetap utuh
+    dan terbaca penuh tapi kolom labelnya jauh lebih ramping.
+    """
+    lines, current = [], ""
+    for word in text.split():
+        if current and len(current) + 1 + len(word) > width:
+            lines.append(current)
+            current = word
+        else:
+            current = f"{current} {word}".strip()
+    if current:
+        lines.append(current)
+    return "<br>".join(lines)
 
 
 def priority_typology_count(typology):
@@ -339,16 +362,18 @@ def tab_segmentation():
             showlegend=False
         ), row=1, col=2)
         fig_diff.update_yaxes(range=[0, 3.1], title_text='kali pendapatan', row=1, col=1,
+                              automargin=True, title_standoff=10, tickfont=dict(size=10),
                               showgrid=True, gridcolor=PLOT_GRID)
         # Sumbu-y LTV dimulai dari 0 (bukan di-zoom) supaya kemiripan ketiganya terlihat
         # apa adanya -- memotong sumbu akan membesar-besarkan selisih 2 poin persen.
         fig_diff.update_yaxes(range=[0, 100], title_text='% nilai rumah', row=1, col=2,
+                              automargin=True, title_standoff=10, tickfont=dict(size=10),
                               showgrid=True, gridcolor=PLOT_GRID)
         fig_diff.update_xaxes(tickfont=dict(size=10))
         fig_diff.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color=PLOT_INK, family=PLOT_FONT),
-            margin=dict(l=10, r=10, t=70, b=10), bargap=0.45
+            margin=dict(l=8, r=8, t=76, b=8), bargap=0.45
         )
         for ann in fig_diff['layout']['annotations'][:2]:
             ann['font'] = dict(size=12, color=PLOT_INK)
@@ -409,7 +434,7 @@ def tab_segmentation():
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Proporsi Tiap Segmen Nasabah"),
                 html.P("Lebih dari 4 dari 10 nasabah berada di segmen Kelas Menengah.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_donut, config={'displayModeBar': False}, style={'height': '320px'})
+                dcc.Graph(figure=fig_donut, config={'displayModeBar': False}, responsive=True, style={'height': '320px'})
             ]), width=4),
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Peta Posisi Nasabah (Cluster Map)"),
@@ -418,7 +443,7 @@ def tab_segmentation():
                     "Ketiga warna ini adalah tiga 'dunia' yang berbeda di dalam pasar yang sama.",
                     className="small text-muted mb-2"
                 ),
-                dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, style={'height': '320px'}),
+                dcc.Graph(figure=fig_pca, config={'displayModeBar': False}, responsive=True, style={'height': '320px'}),
                 html.P(
                     "Peta 2D ini adalah proyeksi PCA dari 14 fitur asli — 2 dimensi ini hanya menangkap ±27,9% dari total variasi data (PC1 15,3% + PC2 12,6%). "
                     "Artinya: pemisahan warna yang terlihat di sini justru KONSERVATIF — cluster sebenarnya lebih terpisah di ruang 14 dimensi daripada yang tampak di 2D ini.",
@@ -436,7 +461,7 @@ def tab_segmentation():
                     html.B("Data kami menunjukkan itu tidak benar."),
                     " Grafik kiri dan kanan memakai skala yang sama-sama dimulai dari nol, jadi bisa dibandingkan apa adanya:"
                 ], className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_diff, config={'displayModeBar': False}, style={'height': '340px'}),
+                dcc.Graph(figure=fig_diff, config={'displayModeBar': False}, responsive=True, style={'height': '340px'}),
                 html.P([
                     html.B("Cara membacanya: "),
                     "Grup 3 (paling kaya, pendapatan $207.565) hanya meminjam ", html.B("1,53x"),
@@ -528,11 +553,12 @@ def tab_arm_visualization():
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color=PLOT_INK, family=PLOT_FONT),
-            margin=dict(l=60, r=20, t=10, b=60),
+            margin=dict(l=8, r=8, t=16, b=8),
             coloraxis_colorbar=dict(
-                title=dict(text='Skor<br>Peluang', font=dict(size=12)),
+                title=dict(text='Skor<br>Peluang', font=dict(size=11), side='top'),
                 ticksuffix='',
                 len=0.65,
+                x=1.02, xpad=6,
                 thickness=14,
                 outlinewidth=0
             ),
@@ -542,7 +568,8 @@ def tab_arm_visualization():
                 gridcolor=PLOT_GRID,
                 gridwidth=1,
                 zeroline=False,
-                title=dict(text='Jangkauan Pasar (% dari Total Nasabah)', font=dict(size=13)),
+                title=dict(text='Jangkauan Pasar (% dari Total Nasabah)', font=dict(size=12), standoff=14),
+                automargin=True,
                 tickfont=dict(size=11)
             ),
             yaxis=dict(
@@ -551,7 +578,8 @@ def tab_arm_visualization():
                 gridcolor=PLOT_GRID,
                 gridwidth=1,
                 zeroline=False,
-                title=dict(text='Tingkat Kepastian Pola (%)', font=dict(size=13)),
+                title=dict(text='Tingkat Kepastian Pola (%)', font=dict(size=12), standoff=14),
+                automargin=True,
                 tickfont=dict(size=11),
                 range=[55, 105]
             )
@@ -693,11 +721,11 @@ def tab_arm_visualization():
                     html.B("Makin besar & terang"),
                     " = makin kuat peluang bisnisnya."
                 ], className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, style={'height': '520px'})
+                dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, responsive=True, style={'height': '520px'})
             ]), width=6),
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.H4("10 Pola Perilaku Nasabah Terkuat"),
-                dcc.Graph(figure=fig_network, config={'displayModeBar': False}, style={'height': '500px'}),
+                dcc.Graph(figure=fig_network, config={'displayModeBar': False}, responsive=True, style={'height': '500px'}),
                 html.P([
                     html.Span("●", style={'color': '#1d4ed8'}), " Kondisi → ",
                     html.Span("●", style={'color': '#0f766e'}), " Hasil"
@@ -746,13 +774,18 @@ def tab_distributions():
             data_col = data_col[(data_col >= q01) & (data_col <= q99)]
             fig = px.histogram(
                 data_col, nbins=50,
-                color_discrete_sequence=[d['color']],
-                labels={d['col']: '', 'count': 'Jumlah Pengajuan'}
+                color_discrete_sequence=[d['color']]
             )
+            # px menerima Series polos sehingga judul sumbunya jatuh ke default
+            # "value"/"count" -- diset eksplisit sesuai maksud semula.
+            fig.update_xaxes(title_text='', tickfont=dict(size=10))
+            fig.update_yaxes(title_text='Jumlah Pengajuan', tickfont=dict(size=10),
+                             title_font=dict(size=11))
             fig.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
                 font=dict(color=PLOT_INK, family=PLOT_FONT),
-                margin=dict(l=10, r=10, t=5, b=10), showlegend=False
+                margin=dict(l=8, r=16, t=8, b=8), showlegend=False,
+                bargap=0.04
             )
             d['fig'] = fig
     else:
@@ -764,7 +797,7 @@ def tab_distributions():
         cards.append(
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.H5(d['label'], style={'color': d['color']}),
-                dcc.Graph(figure=d['fig'], config={'displayModeBar': False}, style={'height': '200px'}),
+                dcc.Graph(figure=d['fig'], config={'displayModeBar': False}, responsive=True, style={'height': '240px'}),
                 html.Hr(style={'borderColor': '#e0e0e8', 'margin': '12px 0'}),
                 html.P(html.B("Apa yang terlihat: "), className="mb-1 small"),
                 html.P(d['insight'], className="small text-muted mb-2"),
@@ -787,9 +820,11 @@ def tab_distributions():
 def tab_4_anomalies():
     # Bar chart untuk tipologi
     if not anomaly_counts.empty:
+        plot_counts = anomaly_counts.copy()
+        plot_counts['Tipologi_Wrap'] = plot_counts['Tipologi_Indo'].map(wrap_label)
         fig_bar = px.bar(
-            anomaly_counts, 
-            y='Tipologi_Indo', 
+            plot_counts,
+            y='Tipologi_Wrap',
             x='Jumlah',
             orientation='h',
             color='Tipologi',
@@ -806,10 +841,20 @@ def tab_4_anomalies():
             plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color=PLOT_INK, family=PLOT_FONT),
             showlegend=False,
-            margin=dict(l=20, r=20, t=20, b=20)
+            margin=dict(l=8, r=8, t=16, b=8),
+            bargap=0.35
         )
-        fig_bar.update_yaxes(title="")
-        fig_bar.update_traces(texttemplate='%{text}', textposition='outside')
+        fig_bar.update_yaxes(title="", tickfont=dict(size=11))
+        # Headroom 18% supaya label angka di ujung bar (textposition='outside')
+        # tidak terpotong tepi kanan.
+        fig_bar.update_xaxes(
+            title_text='Jumlah Kasus', tickfont=dict(size=10),
+            range=[0, anomaly_counts['Jumlah'].max() * 1.18]
+        )
+        fig_bar.update_traces(
+            texttemplate='%{text}', textposition='outside', cliponaxis=False,
+            textfont=dict(size=11, color=PLOT_INK)
+        )
     else:
         fig_bar = go.Figure()
 
@@ -866,9 +911,15 @@ def tab_4_anomalies():
     fig_outlier.update_layout(
         paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
         font=dict(color=PLOT_INK, family=PLOT_FONT),
-        margin=dict(l=10, r=10, t=10, b=120),
-        legend=dict(orientation='h', yanchor='top', y=-0.2, xanchor='center', x=0.5),
-        xaxis_title='Pendapatan Nasabah (Income)', yaxis_title='Nilai Pinjaman (Loan Amount)'
+        margin=dict(l=8, r=16, t=16, b=8),
+        # Legenda didorong cukup jauh ke bawah agar tidak menimpa judul sumbu-x;
+        # automargin yang menyediakan ruangnya, bukan margin bawah hardcoded.
+        legend=dict(orientation='h', yanchor='top', y=-0.22, xanchor='center', x=0.5,
+                    font=dict(size=11)),
+        xaxis=dict(title=dict(text='Pendapatan Nasabah (Income)', standoff=16),
+                   tickfont=dict(size=10)),
+        yaxis=dict(title=dict(text='Nilai Pinjaman (Loan Amount)', standoff=16),
+                   tickfont=dict(size=10))
     )
 
     return html.Div(className="tab-content", children=[
@@ -898,7 +949,7 @@ def tab_4_anomalies():
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Tingkat Kepercayaan Sistem (Tier)"),
                 html.P("Semakin banyak metode yang menangkap kejanggalan, semakin tinggi prioritas kasus tersebut.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_tier, config={'displayModeBar': False}, style={'height': '300px'})
+                dcc.Graph(figure=fig_tier, config={'displayModeBar': False}, responsive=True, style={'height': '300px'})
             ]), width=5),
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Bagaimana Sistem Menangkap Anomali?"),
@@ -925,11 +976,11 @@ def tab_4_anomalies():
             dbc.Col(html.Div(className="glass-card mb-4 h-100", children=[
                 html.H4(f"Posisi {fmt_count(len(df_priority))} Nasabah Paling Janggal vs Normal"),
                 html.P("Titik berwarna adalah kasus prioritas. Titik abu-abu adalah data normal. Terlihat jelas anomali berada di luar pola umum.", className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, style={'height': '420px'})
+                dcc.Graph(figure=fig_outlier, config={'displayModeBar': False}, responsive=True, style={'height': '420px'})
             ]), width=7),
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H4("Pengelompokan Jenis Kasus Prioritas"),
-                dcc.Graph(figure=fig_bar, config={'displayModeBar': False}, style={'height': '420px'})
+                dcc.Graph(figure=fig_bar, config={'displayModeBar': False}, responsive=True, style={'height': '420px'})
             ]), width=5),
         ], className="mb-4"),
         
@@ -1025,18 +1076,21 @@ def build_crossphase_heatmap():
                        'Porsi di segmen ini: %{customdata:.1f}%<br>'
                        'Konsentrasi: %{z:.2f}x populasi<extra></extra>'),
         colorbar=dict(
-            title=dict(text='Konsentrasi', font=dict(size=11)),
+            # Judul dipasang di sisi bar (bukan di atasnya) supaya tidak
+            # bertabrakan dengan tick teratas yang dua baris.
+            title=dict(text='Konsentrasi', font=dict(size=11), side='right'),
             tickvals=[0.5, 1.0, 1.5, 2.0],
             ticktext=['0,5x<br>kurang', '1,0x<br>merata', '1,5x', '2,0x<br>menumpuk'],
-            tickfont=dict(size=9), len=0.9, thickness=14, outlinewidth=0
+            tickfont=dict(size=9), len=0.78, y=0.5, yanchor='middle',
+            thickness=14, outlinewidth=0
         )
     ))
     fig.update_layout(
         paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
         font=dict(color=PLOT_INK, family=PLOT_FONT),
-        margin=dict(l=10, r=10, t=10, b=10),
-        xaxis=dict(side='top', tickfont=dict(size=10)),
-        yaxis=dict(tickfont=dict(size=10), autorange='reversed')
+        margin=dict(l=8, r=8, t=8, b=8),
+        xaxis=dict(side='top', tickfont=dict(size=10), automargin=True),
+        yaxis=dict(tickfont=dict(size=10), autorange='reversed', automargin=True)
     )
     return fig
 
@@ -1219,7 +1273,7 @@ def tab_strategic_recommendations():
                     "ke setiap pola perilaku (dari ARM) dan setiap kasus anomali (dari Anomaly Detection), lalu mengukur ",
                     html.B("di segmen mana masing-masing benar-benar menumpuk"), "."
                 ], className="small text-muted mb-2"),
-                dcc.Graph(figure=fig_cross, config={'displayModeBar': False}, style={'height': '420px'}),
+                dcc.Graph(figure=fig_cross, config={'displayModeBar': False}, responsive=True, style={'height': '420px'}),
                 html.P([
                     html.B("Cara membacanya: "),
                     "1,00x berarti tersebar merata mengikuti besar populasi segmen. Di atas 1,25x (warna oranye/merah) berarti "
@@ -1292,8 +1346,9 @@ def tab_methodology():
     fig_sil.update_layout(
         paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
         font=dict(color=PLOT_INK, family=PLOT_FONT),
-        margin=dict(l=10, r=10, t=10, b=10), showlegend=False,
-        yaxis=dict(title='Silhouette Score', range=[0, 0.19], showgrid=True, gridcolor=PLOT_GRID),
+        margin=dict(l=8, r=8, t=16, b=8), showlegend=False,
+        yaxis=dict(title=dict(text='Silhouette Score', standoff=12), range=[0, 0.19],
+                   showgrid=True, gridcolor=PLOT_GRID, automargin=True),
         xaxis=dict(showgrid=False)
     )
 
@@ -1351,7 +1406,7 @@ def tab_methodology():
         dbc.Row([
             dbc.Col(html.Div(className="glass-card h-100", children=[
                 html.H5("Kenapa K=3? (Silhouette Score per K)", className="mb-3"),
-                dcc.Graph(figure=fig_sil, config={'displayModeBar': False}, style={'height': '260px'}),
+                dcc.Graph(figure=fig_sil, config={'displayModeBar': False}, responsive=True, style={'height': '260px'}),
                 html.P("Catatan jujur: nilai absolut ~0,15 tergolong sedang (bukan pemisahan tajam >0,5) — wajar untuk data finansial kontinu yang tumpang-tindih alami. K=3 adalah pilihan RELATIF TERBAIK, bukan klaim cluster terpisah sempurna.", className="small text-muted mt-2 mb-0")
             ]), width=12),
         ], className="mb-4"),
