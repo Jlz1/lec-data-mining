@@ -588,16 +588,16 @@ def tab_arm_visualization():
         # Gunakan semua 10 rules dari business_rules
         import math
         flow_rules = [
-            {'kondisi': 'KPR Kedua dari<br>Investor Swasta', 'hasil': 'Utang Melampaui<br>Nilai Rumah (LTV &gt;100%)', 'lift': 38.0, 'kondisi_plain': 'KPR Kedua dari Investor Swasta', 'hasil_plain': 'Utang Melampaui Nilai Rumah'},
-            {'kondisi': 'Nasabah Muda<br>(Usia &lt; 25 Tahun)', 'hasil': 'Pilih Manufactured<br>Housing', 'lift': 19.7, 'kondisi_plain': 'Nasabah Muda (Usia di bawah 25)', 'hasil_plain': 'Pilih Manufactured Housing'},
-            {'kondisi': 'Beli Properti<br>Multifamily (Kos)', 'hasil': 'Tujuan Investasi<br>atau Bisnis Sewa', 'lift': 13.5, 'kondisi_plain': 'Beli Properti Multifamily', 'hasil_plain': 'Tujuan Investasi/Bisnis Sewa'},
-            {'kondisi': 'Pinjaman Jumbo +<br>Jaminan Pemerintah', 'hasil': 'Program<br>VA Loan Veteran', 'lift': 12.5, 'kondisi_plain': 'Pinjaman Jumbo + Jaminan Pemerintah', 'hasil_plain': 'Program VA Veteran'},
-            {'kondisi': 'Multifamily +<br>Bunga Sedang (3-5%)', 'hasil': 'Pinjaman Jumbo<br>Non-Conforming', 'lift': 12.0, 'kondisi_plain': 'Multifamily + Bunga Sedang', 'hasil_plain': 'Pinjaman Jumbo Non-Conforming'},
-            {'kondisi': 'Beli Rumah Baru<br>Tipe Multifamily', 'hasil': 'Pinjaman Jumbo<br>Non-Conforming', 'lift': 11.3, 'kondisi_plain': 'Beli Rumah Baru Tipe Multifamily', 'hasil_plain': 'Pinjaman Jumbo Non-Conforming'},
-            {'kondisi': 'Uang Muka ~0% +<br>Cash-out Refinance', 'hasil': 'Fasilitas<br>VA Loan Veteran', 'lift': 10.7, 'kondisi_plain': 'Uang Muka ~0% + Cash-out Refinance', 'hasil_plain': 'Fasilitas VA Loan Veteran'},
-            {'kondisi': 'Pre-Approval +<br>Ginnie Mae', 'hasil': 'Uang Muka Sangat<br>Minim (LTV 95-100%)', 'lift': 9.8, 'kondisi_plain': 'Pre-Approval + Ginnie Mae', 'hasil_plain': 'Uang Muka Minim (LTV 95-100%)'},
-            {'kondisi': 'VA Loan Veteran +<br>Bunga &lt; 3%', 'hasil': 'Disokong<br>Ginnie Mae', 'lift': 9.1, 'kondisi_plain': 'VA Loan Veteran + Bunga rendah', 'hasil_plain': 'Disokong Ginnie Mae'},
-            {'kondisi': 'DTI &gt; 60% +<br>Manufactured Housing', 'hasil': 'Tenor Pinjaman<br>Lebih Pendek', 'lift': 8.1, 'kondisi_plain': 'DTI tinggi + Manufactured Housing', 'hasil_plain': 'Tenor Pinjaman Lebih Pendek'},
+            {'kondisi': 'KPR Kedua dari<br>Investor Swasta', 'hasil': 'Utang Melampaui<br>Nilai Rumah (LTV &gt;100%)', 'lift': 38.0, 'support': 0.16, 'confidence': 61, 'kondisi_plain': 'KPR Kedua dari Investor Swasta', 'hasil_plain': 'Utang Melampaui Nilai Rumah'},
+            {'kondisi': 'Nasabah Muda<br>(Usia &lt; 25 Tahun)', 'hasil': 'Pilih Manufactured<br>Housing', 'lift': 19.7, 'support': 0.14, 'confidence': 86, 'kondisi_plain': 'Nasabah Muda (Usia di bawah 25)', 'hasil_plain': 'Pilih Manufactured Housing'},
+            {'kondisi': 'Beli Properti<br>Multifamily (Kos)', 'hasil': 'Tujuan Investasi<br>atau Bisnis Sewa', 'lift': 13.5, 'support': 0.41, 'confidence': 100, 'kondisi_plain': 'Beli Properti Multifamily', 'hasil_plain': 'Tujuan Investasi/Bisnis Sewa'},
+            {'kondisi': 'Pinjaman Jumbo +<br>Jaminan Pemerintah', 'hasil': 'Program<br>VA Loan Veteran', 'lift': 12.5, 'support': 0.10, 'confidence': 94, 'kondisi_plain': 'Pinjaman Jumbo + Jaminan Pemerintah', 'hasil_plain': 'Program VA Veteran'},
+            {'kondisi': 'Multifamily +<br>Bunga Sedang (3-5%)', 'hasil': 'Pinjaman Jumbo<br>Non-Conforming', 'lift': 12.0, 'support': 0.10, 'confidence': 75, 'kondisi_plain': 'Multifamily + Bunga Sedang', 'hasil_plain': 'Pinjaman Jumbo Non-Conforming'},
+            {'kondisi': 'Beli Rumah Baru<br>Tipe Multifamily', 'hasil': 'Pinjaman Jumbo<br>Non-Conforming', 'lift': 11.3, 'support': 0.10, 'confidence': 71, 'kondisi_plain': 'Beli Rumah Baru Tipe Multifamily', 'hasil_plain': 'Pinjaman Jumbo Non-Conforming'},
+            {'kondisi': 'Uang Muka ~0% +<br>Cash-out Refinance', 'hasil': 'Fasilitas<br>VA Loan Veteran', 'lift': 10.7, 'support': 0.18, 'confidence': 80, 'kondisi_plain': 'Uang Muka ~0% + Cash-out Refinance', 'hasil_plain': 'Fasilitas VA Loan Veteran'},
+            {'kondisi': 'Pre-Approval +<br>Ginnie Mae', 'hasil': 'Uang Muka Sangat<br>Minim (LTV 95-100%)', 'lift': 9.8, 'support': 0.10, 'confidence': 75, 'kondisi_plain': 'Pre-Approval + Ginnie Mae', 'hasil_plain': 'Uang Muka Minim (LTV 95-100%)'},
+            {'kondisi': 'VA Loan Veteran +<br>Bunga &lt; 3%', 'hasil': 'Disokong<br>Ginnie Mae', 'lift': 9.1, 'support': 0.50, 'confidence': 73, 'kondisi_plain': 'VA Loan Veteran + Bunga rendah', 'hasil_plain': 'Disokong Ginnie Mae'},
+            {'kondisi': 'DTI &gt; 60% +<br>Manufactured Housing', 'hasil': 'Tenor Pinjaman<br>Lebih Pendek', 'lift': 8.1, 'support': 0.40, 'confidence': 81, 'kondisi_plain': 'DTI tinggi + Manufactured Housing', 'hasil_plain': 'Tenor Pinjaman Lebih Pendek'},
         ]
         fig_network = go.Figure()
         n_rules = len(flow_rules)
@@ -624,7 +624,14 @@ def tab_arm_visualization():
                 x=[0], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#1d4ed8',
                             line=dict(width=1.5, color='rgba(29,78,216,0.35)')),
-                hovertext='Kondisi: ' + rule['kondisi_plain'],
+                hovertext=(
+                    f"<b>Pola #{i+1}</b><br>"
+                    f"Kondisi: {rule['kondisi_plain']}<br>"
+                    f"Hasil: {rule['hasil_plain']}<br><br>"
+                    f"<b>Skor Peluang: {rule['lift']:.1f}</b><br>"
+                    f"Jangkauan Pasar: {rule['support']:.2f}%<br>"
+                    f"Tingkat Kepastian: {rule['confidence']:.0f}%"
+                ),
                 hoverinfo='text',
                 showlegend=False
             ))
@@ -642,7 +649,14 @@ def tab_arm_visualization():
                 x=[1], y=[y_pos], mode='markers',
                 marker=dict(size=node_size, color='#0f766e',
                             line=dict(width=1.5, color='rgba(15,118,110,0.35)')),
-                hovertext='Hasil: ' + rule['hasil_plain'],
+                hovertext=(
+                    f"<b>Pola #{i+1}</b><br>"
+                    f"Kondisi: {rule['kondisi_plain']}<br>"
+                    f"Hasil: {rule['hasil_plain']}<br><br>"
+                    f"<b>Skor Peluang: {rule['lift']:.1f}</b><br>"
+                    f"Jangkauan Pasar: {rule['support']:.2f}%<br>"
+                    f"Tingkat Kepastian: {rule['confidence']:.0f}%"
+                ),
                 hoverinfo='text',
                 showlegend=False
             ))
@@ -712,15 +726,6 @@ def tab_arm_visualization():
         dbc.Row([
             dbc.Col(html.Div(className="glass-card mb-4", children=[
                 html.H4("Peta 100 Peluang Bisnis Terkuat"),
-                html.P([
-                    "Setiap gelembung = satu pola perilaku nasabah. ",
-                    html.B("Makin ke kanan"),
-                    " = makin banyak nasabah yang terlibat. ",
-                    html.B("Makin ke atas"),
-                    " = makin pasti polanya terjadi. ",
-                    html.B("Makin besar & terang"),
-                    " = makin kuat peluang bisnisnya."
-                ], className="small text-muted mb-2"),
                 dcc.Graph(figure=fig_arm, config={'displayModeBar': False}, responsive=True, style={'height': '520px'})
             ]), width=6),
             dbc.Col(html.Div(className="glass-card mb-4", children=[
