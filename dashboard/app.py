@@ -65,16 +65,16 @@ try:
     
     # Translate to very simple business language but keep financial terms
     business_rules = [
-        {"kondisi": "KPR kedua (Piggyback/HELOC) dari investor swasta", "hasil": "Utang melampaui nilai rumah (LTV > 100%)", "peluang_bisnis": "Tawarkan program konsolidasi utang (Debt Consolidation) dengan suku bunga tetap khusus atau produk asuransi kredit tambahan (credit insurance) untuk melindungi nasabah dan memitigasi risiko kredit macet bagi bank.", "lift": 38.02, "risk": "high"},
-        {"kondisi": "Nasabah muda (di bawah 25 tahun) + cicilan menengah", "hasil": "Memilih properti Manufactured Housing", "peluang_bisnis": "Luncurkan paket pembiayaan KPR mikro khusus 'Rumah Pertama Generasi Muda' untuk Manufactured Housing dengan uang muka fleksibel dan opsi cicilan progresif guna menarik pasar nasabah pemula (first-time buyers).", "lift": 19.73, "risk": "medium"},
-        {"kondisi": "Pembelian properti tipe Multifamily (Apartemen/Kos)", "hasil": "Ditujukan untuk investasi atau bisnis sewa", "peluang_bisnis": "Buat produk KPR Investasi Properti Komersial dengan fitur cross-selling asuransi properti sewa dan integrasi layanan pengelolaan kas (cash management) untuk membantu investor/landlord mengelola arus kas sewa mereka.", "lift": 13.51, "risk": "low"},
-        {"kondisi": "Pinjaman Jumbo (Non-Conforming) + jaminan pemerintah", "hasil": "Berasal dari program VA Loan (Veteran)", "peluang_bisnis": "Mengembangkan kampanye pemasaran KPR Jumbo khusus Veteran (VA Jumbo Loan) dengan suku bunga bersaing dan biaya administrasi rendah untuk merebut pangsa pasar nasabah pensiunan militer/veteran bernilai tinggi.", "lift": 12.53, "risk": "low"},
-        {"kondisi": "Properti Multifamily + bunga sedang (3-5%)", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "peluang_bisnis": "Desain paket bundling investasi properti komersial yang menggabungkan KPR plafon besar (> $647K) dengan bunga tetap menengah serta fasilitas kredit modal kerja untuk renovasi atau perawatan properti multifamily.", "lift": 12.00, "risk": "medium"},
-        {"kondisi": "Pembelian rumah baru tipe Multifamily", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "peluang_bisnis": "Jalin kemitraan eksklusif (partnership) dengan pengembang (developer) apartemen atau ruko baru untuk menawarkan skema KPR Jumbo Investor instan di lokasi-lokasi strategis yang sedang berkembang.", "lift": 11.34, "risk": "medium"},
-        {"kondisi": "Uang muka nyaris 0% (LTV 95-100%) + Cash-out Refinance", "hasil": "Menggunakan fasilitas VA Loan (Veteran)", "peluang_bisnis": "Tawarkan produk tabungan atau investasi tambahan (cross-selling) kepada nasabah veteran yang melakukan cash-out refinance untuk membantu mereka menaruh dana segar hasil refinance tersebut ke dalam portofolio investasi yang aman.", "lift": 10.72, "risk": "high"},
-        {"kondisi": "Pre-Approval + didukung Ginnie Mae", "hasil": "Uang muka sangat minim (LTV 95-100%)", "peluang_bisnis": "Optimalkan layanan 'Instant Pre-Approval' berbasis digital khusus untuk segmen program pemerintah guna mempermudah pembeli rumah pertama berpendapatan rendah mendapatkan persetujuan KPR secara cepat.", "lift": 9.77, "risk": "low"},
-        {"kondisi": "VA Loan (Veteran) + bunga rendah (di bawah 3%)", "hasil": "Disokong program penjaminan Ginnie Mae", "peluang_bisnis": "Gunakan sekuritisasi Ginnie Mae untuk mendanai KPR berbiaya rendah secara berkelanjutan, sekaligus menawarkan kartu kredit atau asuransi kendaraan khusus veteran (VA-tailored products) kepada nasabah ini.", "lift": 9.09, "risk": "low"},
-        {"kondisi": "DTI di atas 60% + rumah Manufactured Housing", "hasil": "Tenor pinjaman lebih pendek (15-25 tahun)", "peluang_bisnis": "Tawarkan jasa pendampingan konsolidasi utang atau program perbaikan skor kredit bagi nasabah DTI tinggi ini, seraya membatasi tenor KPR mereka untuk mempercepat pelunasan dan menekan risiko default.", "lift": 8.09, "risk": "high"}
+        {"kondisi": "KPR kedua (Piggyback/HELOC) dari investor swasta", "hasil": "Utang melampaui nilai rumah (LTV > 100%)", "peluang_bisnis": "Mitigasi Risiko: Tawarkan program konsolidasi utang (penggabungan cicilan dengan bunga tetap) dan asuransi kredit tambahan untuk mencegah risiko kredit macet akibat total utang yang melampaui harga rumah.", "lift": 38.02, "risk": "high"},
+        {"kondisi": "Nasabah muda (di bawah 25 tahun) + cicilan menengah", "hasil": "Memilih properti Manufactured Housing", "peluang_bisnis": "Produk Baru: Luncurkan paket KPR 'Rumah Pertama Anak Muda' untuk rumah siap rakit (manufactured housing) dengan DP fleksibel dan cicilan bertahap yang ramah bagi pembeli pemula.", "lift": 19.73, "risk": "medium"},
+        {"kondisi": "Pembelian properti tipe Multifamily (Apartemen/Kos)", "hasil": "Ditujukan untuk investasi atau bisnis sewa", "peluang_bisnis": "Cross-Selling & Layanan: Buat produk KPR Investasi Properti Sewa yang dibundling dengan asuransi properti dan layanan pengelolaan arus kas (cash management) bagi pemilik kos/apartemen.", "lift": 13.51, "risk": "low"},
+        {"kondisi": "Pinjaman Jumbo (Non-Conforming) + jaminan pemerintah", "hasil": "Berasal dari program VA Loan (Veteran)", "peluang_bisnis": "Pemasaran Segmen Premium: Buat kampanye KPR Jumbo khusus Veteran dengan bunga bersaing dan biaya administrasi ringan untuk menggaet nasabah bernilai tinggi dari segmen pensiunan militer.", "lift": 12.53, "risk": "low"},
+        {"kondisi": "Properti Multifamily + bunga sedang (3-5%)", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "peluang_bisnis": "Bundling Kredit: Sediakan paket KPR Plafon Besar (> $647K) yang dilengkapi fasilitas kredit modal kerja untuk renovasi dan perawatan apartemen/kos-kosan.", "lift": 12.00, "risk": "medium"},
+        {"kondisi": "Pembelian rumah baru tipe Multifamily", "hasil": "Pinjaman Jumbo Non-Conforming (> $647K)", "peluang_bisnis": "Kemitraan Developer: Gandeng pengembang apartemen/ruko baru untuk menyediakan skema KPR Investor instan langsung di lokasi proyek yang sedang berkembang.", "lift": 11.34, "risk": "medium"},
+        {"kondisi": "Uang muka nyaris 0% (LTV 95-100%) + Cash-out Refinance", "hasil": "Menggunakan fasilitas VA Loan (Veteran)", "peluang_bisnis": "Retensi & Cross-Selling: Tawarkan produk tabungan atau investasi aman kepada nasabah veteran yang melakukan pencairan dana tunai (cash-out refinance) agar dana segar mereka dikelola di bank kita.", "lift": 10.72, "risk": "high"},
+        {"kondisi": "Pre-Approval + didukung Ginnie Mae", "hasil": "Uang muka sangat minim (LTV 95-100%)", "peluang_bisnis": "Layanan Digital Cepat: Sediakan fitur 'Persetujuan Awal Instant' (Instant Pre-Approval) digital untuk mempermudah pembeli rumah pertama berpenghasilan menengah-bawah dalam pengajuan KPR.", "lift": 9.77, "risk": "low"},
+        {"kondisi": "VA Loan (Veteran) + bunga rendah (di bawah 3%)", "hasil": "Disokong program penjaminan Ginnie Mae", "peluang_bisnis": "Penjualan Produk Tambahan: Manfaatkan dukungan penjaminan pemerintah untuk ekspansi KPR berbiaya rendah, seraya menawarkan produk tambahan (kartu kredit/asuransi khusus) kepada nasabah veteran.", "lift": 9.09, "risk": "low"},
+        {"kondisi": "DTI di atas 60% + rumah Manufactured Housing", "hasil": "Tenor pinjaman lebih pendek (15-25 tahun)", "peluang_bisnis": "Pendampingan & Kontrol Risiko: Tawarkan pendampingan pengelolaan utang dan perbaikan skor kredit bagi nasabah berbeban utang tinggi, sambil membatasi jangka waktu pinjaman agar risiko gagal bayar dapat ditekan.", "lift": 8.09, "risk": "high"}
     ]
 except Exception as e:
     business_rules = []
@@ -233,7 +233,7 @@ def tab_1_executive():
                 html.Div("Range: 0% - 15,25%", className="small text-muted")
             ]), width=3),
             dbc.Col(html.Div(className="glass-card h-100 text-center", children=[
-                html.H5("Utang vs Nilai Rumah", className="mb-3", style={'color': 'var(--text-secondary)'}),
+                html.H5("LTV", className="mb-3", style={'color': 'var(--text-secondary)'}),
                 html.Div("74,0%", className="stat-highlight", style={'color': '#e11d48'}),
                 html.Div("Rata-rata LTV", className="small text-muted mb-2"),
                 html.Div("Median: 78,2%", className="small mb-1"),
@@ -681,6 +681,17 @@ def tab_arm_visualization():
     risk_color = {'high': '#e11d48', 'medium': '#c2410c', 'low': '#059669'}
     rules_html = []
     for i, rule in enumerate(business_rules):
+        if ': ' in rule['peluang_bisnis']:
+            category_title, category_desc = rule['peluang_bisnis'].split(': ', 1)
+            peluang_p_children = [
+                html.Span(f"{category_title}: ", style={'color': '#000000', 'fontWeight': '600'}),
+                category_desc
+            ]
+        else:
+            peluang_p_children = [
+                html.Span(rule['peluang_bisnis'])
+            ]
+
         rules_html.append(
             dbc.Col(
                 html.Div(className="glass-card mb-3 h-100", style={'borderLeft': f'3px solid {risk_color.get(rule["risk"], "#2563eb")}'}, children=[
@@ -697,10 +708,7 @@ def tab_arm_visualization():
                         rule['hasil']
                     ], className="mb-2 small", style={'color': '#000000'}),
                     html.Hr(style={'borderColor': '#e0e0e8', 'margin': '8px 0'}),
-                    html.P([
-                        html.Span("Analisis Peluang Bisnis: ", style={'color': '#000000', 'fontWeight': '600'}),
-                        rule['peluang_bisnis']
-                    ], className="mb-0 small text-muted")
+                    html.P(peluang_p_children, className="mb-0 small text-muted")
                 ]),
                 width=6
             )
@@ -760,7 +768,7 @@ def tab_distributions():
             'opportunity': 'Nasabah yang mendapat bunga sangat rendah hampir pasti adalah peserta program Veteran. Ini adalah segmen yang bisa di-bundle dengan produk finansial khusus untuk mempertahankan loyalitas mereka.'
         },
         {
-            'col': 'combined_loan_to_value_ratio', 'label': 'Distribusi Rasio Utang vs Nilai Rumah (LTV)',
+            'col': 'combined_loan_to_value_ratio', 'label': 'Distribusi Rasio LTV',
             'color': '#e11d48',
             'insight': 'Mayoritas nasabah berada di LTV 60–95% (zona normal). Namun ada kasus ekstrem di atas 100%, di mana nilai pinjaman melampaui harga rumah. Ini adalah zona merah risiko kredit macet.',
             'opportunity': 'Nasabah dengan LTV di atas 95% perlu dimonitor ketat. Di sisi lain, nasabah dengan LTV di bawah 50% (uang muka besar) adalah kandidat terbaik untuk ditawari produk premium tambahan.'
@@ -820,7 +828,7 @@ def tab_distributions():
 def tab_4_anomalies():
     # Bar chart untuk tipologi
     if not anomaly_counts.empty:
-        plot_counts = anomaly_counts.copy()
+        plot_counts = anomaly_counts[anomaly_counts['Tipologi'] != 'Unclassified / Manual Review'].copy()
         plot_counts['Tipologi_Wrap'] = plot_counts['Tipologi_Indo'].map(wrap_label)
         fig_bar = px.bar(
             plot_counts,
@@ -849,7 +857,7 @@ def tab_4_anomalies():
         # tidak terpotong tepi kanan.
         fig_bar.update_xaxes(
             title_text='Jumlah Kasus', tickfont=dict(size=10),
-            range=[0, anomaly_counts['Jumlah'].max() * 1.18]
+            range=[0, plot_counts['Jumlah'].max() * 1.18]
         )
         fig_bar.update_traces(
             texttemplate='%{text}', textposition='outside', cliponaxis=False,
@@ -986,38 +994,27 @@ def tab_4_anomalies():
         
         # --- BARIS 4: Tipologi ---
         dbc.Row([
-            dbc.Col(html.Div(className="d-flex flex-column gap-3", children=[
-                html.Div(className="glass-card", style={'borderLeft': '4px solid #b45309'}, children=[
-                    html.H5(f"Sinyal Risiko Kredit Tinggi ({fmt_count(priority_typology_count('Potential Risk Signal'))} Kasus)", className="mb-2", style={'color': '#b45309'}),
-                    html.P(html.B("Definisi:"), className="small mb-1"),
-                    html.P("Pendapatan rendah (di bawah rata-rata) dikombinasikan dengan pinjaman Jumbo (sangat besar) dan leverage/utang yang sangat agresif.", className="small text-muted mb-2"),
-                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
-                    html.P("Kirim ke tim Underwriting untuk verifikasi manual secara mendalam (enhanced verification) sebelum persetujuan kredit.", className="small mb-0")
-                ]),
-                html.Div(className="glass-card", style={'borderLeft': '4px solid #dc2626'}, children=[
-                    html.H5(f"Data Error ({fmt_count(priority_typology_count('Data Error'))} Kasus)", className="mb-2", style={'color': '#dc2626'}),
-                    html.P(html.B("Definisi:"), className="small mb-1"),
-                    html.P("Nilai finansial yang melanggar batas fisik/logika bisnis. Misalnya: Suku bunga 0% atau rasio utang vs nilai rumah (LTV) > 150%.", className="small text-muted mb-2"),
-                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
-                    html.P("Kembalikan ke tim Data Engineering (Bukan ke analis risiko) untuk koreksi pada sistem penginputan aplikasi kredit.", className="small mb-0")
-                ]),
-            ]), width=6),
-            dbc.Col(html.Div(className="d-flex flex-column gap-3", children=[
-                html.Div(className="glass-card", style={'borderLeft': '4px solid #059669'}, children=[
-                    html.H5(f"Profil Konservatif / Prospek ({fmt_count(priority_typology_count('Rare Legitimate'))} Kasus)", className="mb-2", style={'color': '#059669'}),
-                    html.P(html.B("Definisi:"), className="small mb-1"),
-                    html.P("Nasabah sangat kaya (Ultra High-Net-Worth) namun mengambil pinjaman yang sangat kecil dengan uang muka raksasa.", className="small text-muted mb-2"),
-                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
-                    html.P("JANGAN tandai sebagai risiko. Jadikan daftar ini sebagai prospek target (leads) untuk produk Priority Banking atau Wealth Management.", className="small mb-0")
-                ]),
-                html.Div(className="glass-card", style={'borderLeft': '4px solid #c2410c'}, children=[
-                    html.H5(f"Perlu Tinjauan Manual ({fmt_count(priority_typology_count('Unclassified / Manual Review'))} Kasus)", className="mb-2", style={'color': '#c2410c'}),
-                    html.P(html.B("Definisi:"), className="small mb-1"),
-                    html.P("Anomali nyata secara statistik kombinasi (AI) tetapi tidak masuk ke dalam kotak risiko standar.", className="small text-muted mb-2"),
-                    html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
-                    html.P("Masukkan ke daftar pantauan audit (watchlist). Underwriter dapat menggunakan daftar ini untuk audit keamanan internal secara berkala.", className="small mb-0")
-                ])
-            ]), width=6)
+            dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '4px solid #b45309'}, children=[
+                html.H5(f"Sinyal Risiko Kredit Tinggi ({fmt_count(priority_typology_count('Potential Risk Signal'))} Kasus)", className="mb-2", style={'color': '#b45309'}),
+                html.P(html.B("Definisi:"), className="small mb-1"),
+                html.P("Pendapatan rendah (di bawah rata-rata) dikombinasikan dengan pinjaman Jumbo (sangat besar) dan leverage/utang yang sangat agresif.", className="small text-muted mb-2"),
+                html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                html.P("Kirim ke tim Underwriting untuk verifikasi manual secara mendalam (enhanced verification) sebelum persetujuan kredit.", className="small mb-0")
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '4px solid #dc2626'}, children=[
+                html.H5(f"Data Error ({fmt_count(priority_typology_count('Data Error'))} Kasus)", className="mb-2", style={'color': '#dc2626'}),
+                html.P(html.B("Definisi:"), className="small mb-1"),
+                html.P("Nilai finansial yang melanggar batas fisik/logika bisnis. Misalnya: Suku bunga 0% atau rasio utang vs nilai rumah (LTV) > 150%.", className="small text-muted mb-2"),
+                html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                html.P("Kembalikan ke tim Data Engineering (Bukan ke analis risiko) untuk koreksi pada sistem penginputan aplikasi kredit.", className="small mb-0")
+            ]), width=4),
+            dbc.Col(html.Div(className="glass-card h-100", style={'borderLeft': '4px solid #059669'}, children=[
+                html.H5(f"Profil Konservatif / Prospek ({fmt_count(priority_typology_count('Rare Legitimate'))} Kasus)", className="mb-2", style={'color': '#059669'}),
+                html.P(html.B("Definisi:"), className="small mb-1"),
+                html.P("Nasabah sangat kaya (Ultra High-Net-Worth) namun mengambil pinjaman yang sangat kecil dengan uang muka raksasa.", className="small text-muted mb-2"),
+                html.P(html.B("Aksi Bisnis:"), className="small mb-1"),
+                html.P("JANGAN tandai sebagai risiko. Jadikan daftar ini sebagai prospek target (leads) untuk produk Priority Banking atau Wealth Management.", className="small mb-0")
+            ]), width=4)
         ])
     ])
 
