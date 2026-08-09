@@ -4,7 +4,7 @@ An enterprise-grade unsupervised data mining project analyzing 100,000 Home Mort
 
 ## 📖 Laporan Pengetahuan
 Laporan final yang merangkum seluruh fase, temuan, dan interpretasi bisnis tersedia di:
-👉 **[Knowledge Discovery Report](reports/5-knowledge-discovery-report.md)**
+👉 **[Knowledge Discovery Report](reports/5-knowledge-discovery-report.txt)**
 
 ---
 

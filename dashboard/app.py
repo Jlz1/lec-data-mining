@@ -56,7 +56,7 @@ pio.templates.default = 'spacex'
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rules_path = os.path.join(base_dir, 'reports', '3-association-rules.csv')
 anomalies_path = os.path.join(base_dir, 'reports', '4-anomalies.csv')
-pca_path = os.path.join(base_dir, 'reports', 'pca_clusters.csv')
+pca_path = os.path.join(base_dir, 'reports', '2-pca_clusters.csv')
 data_path = os.path.join(base_dir, 'data', 'processed_dataset.csv')
 
 try:
@@ -116,7 +116,7 @@ except Exception as e:
     print(f"Error loading PCA data: {e}")
 
 try:
-    profile_path = os.path.join(base_dir, 'reports', 'cluster_profile_summary.csv')
+    profile_path = os.path.join(base_dir, 'reports', '2-cluster_profile_summary.csv')
     df_profile = pd.read_csv(profile_path)
 except Exception as e:
     df_profile = pd.DataFrame()
@@ -328,7 +328,7 @@ def tab_segmentation():
     cluster_colors = {'Kelas Menengah (Grup 1)': '#2563eb', 'Peminjam Agresif (Grup 2)': '#e11d48', 'Konservatif HNW (Grup 3)': '#059669'}
 
     # Chart pembanding: LTV (hampir sama) vs Rasio Pinjaman-ke-Pendapatan (jelas beda).
-    # Sumber: reports/cluster_profile_summary.csv -- rata-rata aktual per cluster.
+    # Sumber: reports/2-cluster_profile_summary.csv -- rata-rata aktual per cluster.
     # Chart ini sengaja menampilkan keduanya berdampingan supaya jelas variabel MANA
     # yang benar-benar membedakan segmen, dan mana yang TIDAK.
     if not df_profile.empty:

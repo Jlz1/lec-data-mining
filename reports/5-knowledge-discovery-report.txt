@@ -38,7 +38,7 @@ Kami menggunakan tiga pendekatan analisis yang bekerja secara berlapis:
 Analisis clustering mengungkap bahwa nasabah KPR **tidak bisa disamaratakan**. Mereka terbagi secara alami menjadi tiga kelompok dengan strategi keuangan yang sangat kontras:
 
 Semua angka di bawah adalah **rata-rata aktual anggota tiap cluster**, identik dengan isi
-`reports/cluster_profile_summary.csv` dan angka yang tampil di dashboard — jadi bisa
+`reports/2-cluster_profile_summary.csv` dan angka yang tampil di dashboard — jadi bisa
 diverifikasi langsung oleh pembaca.
 
 | Segmen | Populasi | Pendapatan | Nilai Pinjaman | Pinjaman ÷ Pendapatan | LTV | Bunga |

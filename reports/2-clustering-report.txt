@@ -131,7 +131,7 @@
       (b) MEAN AKTUAL — rata-rata nilai asli anggota cluster, dihitung hanya dari
           baris yang benar-benar terisi (non-null).
     Laporan ini memakai (b) MEAN AKTUAL sebagai angka utama, karena inilah yang
-    tersimpan di `reports/cluster_profile_summary.csv` dan ditampilkan dashboard --
+    tersimpan di `reports/2-cluster_profile_summary.csv` dan ditampilkan dashboard --
     jadi angka di laporan, CSV, dan dashboard semuanya identik dan bisa diverifikasi
     pembaca. Nilai centroid dicantumkan sebagai pembanding di tabel berikut.
 
