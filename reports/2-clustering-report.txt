@@ -32,7 +32,7 @@
     menyertakan interest_rate, combined_loan_to_value_ratio (LTV), rate_spread, maupun
     debt_to_income_ratio -- meskipun keempatnya finansial dan relevan secara bisnis. Alasan
     teknis: di file sumber, keempat kolom ini tersimpan sebagai teks (bercampur nilai
-    non-numerik seperti "exempt" atau notasi bucket, lihat reports/4-explanation.md Cell [2]),
+    non-numerik seperti "exempt" atau notasi bucket, lihat reports/1-preprocessing-report.txt Bagian 4.1),
     sehingga pandas membacanya sebagai dtype object, bukan float64, dan otomatis gugur dari
     filter. Konsekuensinya: segmentasi tiga kelompok nasabah pada dasarnya dibentuk oleh pola
     loan_amount, income, dan konteks geografis-demografis area (median family income wilayah,
@@ -131,7 +131,7 @@
       (b) MEAN AKTUAL — rata-rata nilai asli anggota cluster, dihitung hanya dari
           baris yang benar-benar terisi (non-null).
     Laporan ini memakai (b) MEAN AKTUAL sebagai angka utama, karena inilah yang
-    tersimpan di `reports/cluster_profile_summary.csv` dan ditampilkan dashboard --
+    tersimpan di `reports/2-cluster_profile_summary.csv` dan ditampilkan dashboard --
     jadi angka di laporan, CSV, dan dashboard semuanya identik dan bisa diverifikasi
     pembaca. Nilai centroid dicantumkan sebagai pembanding di tabel berikut.
 
