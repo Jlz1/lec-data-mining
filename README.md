@@ -14,7 +14,9 @@ Untuk melihat laporan komprehensif mengenai arsitektur teknis, metodologi statis
    ```bash
    pip install -r requirements.txt
    ```
-3. Untuk menjalankan aplikasi Interactive Streamlit Dashboard:
+3. Untuk menjalankan aplikasi Interactive Plotly Dash Dashboard:
    ```bash
-   streamlit run dashboard/app.py
+   python dashboard/app.py
    ```
+
+   Dashboard dapat dibuka di `http://127.0.0.1:8050/`.

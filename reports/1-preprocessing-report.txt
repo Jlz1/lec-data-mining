@@ -496,6 +496,24 @@ notebook ini deterministik terlepas dari bug imputasi di Bagian 3.3 --
 menjalankan ulang notebook dengan data sumber yang sama akan menghasilkan
 80 kolom final yang identik.
 
+8.8 STATUS KESESUAIAN DENGAN RUBRIK FASE 1
+───────────────────────────────────────────
+  • Data cleaning: SEBAGIAN TERPENUHI. Null, duplikat, inkonsistensi teks,
+    dan nilai negatif sudah diperiksa serta ditangani sesuai strategi yang
+    tercatat. Namun, output aktual coding lama masih menyisakan 277.763 sel
+    kosong dan 1 duplikat residual; angka ini sengaja dipertahankan di laporan
+    agar tidak mengklaim dataset 100% bersih.
+  • Data transformation: TERPENUHI. Notebook menerapkan perbaikan tipe data,
+    binning, StandardScaler, dan one-hot encoding.
+  • Feature selection berbasis korelasi: TERPENUHI. Pearson correlation
+    dengan ambang >0,8 dan variance check digunakan untuk membuang fitur
+    redundan/konstan.
+  • Feature selection berbasis entropy/information gain: BELUM DITERAPKAN
+    pada coding lama. Karena itu, kriteria rubrik yang meminta korelasi DAN
+    entropy belum dapat dinyatakan terpenuhi penuh hanya berdasarkan laporan.
+    Bagian ini dicatat sebagai keterbatasan metodologis, bukan diisi dengan
+    hasil entropy yang tidak pernah dihitung oleh notebook.
+
 ═══════════════════════════════════════════════════════════════════════════════════
 KESIMPULAN
 ═══════════════════════════════════════════════════════════════════════════════════
