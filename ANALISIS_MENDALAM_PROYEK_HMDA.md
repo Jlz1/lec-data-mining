@@ -50,10 +50,10 @@ LEC Data Mining/
 ├── reports/
 │   ├── 1-preprocessing-report.txt       # Audit trail & metrik pembersihan data
 │   ├── 2-clustering-report.txt          # Metodologi & interpretasi klaster
-│   ├── 3-explanation.md / rules.csv     # Penjelasan per cell & ekspor 10 association rules
-│   ├── 4-explanation.md / anomalies.csv # Penjelasan per cell & ekspor daftar anomali
+│   ├── 3-association-rules.txt / 3-association-rules.csv # Laporan & ekspor association rules
+│   ├── 4-anomaly-report.txt / 4-anomalies.csv # Laporan & ekspor daftar anomali
 │   ├── 5-knowledge-discovery-report.md  # Laporan eksekutif integratif seluruh fase
-│   ├── 6-slide-plan.md                  # Rencana narasi visual untuk presentasi manajemen
+│   ├── 5-presentation.pptx              # Presentasi kelompok
 │   ├── cluster_profile_summary.csv      # Ringkasan statistik 3 klaster untuk dashboard
 │   └── pca_clusters.csv                 # Proyeksi PCA 2D untuk visualisasi klaster
 ├── dashboard/
@@ -235,8 +235,8 @@ Untuk memungkinkan eksplorasi data secara real-time, dibangun aplikasi *dashboar
 4.  **Anomaly & Risk Radar:** Memetakan distribusi outlier berdasarkan tipologi bisnis, grafik *cross-referencing* antar metode deteksi, serta boxplot komparatif fitur finansial.
 5.  **Interactive New Applicant Simulator (Scoring Engine):** Modul kalkulator real-time yang memungkinkan analis kredit atau eksekutif memasukkan parameter pengajuan KPR baru (pendapatan, pinjaman, harga rumah, usia, tenor). Sistem secara instan memprediksi **Masuk ke Klaster mana** nasabah tersebut, apakah melanggar **Aturan Asosiasi (ARM)** tertentu, dan apakah memicu **Sinyal Anomali/Outlier** berisiko tinggi.
 
-### 7.3 Perencanaan Presentasi Eksekutif (`6-slide-plan.md`)
-Rencana terstruktur untuk presentasi 15-20 slide kepada jajaran direksi, merancang alur cerita (*data storytelling*) dari paparan masalah pasar KPR 2022, visualisasi kontras ketiga klaster, pembongkaran jebakan LTV pada ARM, hingga demonstrasi live scoring dashboard.
+### 7.3 Presentasi Kelompok (`5-presentation.pptx`)
+Deck presentasi kelompok merangkum alur data storytelling, hasil segmentasi, association rules, anomaly detection, rekomendasi bisnis, dan dashboard.
 
 ---
 
